@@ -1,0 +1,35 @@
+name: Release pubblica di un add-on
+
+# Parte al push di un tag "<id>-v<versione>" presente in site/addons.yml (es. item-generator-v1.4.0).
+# Scarica il pacchetto dalla Release dell'add-on, verifica che sia identico a quello di addons.yml
+# e lo pubblica nella Release con lo stesso nome del tag.
+on:
+  push:
+    tags: ["*-v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - name: Scarica e verifica il pacchetto
+        env:
+          # token in sola lettura sui repository degli add-on (Contents: read)
+          GH_TOKEN: ${{ secrets.XEI_ADDON_READ_TOKEN }}
+        run: python -m strumenti.copia_release prepara --tag-pubblico "$GITHUB_REF_NAME" --out pacchetti
+      - name: Crea la Release pubblica
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          titolo=$(python -c "from strumenti.copia_release import cerca_voce as c; v=c('$GITHUB_REF_NAME'); print(v['pacchetto'], v['versione'])")
+          impronta=$(python -c "from strumenti.copia_release import cerca_voce as c; print(c('$GITHUB_REF_NAME')['sha256'])")
+          gh release create "$GITHUB_REF_NAME" pacchetti/*.zip --title "$titolo" \
+            --notes "$titolo. SHA-256: $impronta. Prova gratuita di 30 giorni: https://xei-software.github.io/xei-addons-store/"

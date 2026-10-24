@@ -1,11 +1,13 @@
 # Add-on pubblicati sul sito.
 # Si pubblica solo un add-on con le licenze offline (XEICore 1.1.1 o successiva), con l'OK del Coordinatore XEI.
-# I dati del pacchetto vengono dalla Release del repository dell'add-on; il file è copiato, identico,
-# nella Release "tag_pubblico" di questo repository (vedi strumenti/copia_release.py).
+# I dati del pacchetto vengono dalla Release "tag_origine" del repository "origine"; al push del tag "tag_pubblico"
+# il workflow release.yml copia il file, identico, nella Release pubblica (vedi strumenti/copia_release.py).
 - id: item-generator
   pacchetto: XEI.ItemGenerator
   versione: 1.4.0
   data_rilascio: 2026-10-20
+  origine: xei-software/xei-itemgenerator
+  tag_origine: v1.4.0
   tag_pubblico: item-generator-v1.4.0
   file: XEI.ItemGenerator.zip
   dimensione: 650708

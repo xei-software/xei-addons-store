@@ -21,7 +21,7 @@ license@xeisrl.com.
 | `site/content/<lingua>/pagine/privacy.md` | informativa sulla privacy |
 | `site/templates/`, `site/static/` | modelli delle pagine e stile |
 | `build.py` | genera il sito statico |
-| `strumenti/copia_release.py` | copia il pacchetto di un add-on nella Release pubblica |
+| `strumenti/copia_release.py` | controlla il pacchetto di un add-on e prepara la Release pubblica (`.github/workflows/release.yml`) |
 | `tests/` | controlli automatici |
 
 Se un testo manca in una lingua, la pagina mostra l'italiano con un avviso.

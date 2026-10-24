@@ -36,9 +36,12 @@ Le decisioni importanti le prende Ivan.
 ## Pubblicare una nuova versione di un add-on
 
 1. OK del Coordinatore XEI per add-on e versione.
-2. `python -m strumenti.copia_release --origine xei-software/<repo> --tag v<versione> --file <Pacchetto>.zip
-   --id <id> --data <aaaa-mm-gg>`: controlla lo zip, crea la Release `<id>-v<versione>` e stampa la voce per
-   `site/addons.yml`.
+2. `python -m strumenti.copia_release voce --origine xei-software/<repo> --tag v<versione> --file <Pacchetto>.zip
+   --id <id> --data <aaaa-mm-gg>`: scarica e controlla lo zip, stampa la voce per `site/addons.yml`.
 3. Aggiornare `site/addons.yml` e, se servono, testi e manuali in `site/content/`.
 4. `python -m pytest -q`, commit e push su `main`: il sito si aggiorna da solo.
-5. Avvisare il Coordinatore XEI e il Coordinatore Documentazione.
+5. `git tag <id>-v<versione> && git push origin <id>-v<versione>`: il workflow `release.yml` scarica il pacchetto,
+   verifica che sia identico a `addons.yml` (SHA-256, dimensione, nessun file vietato) e crea la Release pubblica.
+   Le sessioni Claude non possono creare Release direttamente: si passa sempre dal tag. Il workflow usa il segreto
+   `XEI_ADDON_READ_TOKEN` (token in sola lettura sui repository degli add-on).
+6. Avvisare il Coordinatore XEI e il Coordinatore Documentazione.
