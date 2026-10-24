@@ -1,0 +1,84 @@
+/* Stile del sito degli add-on XEI. Colori provvisori, da allineare a logo e palette ufficiali. */
+:root {
+  --sfondo: #ffffff;
+  --sfondo-tenue: #f4f6f9;
+  --testo: #1c2330;
+  --testo-tenue: #5a6475;
+  --primario: #0b5cab;
+  --primario-testo: #ffffff;
+  --bordo: #dde2ea;
+  --avviso: #fff4d6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sfondo: #12161d;
+    --sfondo-tenue: #1b212b;
+    --testo: #e6e9ef;
+    --testo-tenue: #a3acba;
+    --primario: #5aa2ec;
+    --primario-testo: #0b1320;
+    --bordo: #2c3442;
+    --avviso: #3a3220;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--testo);
+  background: var(--sfondo);
+}
+a { color: var(--primario); }
+.contenitore { max-width: 960px; margin: 0 auto; padding: 0 16px; }
+main.contenitore { padding-top: 32px; padding-bottom: 48px; }
+
+.testata { border-bottom: 1px solid var(--bordo); background: var(--sfondo-tenue); }
+.testata-riga { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
+.marchio { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--testo); }
+.marchio span { color: var(--primario); }
+.menu { display: flex; flex-wrap: wrap; gap: 16px; flex: 1; }
+.menu a { text-decoration: none; color: var(--testo); }
+.menu a:hover { color: var(--primario); }
+.lingue { position: relative; }
+.lingue summary { cursor: pointer; color: var(--testo-tenue); }
+.lingue ul {
+  position: absolute; right: 0; z-index: 1; margin: 4px 0 0; padding: 8px 0; list-style: none;
+  background: var(--sfondo); border: 1px solid var(--bordo); border-radius: 8px; min-width: 140px;
+}
+.lingue li a { display: block; padding: 4px 16px; text-decoration: none; }
+.lingue a[aria-current] { font-weight: 700; }
+
+.presentazione { padding: 24px 0 8px; }
+.presentazione h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 12px; }
+
+.griglia { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.scheda { border: 1px solid var(--bordo); border-radius: 10px; padding: 20px; background: var(--sfondo-tenue); }
+.scheda h3, .scheda h2 { margin-top: 0; }
+.scheda.download { margin: 24px 0; }
+.versione { font-size: 0.9rem; font-weight: 400; color: var(--testo-tenue); }
+.dettaglio, .sommario, .nota { color: var(--testo-tenue); }
+
+.dati { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; }
+.dati dt { color: var(--testo-tenue); }
+.dati dd { margin: 0; overflow-wrap: anywhere; }
+code { font-size: 0.85rem; }
+
+.azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.pulsante {
+  display: inline-block; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600;
+  background: var(--primario); color: var(--primario-testo); border: 1px solid var(--primario);
+}
+.pulsante.secondario { background: transparent; color: var(--primario); }
+
+.avviso { background: var(--avviso); padding: 10px 14px; border-radius: 8px; }
+.passi ol { padding-left: 20px; }
+.elenco { padding-left: 20px; }
+.testo img { max-width: 100%; height: auto; }
+.testo table { border-collapse: collapse; display: block; overflow-x: auto; }
+.testo th, .testo td { border: 1px solid var(--bordo); padding: 6px 10px; }
+
+.piede { border-top: 1px solid var(--bordo); color: var(--testo-tenue); font-size: 0.9rem; }
+.piede-riga { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+.scelta-lingua { text-align: center; }
+.scelta-lingua .elenco { list-style: none; padding: 0; }

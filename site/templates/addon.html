@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titolo %}{{ addon.titolo }}{% endblock %}
+{% block contenuto %}
+{% if not addon.tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
+<h1>{{ addon.titolo }}</h1>
+<p class="sommario">{{ addon.sommario }}</p>
+<dl class="dati">
+  <dt>{{ t.addon_versione }}</dt><dd>{{ addon.versione }}</dd>
+  <dt>{{ t.addon_rilascio }}</dt><dd>{{ addon.data_rilascio }}</dd>
+  <dt>{{ t.addon_lingue_programma }}</dt><dd>{{ addon.lingue_programma | join(", ") | upper }}</dd>
+</dl>
+<div class="testo">{{ addon.descrizione_html | safe }}</div>
+<p class="azioni">
+  <a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html#{{ addon.id }}">{{ t.addon_scarica }}</a>
+  {% if addon.manuale %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}.html">{{ t.addon_manuale }}</a>{% endif %}
+</p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block titolo %}{{ t.privacy_titolo }}{% endblock %}
+{% block contenuto %}
+{% if contenuto %}
+{% set intestazione, html_testo, tradotto = contenuto %}
+{% if not tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
+<article class="testo">{{ html_testo | safe }}</article>
+{% else %}
+<h1>{{ t.privacy_titolo }}</h1>
+<p>{{ t.privacy_in_preparazione }}</p>
+{% endif %}
+{% endblock %}

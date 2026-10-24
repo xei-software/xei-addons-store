@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="{{ lingua }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titolo %}{% endblock %} · {{ config.nome_sito }}</title>
+  <meta name="description" content="{{ testo('home_intro') }}">
+  {% for altra in lingue %}
+  <link rel="alternate" hreflang="{{ altra }}" href="{{ url_base }}/{{ altra }}/{{ percorso_pagina }}">
+  {% endfor %}
+  <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
+</head>
+<body>
+  <header class="testata">
+    <div class="contenitore testata-riga">
+      <a class="marchio" href="{{ url_base }}/{{ lingua }}/">XEI <span>Add-on</span></a>
+      <nav class="menu" aria-label="menu">
+        <a href="{{ url_base }}/{{ lingua }}/">{{ t.menu_home }}</a>
+        <a href="{{ url_base }}/{{ lingua }}/download.html">{{ t.menu_download }}</a>
+        <a href="{{ url_base }}/{{ lingua }}/manuali.html">{{ t.menu_manuali }}</a>
+      </nav>
+      <details class="lingue">
+        <summary>{{ t.lingua_scegli }}: {{ lingua | upper }}</summary>
+        <ul>
+          {% for altra in lingue %}
+          <li><a href="{{ url_base }}/{{ altra }}/{{ percorso_pagina }}" hreflang="{{ altra }}"{% if altra == lingua %} aria-current="true"{% endif %}>{{ nomi_lingue[altra] }}</a></li>
+          {% endfor %}
+        </ul>
+      </details>
+    </div>
+  </header>
+  <main class="contenitore">
+    {% block contenuto %}{% endblock %}
+  </main>
+  <footer class="piede">
+    <div class="contenitore piede-riga">
+      <span>© {{ config.azienda }}</span>
+      <a href="{{ url_base }}/{{ lingua }}/privacy.html">{{ t.menu_privacy }}</a>
+      <a href="mailto:{{ config.email_licenze }}">{{ t.piede_contatti }}: {{ config.email_licenze }}</a>
+    </div>
+  </footer>
+</body>
+</html>

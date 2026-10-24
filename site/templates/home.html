@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block titolo %}{{ t.home_titolo }}{% endblock %}
+{% block contenuto %}
+<section class="presentazione">
+  <h1>{{ t.home_titolo }}</h1>
+  <p>{{ testo('home_intro') }}</p>
+  <a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html">{{ t.menu_download }}</a>
+</section>
+<h2>{{ t.home_addon_titolo }}</h2>
+<div class="griglia">
+  {% for addon in addons %}
+  <article class="scheda">
+    <h3>{{ addon.titolo }}</h3>
+    <p>{{ addon.sommario }}</p>
+    <p class="dettaglio">{{ t.addon_versione }} {{ addon.versione }}</p>
+    <a href="{{ url_base }}/{{ lingua }}/addons/{{ addon.id }}.html">{{ t.scheda_scopri }} →</a>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

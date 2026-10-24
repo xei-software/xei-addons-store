@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block titolo %}{{ t.download_titolo }}{% endblock %}
+{% block contenuto %}
+<h1>{{ t.download_titolo }}</h1>
+<p>{{ testo('download_intro') }}</p>
+<section class="passi">
+  <h2>{{ t.download_come_titolo }}</h2>
+  <ol>
+    <li>{{ t.download_passo1 }}</li>
+    <li>{{ testo('download_passo2') }}</li>
+    <li>{{ t.download_passo3 }}</li>
+    <li>{{ t.download_passo4 }}</li>
+  </ol>
+</section>
+{% for addon in addons %}
+<article class="scheda download" id="{{ addon.id }}">
+  <h2>{{ addon.titolo }} <span class="versione">{{ addon.versione }}</span></h2>
+  <p>{{ addon.sommario }}</p>
+  <dl class="dati">
+    <dt>{{ t.addon_rilascio }}</dt><dd>{{ addon.data_rilascio }}</dd>
+    <dt>{{ t.download_dimensione }}</dt><dd>{{ addon.file }} · {{ addon.dimensione_leggibile }}</dd>
+    <dt>{{ t.download_controllo }}</dt><dd><code>{{ addon.sha256 }}</code></dd>
+  </dl>
+  <p class="azioni">
+    <a class="pulsante" href="{{ link_prova(addon) }}">{{ t.download_richiedi_prova }}</a>
+    <a class="pulsante secondario" href="{{ addon.url_download }}">{{ t.download_diretto }}</a>
+  </p>
+</article>
+{% endfor %}
+<p class="nota">{{ t.download_nota_licenza }} <a href="mailto:{{ config.email_licenze }}">{{ config.email_licenze }}</a>.</p>
+{% endblock %}

@@ -1,0 +1,35 @@
+nome_lingua: Italiano
+lingua_scegli: Lingua
+menu_home: Home
+menu_download: Download
+menu_manuali: Manuali
+menu_privacy: Privacy
+home_titolo: Add-on XEI per SAP Business One
+home_intro: Estensioni sviluppate da XEI per SAP Business One. Ogni add-on si può provare gratuitamente per {giorni} giorni.
+home_addon_titolo: Gli add-on
+scheda_scopri: Scopri di più
+addon_versione: Versione
+addon_rilascio: Rilasciato il
+addon_lingue_programma: Lingue del programma
+addon_manuale: Manuale
+addon_scarica: Scarica e prova
+download_titolo: Download
+download_intro: Scarica gli add-on e provali gratuitamente per {giorni} giorni.
+download_come_titolo: Come funziona la prova
+download_passo1: Richiedi la prova compilando la registrazione.
+download_passo2: Ricevi per email il link al pacchetto e il codice di prova valido {giorni} giorni.
+download_passo3: Installa il pacchetto con l'Extension Manager di SAP Business One.
+download_passo4: Apri il menu Licenza dell'add-on e incolla il codice.
+download_richiedi_prova: Richiedi la prova gratuita
+download_diretto: Scarica il pacchetto
+download_controllo: Controllo SHA-256
+download_dimensione: Dimensione
+download_nota_licenza: Senza un codice di licenza valido l'add-on non si avvia. Per acquistare una licenza scrivi a
+email_oggetto_prova: Richiesta prova
+manuali_titolo: Manuali
+manuali_intro: Manuali d'uso e di installazione degli add-on.
+manuali_in_preparazione: Manuale in preparazione.
+privacy_titolo: Informativa sulla privacy
+privacy_in_preparazione: L'informativa sulla privacy è in preparazione.
+avviso_traduzione: Questo testo non è ancora disponibile nella tua lingua ed è mostrato in italiano.
+piede_contatti: Contatti

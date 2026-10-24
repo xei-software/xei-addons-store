@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ lingua_predefinita }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ config.nome_sito }}</title>
+  {% for lingua in lingue %}
+  <link rel="alternate" hreflang="{{ lingua }}" href="{{ url_base }}/{{ lingua }}/">
+  {% endfor %}
+  <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
+  <script>
+    // Apre il sito nella lingua del browser, se disponibile; altrimenti nella lingua predefinita.
+    (function () {
+      var disponibili = {{ lingue | tojson }};
+      var preferite = navigator.languages || [navigator.language || ""];
+      var scelta = "{{ lingua_predefinita }}";
+      for (var i = 0; i < preferite.length; i++) {
+        var codice = (preferite[i] || "").slice(0, 2).toLowerCase();
+        if (disponibili.indexOf(codice) !== -1) { scelta = codice; break; }
+      }
+      location.replace("{{ url_base }}/" + scelta + "/");
+    })();
+  </script>
+</head>
+<body>
+  <main class="contenitore scelta-lingua">
+    <h1>{{ config.nome_sito }}</h1>
+    <ul class="elenco">
+      {% for lingua in lingue %}
+      <li><a href="{{ url_base }}/{{ lingua }}/" hreflang="{{ lingua }}">{{ nomi_lingue[lingua] }}</a></li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
+</html>

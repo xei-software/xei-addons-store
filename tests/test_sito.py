@@ -1,0 +1,104 @@
+"""Controlli sul sito generato: pagine presenti, lingua giusta, collegamenti interni validi."""
+import re
+from pathlib import Path
+
+import pytest
+
+import build
+
+
+@pytest.fixture(scope="module")
+def sito(tmp_path_factory):
+    cartella = tmp_path_factory.mktemp("sito")
+    build.genera_sito(cartella, url_base="/xei-addons-store")
+    return cartella
+
+
+def _pagine_attese():
+    config = build.carica_config()
+    pagine = ["index.html", "404.html"]
+    for lingua in config["lingue"]:
+        pagine += [
+            f"{lingua}/index.html",
+            f"{lingua}/download.html",
+            f"{lingua}/manuali.html",
+            f"{lingua}/privacy.html",
+        ]
+        pagine += [f"{lingua}/addons/{addon['id']}.html" for addon in build.carica_addons()]
+    return pagine
+
+
+def test_tutte_le_pagine_vengono_generate(sito):
+    mancanti = [pagina for pagina in _pagine_attese() if not (sito / pagina).exists()]
+    assert not mancanti, mancanti
+
+
+def test_ogni_pagina_dichiara_la_sua_lingua(sito):
+    for lingua in build.carica_config()["lingue"]:
+        for pagina in (sito / lingua).rglob("*.html"):
+            assert f'<html lang="{lingua}"' in pagina.read_text(encoding="utf-8"), pagina
+
+
+def test_nessun_segnaposto_rimasto(sito):
+    for pagina in sito.rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        assert "{{" not in testo and "{%" not in testo, pagina
+
+
+def test_i_collegamenti_interni_portano_a_file_esistenti(sito):
+    url_base = "/xei-addons-store"
+    rotti = []
+    for pagina in sito.rglob("*.html"):
+        for destinazione in re.findall(r'(?:href|src)="([^"#?]+)', pagina.read_text(encoding="utf-8")):
+            if not destinazione.startswith(url_base + "/"):
+                continue
+            file = sito / destinazione[len(url_base) + 1:]
+            if destinazione.endswith("/"):
+                file = file / "index.html"
+            if not file.exists():
+                rotti.append(f"{pagina.relative_to(sito)} -> {destinazione}")
+    assert not rotti, rotti
+
+
+def test_la_pagina_download_mostra_pacchetto_controllo_e_registrazione(sito):
+    config = build.carica_config()
+    testo = (sito / "it" / "download.html").read_text(encoding="utf-8")
+    for addon in build.carica_addons():
+        url = (f"https://github.com/{config['repository']}/releases/download/"
+               f"{addon['tag_pubblico']}/{addon['file']}")
+        assert url in testo
+        assert addon["sha256"] in testo
+        assert addon["versione"] in testo
+    assert config["email_licenze"] in testo
+
+
+def test_senza_modulo_la_richiesta_di_prova_va_per_email(tmp_path):
+    config = build.carica_config()
+    config["modulo_registrazione"] = ""
+    build.genera_sito(tmp_path, url_base="", config=config)
+    testo = (tmp_path / "en" / "download.html").read_text(encoding="utf-8")
+    assert f"mailto:{config['email_licenze']}" in testo
+
+
+def test_con_modulo_la_richiesta_di_prova_apre_il_modulo(tmp_path):
+    config = build.carica_config()
+    config["modulo_registrazione"] = "https://forms.office.com/r/esempio"
+    build.genera_sito(tmp_path, url_base="", config=config)
+    testo = (tmp_path / "de" / "download.html").read_text(encoding="utf-8")
+    assert "https://forms.office.com/r/esempio" in testo
+
+
+def test_testo_non_tradotto_usa_l_italiano_con_avviso(sito):
+    # Finché manca la traduzione, la pagina mostra l'italiano e lo dice.
+    addon = build.carica_addons()[0]
+    traduzione = build.CARTELLA_SITO / "content" / "tr" / "addons" / f"{addon['id']}.md"
+    if traduzione.exists():
+        pytest.skip("traduzione turca già presente")
+    testo = (sito / "tr" / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
+    assert build.carica_testi("tr")["avviso_traduzione"] in testo
+
+
+def test_la_pagina_principale_rimanda_alle_lingue(sito):
+    testo = (sito / "index.html").read_text(encoding="utf-8")
+    for lingua in build.carica_config()["lingue"]:
+        assert f'href="/xei-addons-store/{lingua}/"' in testo

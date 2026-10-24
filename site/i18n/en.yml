@@ -1,0 +1,35 @@
+nome_lingua: English
+lingua_scegli: Language
+menu_home: Home
+menu_download: Downloads
+menu_manuali: Manuals
+menu_privacy: Privacy
+home_titolo: XEI add-ons for SAP Business One
+home_intro: Extensions developed by XEI for SAP Business One. Every add-on can be tried free of charge for {giorni} days.
+home_addon_titolo: Add-ons
+scheda_scopri: Learn more
+addon_versione: Version
+addon_rilascio: Released on
+addon_lingue_programma: Program languages
+addon_manuale: Manual
+addon_scarica: Download and try
+download_titolo: Downloads
+download_intro: Download the add-ons and try them free of charge for {giorni} days.
+download_come_titolo: How the trial works
+download_passo1: Request the trial by filling in the registration form.
+download_passo2: You will receive by email the package link and a trial code valid for {giorni} days.
+download_passo3: Install the package with the SAP Business One Extension Manager.
+download_passo4: Open the add-on's License menu and paste the code.
+download_richiedi_prova: Request the free trial
+download_diretto: Download the package
+download_controllo: SHA-256 checksum
+download_dimensione: Size
+download_nota_licenza: The add-on does not start without a valid license code. To buy a license, write to
+email_oggetto_prova: Trial request
+manuali_titolo: Manuals
+manuali_intro: User and installation manuals for the add-ons.
+manuali_in_preparazione: Manual in preparation.
+privacy_titolo: Privacy policy
+privacy_in_preparazione: The privacy policy is being prepared.
+avviso_traduzione: This text is not yet available in your language and is shown in Italian.
+piede_contatti: Contact

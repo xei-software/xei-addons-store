@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ lingua_predefinita }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 · {{ config.nome_sito }}</title>
+  <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
+</head>
+<body>
+  <main class="contenitore scelta-lingua">
+    <h1>404</h1>
+    <ul class="elenco">
+      {% for lingua in lingue %}
+      <li><a href="{{ url_base }}/{{ lingua }}/" hreflang="{{ lingua }}">{{ nomi_lingue[lingua] }}</a></li>
+      {% endfor %}
+    </ul>
+  </main>
+</body>
+</html>

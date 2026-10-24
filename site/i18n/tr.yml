@@ -1,0 +1,35 @@
+nome_lingua: Türkçe
+lingua_scegli: Dil
+menu_home: Ana sayfa
+menu_download: İndirmeler
+menu_manuali: Kılavuzlar
+menu_privacy: Gizlilik
+home_titolo: SAP Business One için XEI eklentileri
+home_intro: XEI tarafından SAP Business One için geliştirilen eklentiler. Her eklenti {giorni} gün boyunca ücretsiz denenebilir.
+home_addon_titolo: Eklentiler
+scheda_scopri: Daha fazla bilgi
+addon_versione: Sürüm
+addon_rilascio: Yayın tarihi
+addon_lingue_programma: Program dilleri
+addon_manuale: Kılavuz
+addon_scarica: İndir ve dene
+download_titolo: İndirmeler
+download_intro: Eklentileri indirin ve {giorni} gün boyunca ücretsiz deneyin.
+download_come_titolo: Deneme nasıl çalışır
+download_passo1: Kayıt formunu doldurarak deneme talep edin.
+download_passo2: Paket bağlantısını ve {giorni} gün geçerli deneme kodunu e-posta ile alırsınız.
+download_passo3: Paketi SAP Business One Extension Manager ile kurun.
+download_passo4: Eklentinin Lisans menüsünü açın ve kodu yapıştırın.
+download_richiedi_prova: Ücretsiz deneme talep et
+download_diretto: Paketi indir
+download_controllo: SHA-256 sağlama toplamı
+download_dimensione: Boyut
+download_nota_licenza: Eklenti geçerli bir lisans kodu olmadan çalışmaz. Lisans satın almak için yazın
+email_oggetto_prova: Deneme talebi
+manuali_titolo: Kılavuzlar
+manuali_intro: Eklentilerin kullanım ve kurulum kılavuzları.
+manuali_in_preparazione: Kılavuz hazırlanıyor.
+privacy_titolo: Gizlilik politikası
+privacy_in_preparazione: Gizlilik politikası hazırlanıyor.
+avviso_traduzione: Bu metin henüz sizin dilinizde mevcut değil ve İtalyanca gösteriliyor.
+piede_contatti: İletişim

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block titolo %}{{ t.manuali_titolo }}{% endblock %}
+{% block contenuto %}
+<h1>{{ t.manuali_titolo }}</h1>
+<p>{{ t.manuali_intro }}</p>
+<ul class="elenco">
+  {% for addon in addons %}
+  <li>
+    {% if addon.manuale %}
+    <a href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}.html">{{ addon.titolo }}</a>
+    {% else %}
+    {{ addon.titolo }} — {{ t.manuali_in_preparazione }}
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
