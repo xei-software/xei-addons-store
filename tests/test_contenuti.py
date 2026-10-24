@@ -142,3 +142,19 @@ def test_i_testi_pubblicati_non_citano_programmi_non_xei():
                 for trovato in termine.finditer(testo):
                     trovati.append(f"{percorso.relative_to(RADICE)}: {trovato.group(0)}")
     assert not trovati, trovati
+
+
+@pytest.mark.parametrize("intestazione", ["stato: interno", "stato: bozza", "title: senza stato"])
+def test_si_pubblica_solo_cio_che_e_approvato(tmp_path, monkeypatch, intestazione):
+    # La documentazione interna (stato: interno) non deve mai finire nel sito pubblico.
+    cartella = tmp_path / "content" / "it" / "pagine"
+    cartella.mkdir(parents=True)
+    (cartella / "prova.md").write_text(f"---\n{intestazione}\n---\nTesto riservato\n", encoding="utf-8")
+    monkeypatch.setattr(build, "CARTELLA_SITO", tmp_path)
+    assert build.leggi_contenuto("it", "pagine/prova.md", "it") is None
+
+
+def test_tutti_i_testi_del_sito_sono_approvati():
+    for percorso in (RADICE / "site" / "content").rglob("*.md"):
+        intestazione, _ = build.leggi_markdown(percorso)
+        assert intestazione.get("stato") == "approvato", percorso

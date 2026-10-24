@@ -54,8 +54,8 @@ def leggi_markdown(percorso):
 def leggi_contenuto(lingua, percorso_relativo, lingua_predefinita):
     """Contenuto nella lingua chiesta; se manca, quello nella lingua predefinita.
 
-    I testi del Coordinatore Documentazione hanno "stato: bozza" o "stato: approvato" nell'intestazione:
-    un testo in bozza si considera mancante.
+    I testi del Coordinatore Documentazione hanno "stato: bozza", "interno" o "approvato" nell'intestazione:
+    si pubblica solo "approvato", ogni altro testo si considera mancante.
     Restituisce (intestazione, html, tradotto). Se il file non c'è in nessuna lingua restituisce None.
     """
     for lingua_cercata in (lingua, lingua_predefinita):
@@ -63,7 +63,7 @@ def leggi_contenuto(lingua, percorso_relativo, lingua_predefinita):
         if not percorso.exists():
             continue
         intestazione, html = leggi_markdown(percorso)
-        if intestazione.get("stato") == "bozza":
+        if intestazione.get("stato") != "approvato":  # bozza, interno o senza stato: mai pubblicato
             continue
         return intestazione, html, lingua_cercata == lingua
     return None
