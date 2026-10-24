@@ -12,7 +12,7 @@
 <div class="testo">{{ addon.descrizione_html | safe }}</div>
 <p class="azioni">
   <a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html#{{ addon.id }}">{{ t.addon_scarica }}</a>
-  {% if addon.manuale %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}.html">{{ t.addon_manuale }}</a>{% endif %}
+  {% if addon.manuali %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}/{{ addon.manuali[0].nome }}.html">{{ t.addon_manuale }}</a>{% endif %}
   {% if addon.note %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/note/{{ addon.id }}-{{ addon.versione }}.html">{{ t.addon_note }}</a>{% endif %}
 </p>
 {% endblock %}

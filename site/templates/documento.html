@@ -3,5 +3,6 @@
 {% block contenuto %}
 {% set intestazione, html_documento, tradotto = documento %}
 {% if not tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
+{% if pdf_url %}<p class="azioni"><a class="pulsante secondario" href="{{ pdf_url }}">{{ t.manuale_pdf }}</a></p>{% endif %}
 <article class="testo">{{ html_documento | safe }}</article>
 {% endblock %}

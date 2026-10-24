@@ -32,7 +32,10 @@ pubblicare XEI.ItemGenerator 1.4.0. Per ogni nuovo add-on o nuova versione resta
   `description`, `lang`, `prodotto`, `versione`, `stato`). Si copiano in `site/content/` solo i file con
   `stato: approvato`; il generatore scarta comunque quelli in `bozza`. Corrispondenze:
   `sito/<lingua>/home.md` → `pagine/home.md`, `sito/<lingua>/<prodotto>.md` → `addons/<id>.md`,
-  `manuali/<lingua>/<prodotto>/note-rilascio-<versione>.md` → `note/<id>-<versione>.md`, manuale → `manuali/<id>.md`,
+  `manuali/<lingua>/<prodotto>/note-rilascio-<versione>.md` → `note/<id>-<versione>.md`,
+  `manuali/<lingua>/<prodotto>/<nome>.md` e `.pdf` → `manuali/<id>/<nome>.md` e `.pdf`,
+  `manuali/_img/<prodotto>/` e `manuali/_file/<prodotto>/` → `site/content/_img/<prodotto>/` e `_file/<prodotto>/`
+  (i link relativi dei manuali vengono riscritti dal generatore),
   `legale/<lingua>/privacy-registrazione.md` → `pagine/privacy.md`.
   Logo e icona in `site/static/img/` (da `loghi/` di xei-model-docs; colori: grigio #686A6F, azzurro #009FE3).
   I testi dell'interfaccia (`site/i18n/`) li mantiene questa sessione.

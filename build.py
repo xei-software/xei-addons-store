@@ -92,11 +92,60 @@ def riscrivi_link_note(html, addon_id, lingua, url_base):
                   lambda trovato: f'href="{url_base}/{lingua}/note/{addon_id}-{trovato.group(1)}.html"', html)
 
 
+def riscrivi_link_manuale(html, addon_id, lingua, url_base):
+    """Link di un manuale della documentazione verso le pagine e le risorse del sito.
+
+    - immagini e file di esempio (../../_img/..., ../../_file/...) -> static/manuali/_img/..., _file/...
+    - altri manuali dello stesso add-on (installazione.md) -> pagina del sito nella stessa lingua
+    """
+    html = re.sub(r'(src|href)="(?:\.\./)+(_img|_file)/', rf'\1="{url_base}/static/manuali/\2/', html)
+    html = re.sub(r'href="([\w-]+)\.md"', rf'href="{url_base}/{lingua}/manuali/{addon_id}/\1.html"', html)
+    return riscrivi_link_note(html, addon_id, lingua, url_base)
+
+
+# Ordine dei manuali nell'elenco; gli altri seguono in ordine alfabetico.
+ORDINE_MANUALI = ["manuale-utente", "installazione"]
+
+
+def elenco_manuali(addon_id, lingua, lingua_predefinita, url_base):
+    """Manuali approvati di un add-on nella lingua della pagina (o nella lingua predefinita, se manca)."""
+    nomi = set()
+    for lingua_cercata in (lingua, lingua_predefinita):
+        cartella = CARTELLA_SITO / "content" / lingua_cercata / "manuali" / addon_id
+        if cartella.is_dir():
+            nomi.update(file.stem for file in cartella.glob("*.md"))
+    ordinati = sorted(nomi, key=lambda nome: (ORDINE_MANUALI.index(nome) if nome in ORDINE_MANUALI
+                                               else len(ORDINE_MANUALI), nome))
+    manuali = []
+    for nome in ordinati:
+        contenuto = leggi_contenuto(lingua, f"manuali/{addon_id}/{nome}.md", lingua_predefinita)
+        if contenuto is None:  # solo in bozza
+            continue
+        intestazione, html, tradotto = contenuto
+        lingua_del_testo = lingua if tradotto else lingua_predefinita
+        pdf = CARTELLA_SITO / "content" / lingua_del_testo / "manuali" / addon_id / f"{nome}.pdf"
+        manuali.append({
+            "nome": nome,
+            "titolo": intestazione["title"],
+            "documento": (intestazione, riscrivi_link_manuale(html, addon_id, lingua, url_base), tradotto),
+            "pdf": pdf if pdf.exists() else None,
+        })
+    return manuali
+
+
+def _copia_risorse_manuali(cartella_uscita):
+    """Immagini e file di esempio dei manuali (content/_img, content/_file), comuni a tutte le lingue."""
+    for sotto in ("_img", "_file"):
+        sorgente = CARTELLA_SITO / "content" / sotto
+        if sorgente.is_dir():
+            shutil.copytree(sorgente, cartella_uscita / "static" / "manuali" / sotto)
+
+
 def _prepara_addon(addon, lingua, config, url_base):
     """Unisce i dati dell'add-on (addons.yml) con la sua descrizione nella lingua della pagina."""
     predefinita = config["lingua_predefinita"]
     intestazione, html, tradotto = leggi_contenuto(lingua, f"addons/{addon['id']}.md", predefinita)
-    manuale = leggi_contenuto(lingua, f"manuali/{addon['id']}.md", predefinita)
+    manuali = elenco_manuali(addon["id"], lingua, predefinita, url_base)
     note = leggi_contenuto(lingua, f"note/{addon['id']}-{addon['versione']}.md", predefinita)
     return {
         **addon,
@@ -105,7 +154,7 @@ def _prepara_addon(addon, lingua, config, url_base):
         "descrizione_html": riscrivi_link_note(togli_primo_titolo(html), addon["id"], lingua, url_base),
         "note": note,
         "tradotto": tradotto,
-        "manuale": manuale,
+        "manuali": manuali,
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
                          f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),
@@ -139,6 +188,7 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
     if cartella_uscita.exists():
         shutil.rmtree(cartella_uscita)
     shutil.copytree(CARTELLA_SITO / "static", cartella_uscita / "static")
+    _copia_risorse_manuali(cartella_uscita)
     (cartella_uscita / ".nojekyll").write_text("", encoding="utf-8")
 
     for lingua in lingue:
@@ -168,12 +218,19 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
         pagina("manuali.html", "manuali.html")
         for addon in addons:
             pagina("addon.html", f"addons/{addon['id']}.html", addon=addon)
-            if addon["manuale"]:
-                pagina("documento.html", f"manuali/{addon['id']}.html", documento=addon["manuale"],
-                       titolo_pagina=f"{testi['addon_manuale']} · {addon['titolo']}")
+            for manuale in addon["manuali"]:
+                percorso = f"manuali/{addon['id']}/{manuale['nome']}"
+                pdf_url = None
+                if manuale["pdf"]:
+                    destinazione = cartella_uscita / lingua / f"{percorso}.pdf"
+                    destinazione.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(manuale["pdf"], destinazione)
+                    pdf_url = f"{url_base}/{lingua}/{percorso}.pdf"
+                pagina("documento.html", f"{percorso}.html", documento=manuale["documento"],
+                       titolo_pagina=f"{manuale['titolo']} · {addon['titolo']}", pdf_url=pdf_url)
             if addon["note"]:
                 pagina("documento.html", f"note/{addon['id']}-{addon['versione']}.html", documento=addon["note"],
-                       titolo_pagina=addon["note"][0]["title"])
+                       titolo_pagina=addon["note"][0]["title"], pdf_url=None)
         privacy = leggi_contenuto(lingua, "pagine/privacy.md", config["lingua_predefinita"])
         pagina("testo.html", "privacy.html", contenuto=privacy)
 

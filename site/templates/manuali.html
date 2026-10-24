@@ -3,15 +3,16 @@
 {% block contenuto %}
 <h1>{{ t.manuali_titolo }}</h1>
 <p>{{ t.manuali_intro }}</p>
+{% for addon in addons %}
+<h2>{{ addon.titolo }}</h2>
+{% if addon.manuali %}
 <ul class="elenco">
-  {% for addon in addons %}
-  <li>
-    {% if addon.manuale %}
-    <a href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}.html">{{ addon.titolo }}</a>
-    {% else %}
-    {{ addon.titolo }} — {{ t.manuali_in_preparazione }}
-    {% endif %}
-  </li>
+  {% for manuale in addon.manuali %}
+  <li><a href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}/{{ manuale.nome }}.html">{{ manuale.titolo }}</a></li>
   {% endfor %}
 </ul>
+{% else %}
+<p>{{ t.manuali_in_preparazione }}</p>
+{% endif %}
+{% endfor %}
 {% endblock %}
