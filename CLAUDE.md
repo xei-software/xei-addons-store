@@ -13,6 +13,9 @@ nel [README](README.md).
 
 Le decisioni importanti le prende Ivan.
 
+**Consenso di Ivan (24/10/2026):** questa sessione lavora in autonomia sul repository (push, tag, Release) e può
+pubblicare XEI.ItemGenerator 1.4.0. Per ogni nuovo add-on o nuova versione resta l'OK del Coordinatore XEI.
+
 ## Regole (repository pubblico)
 
 - **Mai nel repository:** sorgenti, codici di licenza (`licenza.xei`), chiavi, token, credenziali, nomi di clienti,
