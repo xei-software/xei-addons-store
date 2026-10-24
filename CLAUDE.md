@@ -8,7 +8,7 @@ nel [README](README.md).
 | Sessione | Compito |
 |---|---|
 | **Pubblica Programma XEI** (`session_01MKTKgsVLNM2hFhvmCuXAvQ`) | questo repository: sito, pagina download, Release pubbliche |
-| **Coordinatore XEI** (`session_01RmGx3qkcdk2mSAcaNtW6Zd`) | codice degli add-on, versioni, licenze; OK prima di pubblicare un add-on |
+| **Coordinatore XEI** (`session_01LFHg4fgFz64GcRjySuMWFy`) | codice degli add-on, versioni, licenze; OK prima di pubblicare un add-on |
 | **Coordinatore Documentazione XEI** (`session_01Rwg5Rtz6Mc3CC5Rrq375Rt`) | testi, manuali, traduzioni, loghi (repository `xei-model-docs`) |
 
 Le decisioni importanti le prende Ivan.
@@ -36,6 +36,9 @@ pubblicare XEI.ItemGenerator 1.4.0. Per ogni nuovo add-on o nuova versione resta
   `legale/<lingua>/privacy-registrazione.md` → `pagine/privacy.md`.
   Logo e icona in `site/static/img/` (da `loghi/` di xei-model-docs; colori: grigio #686A6F, azzurro #009FE3).
   I testi dell'interfaccia (`site/i18n/`) li mantiene questa sessione.
+- **Nessun riferimento** a programmi di partenza (es. il vecchio configuratore), a migrazioni da altri programmi o a
+  tabelle non XEI (regola di Ivan, come in `xei-model-docs/CLAUDE.md`). I manuali si prendono solo da `xei-model-docs`,
+  mai dai repository degli add-on.
 - I test devono passare prima di ogni push (`python -m pytest -q`).
 
 ## Pubblicare una nuova versione di un add-on

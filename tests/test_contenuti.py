@@ -82,6 +82,8 @@ SCHEMI_VIETATI = {
     "token GitHub": re.compile(r"gh[pousr]_[A-Za-z0-9]{20,}"),
     "chiave privata": re.compile(r"BEGIN [A-Z ]*PRIVATE KEY|<D>[A-Za-z0-9+/=]{20,}</D>"),
     "mappa di offuscamento": re.compile(r"obfuscation-map", re.IGNORECASE),
+    # Regola di Ivan: nessun riferimento a programmi di partenza, migrazioni o tabelle non XEI.
+    "programma di partenza VBO": re.compile(r"VBO", re.IGNORECASE),
 }
 ESTENSIONI_VIETATE = {".xei", ".cs", ".csproj", ".sln", ".pfx", ".snk", ".zip", ".dll", ".exe"}
 # File che contengono gli schemi vietati solo per poterli bloccare.
