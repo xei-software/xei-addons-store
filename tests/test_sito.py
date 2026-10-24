@@ -102,3 +102,40 @@ def test_la_pagina_principale_rimanda_alle_lingue(sito):
     testo = (sito / "index.html").read_text(encoding="utf-8")
     for lingua in build.carica_config()["lingue"]:
         assert f'href="/xei-addons-store/{lingua}/"' in testo
+
+
+def test_la_home_usa_il_testo_approvato(sito):
+    percorso = build.CARTELLA_SITO / "content" / "it" / "pagine" / "home.md"
+    intestazione, _ = build.leggi_markdown(percorso)
+    assert intestazione["stato"] == "approvato"
+    testo = (sito / "it" / "index.html").read_text(encoding="utf-8")
+    assert "Perché scegliere gli add-on XEI" in testo
+
+
+def test_nessun_collegamento_a_file_markdown(sito):
+    # I link tra i file della documentazione (.md) vanno riscritti verso le pagine del sito.
+    for pagina in sito.rglob("*.html"):
+        assert not re.search(r'href="[^"]+\.md"', pagina.read_text(encoding="utf-8")), pagina
+
+
+def test_le_note_di_rilascio_hanno_una_pagina(sito):
+    for lingua in build.carica_config()["lingue"]:
+        for addon in build.carica_addons():
+            pagina = sito / lingua / "note" / f"{addon['id']}-{addon['versione']}.html"
+            assert pagina.exists(), pagina
+            scheda = (sito / lingua / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
+            assert f"/{lingua}/note/{addon['id']}-{addon['versione']}.html" in scheda
+
+
+def test_il_titolo_della_scheda_non_si_ripete(sito):
+    addon = build.carica_addons()[0]
+    testo = (sito / "it" / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
+    assert testo.count("<h1") == 1
+
+
+def test_logo_e_icona_ufficiali(sito):
+    for file in ("static/img/logo-xei.png", "static/img/icona-x.png"):
+        assert (sito / file).exists(), file
+    testo = (sito / "it" / "index.html").read_text(encoding="utf-8")
+    assert 'src="/xei-addons-store/static/img/logo-xei.png"' in testo
+    assert 'rel="icon"' in testo

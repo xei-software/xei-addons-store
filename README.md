@@ -18,7 +18,8 @@ license@xeisrl.com.
 | `site/i18n/<lingua>.yml` | testi dell'interfaccia (menu, pulsanti), uno per lingua |
 | `site/content/<lingua>/addons/<id>.md` | descrizione di ogni add-on |
 | `site/content/<lingua>/manuali/<id>.md` | manuale di ogni add-on |
-| `site/content/<lingua>/pagine/privacy.md` | informativa sulla privacy |
+| `site/content/<lingua>/pagine/home.md`, `pagine/privacy.md` | testo della home e informativa sulla privacy |
+| `site/content/<lingua>/note/<id>-<versione>.md` | note di rilascio |
 | `site/templates/`, `site/static/` | modelli delle pagine e stile |
 | `build.py` | genera il sito statico |
 | `strumenti/copia_release.py` | controlla il pacchetto di un add-on e prepara la Release pubblica (`.github/workflows/release.yml`) |

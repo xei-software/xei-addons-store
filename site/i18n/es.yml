@@ -12,6 +12,7 @@ addon_versione: Versión
 addon_rilascio: Publicado el
 addon_lingue_programma: Idiomas del programa
 addon_manuale: Manual
+addon_note: Notas de la versión
 addon_scarica: Descargar y probar
 download_titolo: Descargas
 download_intro: Descarga los add-ons y pruébalos gratis durante {giorni} días.

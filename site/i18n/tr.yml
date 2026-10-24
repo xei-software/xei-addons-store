@@ -12,6 +12,7 @@ addon_versione: Sürüm
 addon_rilascio: Yayın tarihi
 addon_lingue_programma: Program dilleri
 addon_manuale: Kılavuz
+addon_note: Sürüm notları
 addon_scarica: İndir ve dene
 download_titolo: İndirmeler
 download_intro: Eklentileri indirin ve {giorni} gün boyunca ücretsiz deneyin.

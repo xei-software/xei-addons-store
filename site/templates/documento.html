@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block titolo %}{{ titolo_pagina }}{% endblock %}
+{% block contenuto %}
+{% set intestazione, html_documento, tradotto = documento %}
+{% if not tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
+<article class="testo">{{ html_documento | safe }}</article>
+{% endblock %}

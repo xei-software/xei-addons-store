@@ -1,7 +1,0 @@
-{% extends "base.html" %}
-{% block titolo %}{{ t.addon_manuale }} · {{ addon.titolo }}{% endblock %}
-{% block contenuto %}
-{% set intestazione, html_manuale, tradotto = addon.manuale %}
-{% if not tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
-<article class="testo manuale">{{ html_manuale | safe }}</article>
-{% endblock %}

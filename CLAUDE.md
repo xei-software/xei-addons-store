@@ -28,8 +28,10 @@ Le decisioni importanti le prende Ivan.
 - I testi delle pagine vengono dal Coordinatore Documentazione (repository `xei-model-docs`, front matter `title`,
   `description`, `lang`, `prodotto`, `versione`, `stato`). Si copiano in `site/content/` solo i file con
   `stato: approvato`; il generatore scarta comunque quelli in `bozza`. Corrispondenze:
-  `sito/<lingua>/<prodotto>.md` → `addons/<id>.md`, `manuali/<lingua>/<prodotto>/*.md` → `manuali/`,
+  `sito/<lingua>/home.md` → `pagine/home.md`, `sito/<lingua>/<prodotto>.md` → `addons/<id>.md`,
+  `manuali/<lingua>/<prodotto>/note-rilascio-<versione>.md` → `note/<id>-<versione>.md`, manuale → `manuali/<id>.md`,
   `legale/<lingua>/privacy-registrazione.md` → `pagine/privacy.md`.
+  Logo e icona in `site/static/img/` (da `loghi/` di xei-model-docs; colori: grigio #686A6F, azzurro #009FE3).
   I testi dell'interfaccia (`site/i18n/`) li mantiene questa sessione.
 - I test devono passare prima di ogni push (`python -m pytest -q`).
 

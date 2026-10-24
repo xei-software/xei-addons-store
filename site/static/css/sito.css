@@ -1,24 +1,28 @@
-/* Stile del sito degli add-on XEI. Colori provvisori, da allineare a logo e palette ufficiali. */
+/* Stile del sito degli add-on XEI.
+   Colori ufficiali (xei-model-docs, loghi/README.md): grigio XEI #686A6F, azzurro XEI #009FE3.
+   Per link e pulsanti su fondo chiaro si usa un azzurro più scuro (#0077AA): con #009FE3 il testo bianco
+   non avrebbe abbastanza contrasto. */
 :root {
   --sfondo: #ffffff;
-  --sfondo-tenue: #f4f6f9;
-  --testo: #1c2330;
-  --testo-tenue: #5a6475;
-  --primario: #0b5cab;
+  --sfondo-tenue: #f4f6f8;
+  --testo: #26282c;
+  --testo-tenue: #686a6f;
+  --azzurro: #009fe3;
+  --primario: #0077aa;
   --primario-testo: #ffffff;
-  --bordo: #dde2ea;
-  --avviso: #fff4d6;
+  --bordo: #dfe1e4;
+  --avviso: #e6f6fd;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --sfondo: #12161d;
-    --sfondo-tenue: #1b212b;
-    --testo: #e6e9ef;
-    --testo-tenue: #a3acba;
-    --primario: #5aa2ec;
+    --sfondo: #16181b;
+    --sfondo-tenue: #1f2226;
+    --testo: #e8e9eb;
+    --testo-tenue: #a9abb0;
+    --primario: #33b5ea;
     --primario-testo: #0b1320;
-    --bordo: #2c3442;
-    --avviso: #3a3220;
+    --bordo: #33363b;
+    --avviso: #10303d;
   }
 }
 * { box-sizing: border-box; }
@@ -35,8 +39,16 @@ main.contenitore { padding-top: 32px; padding-bottom: 48px; }
 
 .testata { border-bottom: 1px solid var(--bordo); background: var(--sfondo-tenue); }
 .testata-riga { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding-top: 12px; padding-bottom: 12px; }
-.marchio { font-weight: 700; font-size: 1.25rem; text-decoration: none; color: var(--testo); }
-.marchio span { color: var(--primario); }
+.testata { border-bottom: 3px solid var(--azzurro); }
+.marchio { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 1.15rem; text-decoration: none; }
+.marchio img { height: 40px; width: auto; }
+.marchio span { color: var(--testo-tenue); }
+/* il logo è grigio su trasparente: in modalità scura gli serve un fondo chiaro */
+@media (prefers-color-scheme: dark) {
+  .marchio img { background: #ffffff; border-radius: 6px; padding: 3px 6px; }
+}
+.testo h1, .testo h2 { line-height: 1.25; }
+.presentazione .testo h1 { font-size: 2rem; margin-top: 0; }
 .menu { display: flex; flex-wrap: wrap; gap: 16px; flex: 1; }
 .menu a { text-decoration: none; color: var(--testo); }
 .menu a:hover { color: var(--primario); }
@@ -82,3 +94,4 @@ code { font-size: 0.85rem; }
 .piede-riga { display: flex; flex-wrap: wrap; gap: 16px; padding-top: 16px; padding-bottom: 16px; }
 .scelta-lingua { text-align: center; }
 .scelta-lingua .elenco { list-style: none; padding: 0; }
+.testo thead th:empty { padding: 0; border: none; }

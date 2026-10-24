@@ -8,6 +8,7 @@ Uso:
     python build.py --out anteprima --url-base ""   # anteprima locale (python -m http.server -d anteprima)
 """
 import argparse
+import re
 import shutil
 from pathlib import Path
 from urllib.parse import quote
@@ -80,16 +81,29 @@ def link_richiesta_prova(addon, testi, config):
     return f"mailto:{config['email_licenze']}?subject={oggetto}"
 
 
-def _prepara_addon(addon, lingua, config):
+def togli_primo_titolo(html):
+    """Toglie il primo <h1>: nella scheda il titolo lo mette il modello, dal front matter."""
+    return re.sub(r"<h1[^>]*>.*?</h1>\s*", "", html, count=1, flags=re.DOTALL)
+
+
+def riscrivi_link_note(html, addon_id, lingua, url_base):
+    """I link alle note di rilascio della documentazione (note-rilascio-<versione>.md) puntano alla pagina del sito."""
+    return re.sub(r'href="[^"]*note-rilascio-([\d.]+)\.md"',
+                  lambda trovato: f'href="{url_base}/{lingua}/note/{addon_id}-{trovato.group(1)}.html"', html)
+
+
+def _prepara_addon(addon, lingua, config, url_base):
     """Unisce i dati dell'add-on (addons.yml) con la sua descrizione nella lingua della pagina."""
-    contenuto = leggi_contenuto(lingua, f"addons/{addon['id']}.md", config["lingua_predefinita"])
-    intestazione, html, tradotto = contenuto
-    manuale = leggi_contenuto(lingua, f"manuali/{addon['id']}.md", config["lingua_predefinita"])
+    predefinita = config["lingua_predefinita"]
+    intestazione, html, tradotto = leggi_contenuto(lingua, f"addons/{addon['id']}.md", predefinita)
+    manuale = leggi_contenuto(lingua, f"manuali/{addon['id']}.md", predefinita)
+    note = leggi_contenuto(lingua, f"note/{addon['id']}-{addon['versione']}.md", predefinita)
     return {
         **addon,
         "titolo": intestazione["title"],
         "sommario": intestazione["description"],
-        "descrizione_html": html,
+        "descrizione_html": riscrivi_link_note(togli_primo_titolo(html), addon["id"], lingua, url_base),
+        "note": note,
         "tradotto": tradotto,
         "manuale": manuale,
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
@@ -128,7 +142,7 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
     (cartella_uscita / ".nojekyll").write_text("", encoding="utf-8")
 
     for lingua in lingue:
-        addons = [_prepara_addon(addon, lingua, config) for addon in carica_addons()]
+        addons = [_prepara_addon(addon, lingua, config, url_base) for addon in carica_addons()]
         testi = carica_testi(lingua)
         comuni = {
             "config": config,
@@ -148,13 +162,18 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
             html = ambiente.get_template(modello).render(**comuni, percorso_pagina=percorso_relativo, **dati)
             _scrivi(cartella_uscita / lingua, percorso_relativo, html)
 
-        pagina("home.html", "index.html")
+        pagina("home.html", "index.html",
+               presentazione=leggi_contenuto(lingua, "pagine/home.md", config["lingua_predefinita"]))
         pagina("download.html", "download.html")
         pagina("manuali.html", "manuali.html")
         for addon in addons:
             pagina("addon.html", f"addons/{addon['id']}.html", addon=addon)
             if addon["manuale"]:
-                pagina("manuale.html", f"manuali/{addon['id']}.html", addon=addon)
+                pagina("documento.html", f"manuali/{addon['id']}.html", documento=addon["manuale"],
+                       titolo_pagina=f"{testi['addon_manuale']} · {addon['titolo']}")
+            if addon["note"]:
+                pagina("documento.html", f"note/{addon['id']}-{addon['versione']}.html", documento=addon["note"],
+                       titolo_pagina=addon["note"][0]["title"])
         privacy = leggi_contenuto(lingua, "pagine/privacy.md", config["lingua_predefinita"])
         pagina("testo.html", "privacy.html", contenuto=privacy)
 

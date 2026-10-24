@@ -8,12 +8,13 @@
   {% for altra in lingue %}
   <link rel="alternate" hreflang="{{ altra }}" href="{{ url_base }}/{{ altra }}/{{ percorso_pagina }}">
   {% endfor %}
+  <link rel="icon" type="image/png" href="{{ url_base }}/static/img/icona-x.png">
   <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
 </head>
 <body>
   <header class="testata">
     <div class="contenitore testata-riga">
-      <a class="marchio" href="{{ url_base }}/{{ lingua }}/">XEI <span>Add-on</span></a>
+      <a class="marchio" href="{{ url_base }}/{{ lingua }}/"><img src="{{ url_base }}/static/img/logo-xei.png" alt="XEI" width="1544" height="780"> <span>Add-on</span></a>
       <nav class="menu" aria-label="menu">
         <a href="{{ url_base }}/{{ lingua }}/">{{ t.menu_home }}</a>
         <a href="{{ url_base }}/{{ lingua }}/download.html">{{ t.menu_download }}</a>

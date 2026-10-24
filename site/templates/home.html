@@ -2,8 +2,14 @@
 {% block titolo %}{{ t.home_titolo }}{% endblock %}
 {% block contenuto %}
 <section class="presentazione">
+  {% if presentazione %}
+  {% set intestazione, html_presentazione, tradotto = presentazione %}
+  {% if not tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
+  <div class="testo">{{ html_presentazione | safe }}</div>
+  {% else %}
   <h1>{{ t.home_titolo }}</h1>
   <p>{{ testo('home_intro') }}</p>
+  {% endif %}
   <a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html">{{ t.menu_download }}</a>
 </section>
 <h2>{{ t.home_addon_titolo }}</h2>
