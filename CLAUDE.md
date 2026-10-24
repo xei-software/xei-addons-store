@@ -41,7 +41,8 @@ pubblicare XEI.ItemGenerator 1.4.0. Per ogni nuovo add-on o nuova versione resta
   I testi dell'interfaccia (`site/i18n/`) li mantiene questa sessione.
 - **Nessun riferimento** a programmi di partenza (es. il vecchio configuratore), a migrazioni da altri programmi o a
   tabelle non XEI (regola di Ivan, come in `xei-model-docs/CLAUDE.md`). I manuali si prendono solo da `xei-model-docs`,
-  mai dai repository degli add-on.
+  mai dai repository degli add-on. I termini vietati sono in `tests/termini_vietati.txt` (copia di
+  `xei-model-docs/regole/termini-vietati.txt`, da riallineare quando cambia); le eccezioni le approva Ivan.
 - I test devono passare prima di ogni push (`python -m pytest -q`).
 
 ## Pubblicare una nuova versione di un add-on

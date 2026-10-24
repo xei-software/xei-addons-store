@@ -91,6 +91,7 @@ FILE_CON_GLI_ELENCHI_DEI_DIVIETI = {
     Path(__file__).resolve(),
     RADICE / "tests" / "test_copia_release.py",
     RADICE / "strumenti" / "copia_release.py",
+    RADICE / "tests" / "termini_vietati.txt",
 }
 
 
@@ -110,3 +111,34 @@ def test_nessun_dato_riservato_nel_repository(nome_schema):
 def test_nessun_file_di_licenza_sorgente_o_binario_nel_repository():
     vietati = [str(p.relative_to(RADICE)) for p in _file_del_repository() if p.suffix.lower() in ESTENSIONI_VIETATE]
     assert not vietati, f"file vietati: {vietati}"
+
+
+# Termini vietati della documentazione XEI: copia di xei-model-docs/regole/termini-vietati.txt
+# (regola di Ivan sui riferimenti a programmi non XEI). Va riallineata quando cambia l'originale.
+FILE_TERMINI_VIETATI = RADICE / "tests" / "termini_vietati.txt"
+CARTELLE_PUBBLICATE = ["site/content", "site/i18n", "site/templates"]
+
+
+def _termini_vietati():
+    righe = FILE_TERMINI_VIETATI.read_text(encoding="utf-8").splitlines()
+    return [re.compile(riga.strip(), re.IGNORECASE) for riga in righe
+            if riga.strip() and not riga.lstrip().startswith("#")]
+
+
+def test_l_elenco_dei_termini_vietati_c_e():
+    termini = _termini_vietati()
+    assert any(t.search("VBO001") for t in termini)
+    assert any(t.search("Migrazione dei dati") for t in termini)
+
+
+def test_i_testi_pubblicati_non_citano_programmi_non_xei():
+    trovati = []
+    for cartella in CARTELLE_PUBBLICATE:
+        for percorso in (RADICE / cartella).rglob("*"):
+            if percorso.suffix not in {".md", ".yml", ".html"}:
+                continue
+            testo = percorso.read_text(encoding="utf-8")
+            for termine in _termini_vietati():
+                for trovato in termine.finditer(testo):
+                    trovati.append(f"{percorso.relative_to(RADICE)}: {trovato.group(0)}")
+    assert not trovati, trovati

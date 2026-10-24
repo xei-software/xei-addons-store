@@ -1,0 +1,21 @@
+# Termini vietati nella documentazione XEI: un'espressione regolare per riga, maiuscole e minuscole
+# non contano. Regola completa in regole/riferimenti-esterni.md. Aggiungere qui ogni programma non XEI
+# che si scopre citato nei sorgenti (programmi di partenza, vecchi add-on, loro tabelle e campi).
+
+# Programmi di partenza noti, loro tabelle e campi
+VBO\d*
+Gestione Provvigioni
+\bVO_\w+
+U_VOPR\w*
+
+# Migrazioni e importazioni da programmi precedenti (it, en, fr, de, es, tr)
+migraz\w*
+\bmigrat\w*
+\bmigrer\b
+\bmigr(?:ación|acion)\w*
+\bmigrar\b
+taşıma
+programma precedente
+vecchio (?:programma|configuratore|add-on|addon|gestionale)
+previous (?:program|add-on)
+old (?:program|configurator|add-on)
