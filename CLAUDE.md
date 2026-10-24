@@ -13,8 +13,10 @@ nel [README](README.md).
 
 Le decisioni importanti le prende Ivan.
 
-**Consenso di Ivan (24/10/2026):** questa sessione lavora in autonomia sul repository (push, tag, Release) e può
-pubblicare XEI.ItemGenerator 1.4.0. Per ogni nuovo add-on o nuova versione resta l'OK del Coordinatore XEI.
+**Consenso di Ivan (24/10/2026, confermato e limitato):** vale **solo** per questo repository: questa sessione lavora
+in autonomia su codice, testi, commit e push. XEI.ItemGenerator 1.4.0 ha l'OK di Ivan. Ogni nuovo add-on o nuova
+versione richiede l'OK tecnico del Coordinatore XEI **prima del push del tag**. Creare repository, toccare altri
+repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per caso.
 
 ## Regole (repository pubblico)
 
@@ -39,6 +41,9 @@ pubblicare XEI.ItemGenerator 1.4.0. Per ogni nuovo add-on o nuova versione resta
   `legale/<lingua>/privacy-registrazione.md` → `pagine/privacy.md`.
   Logo e icona in `site/static/img/` (da `loghi/` di xei-model-docs; colori: grigio #686A6F, azzurro #009FE3).
   I testi dell'interfaccia (`site/i18n/`) li mantiene questa sessione.
+- **Funzioni di migrazione o importazione da vecchi programmi:** non si pubblicano mai, né nel sito né nei pacchetti.
+- **Lingue standard degli add-on:** it, en, de, fr, es, tr (il turco nel programma arriva con le prossime versioni;
+  in `addons.yml` `lingue_programma` indica quelle davvero presenti nella versione pubblicata).
 - **Nessun riferimento** a programmi di partenza (es. il vecchio configuratore), a migrazioni da altri programmi o a
   tabelle non XEI (regola di Ivan, come in `xei-model-docs/CLAUDE.md`). I manuali si prendono solo da `xei-model-docs`,
   mai dai repository degli add-on. I termini vietati sono in `tests/termini_vietati.txt` (copia di
