@@ -15,7 +15,8 @@ Le decisioni importanti le prende Ivan.
 
 **Consenso di Ivan (24/10/2026, confermato e limitato):** vale **solo** per questo repository: questa sessione lavora
 in autonomia su codice, testi, commit e push. XEI.ItemGenerator 1.4.0 ha l'OK di Ivan. Ogni nuovo add-on o nuova
-versione richiede l'OK tecnico del Coordinatore XEI **prima del push di `site/addons.yml`**. Creare repository, toccare altri
+versione richiede il pacchetto XEICore definito e il consenso dei due coordinatori **prima del push di
+`site/addons.yml`**. Creare repository, toccare altri
 repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per caso.
 
 ## Regole (repository pubblico)
@@ -53,7 +54,10 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
 
 ## Pubblicare una nuova versione di un add-on
 
-1. OK del Coordinatore XEI per add-on e versione.
+1. **Regola di Ivan, prima di ogni rilascio:** il pacchetto XEICore dell'add-on dev'essere definito (`xeicore` in
+   `addons.yml`; il workflow lo confronta con il `PackageReference` del progetto alla versione del tag) e servono i
+   consensi di **entrambi** i coordinatori, Coordinatore XEI (pacchetto e SHA-256) e Coordinatore Documentazione
+   (testi e manuali), con le date in `ok_coordinatore_xei` e `ok_coordinatore_documentazione`. Senza, i test falliscono.
 2. `python -m strumenti.copia_release voce --origine xei-software/<repo> --tag v<versione> --file <Pacchetto>.zip
    --id <id> --data <aaaa-mm-gg>`: scarica e controlla lo zip, stampa la voce per `site/addons.yml`.
 3. Aggiornare `site/addons.yml` e, se servono, testi e manuali in `site/content/`.

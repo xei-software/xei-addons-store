@@ -158,3 +158,16 @@ def test_tutti_i_testi_del_sito_sono_approvati():
     for percorso in (RADICE / "site" / "content").rglob("*.md"):
         intestazione, _ = build.leggi_markdown(percorso)
         assert intestazione.get("stato") == "approvato", percorso
+
+
+def _versione(testo):
+    return tuple(int(parte) for parte in str(testo).split("."))
+
+
+def test_prima_del_rilascio_xeicore_definito_e_consenso_dei_due_coordinatori():
+    # Regola di Ivan: senza pacchetto XEICore definito e senza i due consensi non si pubblica.
+    for addon in build.carica_addons():
+        assert re.fullmatch(r"\d+\.\d+\.\d+", str(addon.get("xeicore", ""))), f"{addon['id']}: xeicore mancante"
+        assert _versione(addon["xeicore"]) >= (1, 1, 1), "servono le licenze offline (XEICore 1.1.1 o successiva)"
+        for consenso in ("ok_coordinatore_xei", "ok_coordinatore_documentazione"):
+            assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(addon.get(consenso, ""))), f"{addon['id']}: manca {consenso}"

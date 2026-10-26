@@ -17,6 +17,7 @@ dell'add-on (in Actions: segreto XEI_ADDON_READ_TOKEN).
 """
 import argparse
 import hashlib
+import re
 import subprocess
 import zipfile
 from pathlib import Path
@@ -74,6 +75,28 @@ def verifica_pacchetto(percorso_zip, voce):
         raise SystemExit(f"{voce['file']}: contiene file vietati {problemi}, pacchetto NON pubblicato")
 
 
+def versione_xeicore(testo_csproj):
+    """Versione del pacchetto XEICore dichiarata nel progetto dell'add-on (PackageReference)."""
+    trovato = re.search(r'<PackageReference\s+Include="XEICore"\s+Version="([^"]+)"', testo_csproj)
+    if not trovato:
+        raise SystemExit("XEICore non dichiarato nel progetto dell'add-on: pacchetto NON pubblicato")
+    return trovato.group(1)
+
+
+def verifica_xeicore(voce, versione_nel_progetto):
+    """Regola di Ivan: il pacchetto XEICore dev'essere definito e coincidere con site/addons.yml."""
+    if str(voce.get("xeicore")) != versione_nel_progetto:
+        raise SystemExit(f"{voce['tag_pubblico']}: XEICore {versione_nel_progetto} nel progetto, "
+                         f"{voce.get('xeicore')} in site/addons.yml: pacchetto NON pubblicato")
+
+
+def leggi_csproj(origine, tag, pacchetto):
+    """Progetto dell'add-on (<pacchetto>.csproj) alla versione del tag, letto con l'API REST."""
+    return subprocess.run(
+        ["gh", "api", "-H", "Accept: application/vnd.github.raw", f"repos/{origine}/contents/{pacchetto}.csproj?ref={tag}"],
+        check=True, capture_output=True, text=True).stdout
+
+
 def tag_pubblici(elenco=ELENCO_ADDONS):
     """Tag delle Release pubbliche previste da site/addons.yml, nell'ordine del file."""
     return [voce["tag_pubblico"] for voce in yaml.safe_load(Path(elenco).read_text(encoding="utf-8")) or []]
@@ -111,12 +134,14 @@ def comando_voce(argomenti):
         raise SystemExit(f"Pacchetto NON pubblicabile, contiene file vietati: {problemi}")
     voce = voce_addons(percorso, argomenti.id, Path(argomenti.file).stem, argomenti.tag.lstrip("v"),
                        argomenti.data, argomenti.origine, argomenti.tag)
-    print("Voce per site/addons.yml (aggiungere lingue_programma):")
+    voce["xeicore"] = versione_xeicore(leggi_csproj(argomenti.origine, argomenti.tag, voce["pacchetto"]))
+    print("Voce per site/addons.yml (aggiungere lingue_programma e le date dei due consensi):")
     print(yaml.safe_dump([voce], sort_keys=False, allow_unicode=True))
 
 
 def comando_prepara(argomenti):
     voce = cerca_voce(argomenti.tag_pubblico)
+    verifica_xeicore(voce, versione_xeicore(leggi_csproj(voce["origine"], voce["tag_origine"], voce["pacchetto"])))
     percorso = scarica_pacchetto(voce["origine"], voce["tag_origine"], voce["file"], argomenti.out)
     verifica_pacchetto(percorso, voce)
     print(f"{percorso} verificato ({voce['sha256']})")

@@ -84,3 +84,18 @@ def test_elenco_dei_tag_pubblici(tmp_path):
     elenco = tmp_path / "addons.yml"
     elenco.write_text("- tag_pubblico: a-v1.0.0\n- tag_pubblico: b-v2.1.0\n", encoding="utf-8")
     assert copia_release.tag_pubblici(elenco) == ["a-v1.0.0", "b-v2.1.0"]
+
+
+def test_versione_xeicore_letta_dal_progetto():
+    csproj = '<Project><ItemGroup><PackageReference Include="XEICore" Version="1.1.1" /></ItemGroup></Project>'
+    assert copia_release.versione_xeicore(csproj) == "1.1.1"
+    with pytest.raises(SystemExit):
+        copia_release.versione_xeicore("<Project></Project>")
+
+
+def test_xeicore_del_progetto_deve_coincidere(tmp_path):
+    zip_ = _crea_zip(tmp_path / "XEI.Prova.zip", ["XEI.Prova.ard"])
+    voce = {**_voce(zip_), "xeicore": "1.1.1"}
+    copia_release.verifica_xeicore(voce, "1.1.1")
+    with pytest.raises(SystemExit):
+        copia_release.verifica_xeicore(voce, "1.0.7")
