@@ -15,6 +15,7 @@ your users already know, with the same menus and the same authorizations.
 
 - **Built into SAP Business One**: menus, windows and data are those of SAP, with no
   external programs to learn.
+- **SQL Server and SAP HANA**: they work with both databases.
 - **In the user's language**: the interfaces follow the language set in SAP.
 - **Free trial**: download, register and receive by email a trial code valid for
   30 days.

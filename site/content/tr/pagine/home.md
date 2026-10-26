@@ -15,6 +15,7 @@ bildiği SAP istemcisinin içinde, aynı menüler ve aynı yetkilerle çalışı
 
 - **SAP Business One ile bütünleşik**: menüler, pencereler ve veriler SAP'nin kendisidir;
   öğrenilecek harici bir program yoktur.
+- **SQL Server ve SAP HANA**: her iki veritabanıyla da çalışır.
 - **Kullanıcının dilinde**: arayüzler SAP'de ayarlanan dili izler.
 - **Ücretsiz deneme**: indirin, kaydolun ve 30 gün geçerli bir deneme kodunu
   e-posta ile alın.

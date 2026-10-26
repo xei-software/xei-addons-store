@@ -53,7 +53,7 @@ Bir kombinasyon zaten varsa eklenti yeni bir kopya açmak yerine mevcut kalemi b
 | | |
 |---|---|
 | SAP Business One | 10.0 veya üzeri |
-| Veritabanı | Microsoft SQL Server (SAP HANA henüz desteklenmiyor) |
+| Veritabanı | Microsoft SQL Server veya SAP HANA |
 | Programın dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca |
 | Sistem | SAP istemcisinin bulunduğu bilgisayarda Microsoft .NET Framework 4.8 |
 | Kurulum | SAP Business One Extension Manager |

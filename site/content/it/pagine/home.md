@@ -15,6 +15,7 @@ client SAP che gli utenti usano già, con gli stessi menu e le stesse autorizzaz
 
 - **Integrati in SAP Business One**: menu, finestre e dati sono quelli di SAP, senza
   programmi esterni da imparare.
+- **SQL Server e SAP HANA**: funzionano con entrambi i database.
 - **Nella lingua dell'utente**: le interfacce seguono la lingua impostata in SAP.
 - **Prova gratuita**: si scaricano, ci si registra e si riceve via email un codice
   di prova valido 30 giorni.

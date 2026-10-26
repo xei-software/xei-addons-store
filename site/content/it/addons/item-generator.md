@@ -56,7 +56,7 @@ crearne un doppione.
 | | |
 |---|---|
 | SAP Business One | 10.0 o successive |
-| Database | Microsoft SQL Server (SAP HANA non ancora supportato) |
+| Database | Microsoft SQL Server o SAP HANA |
 | Lingue del programma | italiano, inglese, tedesco, francese, spagnolo |
 | Sistema | Microsoft .NET Framework 4.8 sul PC del client SAP |
 | Installazione | Extension Manager di SAP Business One |

@@ -55,7 +55,7 @@ Duplikat anzulegen.
 | | |
 |---|---|
 | SAP Business One | 10.0 oder höher |
-| Datenbank | Microsoft SQL Server (SAP HANA noch nicht unterstützt) |
+| Datenbank | Microsoft SQL Server oder SAP HANA |
 | Sprachen des Programms | Italienisch, Englisch, Deutsch, Französisch, Spanisch |
 | System | Microsoft .NET Framework 4.8 auf dem PC des SAP-Clients |
 | Installation | Extension Manager von SAP Business One |
