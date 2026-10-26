@@ -7,6 +7,9 @@ VBO\d*
 Gestione Provvigioni
 \bVO_\w+
 U_VOPR\w*
+Time ?Up
+U_SYNW\w*
+SYNW\w*
 
 # Migrazioni e importazioni da programmi precedenti (it, en, fr, de, es, tr)
 migraz\w*
@@ -19,3 +22,10 @@ programma precedente
 vecchio (?:programma|configuratore|add-on|addon|gestionale)
 previous (?:program|add-on)
 old (?:program|configurator|add-on)
+
+# Riferimenti al passato nella documentazione pubblica (solo frasi sicure; il resto si controlla a mano)
+non serve più
+versione precedente
+versioni precedenti
+dalla versione \d
+\bdalla \d+\.\d+
