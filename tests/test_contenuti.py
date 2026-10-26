@@ -95,12 +95,17 @@ FILE_CON_GLI_ELENCHI_DEI_DIVIETI = {
 }
 
 
+# Immagini, PDF ed Excel: i byte compressi possono contenere per caso gli schemi; si controllano a mano (CLAUDE.md).
+ESTENSIONI_BINARIE = {".png", ".jpg", ".jpeg", ".gif", ".pdf", ".xlsx"}
+
+
 @pytest.mark.parametrize("nome_schema", sorted(SCHEMI_VIETATI))
 def test_nessun_dato_riservato_nel_repository(nome_schema):
     schema = SCHEMI_VIETATI[nome_schema]
     trovati = []
     for percorso in _file_del_repository():
-        if percorso.resolve() in FILE_CON_GLI_ELENCHI_DEI_DIVIETI or not percorso.is_file():
+        if (percorso.resolve() in FILE_CON_GLI_ELENCHI_DEI_DIVIETI or not percorso.is_file()
+                or percorso.suffix.lower() in ESTENSIONI_BINARIE):
             continue
         testo = percorso.read_text(encoding="utf-8", errors="ignore")
         if schema.search(testo):

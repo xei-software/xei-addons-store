@@ -20,7 +20,7 @@ def sito_con_manuali(tmp_path, monkeypatch):
     sorgente = tmp_path / "site"
     shutil.copytree(build.CARTELLA_SITO, sorgente)
     cartella = sorgente / "content" / "it" / "manuali" / ID
-    cartella.mkdir(parents=True)
+    cartella.mkdir(parents=True, exist_ok=True)
     (cartella / "manuale-utente.md").write_text(_manuale(
         "Manuale utente",
         "Prima leggi [l'installazione](installazione.md).\n\n"
@@ -32,7 +32,7 @@ def sito_con_manuali(tmp_path, monkeypatch):
     (cartella / "bozza.md").write_text(_manuale("Bozza", "Non pubblicare.", stato="bozza"), encoding="utf-8")
     for sotto, nome in (("_img", "finestra.png"), ("_file", "esempio.xlsx")):
         risorsa = sorgente / "content" / sotto / "itemgenerator"
-        risorsa.mkdir(parents=True)
+        risorsa.mkdir(parents=True, exist_ok=True)
         (risorsa / nome).write_bytes(b"dati")
     monkeypatch.setattr(build, "CARTELLA_SITO", sorgente)
     uscita = tmp_path / "uscita"
@@ -63,6 +63,6 @@ def test_il_pdf_accanto_al_manuale_si_scarica(sito_con_manuali):
 
 
 def test_l_elenco_dei_manuali_mostra_i_titoli(sito_con_manuali):
-    testo = (sito_con_manuali / "en" / "manuali.html").read_text(encoding="utf-8")
+    testo = (sito_con_manuali / "it" / "manuali.html").read_text(encoding="utf-8")
     assert "Manuale utente" in testo and "Installazione" in testo
     assert testo.index("Manuale utente") < testo.index("Installazione")

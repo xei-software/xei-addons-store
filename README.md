@@ -17,7 +17,7 @@ license@xeisrl.com.
 | `site/addons.yml` | add-on pubblicati: versione, pacchetto, SHA-256, Release pubblica |
 | `site/i18n/<lingua>.yml` | testi dell'interfaccia (menu, pulsanti), uno per lingua |
 | `site/content/<lingua>/addons/<id>.md` | descrizione di ogni add-on |
-| `site/content/<lingua>/manuali/<id>.md` | manuale di ogni add-on |
+| `site/content/<lingua>/manuali/<id>/<nome>.md` e `.pdf` | manuali di ogni add-on (immagini e file di esempio in `site/content/_img`, `_file`) |
 | `site/content/<lingua>/pagine/home.md`, `pagine/privacy.md` | testo della home e informativa sulla privacy |
 | `site/content/<lingua>/note/<id>-<versione>.md` | note di rilascio |
 | `site/templates/`, `site/static/` | modelli delle pagine e stile |
