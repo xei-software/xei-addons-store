@@ -14,7 +14,7 @@ stato: approvato
 | | |
 |---|---|
 | SAP Business One | 10.0 or later |
-| Database | Microsoft SQL Server or SAP HANA |
+| Database | Microsoft SQL Server or SAP HANA (on SAP HANA, a test during installation is recommended) |
 | System | Microsoft .NET Framework 4.8 on the SAP client PC |
 | Program languages | Italian, English, German, French, Spanish |
 

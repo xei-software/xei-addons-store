@@ -16,7 +16,7 @@ Programın arayüzü henüz Türkçe değildir: menü, pencere ve alan adları e
 | | |
 |---|---|
 | SAP Business One | 10.0 veya üzeri |
-| Veritabanı | Microsoft SQL Server veya SAP HANA |
+| Veritabanı | Microsoft SQL Server veya SAP HANA (SAP HANA'da kurulum sırasında bir test yapılması önerilir) |
 | Sistem | SAP istemcisinin bulunduğu bilgisayarda Microsoft .NET Framework 4.8 |
 | Program dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca |
 

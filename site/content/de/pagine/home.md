@@ -16,7 +16,7 @@ Berechtigungen.
 
 - **In SAP Business One integriert**: Menüs, Fenster und Daten sind die von SAP, ohne
   externe Programme, die man erst lernen muss.
-- **SQL Server und SAP HANA**: Sie funktionieren mit beiden Datenbanken.
+- **SQL Server und SAP HANA**: Sie funktionieren mit beiden Datenbanken; bei SAP HANA wird ein Test bei der Installation empfohlen.
 - **In der Sprache des Benutzers**: Die Oberflächen folgen der in SAP eingestellten Sprache.
 - **Kostenloser Test**: Herunterladen, registrieren und per E-Mail einen 30 Tage
   gültigen Testcode erhalten.

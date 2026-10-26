@@ -59,7 +59,7 @@ un doublon.
 | | |
 |---|---|
 | SAP Business One | 10.0 ou ultérieure |
-| Base de données | Microsoft SQL Server ou SAP HANA |
+| Base de données | Microsoft SQL Server ou SAP HANA (sur SAP HANA, un test lors de l'installation est conseillé) |
 | Langues du programme | italien, anglais, allemand, français, espagnol |
 | Système | Microsoft .NET Framework 4.8 sur le poste du client SAP |
 | Installation | Extension Manager de SAP Business One |
