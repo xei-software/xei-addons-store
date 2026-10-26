@@ -15,7 +15,7 @@ Le decisioni importanti le prende Ivan.
 
 **Consenso di Ivan (24/10/2026, confermato e limitato):** vale **solo** per questo repository: questa sessione lavora
 in autonomia su codice, testi, commit e push. XEI.ItemGenerator 1.4.0 ha l'OK di Ivan. Ogni nuovo add-on o nuova
-versione richiede l'OK tecnico del Coordinatore XEI **prima del push del tag**. Creare repository, toccare altri
+versione richiede l'OK tecnico del Coordinatore XEI **prima del push di `site/addons.yml`**. Creare repository, toccare altri
 repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per caso.
 
 ## Regole (repository pubblico)
@@ -58,8 +58,10 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
    --id <id> --data <aaaa-mm-gg>`: scarica e controlla lo zip, stampa la voce per `site/addons.yml`.
 3. Aggiornare `site/addons.yml` e, se servono, testi e manuali in `site/content/`.
 4. `python -m pytest -q`, commit e push su `main`: il sito si aggiorna da solo.
-5. `git tag <id>-v<versione> && git push origin <id>-v<versione>`: il workflow `release.yml` scarica il pacchetto,
-   verifica che sia identico a `addons.yml` (SHA-256, dimensione, nessun file vietato) e crea la Release pubblica.
-   Le sessioni Claude non possono creare Release direttamente: si passa sempre dal tag. Il workflow usa il segreto
-   `XEI_ADDON_READ_TOKEN` (token in sola lettura sui repository degli add-on).
+5. Il push su `main` di `site/addons.yml` avvia il workflow `release.yml`: per ogni voce senza Release pubblica
+   scarica il pacchetto, verifica che sia identico a `addons.yml` (SHA-256, dimensione, nessun file vietato) e crea
+   la Release `<id>-v<versione>` con il suo tag. Si può rilanciare a mano da Actions ("Run workflow"). Le sessioni
+   Claude non possono creare Release né fare push di tag: per questo la Release parte dal push su `main`, che quindi
+   richiede l'OK del Coordinatore XEI già al punto 1. Il workflow usa il segreto `XEI_ADDON_READ_TOKEN` (token in sola
+   lettura sui repository degli add-on, scadenza da rinnovare).
 6. Avvisare il Coordinatore XEI e il Coordinatore Documentazione.

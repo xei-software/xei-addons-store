@@ -1,14 +1,20 @@
-name: Release pubblica di un add-on
+name: Release pubbliche degli add-on
 
-# Parte al push di un tag "<id>-v<versione>" presente in site/addons.yml (es. item-generator-v1.4.0).
-# Scarica il pacchetto dalla Release dell'add-on, verifica che sia identico a quello di addons.yml
-# e lo pubblica nella Release con lo stesso nome del tag.
+# Per ogni voce di site/addons.yml senza Release pubblica: scarica il pacchetto dalla Release dell'add-on,
+# verifica che sia identico a quello di addons.yml e crea la Release "tag_pubblico" (tag compreso).
+# Parte quando su main cambia site/addons.yml, oppure a mano da Actions ("Run workflow").
 on:
   push:
-    tags: ["*-v*"]
+    branches: [main]
+    paths: ["site/addons.yml", ".github/workflows/release.yml"]
+  workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -20,16 +26,21 @@ jobs:
           python-version: "3.12"
       - run: pip install -r requirements.txt
       - run: python -m pytest -q
-      - name: Scarica e verifica il pacchetto
-        env:
-          # token in sola lettura sui repository degli add-on (Contents: read)
-          GH_TOKEN: ${{ secrets.XEI_ADDON_READ_TOKEN }}
-        run: python -m strumenti.copia_release prepara --tag-pubblico "$GITHUB_REF_NAME" --out pacchetti
-      - name: Crea la Release pubblica
+      - name: Crea le Release mancanti
         env:
           GH_TOKEN: ${{ github.token }}
+          # token in sola lettura sui repository degli add-on (Contents: read)
+          XEI_ADDON_READ_TOKEN: ${{ secrets.XEI_ADDON_READ_TOKEN }}
         run: |
-          titolo=$(python -c "from strumenti.copia_release import cerca_voce as c; v=c('$GITHUB_REF_NAME'); print(v['pacchetto'], v['versione'])")
-          impronta=$(python -c "from strumenti.copia_release import cerca_voce as c; print(c('$GITHUB_REF_NAME')['sha256'])")
-          gh release create "$GITHUB_REF_NAME" pacchetti/*.zip --title "$titolo" \
-            --notes "$titolo. SHA-256: $impronta. Prova gratuita di 30 giorni: https://xei-software.github.io/xei-addons-store/"
+          for tag in $(python -m strumenti.copia_release elenco); do
+            if gh release view "$tag" > /dev/null 2>&1; then
+              echo "$tag: Release già presente"
+              continue
+            fi
+            GH_TOKEN="$XEI_ADDON_READ_TOKEN" python -m strumenti.copia_release prepara --tag-pubblico "$tag" --out "pacchetti/$tag"
+            titolo=$(python -c "from strumenti.copia_release import cerca_voce as c; v=c('$tag'); print(v['pacchetto'], v['versione'])")
+            impronta=$(python -c "from strumenti.copia_release import cerca_voce as c; print(c('$tag')['sha256'])")
+            gh release create "$tag" pacchetti/"$tag"/*.zip --target "$GITHUB_SHA" --title "$titolo" \
+              --notes "$titolo. SHA-256: $impronta. Prova gratuita di 30 giorni: https://xei-software.github.io/xei-addons-store/"
+            echo "$tag: Release creata"
+          done

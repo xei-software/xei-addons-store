@@ -78,3 +78,9 @@ def test_ogni_voce_di_addons_yml_indica_la_release_di_origine():
         assert voce["origine"].startswith("xei-software/")
         assert voce["tag_origine"] == f"v{voce['versione']}"
         assert copia_release.cerca_voce(voce["tag_pubblico"]) == voce
+
+
+def test_elenco_dei_tag_pubblici(tmp_path):
+    elenco = tmp_path / "addons.yml"
+    elenco.write_text("- tag_pubblico: a-v1.0.0\n- tag_pubblico: b-v2.1.0\n", encoding="utf-8")
+    assert copia_release.tag_pubblici(elenco) == ["a-v1.0.0", "b-v2.1.0"]

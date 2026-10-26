@@ -6,8 +6,9 @@ Il file viene copiato identico, senza ricompilare. Due comandi:
     python -m strumenti.copia_release voce --origine xei-software/xei-itemgenerator --tag v1.4.0 \
         --file XEI.ItemGenerator.zip --id item-generator --data 2026-10-20
 
-    # 2) usato dal workflow .github/workflows/release.yml al push del tag pubblico (es. item-generator-v1.4.0):
-    #    scarica il pacchetto indicato in site/addons.yml e verifica che sia identico (SHA-256 e dimensione)
+    # 2) usati dal workflow .github/workflows/release.yml per ogni Release ancora mancante:
+    #    elenco dei tag pubblici, poi scarica il pacchetto e verifica che sia identico (SHA-256 e dimensione)
+    python -m strumenti.copia_release elenco
     python -m strumenti.copia_release prepara --tag-pubblico item-generator-v1.4.0 --out pacchetti
 
 Controlli: si accetta solo il pacchetto principale (niente pacchetto _TEST né mappa di offuscamento) e dentro lo zip
@@ -73,6 +74,11 @@ def verifica_pacchetto(percorso_zip, voce):
         raise SystemExit(f"{voce['file']}: contiene file vietati {problemi}, pacchetto NON pubblicato")
 
 
+def tag_pubblici(elenco=ELENCO_ADDONS):
+    """Tag delle Release pubbliche previste da site/addons.yml, nell'ordine del file."""
+    return [voce["tag_pubblico"] for voce in yaml.safe_load(Path(elenco).read_text(encoding="utf-8")) or []]
+
+
 def cerca_voce(tag_pubblico, elenco=ELENCO_ADDONS):
     for voce in yaml.safe_load(Path(elenco).read_text(encoding="utf-8")) or []:
         if voce["tag_pubblico"] == tag_pubblico:
@@ -133,6 +139,9 @@ def main():
     prepara.add_argument("--tag-pubblico", required=True, help="es. item-generator-v1.4.0")
     prepara.add_argument("--out", default="pacchetti", help="cartella dove scaricare il pacchetto")
     prepara.set_defaults(esegui=comando_prepara)
+
+    elenco = comandi.add_parser("elenco", help="stampa i tag pubblici di site/addons.yml, uno per riga")
+    elenco.set_defaults(esegui=lambda _: print("\n".join(tag_pubblici())))
 
     argomenti = parser.parse_args()
     argomenti.esegui(argomenti)
