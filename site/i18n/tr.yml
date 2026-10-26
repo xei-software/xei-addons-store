@@ -27,6 +27,18 @@ download_controllo: SHA-256 sağlama toplamı
 download_dimensione: Boyut
 download_nota_licenza: Eklenti geçerli bir lisans kodu olmadan çalışmaz. Lisans satın almak için yazın
 email_oggetto_prova: Deneme talebi
+email_corpo_prova: |
+  Merhaba,
+  {addon} eklentisini {giorni} gün boyunca denemek istiyorum.
+
+  Şirket:
+  Vergi numarası:
+  Ad ve soyad:
+  Ülke:
+  SAP Business One sürümü:
+  Veritabanı (SQL Server veya SAP HANA):
+
+  Teşekkürler
 manuali_titolo: Kılavuzlar
 manuali_intro: Eklentilerin kullanım ve kurulum kılavuzları.
 manuali_in_preparazione: Kılavuz hazırlanıyor.

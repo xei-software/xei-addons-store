@@ -139,3 +139,18 @@ def test_logo_e_icona_ufficiali(sito):
     testo = (sito / "it" / "index.html").read_text(encoding="utf-8")
     assert 'src="/xei-addons-store/static/img/logo-xei.png"' in testo
     assert 'rel="icon"' in testo
+
+
+def test_l_email_di_richiesta_prova_e_gia_compilata():
+    # Senza modulo il pulsante apre un'email con oggetto e testo già pronti, nella lingua della pagina.
+    from urllib.parse import parse_qs, urlsplit
+    config = {**build.carica_config(), "modulo_registrazione": ""}
+    addon = {"titolo": "XEI Prova"}
+    for lingua in config["lingue"]:
+        testi = build.carica_testi(lingua)
+        link = build.link_richiesta_prova(addon, testi, config)
+        parametri = parse_qs(urlsplit(link).query)
+        assert parametri["subject"] == [f"{testi['email_oggetto_prova']} - XEI Prova"]
+        corpo = parametri["body"][0]
+        assert "XEI Prova" in corpo and "\r\n" in corpo, lingua
+        assert "{addon}" not in corpo and "{giorni}" not in corpo
