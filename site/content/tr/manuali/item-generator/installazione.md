@@ -9,7 +9,7 @@ stato: approvato
 
 # XEI.ItemGenerator – Kurulum, lisans, menüler ve yetkiler
 
-Programın arayüzü henüz Türkçe değildir: menü, pencere ve alan adları ekranda göründükleri şekliyle İngilizce verilmiş, yanlarına Türkçe karşılıkları eklenmiştir.
+Programın arayüzü İngilizce görünür: menü, pencere ve alan adları ekranda göründükleri şekliyle İngilizce verilmiş, yanlarına Türkçe karşılıkları eklenmiştir.
 
 ## Gereksinimler
 

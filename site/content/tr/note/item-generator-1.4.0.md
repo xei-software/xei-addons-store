@@ -8,7 +8,7 @@ stato: approvato
 
 # XEI.ItemGenerator 1.4.0 – Sürüm notları
 
-Programın arayüzü henüz Türkçe değildir: menü ve alan adları, ekranda göründükleri
+Programın arayüzü İngilizce görünür: menü ve alan adları, ekranda göründükleri
 şekliyle İngilizce verilmiş, yanlarına Türkçe karşılıkları eklenmiştir.
 
 ## Bu sürümün işlevleri
