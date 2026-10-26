@@ -32,7 +32,7 @@ Each add-on update is installed the same way, with the same restart.
 
 ## License
 
-The add-on works with a **license code** issued by XEI. After registration you receive by email a
+The add-on works with a **license code** issued by XEI. After requesting the trial you receive by email a
 trial code valid for 30 days.
 
 - Without a valid code the add-on is **locked**: its menu contains only *About* and *License*, and

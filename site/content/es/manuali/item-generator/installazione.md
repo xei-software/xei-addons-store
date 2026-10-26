@@ -31,7 +31,7 @@ Cada actualización del add-on se instala del mismo modo, con el mismo reinicio.
 
 ## Licencia
 
-El add-on funciona con un **código de licencia** emitido por XEI. Tras el registro se recibe
+El add-on funciona con un **código de licencia** emitido por XEI. Tras solicitar la prueba se recibe
 por email un código de prueba válido durante 30 días.
 
 - Sin un código válido el add-on está **bloqueado**: en su menú solo quedan *Información* y

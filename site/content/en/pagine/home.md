@@ -17,13 +17,13 @@ your users already know, with the same menus and the same authorizations.
   external programs to learn.
 - **SQL Server and SAP HANA**: they work with both databases; on SAP HANA, a test during installation is recommended.
 - **In the user's language**: the interfaces follow the language set in SAP.
-- **Free trial**: download, register and receive by email a trial code valid for
-  30 days.
+- **Free trial**: download, request the trial and receive by email a trial code
+  valid for 30 days.
 
 ## Getting started
 
 1. Choose the add-on and download the package.
-2. Fill in the registration form.
+2. Request the free trial with the button on the add-on's page.
 3. Install the package with the SAP Business One Extension Manager.
 4. Enter the trial code you receive by email in the add-on's **License** menu.
 

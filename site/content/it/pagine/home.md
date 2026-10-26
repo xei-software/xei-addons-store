@@ -17,13 +17,13 @@ client SAP che gli utenti usano già, con gli stessi menu e le stesse autorizzaz
   programmi esterni da imparare.
 - **SQL Server e SAP HANA**: funzionano con entrambi i database; su SAP HANA si consiglia una prova durante l'installazione.
 - **Nella lingua dell'utente**: le interfacce seguono la lingua impostata in SAP.
-- **Prova gratuita**: si scaricano, ci si registra e si riceve via email un codice
-  di prova valido 30 giorni.
+- **Prova gratuita**: si scaricano, si richiede la prova e si riceve via email un
+  codice di prova valido 30 giorni.
 
 ## Come iniziare
 
 1. Scegli l'add-on e scarica il pacchetto.
-2. Compila il modulo di registrazione.
+2. Richiedi la prova gratuita con il pulsante nella pagina dell'add-on.
 3. Installa il pacchetto con l'Extension Manager di SAP Business One.
 4. Inserisci il codice di prova che ricevi via email dal menu **Licenza** dell'add-on.
 

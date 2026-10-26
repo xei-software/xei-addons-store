@@ -31,7 +31,7 @@ Ogni aggiornamento dell'add-on si installa allo stesso modo, con lo stesso riavv
 
 ## Licenza
 
-L'add-on funziona con un **codice di licenza** rilasciato da XEI. Dopo la registrazione si riceve
+L'add-on funziona con un **codice di licenza** rilasciato da XEI. Dopo la richiesta della prova si riceve
 via email un codice di prova valido 30 giorni.
 
 - Senza un codice valido l'add-on è **bloccato**: nel suo menu restano solo *Informazioni* e

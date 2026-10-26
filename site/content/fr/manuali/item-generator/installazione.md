@@ -32,7 +32,7 @@ Chaque mise à jour de l'add-on s'installe de la même manière, avec le même r
 
 ## Licence
 
-L'add-on fonctionne avec un **code de licence** délivré par XEI. Après l'enregistrement, vous
+L'add-on fonctionne avec un **code de licence** délivré par XEI. Après la demande d'essai, vous
 recevez par e-mail un code d'essai valable 30 jours.
 
 - Sans code valide, l'add-on est **bloqué** : son menu ne contient plus que *Informations* et

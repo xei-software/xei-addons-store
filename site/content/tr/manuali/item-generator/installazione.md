@@ -32,7 +32,7 @@ Eklentinin her güncellemesi aynı şekilde ve aynı yeniden başlatmayla kurulu
 
 ## Lisans
 
-Eklenti, XEI tarafından verilen bir **lisans kodu** ile çalışır. Kayıt olduktan sonra e-posta ile
+Eklenti, XEI tarafından verilen bir **lisans kodu** ile çalışır. Denemeyi talep ettikten sonra e-posta ile
 30 gün geçerli bir deneme kodu alırsınız.
 
 - Geçerli bir kod olmadan eklenti **kilitlidir**: menüsünde yalnızca *Information* (Bilgi) ve

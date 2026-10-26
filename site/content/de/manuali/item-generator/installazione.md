@@ -31,7 +31,7 @@ Jede Aktualisierung des Add-ons wird auf die gleiche Weise installiert, mit dems
 
 ## Lizenz
 
-Das Add-on arbeitet mit einem **Lizenzcode**, den XEI ausstellt. Nach der Registrierung erhalten Sie per
+Das Add-on arbeitet mit einem **Lizenzcode**, den XEI ausstellt. Nach der Anforderung des Tests erhalten Sie per
 E-Mail einen Testcode, der 30 Tage gültig ist.
 
 - Ohne gültigen Code ist das Add-on **gesperrt**: In seinem Menü bleiben nur *Informationen* und
