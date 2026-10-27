@@ -66,3 +66,10 @@ def test_l_elenco_dei_manuali_mostra_i_titoli(sito_con_manuali):
     testo = (sito_con_manuali / "it" / "manuali.html").read_text(encoding="utf-8")
     assert "Manuale utente" in testo and "Installazione" in testo
     assert testo.index("Manuale utente") < testo.index("Installazione")
+
+
+def test_i_link_della_scheda_ai_manuali_portano_alle_pagine_del_sito():
+    # La scheda della documentazione collega il manuale con il percorso del repository della documentazione.
+    html = '<a href="../../manuali/de/commissionmanagement/manuale-utente.md">Handbuch</a>'
+    assert build.riscrivi_link_scheda(html, "commission-management", "de", "") == \
+        '<a href="/de/manuali/commission-management/manuale-utente.html">Handbuch</a>'

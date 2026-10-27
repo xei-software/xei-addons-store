@@ -1,6 +1,6 @@
 ---
 title: XEI.CommissionManagement – Benutzerhandbuch
-description: Provisionen der Vertreter in SAP Business One: Konfiguration, Regeln, Berechnung, Abrechnung, Anpassungen und Auszüge.
+description: "Provisionen der Vertreter in SAP Business One: Konfiguration, Regeln, Berechnung, Abrechnung, Anpassungen und Auszüge."
 lang: de
 prodotto: XEI.CommissionManagement
 versione: 1.1.0

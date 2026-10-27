@@ -1,6 +1,6 @@
 ---
 title: XEI.CommissionManagement – Kullanım kılavuzu
-description: SAP Business One'da satış temsilcilerinin komisyonları: yapılandırma, kurallar, hesaplama, ödeme, düzeltmeler ve ekstreler.
+description: "SAP Business One'da satış temsilcilerinin komisyonları: yapılandırma, kurallar, hesaplama, ödeme, düzeltmeler ve ekstreler."
 lang: tr
 prodotto: XEI.CommissionManagement
 versione: 1.1.0

@@ -1,6 +1,6 @@
 ---
 title: XEI.CommissionManagement – Manuel d'utilisation
-description: Commissions des agents commerciaux dans SAP Business One : configuration, règles, calcul, liquidation, régularisations et relevés.
+description: "Commissions des agents commerciaux dans SAP Business One : configuration, règles, calcul, liquidation, régularisations et relevés."
 lang: fr
 prodotto: XEI.CommissionManagement
 versione: 1.1.0

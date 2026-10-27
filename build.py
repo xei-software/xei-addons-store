@@ -98,6 +98,13 @@ def riscrivi_link_note(html, addon_id, lingua, url_base):
                   lambda trovato: f'href="{url_base}/{lingua}/note/{addon_id}-{trovato.group(1)}.html"', html)
 
 
+def riscrivi_link_scheda(html, addon_id, lingua, url_base):
+    """Link della scheda dell'add-on: note di rilascio e manuali (manuali/<lingua>/<prodotto>/<nome>.md) -> pagine del sito."""
+    html = riscrivi_link_note(html, addon_id, lingua, url_base)
+    return re.sub(r'href="[^"]*manuali/[\w-]+/[\w-]+/([\w-]+)\.md"',
+                  rf'href="{url_base}/{lingua}/manuali/{addon_id}/\1.html"', html)
+
+
 def riscrivi_link_manuale(html, addon_id, lingua, url_base):
     """Link di un manuale della documentazione verso le pagine e le risorse del sito.
 
@@ -157,7 +164,7 @@ def _prepara_addon(addon, lingua, config, url_base):
         **addon,
         "titolo": intestazione["title"],
         "sommario": intestazione["description"],
-        "descrizione_html": riscrivi_link_note(togli_primo_titolo(html), addon["id"], lingua, url_base),
+        "descrizione_html": riscrivi_link_scheda(togli_primo_titolo(html), addon["id"], lingua, url_base),
         "note": note,
         "tradotto": tradotto,
         "manuali": manuali,

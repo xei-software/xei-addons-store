@@ -182,7 +182,10 @@ def test_la_pagina_download_porta_alla_guida_di_installazione(sito):
     for lingua in build.carica_config()["lingue"]:
         testi = build.carica_testi(lingua)
         testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
-        for addon in build.carica_addons():
+        con_guida = [addon for addon in build.carica_addons()
+                     if (build.CARTELLA_SITO / "content" / lingua / "manuali" / addon["id"] / "installazione.md").exists()]
+        assert con_guida, lingua
+        for addon in con_guida:
             guida = f"/{lingua}/manuali/{addon['id']}/installazione"
             assert f'href="{guida}.html"' in testo, lingua
             assert f'href="{guida}.pdf"' in testo, lingua

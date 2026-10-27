@@ -1,6 +1,6 @@
 ---
 title: XEI.CommissionManagement – User Manual
-description: Sales agent commissions in SAP Business One: configuration, rules, calculation, settlement, adjustments and statements.
+description: "Sales agent commissions in SAP Business One: configuration, rules, calculation, settlement, adjustments and statements."
 lang: en
 prodotto: XEI.CommissionManagement
 versione: 1.1.0
