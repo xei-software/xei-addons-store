@@ -27,6 +27,18 @@ download_controllo: SHA-256 checksum
 download_dimensione: Size
 download_nota_licenza: The add-on does not start without a valid license code. To buy a license, write to
 email_oggetto_prova: Trial request
+email_corpo_prova: |
+  Hello,
+  I would like to try {addon} for {giorni} days.
+
+  Company:
+  VAT number:
+  First and last name:
+  Country:
+  SAP Business One version:
+  Database (SQL Server or SAP HANA):
+
+  Thank you
 manuali_titolo: Manuals
 manuali_intro: User and installation manuals for the add-ons.
 manuali_in_preparazione: Manual in preparation.

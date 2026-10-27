@@ -78,7 +78,12 @@ def link_richiesta_prova(addon, testi, config):
     if config["modulo_registrazione"]:
         return config["modulo_registrazione"]
     oggetto = quote(f"{testi['email_oggetto_prova']} - {addon['titolo']}")
-    return f"mailto:{config['email_licenze']}?subject={oggetto}"
+    # testo già pronto con i dati da compilare; nelle email gli a capo sono \r\n
+    corpo = (testi["email_corpo_prova"].strip()
+             .replace("{addon}", addon["titolo"])
+             .replace("{giorni}", str(config["giorni_prova"]))
+             .replace("\n", "\r\n"))
+    return f"mailto:{config['email_licenze']}?subject={oggetto}&body={quote(corpo)}"
 
 
 def togli_primo_titolo(html):
