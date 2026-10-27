@@ -27,7 +27,7 @@
   tag_origine: v1.1.0
   xeicore: 1.2.1
   ok_coordinatore_xei: '2026-10-27'
-  # ok_coordinatore_documentazione: da aggiungere con il consenso (scheda, manuale e schermate approvati)
+  ok_coordinatore_documentazione: '2026-10-27'
   tag_pubblico: commission-management-v1.1.0
   file: XEI.CommissionManagement.zip
   dimensione: 792062
