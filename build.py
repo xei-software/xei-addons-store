@@ -18,7 +18,8 @@ import yaml
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
 CARTELLA_SITO = Path(__file__).resolve().parent / "site"
-URL_BASE_PREDEFINITO = "/xei-addons-store"
+# Il sito sta alla radice del dominio personalizzato (dominio in config.yml): nessun prefisso negli indirizzi.
+URL_BASE_PREDEFINITO = ""
 
 
 def _leggi_yaml(percorso):
@@ -196,6 +197,7 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
     shutil.copytree(CARTELLA_SITO / "static", cartella_uscita / "static")
     _copia_risorse_manuali(cartella_uscita)
     (cartella_uscita / ".nojekyll").write_text("", encoding="utf-8")
+    (cartella_uscita / "CNAME").write_text(config["dominio"] + "\n", encoding="utf-8")
 
     for lingua in lingue:
         addons = [_prepara_addon(addon, lingua, config, url_base) for addon in carica_addons()]
@@ -250,7 +252,7 @@ def main():
     parser = argparse.ArgumentParser(description="Genera il sito degli add-on XEI.")
     parser.add_argument("--out", default="_site", help="cartella di uscita (default: _site)")
     parser.add_argument("--url-base", default=URL_BASE_PREDEFINITO,
-                        help='prefisso degli indirizzi (default: /xei-addons-store; "" per l\'anteprima locale)')
+                        help='prefisso degli indirizzi (predefinito: nessuno, il sito sta alla radice del dominio)')
     argomenti = parser.parse_args()
     genera_sito(Path(argomenti.out), url_base=argomenti.url_base)
     print(f"Sito generato in {argomenti.out}")

@@ -3,7 +3,7 @@
 Sito pubblico degli add-on XEI: descrizioni, manuali e download, in italiano, inglese, francese, tedesco, turco e
 spagnolo.
 
-**Sito:** https://xei-software.github.io/xei-addons-store/
+**Sito:** https://store.xeisrl.com/
 
 Ogni add-on si prova gratuitamente per 30 giorni: si richiede la prova dal sito e il codice arriva per email da
 license@xeisrl.com. Senza un codice di licenza valido l'add-on non si avvia. Per acquistare una licenza scrivere a
@@ -32,7 +32,7 @@ Se un testo manca in una lingua, la pagina mostra l'italiano con un avviso.
 ```
 pip install -r requirements.txt
 python -m pytest -q                                   # controlli
-python build.py --out anteprima --url-base ""         # anteprima locale
+python build.py --out anteprima                        # anteprima locale
 python -m http.server -d anteprima                    # poi http://localhost:8000
 ```
 

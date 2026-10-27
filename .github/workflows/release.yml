@@ -41,6 +41,6 @@ jobs:
             titolo=$(python -c "from strumenti.copia_release import cerca_voce as c; v=c('$tag'); print(v['pacchetto'], v['versione'])")
             impronta=$(python -c "from strumenti.copia_release import cerca_voce as c; print(c('$tag')['sha256'])")
             gh release create "$tag" pacchetti/"$tag"/*.zip --target "$GITHUB_SHA" --title "$titolo" \
-              --notes "$titolo. SHA-256: $impronta. Prova gratuita di 30 giorni: https://xei-software.github.io/xei-addons-store/"
+              --notes "$titolo. SHA-256: $impronta. Prova gratuita di 30 giorni: https://store.xeisrl.com/"
             echo "$tag: Release creata"
           done

@@ -11,7 +11,7 @@ import build
 @pytest.fixture(scope="module")
 def sito(tmp_path_factory):
     cartella = tmp_path_factory.mktemp("sito")
-    build.genera_sito(cartella, url_base="/xei-addons-store")
+    build.genera_sito(cartella)  # come nel workflow di Pages: indirizzo di base predefinito
     return cartella
 
 
@@ -47,7 +47,7 @@ def test_nessun_segnaposto_rimasto(sito):
 
 
 def test_i_collegamenti_interni_portano_a_file_esistenti(sito):
-    url_base = "/xei-addons-store"
+    url_base = ""
     rotti = []
     for pagina in sito.rglob("*.html"):
         for destinazione in re.findall(r'(?:href|src)="([^"#?]+)', pagina.read_text(encoding="utf-8")):
@@ -102,7 +102,7 @@ def test_testo_non_tradotto_usa_l_italiano_con_avviso(sito):
 def test_la_pagina_principale_rimanda_alle_lingue(sito):
     testo = (sito / "index.html").read_text(encoding="utf-8")
     for lingua in build.carica_config()["lingue"]:
-        assert f'href="/xei-addons-store/{lingua}/"' in testo
+        assert f'href="/{lingua}/"' in testo
 
 
 def test_la_home_usa_il_testo_approvato(sito):
@@ -138,7 +138,7 @@ def test_logo_e_icona_ufficiali(sito):
     for file in ("static/img/logo-xei.png", "static/img/icona-x.png"):
         assert (sito / file).exists(), file
     testo = (sito / "it" / "index.html").read_text(encoding="utf-8")
-    assert 'src="/xei-addons-store/static/img/logo-xei.png"' in testo
+    assert 'src="/static/img/logo-xei.png"' in testo
     assert 'rel="icon"' in testo
 
 
@@ -183,8 +183,17 @@ def test_la_pagina_download_porta_alla_guida_di_installazione(sito):
         testi = build.carica_testi(lingua)
         testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
         for addon in build.carica_addons():
-            guida = f"/xei-addons-store/{lingua}/manuali/{addon['id']}/installazione"
+            guida = f"/{lingua}/manuali/{addon['id']}/installazione"
             assert f'href="{guida}.html"' in testo, lingua
             assert f'href="{guida}.pdf"' in testo, lingua
             assert (sito / lingua / "manuali" / addon["id"] / "installazione.pdf").exists(), lingua
         assert testi["download_guida_installazione"] in html.unescape(testo)
+
+
+def test_il_sito_usa_il_dominio_store(sito):
+    # Dominio personalizzato di GitHub Pages: file CNAME e indirizzi senza il nome del repository.
+    assert (sito / "CNAME").read_text(encoding="utf-8").strip() == "store.xeisrl.com"
+    for pagina in sito.rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        assert not re.search(r'(?:href|src)="/xei-addons-store', testo), pagina
+        assert "github.io" not in testo, pagina

@@ -36,7 +36,7 @@ def sito_con_manuali(tmp_path, monkeypatch):
         (risorsa / nome).write_bytes(b"dati")
     monkeypatch.setattr(build, "CARTELLA_SITO", sorgente)
     uscita = tmp_path / "uscita"
-    build.genera_sito(uscita, url_base="/xei-addons-store")
+    build.genera_sito(uscita, url_base="")
     return uscita
 
 
@@ -49,9 +49,9 @@ def test_ogni_manuale_approvato_ha_la_sua_pagina_in_ogni_lingua(sito_con_manuali
 
 def test_i_link_del_manuale_puntano_alle_risorse_del_sito(sito_con_manuali):
     testo = (sito_con_manuali / "it" / "manuali" / ID / "manuale-utente.html").read_text(encoding="utf-8")
-    assert 'href="/xei-addons-store/it/manuali/item-generator/installazione.html"' in testo
-    assert 'src="/xei-addons-store/static/manuali/_img/itemgenerator/finestra.png"' in testo
-    assert 'href="/xei-addons-store/static/manuali/_file/itemgenerator/esempio.xlsx"' in testo
+    assert 'href="/it/manuali/item-generator/installazione.html"' in testo
+    assert 'src="/static/manuali/_img/itemgenerator/finestra.png"' in testo
+    assert 'href="/static/manuali/_file/itemgenerator/esempio.xlsx"' in testo
     assert (sito_con_manuali / "static" / "manuali" / "_img" / "itemgenerator" / "finestra.png").exists()
     assert (sito_con_manuali / "static" / "manuali" / "_file" / "itemgenerator" / "esempio.xlsx").exists()
 
@@ -59,7 +59,7 @@ def test_i_link_del_manuale_puntano_alle_risorse_del_sito(sito_con_manuali):
 def test_il_pdf_accanto_al_manuale_si_scarica(sito_con_manuali):
     assert (sito_con_manuali / "it" / "manuali" / ID / "manuale-utente.pdf").exists()
     testo = (sito_con_manuali / "it" / "manuali" / ID / "manuale-utente.html").read_text(encoding="utf-8")
-    assert 'href="/xei-addons-store/it/manuali/item-generator/manuale-utente.pdf"' in testo
+    assert 'href="/it/manuali/item-generator/manuale-utente.pdf"' in testo
 
 
 def test_l_elenco_dei_manuali_mostra_i_titoli(sito_con_manuali):
