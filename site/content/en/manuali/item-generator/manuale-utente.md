@@ -410,18 +410,18 @@ items not yet created, closing or clearing asks for confirmation.
 
 Questions and messages of the generation window (for example *Create 2 items in Item Master Data?*)
 have the same look as the window: Enter chooses the highlighted button, Esc answers No. Users with
-the **Edit XEI add-on texts** authorization can change the texts of the window as in SAP windows:
+the **Modifica testi add-on XEI** (edit XEI add-on texts) authorization can change the texts of the window as in SAP windows:
 right-click on a label, a button, a panel title, a column header or the text of a message, then
-**Edit text...**; **Texts of this window...** (also at the bottom of the tree and list menus) lists
+**Modifica testo...** (Edit text); **Testi di questa finestra...** (Texts of this window) (also at the bottom of the tree and list menus) lists
 them all. The custom text applies to all users in the current language and is visible immediately.
 
 ![Question before creation](../../_img/itemgenerator/25_messaggio.png)
 
 *The question before creation, in the window style.*
 
-![Edit text](../../_img/itemgenerator/26_modifica_testo.png)
+![Modifica testo](../../_img/itemgenerator/26_modifica_testo.png)
 
-*Edit text from a right-click on the Find button: original text and custom text.*
+*Modifica testo (Edit text) from a right-click on the Find button: original text and custom text.*
 
 Before creating each item, the add-on checks again that nobody has created the same composition or
 used the code in the meantime. Each item is created in a single operation (item, bill of materials,

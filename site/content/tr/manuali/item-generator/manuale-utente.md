@@ -419,17 +419,17 @@ ana verilerinde 2 kalem oluşturulsun mu?)) pencereyle aynı görünüme sahipti
 seçer, Esc Hayır yanıtını verir. **Modifica testi add-on XEI** (XEI eklenti metinlerini değiştirme)
 yetkisine sahip olan kullanıcı, pencerenin metinlerini SAP pencerelerinde olduğu gibi
 değiştirebilir: bir etiket, bir düğme, bir bölme başlığı, bir sütun başlığı veya bir mesajın metni
-üzerinde sağ tıklama, ardından **Edit text...** (Metni düzenle...); **Texts of this window...** (Bu
-pencerenin metinleri...) (ağaçların ve listenin menülerinin sonunda da bulunur) hepsini listeler.
+üzerinde sağ tıklama, ardından **Modifica testo...** (Metni düzenle); **Testi di questa finestra...** (Bu
+pencerenin metinleri) (ağaçların ve listenin menülerinin sonunda da bulunur) hepsini listeler.
 Özelleştirilmiş metin, kullanılan dilde tüm kullanıcılar için geçerlidir ve hemen görünür.
 
 ![Oluşturmadan önceki soru](../../_img/itemgenerator/25_messaggio.png)
 
 *Pencerenin tarzıyla, oluşturmadan önceki soru.*
 
-![Metni düzenle](../../_img/itemgenerator/26_modifica_testo.png)
+![Modifica testo](../../_img/itemgenerator/26_modifica_testo.png)
 
-*Find (Bul) düğmesine sağ tıklayarak Edit text (Metni düzenle): başlangıç metni ve özelleştirilmiş
+*Find (Bul) düğmesine sağ tıklayarak Modifica testo (Metni düzenle): başlangıç metni ve özelleştirilmiş
 metin.*
 
 Her kalemi oluşturmadan önce eklenti, bu arada kimsenin aynı bileşimi oluşturmadığını veya kodu

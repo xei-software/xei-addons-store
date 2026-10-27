@@ -26,6 +26,6 @@ SAP que sus usuarios ya conocen, con los mismos menús y las mismas autorizacion
 2. Solicite la prueba gratuita con el botón de la página del add-on.
 3. Instale el paquete con el Extension Manager de SAP Business One.
 4. Introduzca el código de prueba recibido por correo electrónico en el menú
-   **Licencia** del add-on.
+   **Licenza** (Licencia) del add-on.
 
 Para información sobre licencias escriba a [license@xeisrl.com](mailto:license@xeisrl.com).

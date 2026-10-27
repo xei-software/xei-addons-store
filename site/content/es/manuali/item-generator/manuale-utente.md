@@ -409,9 +409,9 @@ artículos aún no creados, al cerrar o vaciar se pide confirmación.
 
 Las preguntas y los mensajes de la generación (por ejemplo *¿Crear 2 artículos en los datos maestros de artículos?*) tienen el mismo
 aspecto que la ventana: Intro elige el botón resaltado, Esc responde No. Quien tiene
-la autorización **Modificar textos add-on XEI** puede cambiar los textos de la ventana como en las
+la autorización **Modifica testi add-on XEI** (modificar textos add-on XEI) puede cambiar los textos de la ventana como en las
 ventanas de SAP: botón derecho en una etiqueta, un botón, el título de un panel, la cabecera
-de una columna o el texto de un mensaje y, después, **Modificar texto...**; **Textos de esta ventana...**
+de una columna o el texto de un mensaje y, después, **Modifica testo...** (Modificar texto); **Testi di questa finestra...** (Textos de esta ventana)
 (también al final de los menús de los árboles y de la lista) los muestra todos. El texto personalizado se aplica a
 todos los usuarios en el idioma en uso y se ve al instante.
 
@@ -419,9 +419,9 @@ todos los usuarios en el idioma en uso y se ve al instante.
 
 *La pregunta antes de la creación, con el estilo de la ventana.*
 
-![Modificar texto](../../_img/itemgenerator/26_modifica_testo.png)
+![Modifica testo](../../_img/itemgenerator/26_modifica_testo.png)
 
-*Modificar texto desde el botón derecho en el botón Buscar: texto original y texto personalizado.*
+*Modifica testo (Modificar texto) desde el botón derecho en el botón Buscar: texto original y texto personalizado.*
 
 Antes de crear cada artículo, el add-on vuelve a comprobar que mientras tanto nadie haya creado la misma
 composición o usado el código. Cada artículo se crea en una única operación (artículo, lista de materiales,

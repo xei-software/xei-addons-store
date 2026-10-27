@@ -58,7 +58,7 @@ creating a duplicate.
 | Program languages | Italian, English, German, French, Spanish |
 | System | Microsoft .NET Framework 4.8 on the SAP client PC |
 | Installation | SAP Business One Extension Manager |
-| License | XEI license code, entered in the add-on's **License** menu (30-day free trial) |
+| License | XEI license code, entered in the add-on's **Licenza** (License) menu (30-day free trial) |
 
 ## Current version
 

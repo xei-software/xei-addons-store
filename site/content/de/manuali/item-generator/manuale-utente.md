@@ -422,19 +422,19 @@ Leeren nach einer Bestätigung.
 
 Fragen und Meldungen der Generierung (zum Beispiel *2 Artikel in den Artikelstammdaten anlegen?*) haben
 das gleiche Aussehen wie das Fenster: Eingabe wählt die hervorgehobene Schaltfläche, Esc antwortet mit
-Nein. Wer die Berechtigung **Texte der XEI-Add-ons bearbeiten** hat, kann die Texte des Fensters wie in
+Nein. Wer die Berechtigung **Modifica testi add-on XEI** (Texte der XEI-Add-ons bearbeiten) hat, kann die Texte des Fensters wie in
 den SAP-Fenstern ändern: Rechtsklick auf eine Beschriftung, eine Schaltfläche, den Titel eines Bereichs,
-die Überschrift einer Spalte oder den Text einer Meldung, dann **Text bearbeiten...**; **Texte dieses
-Fensters...** (auch am Ende der Kontextmenüs der Bäume und der Liste) listet alle auf. Der angepasste
+die Überschrift einer Spalte oder den Text einer Meldung, dann **Modifica testo...** (Text bearbeiten); **Testi di
+questa finestra...** (Texte dieses Fensters) (auch am Ende der Kontextmenüs der Bäume und der Liste) listet alle auf. Der angepasste
 Text gilt für alle Benutzer in der verwendeten Sprache und ist sofort sichtbar.
 
 ![Frage vor dem Anlegen](../../_img/itemgenerator/25_messaggio.png)
 
 *Die Frage vor dem Anlegen, im Stil des Fensters.*
 
-![Text bearbeiten](../../_img/itemgenerator/26_modifica_testo.png)
+![Modifica testo](../../_img/itemgenerator/26_modifica_testo.png)
 
-*Text bearbeiten über das Kontextmenü der Schaltfläche Suchen: Ausgangstext und angepasster Text.*
+*Modifica testo (Text bearbeiten) über das Kontextmenü der Schaltfläche Suchen: Ausgangstext und angepasster Text.*
 
 Vor dem Anlegen jedes Artikels prüft das Add-on erneut, dass inzwischen niemand dieselbe Zusammensetzung
 angelegt oder den Code verwendet hat. Jeder Artikel wird in einem einzigen Vorgang angelegt (Artikel,

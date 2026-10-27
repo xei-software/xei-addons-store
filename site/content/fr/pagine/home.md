@@ -26,7 +26,7 @@ mêmes autorisations.
 1. Choisissez l'add-on et téléchargez le package.
 2. Demandez l'essai gratuit avec le bouton de la page de l'add-on.
 3. Installez le package avec l'Extension Manager de SAP Business One.
-4. Saisissez le code d'essai reçu par e-mail dans le menu **Licence** de l'add-on.
+4. Saisissez le code d'essai reçu par e-mail dans le menu **Licenza** (Licence) de l'add-on.
 
 Pour toute information sur les licences, écrivez à
 [license@xeisrl.com](mailto:license@xeisrl.com).

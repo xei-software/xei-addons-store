@@ -36,27 +36,27 @@ Eklenti, XEI tarafından verilen bir **lisans kodu** ile çalışır.
 
 - **Deneme**: denemeyi talep ettikten sonra e-posta ile, gönderimden itibaren 30 gün boyunca her
   şirkette geçerli bir **deneme kodu** alırsınız.
-- **Satın alma**: **License** (Lisans) penceresindeki iki kodu XEI'ye gönderir ve lisans kodunu
+- **Satın alma**: **Licenza** (Lisans) penceresindeki iki kodu XEI'ye gönderir ve lisans kodunu
   alırsınız.
 
-License (Lisans) penceresi:
+**Licenza** (Lisans) penceresi:
 
-- Geçerli bir kod olmadan eklenti **kilitlidir**: menüsünde yalnızca *Information* (Bilgi) ve
-  *License* (Lisans) kalır ve başlangıçta durumu ve nedeni gösteren **License** (Lisans) penceresi
+- Geçerli bir kod olmadan eklenti **kilitlidir**: menüsünde yalnızca *Informazioni* (Bilgi) ve
+  *Licenza* (Lisans) kalır ve başlangıçta durumu ve nedeni gösteren **Licenza** penceresi
   kendiliğinden açılır.
-- Pencere **şirket kodunu** ve **sunucu kodunu** gösterir: lisansı satın almak için bunları *Copy*
+- Pencere **şirket kodunu** ve **sunucu kodunu** gösterir: lisansı satın almak için bunları *Copia*
   (Kopyala) ile [license@xeisrl.com](mailto:license@xeisrl.com) adresine gönderin.
-- Bir SAP **süper kullanıcısı**, alınan kodu *Enter a license code* (Lisans kodu girin) alanına
-  yapıştırır ve *Save code* (Kodu kaydet) düğmesine basar: eklentinin kilidi, SAP yeniden
+- Bir SAP **süper kullanıcısı**, alınan kodu *Inserisci un codice di licenza* (Lisans kodu girin) alanına
+  yapıştırır ve *Salva codice* (Kodu kaydet) düğmesine basar: eklentinin kilidi, SAP yeniden
   başlatılmadan hemen açılır.
 - Deneme kodu her şirkette geçerlidir. Lisans kodu, gönderilen kodların şirketi (veritabanı) veya
   sunucusu için geçerlidir.
-- Aynı pencere istenildiği zaman *License* (Lisans) menüsünden açılır: lisansın durumu, bitiş
+- Aynı pencere istenildiği zaman *Licenza* (Lisans) menüsünden açılır: lisansın durumu, bitiş
   tarihi, numarası ve kapsamı.
 
-![Eklenti kilitliyken License penceresi](../../_img/itemgenerator/27_licenza.png)
+![Eklenti kilitliyken Licenza penceresi](../../_img/itemgenerator/27_licenza.png)
 
-*Eklenti kilitliyken License (Lisans) penceresi: neden, şirket ve sunucu kodları, kod alanı.*
+*Eklenti kilitliyken Licenza (Lisans) penceresi: neden, şirket ve sunucu kodları, kod alanı.*
 
 ## Menüler
 
@@ -74,7 +74,7 @@ Code Configurator** (Stok › Kalem yönetimi › Kod Yapılandırıcı) altınd
 | 5. Consistency Check (Tutarlılık Kontrolü) | oluşturulan kalemlerin bileşimlerinin yeniden hesaplanması (bölüm 14) |
 | 6. Check Configuration (Yapılandırmayı Kontrol Et) | tüm yapılandırmanın kontrolü (bölüm 12) |
 | 7. Excel Import / Export (Excel İçe / Dışa Aktarma) | yapılandırmanın bir Excel dosyasına aktarılması (bölüm 13) |
-| Information, Translations, License (Bilgi, Çeviriler, Lisans) | XEI eklentilerinde ortak girişler (yalnızca XEI-Addon altında); License: lisansın durumu ve kodu |
+| Informazioni, Traduzioni, Licenza (Bilgi, Çeviriler, Lisans) | XEI eklentilerinde ortak girişler, İtalyanca görünür (yalnızca XEI-Addon altında); Licenza: lisansın durumu ve kodu |
 
 Sağ tıklama ile ayrıca satış teklifi ve satış siparişi satırlarında **Configure Item...** (Kalemi
 Yapılandır...) (bölüm 10) ve oluşturulmuş bir kalemin kalem ana verilerinde **Generate Similar
@@ -106,5 +106,5 @@ gösterir.
 ## Destek
 
 Lisanslar için: [license@xeisrl.com](mailto:license@xeisrl.com). Destek için:
-[info@xeisrl.com](mailto:info@xeisrl.com). Talebinizde eklentinin sürümünü (*Information* (Bilgi)
+[info@xeisrl.com](mailto:info@xeisrl.com). Talebinizde eklentinin sürümünü (*Informazioni* (Bilgi)
 menüsü) ve sorunun bir açıklamasını belirtin.

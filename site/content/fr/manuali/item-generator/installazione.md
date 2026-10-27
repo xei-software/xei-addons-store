@@ -36,25 +36,25 @@ L'add-on fonctionne avec un **code de licence** délivré par XEI.
 
 - **Essai** : après la demande d'essai, vous recevez par e-mail un **code d'essai**, valable 30 jours
   à compter de l'envoi dans n'importe quelle société.
-- **Achat** : envoyez à XEI les deux codes de la fenêtre **Licence** et recevez le code de licence.
+- **Achat** : envoyez à XEI les deux codes de la fenêtre **Licenza** (Licence) et recevez le code de licence.
 
-La fenêtre Licence :
+La fenêtre **Licenza** (Licence) :
 
-- Sans code valide, l'add-on est **bloqué** : son menu ne contient plus que *Informations* et
-  *Licence*, et la fenêtre **Licence** s'ouvre automatiquement au démarrage avec le statut et le
+- Sans code valide, l'add-on est **bloqué** : son menu ne contient plus que *Informazioni* (Informations)
+  et *Licenza* (Licence), et la fenêtre **Licenza** s'ouvre automatiquement au démarrage avec le statut et le
   motif.
 - La fenêtre affiche le **code de la société** et le **code du serveur** : pour acheter la licence,
-  envoyez-les avec *Copier* à [license@xeisrl.com](mailto:license@xeisrl.com).
-- Un utilisateur SAP **superutilisateur** colle le code reçu dans *Saisir un code de licence* et
-  clique sur *Enregistrer le code* : l'add-on est débloqué immédiatement, sans redémarrer SAP.
+  envoyez-les avec *Copia* (Copier) à [license@xeisrl.com](mailto:license@xeisrl.com).
+- Un utilisateur SAP **superutilisateur** colle le code reçu dans *Inserisci un codice di licenza* (Saisir un
+  code de licence) et clique sur *Salva codice* (Enregistrer le code) : l'add-on est débloqué immédiatement, sans redémarrer SAP.
 - Le code d'essai est valable dans n'importe quelle société. Le code de licence est valable pour la
   société (base de données) ou le serveur des codes envoyés.
-- La même fenêtre s'ouvre à tout moment depuis le menu *Licence* : statut, échéance, numéro et
+- La même fenêtre s'ouvre à tout moment depuis le menu *Licenza* : statut, échéance, numéro et
   périmètre de la licence.
 
-![La fenêtre Licence avec l'add-on bloqué](../../_img/itemgenerator/27_licenza.png)
+![La fenêtre Licenza avec l'add-on bloqué](../../_img/itemgenerator/27_licenza.png)
 
-*La fenêtre Licence avec l'add-on bloqué : motif, codes de la société et du serveur, champ pour le
+*La fenêtre Licenza (Licence) avec l'add-on bloqué : motif, codes de la société et du serveur, champ pour le
 code.*
 
 ## Menus
@@ -72,7 +72,7 @@ et, à l'identique, dans **Stocks › Gestion des articles › Configurateur de 
 | 5. Contrôle de cohérence | recalcul des compositions des articles générés (chapitre 14) |
 | 6. Vérifier la configuration | contrôle de toute la configuration (chapitre 12) |
 | 7. Import / export Excel | configuration dans un fichier Excel (chapitre 13) |
-| Informations, Traductions, Licence | entrées communes aux add-ons XEI (uniquement sous XEI-Addon) ; Licence : statut et code de licence |
+| Informazioni, Traduzioni, Licenza (Informations, Traductions, Licence) | entrées communes aux add-ons XEI, affichées en italien (uniquement sous XEI-Addon) ; Licenza : statut et code de licence |
 
 Par clic droit, vous disposez aussi de **Configurer l'article...** sur les lignes des offres de
 vente et des commandes client (chapitre 10) et de **Générer des articles similaires...** dans les
@@ -104,4 +104,4 @@ Sans autorisation, l'entrée de menu affiche « Fonction non autorisée » dans 
 
 Pour les licences : [license@xeisrl.com](mailto:license@xeisrl.com). Pour l'assistance :
 [info@xeisrl.com](mailto:info@xeisrl.com). Dans votre demande, indiquez la version de l'add-on (menu
-*Informations*) et une description du problème.
+*Informazioni*) et une description du problème.

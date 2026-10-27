@@ -57,7 +57,7 @@ Bir kombinasyon zaten varsa eklenti yeni bir kopya açmak yerine mevcut kalemi b
 | Programın dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca |
 | Sistem | SAP istemcisinin bulunduğu bilgisayarda Microsoft .NET Framework 4.8 |
 | Kurulum | SAP Business One Extension Manager |
-| Lisans | eklentinin **License** (Lisans) menüsüne girilen XEI lisans kodu (30 gün ücretsiz deneme) |
+| Lisans | eklentinin **Licenza** (Lisans) menüsüne girilen XEI lisans kodu (30 gün ücretsiz deneme) |
 
 ## Güncel sürüm
 

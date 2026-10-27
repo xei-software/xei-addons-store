@@ -436,8 +436,8 @@ Les questions et les messages de la génération (par exemple *Créer 2 articles
 article ?*) ont le même aspect que la fenêtre : Entrée choisit le bouton mis en évidence, Échap
 répond Non. Les utilisateurs disposant de l'autorisation **Modifica testi add-on XEI** peuvent
 modifier les textes de la fenêtre comme dans les fenêtres de SAP : clic droit sur une étiquette, un
-bouton, le titre d'un panneau, l'en-tête d'une colonne ou le texte d'un message, puis **Modifier le
-texte...** ; **Textes de cette fenêtre...** (également à la fin des menus des arbres et de la liste)
+bouton, le titre d'un panneau, l'en-tête d'une colonne ou le texte d'un message, puis **Modifica
+testo...** (Modifier le texte) ; **Testi di questa finestra...** (Textes de cette fenêtre) (également à la fin des menus des arbres et de la liste)
 les liste tous. Le texte personnalisé s'applique à tous les utilisateurs dans la langue utilisée et
 s'affiche immédiatement.
 
@@ -445,9 +445,9 @@ s'affiche immédiatement.
 
 *La question avant la création, dans le style de la fenêtre.*
 
-![Modifier le texte](../../_img/itemgenerator/26_modifica_testo.png)
+![Modifica testo](../../_img/itemgenerator/26_modifica_testo.png)
 
-*Modifier le texte par clic droit sur le bouton Chercher : texte d'origine et texte personnalisé.*
+*Modifica testo (Modifier le texte) par clic droit sur le bouton Chercher : texte d'origine et texte personnalisé.*
 
 Avant de créer chaque article, l'add-on vérifie à nouveau que personne n'a créé entre-temps la même
 composition ni utilisé le code. Chaque article est créé en une seule opération (article,

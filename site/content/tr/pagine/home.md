@@ -25,6 +25,6 @@ bildiği SAP istemcisinin içinde, aynı menüler ve aynı yetkilerle çalışı
 1. Eklentiyi seçin ve paketi indirin.
 2. Ücretsiz denemeyi eklentinin sayfasındaki düğmeyle talep edin.
 3. Paketi SAP Business One Extension Manager ile kurun.
-4. E-posta ile aldığınız deneme kodunu eklentinin **Lisans** menüsüne girin.
+4. E-posta ile aldığınız deneme kodunu eklentinin **Licenza** (Lisans) menüsüne girin.
 
 Lisanslar hakkında bilgi için [license@xeisrl.com](mailto:license@xeisrl.com) adresine yazın.

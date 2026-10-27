@@ -26,6 +26,6 @@ Berechtigungen.
 1. Add-on auswählen und das Paket herunterladen.
 2. Den kostenlosen Test mit der Schaltfläche auf der Seite des Add-ons anfordern.
 3. Das Paket mit dem Extension Manager von SAP Business One installieren.
-4. Den per E-Mail erhaltenen Testcode im Menü **Lizenz** des Add-ons eingeben.
+4. Den per E-Mail erhaltenen Testcode im Menü **Licenza** (Lizenz) des Add-ons eingeben.
 
 Informationen zu Lizenzen: [license@xeisrl.com](mailto:license@xeisrl.com).

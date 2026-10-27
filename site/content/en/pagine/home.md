@@ -25,6 +25,6 @@ your users already know, with the same menus and the same authorizations.
 1. Choose the add-on and download the package.
 2. Request the free trial with the button on the add-on's page.
 3. Install the package with the SAP Business One Extension Manager.
-4. Enter the trial code you receive by email in the add-on's **License** menu.
+4. Enter the trial code you receive by email in the add-on's **Licenza** (License) menu.
 
 For licensing information write to [license@xeisrl.com](mailto:license@xeisrl.com).

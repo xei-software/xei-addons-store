@@ -63,7 +63,7 @@ un doublon.
 | Langues du programme | italien, anglais, allemand, français, espagnol |
 | Système | Microsoft .NET Framework 4.8 sur le poste du client SAP |
 | Installation | Extension Manager de SAP Business One |
-| Licence | code de licence XEI, à saisir dans le menu **Licence** de l'add-on (essai gratuit de 30 jours) |
+| Licence | code de licence XEI, à saisir dans le menu **Licenza** (Licence) de l'add-on (essai gratuit de 30 jours) |
 
 ## Version actuelle
 

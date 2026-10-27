@@ -36,24 +36,24 @@ The add-on works with a **license code** issued by XEI.
 
 - **Trial**: after requesting the trial you receive by email a **trial code**, valid for 30 days
   from sending in any company.
-- **Purchase**: you send XEI the two codes of the **License** window and receive the license code.
+- **Purchase**: you send XEI the two codes of the **Licenza** (License) window and receive the license code.
 
-The License window:
+The **Licenza** (License) window:
 
-- Without a valid code the add-on is **locked**: its menu contains only *About* and *License*, and
-  at startup the **License** window opens by itself with the status and the reason.
+- Without a valid code the add-on is **locked**: its menu contains only *Informazioni* (About) and *Licenza*
+  (License), and at startup the **Licenza** window opens by itself with the status and the reason.
 - The window shows the **company code** and the **server code**: to purchase the license, with
-  *Copy* you send them to [license@xeisrl.com](mailto:license@xeisrl.com).
-- An SAP **superuser** pastes the code received into *Enter a license code* and presses *Save
-  code*: the add-on is unlocked immediately, without restarting SAP.
+  *Copia* (Copy) you send them to [license@xeisrl.com](mailto:license@xeisrl.com).
+- An SAP **superuser** pastes the code received into *Inserisci un codice di licenza* (Enter a license code) and
+  presses *Salva codice* (Save code): the add-on is unlocked immediately, without restarting SAP.
 - The trial code is valid in any company. The license code is valid for the company (database) or
   the server of the codes sent.
-- The same window opens at any time from the *License* menu: status, expiry date, number and scope
+- The same window opens at any time from the *Licenza* menu: status, expiry date, number and scope
   of the license.
 
-![The License window with the add-on locked](../../_img/itemgenerator/27_licenza.png)
+![The Licenza window with the add-on locked](../../_img/itemgenerator/27_licenza.png)
 
-*The License window with the add-on locked: reason, company and server codes, field for the code.*
+*The Licenza (License) window with the add-on locked: reason, company and server codes, field for the code.*
 
 ## Menus
 
@@ -70,7 +70,7 @@ same, in **Inventory › Item Management › Code Configurator**.
 | 5. Consistency Check | recalculation of the compositions of the generated items (chapter 14) |
 | 6. Check Configuration | check of the whole configuration (chapter 12) |
 | 7. Excel Import / Export | configuration in an Excel file (chapter 13) |
-| About, Translations, License | entries common to all XEI add-ons (only under XEI-Addon); License: license status and code |
+| Informazioni, Traduzioni, Licenza (About, Translations, License) | entries common to all XEI add-ons, shown in Italian (only under XEI-Addon); Licenza: license status and code |
 
 With a right-click there are also **Configure Item...** on the rows of sales quotations and sales
 orders (chapter 10) and **Generate Similar Items...** in the Item Master Data of a generated item
@@ -99,5 +99,5 @@ Without authorization the menu entry shows "Function not authorized" in the stat
 ## Support
 
 For licenses: [license@xeisrl.com](mailto:license@xeisrl.com). For support:
-[info@xeisrl.com](mailto:info@xeisrl.com). In your request, state the add-on version (*About* menu)
+[info@xeisrl.com](mailto:info@xeisrl.com). In your request, state the add-on version (*Informazioni* menu)
 and describe the problem.

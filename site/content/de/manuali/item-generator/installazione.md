@@ -35,24 +35,24 @@ Das Add-on arbeitet mit einem **Lizenzcode**, den XEI ausstellt.
 
 - **Test**: Nach der Anforderung des Tests erhalten Sie per E-Mail einen **Testcode**, der ab dem
   Versand 30 Tage in jeder Firma gültig ist.
-- **Kauf**: Sie senden XEI die beiden Codes aus dem Fenster **Lizenz** und erhalten den Lizenzcode.
+- **Kauf**: Sie senden XEI die beiden Codes aus dem Fenster **Licenza** (Lizenz) und erhalten den Lizenzcode.
 
-Das Fenster Lizenz:
+Das Fenster **Licenza** (Lizenz):
 
-- Ohne gültigen Code ist das Add-on **gesperrt**: In seinem Menü bleiben nur *Informationen* und
-  *Lizenz*, und beim Start öffnet sich automatisch das Fenster **Lizenz** mit dem Status und dem Grund.
+- Ohne gültigen Code ist das Add-on **gesperrt**: In seinem Menü bleiben nur *Informazioni* (Informationen)
+  und *Licenza* (Lizenz), und beim Start öffnet sich automatisch das Fenster **Licenza** mit dem Status und dem Grund.
 - Das Fenster zeigt den **Firmencode** und den **Servercode**: Für den Kauf der Lizenz senden Sie
-  diese mit *Kopieren* an [license@xeisrl.com](mailto:license@xeisrl.com).
-- Ein SAP-Benutzer mit **Superuser**-Rechten fügt den erhaltenen Code in *Lizenzcode eingeben* ein und
-  klickt auf *Code speichern*: Das Add-on wird sofort freigeschaltet, ohne SAP neu zu starten.
+  diese mit *Copia* (Kopieren) an [license@xeisrl.com](mailto:license@xeisrl.com).
+- Ein SAP-Benutzer mit **Superuser**-Rechten fügt den erhaltenen Code in *Inserisci un codice di licenza* (Lizenzcode
+  eingeben) ein und klickt auf *Salva codice* (Code speichern): Das Add-on wird sofort freigeschaltet, ohne SAP neu zu starten.
 - Der Testcode gilt in jeder Firma. Der Lizenzcode gilt für die Firma (Datenbank) oder den Server der
   gesendeten Codes.
-- Dasselbe Fenster öffnen Sie jederzeit über das Menü *Lizenz*: Status, Ablaufdatum, Nummer und
+- Dasselbe Fenster öffnen Sie jederzeit über das Menü *Licenza*: Status, Ablaufdatum, Nummer und
   Geltungsbereich der Lizenz.
 
-![Das Fenster Lizenz bei gesperrtem Add-on](../../_img/itemgenerator/27_licenza.png)
+![Das Fenster Licenza bei gesperrtem Add-on](../../_img/itemgenerator/27_licenza.png)
 
-*Das Fenster Lizenz bei gesperrtem Add-on: Grund, Firmen- und Servercode, Feld für den Code.*
+*Das Fenster Licenza (Lizenz) bei gesperrtem Add-on: Grund, Firmen- und Servercode, Feld für den Code.*
 
 ## Menüs
 
@@ -69,7 +69,7 @@ und, identisch, unter **Lagerverwaltung › Artikelverwaltung › Code-Konfigura
 | 5. Konsistenzprüfung | Neuberechnung der Zusammensetzungen der generierten Artikel (Kapitel 14) |
 | 6. Konfiguration prüfen | Prüfung der gesamten Konfiguration (Kapitel 12) |
 | 7. Excel-Import / -Export | Konfiguration in einer Excel-Datei (Kapitel 13) |
-| Informationen, Übersetzungen, Lizenz | gemeinsame Einträge der XEI-Add-ons (nur unter XEI-Addon); Lizenz: Status und Lizenzcode |
+| Informazioni, Traduzioni, Licenza (Informationen, Übersetzungen, Lizenz) | gemeinsame Einträge der XEI-Add-ons, auf Italienisch angezeigt (nur unter XEI-Addon); Licenza: Status und Lizenzcode |
 
 Über das Kontextmenü (Rechtsklick) stehen außerdem **Artikel konfigurieren...** in den Zeilen von
 Angeboten und Kundenaufträgen (Kapitel 10) und **Ähnliche Artikel generieren...** in den
@@ -100,4 +100,4 @@ Ohne Berechtigung zeigt der Menüeintrag in der Statusleiste „Funktion nicht b
 
 Für Lizenzen: [license@xeisrl.com](mailto:license@xeisrl.com). Für den Support:
 [info@xeisrl.com](mailto:info@xeisrl.com). Geben Sie in der Anfrage die Version des Add-ons (Menü
-*Informationen*) und eine Beschreibung des Problems an.
+*Informazioni*) und eine Beschreibung des Problems an.
