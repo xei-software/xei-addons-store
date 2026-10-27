@@ -75,9 +75,15 @@ def formatta_dimensione(byte):
 
 
 def link_richiesta_prova(addon, testi, config):
-    """Dove porta il pulsante "Richiedi la prova": il modulo di registrazione o, finché manca, un'email."""
+    """Dove porta il pulsante "Richiedi la prova": il modulo di registrazione o, finché manca, un'email.
+
+    Il link del modulo può contenere {addon} e {lingua}: diventano il nome del pacchetto e il nome della lingua della
+    pagina (come le scelte delle domande «Add-on» e «Lingua per le email»), così il modulo si apre già compilato.
+    """
     if config["modulo_registrazione"]:
-        return config["modulo_registrazione"]
+        return (config["modulo_registrazione"]
+                .replace("{addon}", quote(addon.get("pacchetto", "")))
+                .replace("{lingua}", quote(testi["nome_lingua"])))
     oggetto = quote(f"{testi['email_oggetto_prova']} - {addon['titolo']}")
     # testo già pronto con i dati da compilare; nelle email gli a capo sono \r\n
     corpo = (testi["email_corpo_prova"].strip()

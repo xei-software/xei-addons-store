@@ -197,3 +197,13 @@ def test_il_sito_usa_il_dominio_store(sito):
         testo = pagina.read_text(encoding="utf-8")
         assert not re.search(r'(?:href|src)="/xei-addons-store', testo), pagina
         assert "github.io" not in testo, pagina
+
+
+def test_il_modulo_si_apre_con_add_on_e_lingua_gia_scelti():
+    # Link precompilato di Forms: {addon} e {lingua} diventano la scelta delle domande 1 e 9 del modulo.
+    config = {**build.carica_config(),
+              "modulo_registrazione": "https://forms.office.com/Pages/ResponsePage.aspx?id=ABC&rA=%22{addon}%22&rL=%22{lingua}%22"}
+    addon = {"titolo": "XEI Prova", "pacchetto": "XEI.ItemGenerator"}
+    link = build.link_richiesta_prova(addon, build.carica_testi("tr"), config)
+    assert link == ("https://forms.office.com/Pages/ResponsePage.aspx?id=ABC"
+                    "&rA=%22XEI.ItemGenerator%22&rL=%22T%C3%BCrk%C3%A7e%22")
