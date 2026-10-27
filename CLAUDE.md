@@ -46,7 +46,10 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   nomi di persone o clienti, percorsi interni, codici società/server reali, campi o moduli di altri programmi.
   Logo e icona in `site/static/img/` (da `loghi/` di xei-model-docs; colori: grigio #686A6F, azzurro #009FE3).
   I testi dell'interfaccia (`site/i18n/`) li mantiene questa sessione.
-- **Funzioni di migrazione o importazione da vecchi programmi:** non si pubblicano mai, né nel sito né nei pacchetti.
+- **Migrazioni da vecchi programmi** (decisione di Ivan, `xei-model-docs/interno/README.md`): sono solo implicite nel
+  codice, anche nel pacchetto pubblicato (all'avvio, senza menu, senza messaggi, solo log; nessuna build dedicata). Mai
+  in ciò che il cliente legge: sito, manuali, note, guide, email, schermate, testi dell'interfaccia e file a vista del
+  pacchetto (menu, `lang`).
 - **Lingue standard degli add-on:** it, en, de, fr, es, tr (il turco nel programma arriva con le prossime versioni;
   in `addons.yml` `lingue_programma` indica quelle davvero presenti nella versione pubblicata).
 - **Nessun riferimento** a programmi di partenza (es. il vecchio configuratore), a migrazioni da altri programmi o a
