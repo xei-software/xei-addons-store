@@ -25,6 +25,13 @@
     <a class="pulsante" href="{{ link_prova(addon) }}">{{ t.download_richiedi_prova }}</a>
     <a class="pulsante secondario" href="{{ addon.url_download }}">{{ t.download_diretto }}</a>
   </p>
+  {% if addon.installazione %}
+  {% set guida = url_base ~ "/" ~ lingua ~ "/manuali/" ~ addon.id ~ "/installazione" %}
+  <p class="guida">
+    <a href="{{ guida }}.html">{{ t.download_guida_installazione }}</a>
+    {% if addon.installazione.pdf %} · <a href="{{ guida }}.pdf">{{ t.manuale_pdf }}</a>{% endif %}
+  </p>
+  {% endif %}
 </article>
 {% endfor %}
 <p class="nota">{{ t.download_nota_licenza }} <a href="mailto:{{ config.email_licenze }}">{{ config.email_licenze }}</a>.</p>

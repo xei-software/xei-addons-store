@@ -17,11 +17,12 @@ addon_scarica: İndir ve dene
 download_titolo: İndirmeler
 download_intro: Eklentileri indirin ve {giorni} gün boyunca ücretsiz deneyin.
 download_come_titolo: Deneme nasıl çalışır
-download_passo1: Kayıt formunu doldurarak deneme talep edin.
+download_passo1: Denemeyi form ile talep edin.
 download_passo2: Paket bağlantısını ve {giorni} gün geçerli deneme kodunu e-posta ile alırsınız.
 download_passo3: Paketi SAP Business One Extension Manager ile kurun.
 download_passo4: Eklentinin Lisans menüsünü açın ve kodu yapıştırın.
 download_richiedi_prova: Ücretsiz deneme talep et
+download_guida_installazione: "Kurulum kılavuzu"
 download_diretto: Paketi indir
 download_controllo: SHA-256 sağlama toplamı
 download_dimensione: Boyut

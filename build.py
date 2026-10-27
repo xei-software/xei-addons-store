@@ -160,6 +160,7 @@ def _prepara_addon(addon, lingua, config, url_base):
         "note": note,
         "tradotto": tradotto,
         "manuali": manuali,
+        "installazione": next((m for m in manuali if m["nome"] == "installazione"), None),
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
                          f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),

@@ -17,11 +17,12 @@ addon_scarica: Scarica e prova
 download_titolo: Download
 download_intro: Scarica gli add-on e provali gratuitamente per {giorni} giorni.
 download_come_titolo: Come funziona la prova
-download_passo1: Richiedi la prova compilando la registrazione.
+download_passo1: Richiedi la prova con il modulo.
 download_passo2: Ricevi per email il link al pacchetto e il codice di prova valido {giorni} giorni.
 download_passo3: Installa il pacchetto con l'Extension Manager di SAP Business One.
 download_passo4: Apri il menu Licenza dell'add-on e incolla il codice.
 download_richiedi_prova: Richiedi la prova gratuita
+download_guida_installazione: "Guida di installazione"
 download_diretto: Scarica il pacchetto
 download_controllo: Controllo SHA-256
 download_dimensione: Dimensione

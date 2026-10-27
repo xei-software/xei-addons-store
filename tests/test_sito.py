@@ -1,4 +1,5 @@
 """Controlli sul sito generato: pagine presenti, lingua giusta, collegamenti interni validi."""
+import html
 import re
 from pathlib import Path
 
@@ -174,3 +175,16 @@ def test_nessun_contenuto_caricato_da_altri_siti(sito):
         assert not re.search(r'<link[^>]+rel="stylesheet"[^>]+href="(?:https?:)?//', testo), pagina
     for foglio in sito.rglob("*.css"):
         assert not re.search(r"(?:@import|url\()\s*['\"]?(?:https?:)?//", foglio.read_text(encoding="utf-8")), foglio
+
+
+def test_la_pagina_download_porta_alla_guida_di_installazione(sito):
+    # L'email con il codice rimanda alla pagina download per programma, guida di installazione e codice.
+    for lingua in build.carica_config()["lingue"]:
+        testi = build.carica_testi(lingua)
+        testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
+        for addon in build.carica_addons():
+            guida = f"/xei-addons-store/{lingua}/manuali/{addon['id']}/installazione"
+            assert f'href="{guida}.html"' in testo, lingua
+            assert f'href="{guida}.pdf"' in testo, lingua
+            assert (sito / lingua / "manuali" / addon["id"] / "installazione.pdf").exists(), lingua
+        assert html.escape(testi["download_guida_installazione"]) in testo
