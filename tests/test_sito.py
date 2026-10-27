@@ -187,4 +187,4 @@ def test_la_pagina_download_porta_alla_guida_di_installazione(sito):
             assert f'href="{guida}.html"' in testo, lingua
             assert f'href="{guida}.pdf"' in testo, lingua
             assert (sito / lingua / "manuali" / addon["id"] / "installazione.pdf").exists(), lingua
-        assert html.escape(testi["download_guida_installazione"]) in testo
+        assert testi["download_guida_installazione"] in html.unescape(testo)
