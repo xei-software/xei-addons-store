@@ -43,7 +43,8 @@ Beantwortung von Fragen zum Add-on und zur Lizenz, Unterstützung während des T
 
 Zur Prüfung wiederholter Anfragen speichert der Dienst, der die Testcodes ausstellt, USt-IdNr.,
 E-Mail-Adresse und Domain nicht im Klartext, sondern nur ihren Fingerabdruck (SHA-256-Hash), aus dem
-sich die Daten nicht ableiten lassen.
+sich die Daten nicht ableiten lassen, zusammen mit dem ausgestellten Testcode. Die eingegangenen
+Anfragen werden in einer Microsoft-SharePoint-Liste der XEI S.r.l. erfasst.
 
 **Rechtsgrundlage**: vorvertragliche Maßnahmen auf Anfrage der betroffenen Person (Artikel 6 Absatz 1
 Buchstabe b DSGVO). Die Daten sind für die Ausstellung des Testcodes erforderlich: Ohne sie kann der

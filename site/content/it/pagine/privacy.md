@@ -43,7 +43,8 @@ di prova, rispondere alle domande sull'add-on e sulla licenza, dare assistenza d
 
 Per il controllo delle richieste ripetute, il servizio che rilascia i codici di prova non conserva la
 partita IVA, l'indirizzo email e il dominio in chiaro, ma solo una loro impronta (hash SHA-256), da
-cui non si possono ricavare i dati.
+cui non si possono ricavare i dati, insieme al codice di prova emesso. Le richieste ricevute sono
+registrate in un elenco di Microsoft SharePoint di XEI S.r.l.
 
 **Base giuridica**: misure precontrattuali prese su richiesta dell'interessato (articolo 6,
 paragrafo 1, lettera b del GDPR). I dati sono necessari per rilasciare il codice di prova: senza,

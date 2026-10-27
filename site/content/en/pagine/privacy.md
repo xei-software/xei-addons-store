@@ -43,7 +43,8 @@ codes, answering questions about the add-on and the license, providing support d
 
 To check for repeated requests, the service that issues the trial codes does not store the VAT number,
 the email address and the domain in clear text, but only their fingerprint (SHA-256 hash), from which
-the data cannot be derived.
+the data cannot be derived, together with the trial code issued. The requests received are recorded in
+a Microsoft SharePoint list of XEI S.r.l.
 
 **Legal basis**: pre-contractual measures taken at the request of the data subject (Article 6(1)(b)
 GDPR). The data are necessary to issue the trial code: without them, the trial cannot be activated.

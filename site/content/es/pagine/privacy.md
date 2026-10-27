@@ -44,7 +44,8 @@ prueba.
 
 Para controlar las solicitudes repetidas, el servicio que emite los códigos de prueba no conserva el
 NIF/CIF, la dirección de correo y el dominio en claro, sino solo su huella (hash SHA-256), de la que no
-se pueden obtener los datos.
+se pueden obtener los datos, junto con el código de prueba emitido. Las solicitudes recibidas se
+registran en una lista de Microsoft SharePoint de XEI S.r.l.
 
 **Base jurídica**: medidas precontractuales adoptadas a petición del interesado (artículo 6, apartado
 1, letra b del RGPD). Los datos son necesarios para emitir el código de prueba: sin ellos, la prueba

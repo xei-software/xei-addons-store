@@ -41,7 +41,8 @@ eklenti ve lisansla ilgili soruları yanıtlamak, deneme sırasında destek verm
 
 Tekrarlanan talepleri kontrol etmek için deneme kodlarını veren hizmet vergi numarasını, e-posta
 adresini ve alan adını açık olarak saklamaz; yalnızca verilerin geri elde edilemediği parmak izlerini
-(SHA-256 karması) saklar.
+(SHA-256 karması) ve verilen deneme kodunu saklar. Alınan talepler XEI S.r.l.'nin bir Microsoft
+SharePoint listesine kaydedilir.
 
 **Hukuki dayanak**: ilgili kişinin talebi üzerine alınan sözleşme öncesi önlemler (GDPR madde 6,
 fıkra 1, bent b). Veriler deneme kodunu vermek için gereklidir: veriler olmadan deneme etkinleştirilemez.

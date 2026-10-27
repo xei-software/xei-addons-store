@@ -43,7 +43,8 @@ d'essai, répondre aux questions sur l'add-on et la licence, fournir une assista
 
 Pour contrôler les demandes répétées, le service qui délivre les codes d'essai ne conserve pas le
 numéro de TVA, l'adresse e-mail et le domaine en clair, mais seulement leur empreinte (hachage
-SHA-256), qui ne permet pas de retrouver les données.
+SHA-256), qui ne permet pas de retrouver les données, avec le code d'essai délivré. Les demandes reçues sont
+enregistrées dans une liste Microsoft SharePoint de XEI S.r.l.
 
 **Base juridique** : mesures précontractuelles prises à la demande de la personne concernée
 (article 6, paragraphe 1, point b du RGPD). Les données sont nécessaires pour délivrer le code d'essai :
