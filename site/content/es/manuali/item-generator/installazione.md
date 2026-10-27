@@ -31,16 +31,23 @@ Cada actualización del add-on se instala del mismo modo, con el mismo reinicio.
 
 ## Licencia
 
-El add-on funciona con un **código de licencia** emitido por XEI. Tras solicitar la prueba se recibe
-por email un código de prueba válido durante 30 días.
+El add-on funciona con un **código de licencia** emitido por XEI.
+
+- **Prueba**: tras solicitar la prueba se recibe por email un **código de prueba**, válido durante
+  30 días desde el envío en cualquier empresa.
+- **Compra**: se envían a XEI los dos códigos de la ventana **Licencia** y se recibe el código de
+  licencia.
+
+La ventana Licencia:
 
 - Sin un código válido el add-on está **bloqueado**: en su menú solo quedan *Información* y
   *Licencia*, y al iniciar se abre automáticamente la ventana **Licencia** con el estado y el motivo.
-- La ventana muestra el **código de la empresa** y el **código del servidor**: con *Copiar* se envían
-  a [license@xeisrl.com](mailto:license@xeisrl.com) para recibir el código de licencia.
+- La ventana muestra el **código de la empresa** y el **código del servidor**: para comprar la
+  licencia, con *Copiar* se envían a [license@xeisrl.com](mailto:license@xeisrl.com).
 - Un usuario SAP **superusuario** pega el código recibido en *Introducir un código de licencia* y pulsa
   *Guardar código*: el add-on se desbloquea al instante, sin reiniciar SAP.
-- El código es válido para la empresa (base de datos) en la que se pega: cada empresa necesita su código.
+- El código de prueba es válido en cualquier empresa. El código de licencia es válido para la empresa
+  (base de datos) o el servidor de los códigos enviados.
 - La misma ventana se abre en cualquier momento desde el menú *Licencia*: estado, vencimiento, número y ámbito
   de la licencia.
 

@@ -32,18 +32,25 @@ Eklentinin her güncellemesi aynı şekilde ve aynı yeniden başlatmayla kurulu
 
 ## Lisans
 
-Eklenti, XEI tarafından verilen bir **lisans kodu** ile çalışır. Denemeyi talep ettikten sonra e-posta ile
-30 gün geçerli bir deneme kodu alırsınız.
+Eklenti, XEI tarafından verilen bir **lisans kodu** ile çalışır.
+
+- **Deneme**: denemeyi talep ettikten sonra e-posta ile, gönderimden itibaren 30 gün boyunca her
+  şirkette geçerli bir **deneme kodu** alırsınız.
+- **Satın alma**: **License** (Lisans) penceresindeki iki kodu XEI'ye gönderir ve lisans kodunu
+  alırsınız.
+
+License (Lisans) penceresi:
 
 - Geçerli bir kod olmadan eklenti **kilitlidir**: menüsünde yalnızca *Information* (Bilgi) ve
   *License* (Lisans) kalır ve başlangıçta durumu ve nedeni gösteren **License** (Lisans) penceresi
   kendiliğinden açılır.
-- Pencere **şirket kodunu** ve **sunucu kodunu** gösterir: lisans kodunu almak için bunları *Copy*
+- Pencere **şirket kodunu** ve **sunucu kodunu** gösterir: lisansı satın almak için bunları *Copy*
   (Kopyala) ile [license@xeisrl.com](mailto:license@xeisrl.com) adresine gönderin.
 - Bir SAP **süper kullanıcısı**, alınan kodu *Enter a license code* (Lisans kodu girin) alanına
   yapıştırır ve *Save code* (Kodu kaydet) düğmesine basar: eklentinin kilidi, SAP yeniden
   başlatılmadan hemen açılır.
-- Kod, yapıştırıldığı şirket (veritabanı) için geçerlidir: her şirket için ayrı bir kod gerekir.
+- Deneme kodu her şirkette geçerlidir. Lisans kodu, gönderilen kodların şirketi (veritabanı) veya
+  sunucusu için geçerlidir.
 - Aynı pencere istenildiği zaman *License* (Lisans) menüsünden açılır: lisansın durumu, bitiş
   tarihi, numarası ve kapsamı.
 

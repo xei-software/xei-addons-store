@@ -32,18 +32,23 @@ Chaque mise à jour de l'add-on s'installe de la même manière, avec le même r
 
 ## Licence
 
-L'add-on fonctionne avec un **code de licence** délivré par XEI. Après la demande d'essai, vous
-recevez par e-mail un code d'essai valable 30 jours.
+L'add-on fonctionne avec un **code de licence** délivré par XEI.
+
+- **Essai** : après la demande d'essai, vous recevez par e-mail un **code d'essai**, valable 30 jours
+  à compter de l'envoi dans n'importe quelle société.
+- **Achat** : envoyez à XEI les deux codes de la fenêtre **Licence** et recevez le code de licence.
+
+La fenêtre Licence :
 
 - Sans code valide, l'add-on est **bloqué** : son menu ne contient plus que *Informations* et
   *Licence*, et la fenêtre **Licence** s'ouvre automatiquement au démarrage avec le statut et le
   motif.
-- La fenêtre affiche le **code de la société** et le **code du serveur** : avec *Copier*, envoyez-les
-  à [license@xeisrl.com](mailto:license@xeisrl.com) pour recevoir le code de licence.
+- La fenêtre affiche le **code de la société** et le **code du serveur** : pour acheter la licence,
+  envoyez-les avec *Copier* à [license@xeisrl.com](mailto:license@xeisrl.com).
 - Un utilisateur SAP **superutilisateur** colle le code reçu dans *Saisir un code de licence* et
   clique sur *Enregistrer le code* : l'add-on est débloqué immédiatement, sans redémarrer SAP.
-- Le code est valable pour la société (base de données) dans laquelle il est collé : chaque société
-  nécessite son propre code.
+- Le code d'essai est valable dans n'importe quelle société. Le code de licence est valable pour la
+  société (base de données) ou le serveur des codes envoyés.
 - La même fenêtre s'ouvre à tout moment depuis le menu *Licence* : statut, échéance, numéro et
   périmètre de la licence.
 

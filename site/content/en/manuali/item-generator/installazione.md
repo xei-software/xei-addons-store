@@ -32,16 +32,22 @@ Each add-on update is installed the same way, with the same restart.
 
 ## License
 
-The add-on works with a **license code** issued by XEI. After requesting the trial you receive by email a
-trial code valid for 30 days.
+The add-on works with a **license code** issued by XEI.
+
+- **Trial**: after requesting the trial you receive by email a **trial code**, valid for 30 days
+  from sending in any company.
+- **Purchase**: you send XEI the two codes of the **License** window and receive the license code.
+
+The License window:
 
 - Without a valid code the add-on is **locked**: its menu contains only *About* and *License*, and
   at startup the **License** window opens by itself with the status and the reason.
-- The window shows the **company code** and the **server code**: with *Copy* you send them to
-  [license@xeisrl.com](mailto:license@xeisrl.com) to receive the license code.
+- The window shows the **company code** and the **server code**: to purchase the license, with
+  *Copy* you send them to [license@xeisrl.com](mailto:license@xeisrl.com).
 - An SAP **superuser** pastes the code received into *Enter a license code* and presses *Save
   code*: the add-on is unlocked immediately, without restarting SAP.
-- The code is valid for the company (database) where it is pasted: each company needs its own code.
+- The trial code is valid in any company. The license code is valid for the company (database) or
+  the server of the codes sent.
 - The same window opens at any time from the *License* menu: status, expiry date, number and scope
   of the license.
 

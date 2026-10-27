@@ -31,17 +31,22 @@ Jede Aktualisierung des Add-ons wird auf die gleiche Weise installiert, mit dems
 
 ## Lizenz
 
-Das Add-on arbeitet mit einem **Lizenzcode**, den XEI ausstellt. Nach der Anforderung des Tests erhalten Sie per
-E-Mail einen Testcode, der 30 Tage gültig ist.
+Das Add-on arbeitet mit einem **Lizenzcode**, den XEI ausstellt.
+
+- **Test**: Nach der Anforderung des Tests erhalten Sie per E-Mail einen **Testcode**, der ab dem
+  Versand 30 Tage in jeder Firma gültig ist.
+- **Kauf**: Sie senden XEI die beiden Codes aus dem Fenster **Lizenz** und erhalten den Lizenzcode.
+
+Das Fenster Lizenz:
 
 - Ohne gültigen Code ist das Add-on **gesperrt**: In seinem Menü bleiben nur *Informationen* und
   *Lizenz*, und beim Start öffnet sich automatisch das Fenster **Lizenz** mit dem Status und dem Grund.
-- Das Fenster zeigt den **Firmencode** und den **Servercode**: Mit *Kopieren* senden Sie diese an
-  [license@xeisrl.com](mailto:license@xeisrl.com), um den Lizenzcode zu erhalten.
+- Das Fenster zeigt den **Firmencode** und den **Servercode**: Für den Kauf der Lizenz senden Sie
+  diese mit *Kopieren* an [license@xeisrl.com](mailto:license@xeisrl.com).
 - Ein SAP-Benutzer mit **Superuser**-Rechten fügt den erhaltenen Code in *Lizenzcode eingeben* ein und
   klickt auf *Code speichern*: Das Add-on wird sofort freigeschaltet, ohne SAP neu zu starten.
-- Der Code gilt für die Firma (Datenbank), in die er eingefügt wird: Für jede Firma ist ein eigener Code
-  erforderlich.
+- Der Testcode gilt in jeder Firma. Der Lizenzcode gilt für die Firma (Datenbank) oder den Server der
+  gesendeten Codes.
 - Dasselbe Fenster öffnen Sie jederzeit über das Menü *Lizenz*: Status, Ablaufdatum, Nummer und
   Geltungsbereich der Lizenz.
 
