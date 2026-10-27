@@ -18,3 +18,18 @@
   dimensione: 650708
   sha256: b8074e3d809546805d5d83392a3f555204416d2763e87c75a75c09fa75a3b4de
   lingue_programma: [it, en, de, fr, es]
+
+- id: commission-management
+  pacchetto: XEI.CommissionManagement
+  versione: 1.1.0
+  data_rilascio: '2026-10-27'
+  origine: xei-software/xei-commissionmanagement
+  tag_origine: v1.1.0
+  xeicore: 1.2.1
+  ok_coordinatore_xei: '2026-10-27'
+  # ok_coordinatore_documentazione: da aggiungere con il consenso (scheda, manuale e schermate approvati)
+  tag_pubblico: commission-management-v1.1.0
+  file: XEI.CommissionManagement.zip
+  dimensione: 792062
+  sha256: b0c613c506010cc868804d291b84816a5debf66de13b1a62bc64b81d897ce8ab
+  lingue_programma: [it, en, de, fr, es, tr]
