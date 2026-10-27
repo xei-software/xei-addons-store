@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Kurulum, lisans, menüler ve yetkiler
 description: XEI.CommissionManagement'ın nasıl kurulacağı, lisansın nasıl etkinleştirileceği, menülerin nerede bulunacağı ve yetkilerin nasıl atanacağı.
 lang: tr
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 

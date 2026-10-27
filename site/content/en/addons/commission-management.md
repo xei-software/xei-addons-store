@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Sales commissions
 description: Calculate and settle in SAP Business One the commissions of agents, zone managers, area managers and directors, from the rules to each agent's statement.
 lang: en
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 
@@ -56,5 +56,5 @@ With XEI.CommissionManagement everything stays in SAP Business One:
 
 ## Current version
 
-**1.1.0** – see the [release notes](../../manuali/en/commissionmanagement/note-rilascio-1.1.0.md) and the
+**1.1.1** – see the [release notes](../../manuali/en/commissionmanagement/note-rilascio-1.1.1.md) and the
 [user manual](../../manuali/en/commissionmanagement/manuale-utente.md).

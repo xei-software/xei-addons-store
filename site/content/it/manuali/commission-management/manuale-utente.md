@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Manuale d'uso
 description: "Provvigioni degli agenti di vendita in SAP Business One: configurazione, regole, calcolo, liquidazione, conguagli ed estratti."
 lang: it
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 

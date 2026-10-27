@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Manual de uso
 description: "Comisiones de los agentes de ventas en SAP Business One: configuración, reglas, cálculo, liquidación, ajustes y extractos."
 lang: es
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 

@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Temsilci komisyonları
 description: SAP Business One'da temsilcilerin, bölge sorumlularının, alan sorumlularının ve direktörlerin komisyonlarını kurallardan her temsilcinin dökümüne kadar hesaplar ve öder.
 lang: tr
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 
@@ -56,5 +56,5 @@ XEI.CommissionManagement ile her şey SAP Business One'da kalır:
 
 ## Güncel sürüm
 
-**1.1.0** – [sürüm notlarına](../../manuali/tr/commissionmanagement/note-rilascio-1.1.0.md) ve
+**1.1.1** – [sürüm notlarına](../../manuali/tr/commissionmanagement/note-rilascio-1.1.1.md) ve
 [kullanım kılavuzuna](../../manuali/tr/commissionmanagement/manuale-utente.md) bakın.

@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Provvigioni agenti
 description: Calcola e liquida in SAP Business One le provvigioni di agenti, capi zona, capi area e direttori, dalle regole fino all'estratto per agente.
 lang: it
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 
@@ -56,5 +56,5 @@ Con XEI.CommissionManagement tutto resta in SAP Business One:
 
 ## Versione attuale
 
-**1.1.0** – vedi le [note di rilascio](../../manuali/it/commissionmanagement/note-rilascio-1.1.0.md) e il
+**1.1.1** – vedi le [note di rilascio](../../manuali/it/commissionmanagement/note-rilascio-1.1.1.md) e il
 [manuale d'uso](../../manuali/it/commissionmanagement/manuale-utente.md).

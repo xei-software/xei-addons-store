@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Commissions des agents
 description: Calcule et liquide dans SAP Business One les commissions des agents, chefs de zone, chefs de secteur et directeurs, des règles jusqu'au relevé de chaque agent.
 lang: fr
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 
@@ -57,5 +57,5 @@ Avec XEI.CommissionManagement, tout reste dans SAP Business One :
 
 ## Version actuelle
 
-**1.1.0** – voir les [notes de version](../../manuali/fr/commissionmanagement/note-rilascio-1.1.0.md) et le
+**1.1.1** – voir les [notes de version](../../manuali/fr/commissionmanagement/note-rilascio-1.1.1.md) et le
 [manuel d'utilisation](../../manuali/fr/commissionmanagement/manuale-utente.md).

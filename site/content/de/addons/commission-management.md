@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Vertreterprovisionen
 description: Berechnet und rechnet in SAP Business One die Provisionen von Vertretern, Gebietsleitern, Bereichsleitern und Direktoren ab, von den Regeln bis zur Abrechnung je Vertreter.
 lang: de
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 
@@ -58,5 +58,5 @@ Mit XEI.CommissionManagement bleibt alles in SAP Business One:
 
 ## Aktuelle Version
 
-**1.1.0** – siehe [Versionshinweise](../../manuali/de/commissionmanagement/note-rilascio-1.1.0.md) und
+**1.1.1** – siehe [Versionshinweise](../../manuali/de/commissionmanagement/note-rilascio-1.1.1.md) und
 [Benutzerhandbuch](../../manuali/de/commissionmanagement/manuale-utente.md).

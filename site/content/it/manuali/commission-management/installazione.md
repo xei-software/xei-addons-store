@@ -3,7 +3,7 @@ title: XEI.CommissionManagement – Installazione, licenza, menu e autorizzazion
 description: Come installare XEI.CommissionManagement, attivare la licenza, trovare i menu e assegnare le autorizzazioni.
 lang: it
 prodotto: XEI.CommissionManagement
-versione: 1.1.0
+versione: 1.1.1
 stato: approvato
 ---
 
