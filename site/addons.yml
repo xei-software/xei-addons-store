@@ -21,15 +21,15 @@
 
 - id: commission-management
   pacchetto: XEI.CommissionManagement
-  versione: 1.1.0
-  data_rilascio: '2026-10-27'
+  versione: 1.1.1
+  data_rilascio: '2026-10-28'
   origine: xei-software/xei-commissionmanagement
-  tag_origine: v1.1.0
+  tag_origine: v1.1.1
   xeicore: 1.2.1
-  ok_coordinatore_xei: '2026-10-27'
-  ok_coordinatore_documentazione: '2026-10-27'
-  tag_pubblico: commission-management-v1.1.0
+  ok_coordinatore_xei: '2026-10-28'
+  # ok_coordinatore_documentazione: da aggiungere con il consenso per la 1.1.1
+  tag_pubblico: commission-management-v1.1.1
   file: XEI.CommissionManagement.zip
-  dimensione: 792062
-  sha256: b0c613c506010cc868804d291b84816a5debf66de13b1a62bc64b81d897ce8ab
+  dimensione: 792122
+  sha256: d17827c1759af43dbcf6aa4ebf36b2d6027a9d7328b90d27adc8bb430133c841
   lingue_programma: [it, en, de, fr, es, tr]
