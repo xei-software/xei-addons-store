@@ -11,5 +11,5 @@ email_licenze: license@xeisrl.com
 # Indirizzo del modulo Microsoft Forms per la registrazione: il link precompilato di Forms («Ottieni collegamento
 # precompilato») con {addon} al posto della scelta della domanda «Add-on» e {lingua} al posto di quella della domanda
 # «Lingua per le email». Finché è vuoto, il pulsante "Richiedi la prova" apre un'email a email_licenze.
-modulo_registrazione: ""
+modulo_registrazione: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=1WKlnxbyhEyiikXvNwFHyezp6as0dY9Gj3NaVsFyg_lURVU5TjBBWUszVlpSWUJQMEQ4WFFGVDk1NS4u&rd727d2389c344ae1a77c99049f6c745c=%22{addon}%22&r51bc4dc5e72c41798cb4c306594ee910=%22{lingua}%22"
 giorni_prova: 30

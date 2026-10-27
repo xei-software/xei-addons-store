@@ -207,3 +207,23 @@ def test_il_modulo_si_apre_con_add_on_e_lingua_gia_scelti():
     link = build.link_richiesta_prova(addon, build.carica_testi("tr"), config)
     assert link == ("https://forms.office.com/Pages/ResponsePage.aspx?id=ABC"
                     "&rA=%22XEI.ItemGenerator%22&rL=%22T%C3%BCrk%C3%A7e%22")
+
+
+def test_il_modulo_vero_si_apre_con_add_on_e_lingua_della_pagina(sito):
+    # Link precompilato del modulo XEI: domanda «Add-on» e domanda «Lingua per le email» (ID del modulo Forms).
+    from urllib.parse import parse_qs, urlsplit
+    domanda_addon, domanda_lingua = "rd727d2389c344ae1a77c99049f6c745c", "r51bc4dc5e72c41798cb4c306594ee910"
+    config = build.carica_config()
+    attesi = {"it": "Italiano", "en": "English", "fr": "Français", "de": "Deutsch", "tr": "Türkçe", "es": "Español"}
+    for lingua, nome in attesi.items():
+        for addon in build.carica_addons():
+            link = build.link_richiesta_prova(addon, build.carica_testi(lingua), config)
+            assert link.startswith("https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=")
+            assert "{" not in link and "%7B" not in link
+            parametri = parse_qs(urlsplit(link).query)
+            assert parametri[domanda_addon] == [f'"{addon["pacchetto"]}"']
+            assert parametri[domanda_lingua] == [f'"{nome}"']
+        testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
+        assert "forms.cloud.microsoft" in testo and "mailto:license@xeisrl.com?subject" not in testo
+    assert "%22Fran%C3%A7ais%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("fr"), config)
+    assert "%22T%C3%BCrk%C3%A7e%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("tr"), config)

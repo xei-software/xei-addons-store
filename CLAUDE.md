@@ -28,9 +28,10 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   Si pubblica solo il pacchetto principale, identico a quello della Release dell'add-on (niente ricompilazioni).
 - **Quali add-on:** solo quelli con le licenze offline (XEICore 1.1.1 o successiva), con l'OK del Coordinatore XEI.
   Mai gli add-on di prova né quelli fatti per un singolo cliente.
-- **Licenza di prova (fase A):** lo zip è pubblico e senza codice. Il cliente si registra con il modulo Microsoft Forms
-  (`modulo_registrazione` in `site/config.yml`). Il codice di prova di 30 giorni lo crea Ivan con il generatore di
-  XEICore e lo invia da license@xeisrl.com. La fase B (codice automatico) è rimandata.
+- **Licenza di prova:** lo zip è pubblico e senza codice. Il pulsante «Richiedi la prova gratuita» apre il modulo
+  Microsoft Forms (`modulo_registrazione` in `site/config.yml`, link precompilato con `{addon}` e `{lingua}`); la Logic
+  App e il servizio `xei-trial-service` inviano in automatico da license@xeisrl.com il codice di prova di 30 giorni.
+  Con `modulo_registrazione` vuoto il pulsante apre un'email precompilata.
 - I testi delle pagine vengono dal Coordinatore Documentazione (repository `xei-model-docs`, front matter `title`,
   `description`, `lang`, `prodotto`, `versione`, `stato`). Si copiano in `site/content/` solo i file con
   `stato: approvato`; il generatore scarta comunque ogni altro stato (`bozza`, `interno`, nessuno).
