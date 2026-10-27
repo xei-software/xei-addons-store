@@ -40,7 +40,8 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   `manuali/<lingua>/<prodotto>/<nome>.md` e `.pdf` → `manuali/<id>/<nome>.md` e `.pdf`,
   `manuali/_img/<prodotto>/` e `manuali/_file/<prodotto>/` → `site/content/_img/<prodotto>/` e `_file/<prodotto>/`
   (i link relativi dei manuali vengono riscritti dal generatore),
-  `legale/<lingua>/privacy-registrazione.md` → `pagine/privacy.md`.
+  `sito/<lingua>/privacy.md` → `pagine/privacy.md` (l'informativa dice che il sito non usa cookie né contenuti di
+  altri siti: un test lo controlla, non aggiungere caratteri, script o statistiche esterni).
   **Immagini e file dei manuali si guardano uno per uno prima di importarli** (i test non leggono le immagini): niente
   nomi di persone o clienti, percorsi interni, codici società/server reali, campi o moduli di altri programmi.
   Logo e icona in `site/static/img/` (da `loghi/` di xei-model-docs; colori: grigio #686A6F, azzurro #009FE3).

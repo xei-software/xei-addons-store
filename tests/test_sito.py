@@ -154,3 +154,23 @@ def test_l_email_di_richiesta_prova_e_gia_compilata():
         corpo = parametri["body"][0]
         assert "XEI Prova" in corpo and "\r\n" in corpo, lingua
         assert "{addon}" not in corpo and "{giorni}" not in corpo
+
+
+def test_la_privacy_usa_il_testo_approvato(sito):
+    for lingua in build.carica_config()["lingue"]:
+        percorso = build.CARTELLA_SITO / "content" / lingua / "pagine" / "privacy.md"
+        intestazione, _ = build.leggi_markdown(percorso)
+        assert intestazione["stato"] == "approvato", lingua
+        testo = (sito / lingua / "privacy.html").read_text(encoding="utf-8")
+        assert build.carica_testi(lingua)["privacy_in_preparazione"] not in testo, lingua
+    assert "GDPR" in (sito / "it" / "privacy.html").read_text(encoding="utf-8")
+
+
+def test_nessun_contenuto_caricato_da_altri_siti(sito):
+    # L'informativa dice che il sito non carica contenuti da altri siti: script, stili e immagini sono tutti locali.
+    for pagina in sito.rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        assert not re.search(r'src="(?:https?:)?//', testo), pagina
+        assert not re.search(r'<link[^>]+rel="stylesheet"[^>]+href="(?:https?:)?//', testo), pagina
+    for foglio in sito.rglob("*.css"):
+        assert not re.search(r"(?:@import|url\()\s*['\"]?(?:https?:)?//", foglio.read_text(encoding="utf-8")), foglio
