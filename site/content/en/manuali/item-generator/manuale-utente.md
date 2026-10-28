@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – User Manual
 description: How to set up bases, values and variants and generate items with XEI.ItemGenerator.
 lang: en
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -232,7 +232,7 @@ by 090).
 | 1 Color | RO Oak | 30 | 1.5 | | | 2 |
 | 2 Width | 090 W90 | 40 | 3 | length 900 | | 5 |
 | 2 Handle | AL Aluminum | 5 | 0.2 | | | |
-| **Item PE090002** | | **175** | **14.7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
+| **Item** | | **175** | **14.7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
 
 Everything else (accounts, planning data, vendor, warehouses...) comes from the **template item**
 chosen in generation: the new items copy its data, without stock, prices, barcodes, bill of
@@ -472,7 +472,7 @@ configuration of the item; the list remains.
 
 ![Generation of similar items](../../_img/itemgenerator/20_simili.png)
 
-*Generation from the configuration of PE090002 (SAP HANA theme): 90 cm wall unit, oak and aluminum
+*Generation from the configuration of PE090001 (SAP HANA theme): 90 cm wall unit, oak and aluminum
 handle already checked; the item itself as template item.*
 
 If the configuration has changed in the meantime (values removed or deactivated, different
@@ -488,8 +488,7 @@ that record; *Check again* repeats the check after the corrections. When you enl
 
 ![Configuration check](../../_img/itemgenerator/21_verifica.png)
 
-*Check: a variant structure that does not exist and a value that inherits with no variants to
-inherit.*
+*Check of the example configuration: no problems found.*
 
 | Type | Check |
 |---|---|

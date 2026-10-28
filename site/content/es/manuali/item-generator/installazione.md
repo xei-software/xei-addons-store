@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – Instalación, licencia, menús y autorizaciones
 description: Cómo instalar XEI.ItemGenerator, activar la licencia, encontrar los menús y asignar las autorizaciones.
 lang: es
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -16,7 +16,7 @@ stato: approvato
 | SAP Business One | 10.0 o superior |
 | Base de datos | Microsoft SQL Server o SAP HANA (en SAP HANA se recomienda una prueba durante la instalación) |
 | Sistema | Microsoft .NET Framework 4.8 en el PC del cliente SAP |
-| Idiomas del programa | italiano, inglés, alemán, francés, español |
+| Idiomas del programa | italiano, inglés, alemán, francés, español, turco |
 
 ## Instalación
 

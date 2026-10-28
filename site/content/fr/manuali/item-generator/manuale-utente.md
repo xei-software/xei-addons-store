@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – Manuel d'utilisation
 description: Comment configurer les bases, les valeurs et les variantes et générer les articles avec XEI.ItemGenerator.
 lang: fr
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -242,7 +242,7 @@ niveau 1 et héritée par le 090).
 | 1 Couleur | RO Chêne | 30 | 1,5 | | | 2 |
 | 2 Largeur | 090 L90 | 40 | 3 | longueur 900 | | 5 |
 | 2 Poignée | AL Aluminium | 5 | 0,2 | | | |
-| **Article PE090002** | | **175** | **14,7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
+| **Article** | | **175** | **14,7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
 
 Tout le reste (comptes, données de planification, fournisseur, magasins...) provient de l'**article
 modèle** choisi dans la génération : les nouveaux articles en copient les données, sans stocks,
@@ -500,7 +500,7 @@ de l'article ; la liste reste.
 
 ![Génération d'articles similaires](../../_img/itemgenerator/20_simili.png)
 
-*Génération à partir de la configuration de PE090002 (thème SAP HANA) : élément haut de 90, chêne et
+*Génération à partir de la configuration de PE090001 (thème SAP HANA) : élément haut de 90, chêne et
 poignée en aluminium déjà cochés ; l'article lui-même comme modèle.*
 
 Si la configuration a changé entre-temps (valeurs supprimées ou désactivées, sous-niveaux
@@ -516,8 +516,7 @@ corrections. En agrandissant la fenêtre (même en plein écran), la liste des p
 
 ![Vérification de la configuration](../../_img/itemgenerator/21_verifica.png)
 
-*Vérification : une structure de variantes qui n'existe pas et une valeur qui hérite sans variantes à
-hériter.*
+*Vérification de la configuration de l'exemple : aucun problème trouvé.*
 
 | Type | Contrôle |
 |---|---|

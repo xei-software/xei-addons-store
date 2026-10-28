@@ -6,18 +6,18 @@
 # il workflow release.yml copia il file, identico, nella Release pubblica "tag_pubblico" (vedi strumenti/copia_release.py).
 - id: item-generator
   pacchetto: XEI.ItemGenerator
-  versione: 1.4.0
-  data_rilascio: 2026-10-20
+  versione: 1.5.0
+  data_rilascio: '2026-10-28'
   origine: xei-software/xei-itemgenerator
-  tag_origine: v1.4.0
-  xeicore: 1.1.1
-  ok_coordinatore_xei: 2026-10-24
-  ok_coordinatore_documentazione: 2026-10-26
-  tag_pubblico: item-generator-v1.4.0
+  tag_origine: v1.5.0
+  xeicore: 1.2.2
+  ok_coordinatore_xei: '2026-10-28'
+  # ok_coordinatore_documentazione: da aggiungere con il consenso per la 1.5.0
+  tag_pubblico: item-generator-v1.5.0
   file: XEI.ItemGenerator.zip
-  dimensione: 650708
-  sha256: b8074e3d809546805d5d83392a3f555204416d2763e87c75a75c09fa75a3b4de
-  lingue_programma: [it, en, de, fr, es]
+  dimensione: 727068
+  sha256: 94e2b94c79fc865ad02be80ba95d67bb30b534553259e1cc54d0338feecc052c
+  lingue_programma: [it, en, de, fr, es, tr]
 
 - id: commission-management
   pacchetto: XEI.CommissionManagement

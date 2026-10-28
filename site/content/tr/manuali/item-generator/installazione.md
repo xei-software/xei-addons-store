@@ -3,13 +3,15 @@ title: XEI.ItemGenerator – Kurulum, lisans, menüler ve yetkiler
 description: XEI.ItemGenerator'ın nasıl kurulacağı, lisansın nasıl etkinleştirileceği, menülerin nerede bulunacağı ve yetkilerin nasıl atanacağı.
 lang: tr
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
 # XEI.ItemGenerator – Kurulum, lisans, menüler ve yetkiler
 
-Programın arayüzü İngilizce görünür: menü, pencere ve alan adları ekranda göründükleri şekliyle İngilizce verilmiş, yanlarına Türkçe karşılıkları eklenmiştir.
+Eklentinin menü, pencere ve alan adları, Türkçe SAP Business One'da göründükleri şekliyle verilmiştir.
+SAP Business One'ın kendi menü ve alanlarının adları İngilizce olarak, yanlarında Türkçe karşılıklarıyla
+verilmiştir.
 
 ## Gereksinimler
 
@@ -18,14 +20,14 @@ Programın arayüzü İngilizce görünür: menü, pencere ve alan adları ekran
 | SAP Business One | 10.0 veya üzeri |
 | Veritabanı | Microsoft SQL Server veya SAP HANA (SAP HANA'da kurulum sırasında bir test yapılması önerilir) |
 | Sistem | SAP istemcisinin bulunduğu bilgisayarda Microsoft .NET Framework 4.8 |
-| Program dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca |
+| Program dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca, Türkçe |
 
 ## Kurulum
 
 1. `XEI.ItemGenerator.zip` paketini indirin.
 2. SAP Business One'da **Extension Manager**'ı açın, paketi içe aktarın ve şirkete atayın.
 3. İlk başlatmada eklenti tabloları, alanları, nesneleri ve yetki girişlerini kendisi oluşturur.
-4. İşlem tamamlandığında **SAP istemcisini bir kez yeniden başlatın**: taban ve varyant pencereleri
+4. İşlem tamamlandığında **SAP istemcisini bir kez yeniden başlatın**: baz ve varyant pencereleri
    eklentinin alanlarını SAP başlatılırken okur.
 
 Eklentinin her güncellemesi aynı şekilde ve aynı yeniden başlatmayla kurulur.
@@ -66,19 +68,17 @@ Code Configurator** (Stok › Kalem yönetimi › Kod Yapılandırıcı) altınd
 
 | Giriş | İşlev |
 |---|---|
-| 0. Settings (Ayarlar) | eklentinin seçenekleri (kullanım kılavuzu, bölüm 3) |
-| 1. Base Definition (Taban Tanımı) | tabanlar ve değerler: kod ağacı (bölüm 5) |
-| 2. Variants and Options (Varyantlar ve Seçenekler) | varyantlar ve seçenekleri (bölüm 4) |
-| 3. Variant Structures (Varyant Yapıları) | bir değer için sorulacak varyant grupları (bölüm 4) |
-| 4. Generate Items (Kalemleri Oluştur) | kalemlerin bileşimi ve oluşturulması (bölüm 9) |
-| 5. Consistency Check (Tutarlılık Kontrolü) | oluşturulan kalemlerin bileşimlerinin yeniden hesaplanması (bölüm 14) |
-| 6. Check Configuration (Yapılandırmayı Kontrol Et) | tüm yapılandırmanın kontrolü (bölüm 12) |
-| 7. Excel Import / Export (Excel İçe / Dışa Aktarma) | yapılandırmanın bir Excel dosyasına aktarılması (bölüm 13) |
+| 0. Ayarlar | eklentinin seçenekleri (kullanım kılavuzu, bölüm 3) |
+| 1. Baz Tanımı | bazlar ve değerler: kod ağacı (bölüm 5) |
+| 2. Varyantlar ve Seçenekler | varyantlar ve seçenekleri (bölüm 4) |
+| 3. Varyant Yapıları | bir değer için sorulacak varyant grupları (bölüm 4) |
+| 4. Kalemleri Oluştur | kalemlerin bileşimi ve oluşturulması (bölüm 9) |
+| 5. Tutarlılık Kontrolü | oluşturulan kalemlerin bileşimlerinin yeniden hesaplanması (bölüm 14) |
+| 6. Yapılandırmayı Kontrol Et | tüm yapılandırmanın kontrolü (bölüm 12) |
+| 7. Excel İçe / Dışa Aktarma | yapılandırmanın bir Excel dosyasına aktarılması (bölüm 13) |
 | Informazioni, Traduzioni, Licenza (Bilgi, Çeviriler, Lisans) | XEI eklentilerinde ortak girişler, İtalyanca görünür (yalnızca XEI-Addon altında); Licenza: lisansın durumu ve kodu |
 
-Sağ tıklama ile ayrıca satış teklifi ve satış siparişi satırlarında **Configure Item...** (Kalemi
-Yapılandır...) (bölüm 10) ve oluşturulmuş bir kalemin kalem ana verilerinde **Generate Similar
-Items...** (Benzer Kalemler Oluştur...) (bölüm 11) bulunur.
+Sağ tıklama ile ayrıca satış teklifi ve satış siparişi satırlarında **Kalemi yapılandır...** (bölüm 10) ve oluşturulmuş bir kalemin kalem ana verilerinde **Benzer kalemler oluştur...** (bölüm 11) bulunur.
 
 ## Yetkiler
 
@@ -94,7 +94,7 @@ vardır.
 
 | Giriş | Tam | Salt okunur |
 |---|---|---|
-| Definizione basi (Taban tanımı) | tabanları değiştirme | görüntüleme |
+| Definizione basi (Baz tanımı) | bazları değiştirme | görüntüleme |
 | Definizione varianti (Varyant tanımı) | varyantları değiştirme | görüntüleme |
 | Strutture varianti (Varyant yapıları) | yapıları değiştirme | görüntüleme |
 | Generazione articoli (Kalem oluşturma) | kalem oluşturma (teklif ve siparişlerden de) | listeyi oluşturmadan derleme |

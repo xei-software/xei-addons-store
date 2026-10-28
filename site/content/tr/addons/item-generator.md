@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – Kalem kodu yapılandırıcı
 description: SAP Business One'da kod, tanımlar, veriler, fiyat ve ürün ağacı sizin belirlediğiniz kurallarla oluşturulan kalemler yaratın.
 lang: tr
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -34,7 +34,7 @@ Bir kombinasyon zaten varsa eklenti yeni bir kopya açmak yerine mevcut kalemi b
 
 ## Başlıca işlevler
 
-- Eklentinin SAP'deki ana verileriyle **taban, varyant ve yapı tanımı**.
+- Eklentinin SAP'deki ana verileriyle **baz, varyant ve yapı tanımı**.
 - Kod ağacı ve varyant ağacı bulunan, boyutu değiştirilebilir bir pencerede **kalem
   oluşturma**; pencere açıkken SAP kullanılmaya devam eder.
 - **Satış tekliflerinden ve satış siparişlerinden kalem yapılandırma**: belge satırında
@@ -54,11 +54,11 @@ Bir kombinasyon zaten varsa eklenti yeni bir kopya açmak yerine mevcut kalemi b
 |---|---|
 | SAP Business One | 10.0 veya üzeri |
 | Veritabanı | Microsoft SQL Server veya SAP HANA (SAP HANA'da kurulum sırasında bir test yapılması önerilir) |
-| Programın dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca |
+| Programın dilleri | İtalyanca, İngilizce, Almanca, Fransızca, İspanyolca, Türkçe |
 | Sistem | SAP istemcisinin bulunduğu bilgisayarda Microsoft .NET Framework 4.8 |
 | Kurulum | SAP Business One Extension Manager |
 | Lisans | eklentinin **Licenza** (Lisans) menüsüne girilen XEI lisans kodu (30 gün ücretsiz deneme) |
 
 ## Güncel sürüm
 
-**1.4.0** – [sürüm notlarına](../../manuali/tr/itemgenerator/note-rilascio-1.4.0.md) bakın.
+**1.5.0** – [sürüm notlarına](../../manuali/tr/itemgenerator/note-rilascio-1.5.0.md) bakın.

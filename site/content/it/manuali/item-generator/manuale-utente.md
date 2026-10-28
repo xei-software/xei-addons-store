@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – Manuale d'uso
 description: Come configurare basi, valori e varianti e generare gli articoli con XEI.ItemGenerator.
 lang: it
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -229,7 +229,7 @@ ereditato dal 090).
 | 1 Colore | RO Rovere | 30 | 1,5 | | | 2 |
 | 2 Larghezza | 090 L90 | 40 | 3 | lunghezza 900 | | 5 |
 | 2 Maniglia | AL Alluminio | 5 | 0,2 | | | |
-| **Articolo PE090002** | | **175** | **14,7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
+| **Articolo** | | **175** | **14,7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
 
 Tutto il resto (conti, dati di pianificazione, fornitore, magazzini...) viene dall'**articolo
 modello** scelto nella generazione: i nuovi articoli ne copiano i dati, senza giacenze, prezzi,
@@ -473,7 +473,7 @@ dell'articolo; l'elenco resta.
 
 ![Generazione di articoli simili](../../_img/itemgenerator/20_simili.png)
 
-*Generazione dalla configurazione di PE090002 (tema SAP HANA): pensile da 90, rovere e maniglia in
+*Generazione dalla configurazione di PE090001 (tema SAP HANA): pensile da 90, rovere e maniglia in
 alluminio già spuntati; modello l'articolo stesso.*
 
 Se nel frattempo la configurazione è cambiata (valori tolti o disattivati, sotto livelli diversi) la
@@ -488,8 +488,7 @@ schermo) l'elenco dei problemi la segue.
 
 ![Verifica della configurazione](../../_img/itemgenerator/21_verifica.png)
 
-*Verifica: una struttura varianti che non esiste e un valore che eredita senza varianti da
-ereditare.*
+*Verifica della configurazione dell'esempio: nessun problema trovato.*
 
 | Tipo | Controllo |
 |---|---|

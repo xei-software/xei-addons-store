@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – Benutzerhandbuch
 description: So konfigurieren Sie Basen, Werte und Varianten und generieren die Artikel mit XEI.ItemGenerator.
 lang: de
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -238,7 +238,7 @@ und von 090 geerbt).
 | 1 Colore | RO Rovere | 30 | 1,5 | | | 2 |
 | 2 Larghezza | 090 L90 | 40 | 3 | Länge 900 | | 5 |
 | 2 Maniglia | AL Alluminio | 5 | 0,2 | | | |
-| **Artikel PE090002** | | **175** | **14,7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
+| **Artikel** | | **175** | **14,7** | **900 × 350 × 720** | **101** | **1, 2, 3, 5** |
 
 Alles andere (Konten, Planungsdaten, Lieferant, Lager...) stammt aus dem in der Generierung gewählten
 **Vorlageartikel**: Die neuen Artikel übernehmen dessen Daten, ohne Lagerbestände, Preise, Barcodes,
@@ -487,7 +487,7 @@ Konfiguration des Artikels in den Vordergrund; die Liste bleibt erhalten.
 
 ![Generierung ähnlicher Artikel](../../_img/itemgenerator/20_simili.png)
 
-*Generierung aus der Konfiguration von PE090002 (Design SAP HANA): Hängeschrank 90, Eiche und
+*Generierung aus der Konfiguration von PE090001 (Design SAP HANA): Hängeschrank 90, Eiche und
 Aluminiumgriff bereits markiert; Vorlage ist der Artikel selbst.*
 
 Hat sich die Konfiguration inzwischen geändert (Werte entfernt oder deaktiviert, andere Unterebenen),
@@ -502,8 +502,7 @@ Fenster vergrößern (auch auf Vollbild), passt sich die Problemliste an.
 
 ![Konfigurationsprüfung](../../_img/itemgenerator/21_verifica.png)
 
-*Prüfung: eine Variantenstruktur, die nicht existiert, und ein Wert, der erbt, ohne dass es Varianten zu
-erben gibt.*
+*Prüfung der Beispielkonfiguration: keine Probleme gefunden.*
 
 | Typ | Prüfung |
 |---|---|

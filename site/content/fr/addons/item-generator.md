@@ -3,7 +3,7 @@ title: XEI.ItemGenerator – Configurateur de codes article
 description: Créez dans SAP Business One des articles avec code, descriptions, données, prix et nomenclature composés selon vos propres règles.
 lang: fr
 prodotto: XEI.ItemGenerator
-versione: 1.4.0
+versione: 1.5.0
 stato: approvato
 ---
 
@@ -60,11 +60,11 @@ un doublon.
 |---|---|
 | SAP Business One | 10.0 ou ultérieure |
 | Base de données | Microsoft SQL Server ou SAP HANA (sur SAP HANA, un test lors de l'installation est conseillé) |
-| Langues du programme | italien, anglais, allemand, français, espagnol |
+| Langues du programme | italien, anglais, allemand, français, espagnol, turc |
 | Système | Microsoft .NET Framework 4.8 sur le poste du client SAP |
 | Installation | Extension Manager de SAP Business One |
 | Licence | code de licence XEI, à saisir dans le menu **Licenza** (Licence) de l'add-on (essai gratuit de 30 jours) |
 
 ## Version actuelle
 
-**1.4.0** – voir les [notes de version](../../manuali/fr/itemgenerator/note-rilascio-1.4.0.md).
+**1.5.0** – voir les [notes de version](../../manuali/fr/itemgenerator/note-rilascio-1.5.0.md).
