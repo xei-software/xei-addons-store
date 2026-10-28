@@ -12,7 +12,7 @@
   tag_origine: v1.5.0
   xeicore: 1.2.2
   ok_coordinatore_xei: '2026-10-28'
-  # ok_coordinatore_documentazione: da aggiungere con il consenso per la 1.5.0
+  ok_coordinatore_documentazione: '2026-10-28'
   tag_pubblico: item-generator-v1.5.0
   file: XEI.ItemGenerator.zip
   dimensione: 727068
