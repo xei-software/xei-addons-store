@@ -99,3 +99,18 @@ def test_xeicore_del_progetto_deve_coincidere(tmp_path):
     copia_release.verifica_xeicore(voce, "1.1.1")
     with pytest.raises(SystemExit):
         copia_release.verifica_xeicore(voce, "1.0.7")
+
+
+def test_il_progetto_si_legge_dal_tag_anche_se_esiste_un_ramo_con_lo_stesso_nome(monkeypatch):
+    # Nei repository degli add-on può esistere un ramo "v1.5.0": con ref=v1.5.0 GitHub legge il ramo, non il tag.
+    import subprocess
+    from strumenti import copia_release
+    chiamate = []
+
+    def finto_run(argomenti, **opzioni):
+        chiamate.append(argomenti)
+        return subprocess.CompletedProcess(argomenti, 0, stdout="<Project />", stderr="")
+
+    monkeypatch.setattr(copia_release.subprocess, "run", finto_run)
+    copia_release.leggi_csproj("xei-software/xei-itemgenerator", "v1.5.0", "XEI.ItemGenerator")
+    assert chiamate[0][-1] == "repos/xei-software/xei-itemgenerator/contents/XEI.ItemGenerator.csproj?ref=refs/tags/v1.5.0"

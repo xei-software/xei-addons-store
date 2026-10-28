@@ -91,9 +91,12 @@ def verifica_xeicore(voce, versione_nel_progetto):
 
 
 def leggi_csproj(origine, tag, pacchetto):
-    """Progetto dell'add-on (<pacchetto>.csproj) alla versione del tag, letto con l'API REST."""
+    """Progetto dell'add-on (<pacchetto>.csproj) alla versione del tag, letto con l'API REST.
+
+    Il tag si indica come refs/tags/<tag>: se esiste anche un ramo con lo stesso nome, GitHub leggerebbe il ramo.
+    """
     return subprocess.run(
-        ["gh", "api", "-H", "Accept: application/vnd.github.raw", f"repos/{origine}/contents/{pacchetto}.csproj?ref={tag}"],
+        ["gh", "api", "-H", "Accept: application/vnd.github.raw", f"repos/{origine}/contents/{pacchetto}.csproj?ref=refs/tags/{tag}"],
         check=True, capture_output=True, text=True).stdout
 
 
