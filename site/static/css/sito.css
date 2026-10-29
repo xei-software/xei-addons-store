@@ -178,3 +178,11 @@ body.pagina-scura {
 .pagina-scura .condizioni { background: #06131c; color: var(--testo); border-top-color: #009fe3; }
 .pagina-scura .condizioni .pulsante { background: #009fe3; border-color: #009fe3; color: #001726; }
 .pagina-scura .condizioni .pulsante.secondario { background: transparent; color: #ffffff; }
+/* Intestazione nera con il logo a lettere bianche (static/img/logo-xei-bianco.png, dal logo ufficiale) */
+.pagina-scura .testata { background: #000203; border-bottom-color: var(--azzurro); }
+.pagina-scura .testata .menu a, .pagina-scura .marchio span { color: #e8eef3; }
+.pagina-scura .testata .menu a:hover { color: #4cc3f5; }
+.pagina-scura .lingue summary { color: #9fb4c2; }
+.pagina-scura .lingue ul { background: #06131c; border-color: #1d3445; }
+.pagina-scura .lingue li a { color: #4cc3f5; }
+.pagina-scura .marchio img { background: none; padding: 0; }

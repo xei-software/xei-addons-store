@@ -159,3 +159,12 @@ def test_la_pagina_download_ha_lo_sfondo_scuro_del_marchio(sito):
         assert '<body class="pagina-scura">' in (sito / lingua / "download.html").read_text(encoding="utf-8"), lingua
         assert "pagina-scura" not in (sito / lingua / "index.html").read_text(encoding="utf-8"), lingua
     assert ".pagina-scura" in (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
+
+
+def test_nella_pagina_download_l_intestazione_e_nera_con_il_logo_bianco(sito):
+    # Logo XEI con le lettere bianche (come su xeisrl.com) sull'intestazione nera; altrove il logo grigio ufficiale.
+    for lingua in build.carica_config()["lingue"]:
+        assert 'src="/static/img/logo-xei-bianco.png"' in (sito / lingua / "download.html").read_text(encoding="utf-8")
+        assert 'src="/static/img/logo-xei.png"' in (sito / lingua / "index.html").read_text(encoding="utf-8")
+    assert (sito / "static" / "img" / "logo-xei-bianco.png").exists()
+    assert ".pagina-scura .testata" in (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
