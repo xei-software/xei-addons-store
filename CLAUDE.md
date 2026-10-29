@@ -26,6 +26,8 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   tutto: controllare sempre a mano prima del push.
 - **Mai nelle Release pubbliche:** il pacchetto `_TEST`, la mappa di offuscamento, pacchetti con un codice di licenza.
   Si pubblica solo il pacchetto principale, identico a quello della Release dell'add-on (niente ricompilazioni).
+  Per le app anche niente dati locali: `impostazioni.json`, `appsettings.Development.json`, `users.json`, `*.user`, `*.log`,
+  cartelle `logs/`, `chiavi/`, `sessions/` (`copia_release.problemi_pacchetto` li blocca).
 - **Quali add-on:** solo quelli con le licenze offline (XEICore 1.1.1 o successiva), con l'OK del Coordinatore XEI.
   Mai gli add-on di prova né quelli fatti per un singolo cliente.
 - **App** (XEI App Framework, programmi Windows come XEI.RateUpdater): in `addons.yml` `tipo: app` e `framework` (la

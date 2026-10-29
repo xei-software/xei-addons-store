@@ -141,3 +141,15 @@ def test_il_file_delle_versioni_dell_app_si_legge_dal_tag(monkeypatch):
                         subprocess.CompletedProcess(argomenti, 0, stdout="<Project />", stderr=""))
     copia_release.leggi_file_del_tag("xei-software/xei-rateupdater", "v1.0.0", "Directory.Packages.props")
     assert chiamate[0][-1] == "repos/xei-software/xei-rateupdater/contents/Directory.Packages.props?ref=refs/tags/v1.0.0"
+
+
+def test_nello_zip_di_un_app_non_vanno_dati_locali_e_segreti(tmp_path):
+    from strumenti import copia_release
+    zip_app = tmp_path / "XEI.RateUpdater.zip"
+    vietati = ["appsettings.Development.json", "impostazioni.json", "XEI.RateUpdater.csproj.user", "logs/oggi.txt",
+               "app.log", "chiavi/chiave.bin", "users.json", "sessions/a.json", "licenza.xei"]
+    ammessi = ["XEI.RateUpdater.exe", "XEI.App.Server.dll", "wwwroot/index.html", "lang/it.json", "appsettings.json"]
+    with zipfile.ZipFile(zip_app, "w") as archivio:
+        for nome in vietati + ammessi:
+            archivio.writestr(nome, "x")
+    assert sorted(copia_release.problemi_pacchetto(zip_app)) == sorted(vietati)
