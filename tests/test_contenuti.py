@@ -171,8 +171,18 @@ def _versione(testo):
 
 def test_prima_del_rilascio_xeicore_definito_e_consenso_dei_due_coordinatori():
     # Regola di Ivan: senza pacchetto XEICore definito e senza i due consensi non si pubblica.
+    # Per le app vale il framework (test_ogni_app_ha_il_framework_definito).
     for addon in build.carica_addons():
-        assert re.fullmatch(r"\d+\.\d+\.\d+", str(addon.get("xeicore", ""))), f"{addon['id']}: xeicore mancante"
-        assert _versione(addon["xeicore"]) >= (1, 1, 1), "servono le licenze offline (XEICore 1.1.1 o successiva)"
+        if addon.get("tipo") != "app":
+            assert re.fullmatch(r"\d+\.\d+\.\d+", str(addon.get("xeicore", ""))), f"{addon['id']}: xeicore mancante"
+            assert _versione(addon["xeicore"]) >= (1, 1, 1), "servono le licenze offline (XEICore 1.1.1 o successiva)"
         for consenso in ("ok_coordinatore_xei", "ok_coordinatore_documentazione"):
             assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(addon.get(consenso, ""))), f"{addon['id']}: manca {consenso}"
+
+
+def test_ogni_app_ha_il_framework_definito():
+    # Le app (XEI App Framework) non usano XEICore: si dichiara la versione del framework (XeiFrameworkVersion).
+    for voce in build.carica_addons():
+        if voce.get("tipo") == "app":
+            assert re.fullmatch(r"\d+\.\d+\.\d+", str(voce.get("framework", ""))), f"{voce['id']}: framework mancante"
+            assert "xeicore" not in voce, f"{voce['id']}: un'app non ha xeicore"

@@ -68,3 +68,4 @@ condizioni_approvo: Pursuant to articles 1341 and 1342 of the Italian Civil Code
 condizioni_nota: 'In the form that opens you confirm your acceptance with your email address: your choice is recorded and you receive a PDF copy of the terms by email.'
 condizioni_annulla: Cancel
 condizioni_continua: Continue
+download_app_installazione: 'Windows program: extract the folder from the zip and start {programma}. Microsoft Edge WebView2 Runtime is required.'

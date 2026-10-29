@@ -28,6 +28,10 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   Si pubblica solo il pacchetto principale, identico a quello della Release dell'add-on (niente ricompilazioni).
 - **Quali add-on:** solo quelli con le licenze offline (XEICore 1.1.1 o successiva), con l'OK del Coordinatore XEI.
   Mai gli add-on di prova né quelli fatti per un singolo cliente.
+- **App** (XEI App Framework, programmi Windows come XEI.RateUpdater): in `addons.yml` `tipo: app` e `framework` (la
+  `XeiFrameworkVersion` di `Directory.Packages.props` alla versione del tag) al posto di `xeicore`; stessi consensi e
+  stessi controlli del pacchetto. Nella pagina download una nota spiega che si estrae la cartella e si avvia il
+  programma (serve Microsoft Edge WebView2 Runtime). `copia_release voce` con `--tipo app`.
 - **Licenza di prova:** lo zip è pubblico e senza codice. Il pulsante «Richiedi la prova gratuita» apre il modulo
   Microsoft Forms (`modulo_registrazione` in `site/config.yml`, link precompilato con `{addon}` e `{lingua}`); la Logic
   App e il servizio `xei-trial-service` inviano in automatico da license@xeisrl.com il codice di prova di 30 giorni.
@@ -66,7 +70,8 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
    consensi di **entrambi** i coordinatori, Coordinatore XEI (pacchetto e SHA-256) e Coordinatore Documentazione
    (testi e manuali), con le date in `ok_coordinatore_xei` e `ok_coordinatore_documentazione`. Senza, i test falliscono.
 2. `python -m strumenti.copia_release voce --origine xei-software/<repo> --tag v<versione> --file <Pacchetto>.zip
-   --id <id> --data <aaaa-mm-gg>`: scarica e controlla lo zip, stampa la voce per `site/addons.yml`.
+   --id <id> --data <aaaa-mm-gg>` (per un'app anche `--tipo app`): scarica e controlla lo zip, stampa la voce per
+   `site/addons.yml`.
 3. Aggiornare `site/addons.yml` e, se servono, testi e manuali in `site/content/`.
 4. `python -m pytest -q`, commit e push su `main`: il sito si aggiorna da solo.
 5. Il push su `main` di `site/addons.yml` avvia il workflow `release.yml`: per ogni voce senza Release pubblica

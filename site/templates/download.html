@@ -27,6 +27,7 @@
       <a class="pulsante" href="{{ link_prova(addon) }}" data-azione="prova" data-pacchetto="{{ addon.url_download }}">{{ t.download_scarica_gratis }}</a>
       <a class="pulsante secondario" href="{{ link_acquisto(addon) }}" data-azione="acquisto">{{ t.download_acquista }}</a>
     </p>
+    {% if addon.app %}<p class="nota">{{ t.download_app_installazione | replace("{programma}", addon.pacchetto ~ ".exe") }}</p>{% endif %}
     {% if addon.installazione %}
     {% set guida = url_base ~ "/" ~ lingua ~ "/manuali/" ~ addon.id ~ "/installazione" %}
     <p class="guida">

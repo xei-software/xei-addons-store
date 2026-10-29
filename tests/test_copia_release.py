@@ -114,3 +114,30 @@ def test_il_progetto_si_legge_dal_tag_anche_se_esiste_un_ramo_con_lo_stesso_nome
     monkeypatch.setattr(copia_release.subprocess, "run", finto_run)
     copia_release.leggi_csproj("xei-software/xei-itemgenerator", "v1.5.0", "XEI.ItemGenerator")
     assert chiamate[0][-1] == "repos/xei-software/xei-itemgenerator/contents/XEI.ItemGenerator.csproj?ref=refs/tags/v1.5.0"
+
+
+def test_versione_del_framework_delle_app():
+    from strumenti import copia_release
+    props = '<Project><PropertyGroup>\n    <XeiFrameworkVersion>0.7.0</XeiFrameworkVersion>\n</PropertyGroup></Project>'
+    assert copia_release.versione_framework(props) == "0.7.0"
+    with pytest.raises(SystemExit):
+        copia_release.versione_framework("<Project />")
+
+
+def test_per_un_app_si_controlla_il_framework_e_non_xeicore():
+    from strumenti import copia_release
+    voce = {"tag_pubblico": "rate-updater-v1.0.0", "tipo": "app", "framework": "0.7.0"}
+    copia_release.verifica_framework(voce, "0.7.0")
+    with pytest.raises(SystemExit):
+        copia_release.verifica_framework(voce, "0.7.1")
+
+
+def test_il_file_delle_versioni_dell_app_si_legge_dal_tag(monkeypatch):
+    import subprocess
+    from strumenti import copia_release
+    chiamate = []
+    monkeypatch.setattr(copia_release.subprocess, "run",
+                        lambda argomenti, **opzioni: chiamate.append(argomenti) or
+                        subprocess.CompletedProcess(argomenti, 0, stdout="<Project />", stderr=""))
+    copia_release.leggi_file_del_tag("xei-software/xei-rateupdater", "v1.0.0", "Directory.Packages.props")
+    assert chiamate[0][-1] == "repos/xei-software/xei-rateupdater/contents/Directory.Packages.props?ref=refs/tags/v1.0.0"

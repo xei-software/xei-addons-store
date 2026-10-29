@@ -68,3 +68,4 @@ condizioni_approvo: Ai sensi degli articoli 1341 e 1342 del Codice civile approv
 condizioni_nota: 'Nel modulo che si apre confermi l''accettazione con il tuo indirizzo email: la scelta viene registrata e ricevi per email una copia delle condizioni in PDF.'
 condizioni_annulla: Annulla
 condizioni_continua: Continua
+download_app_installazione: 'Programma per Windows: estrai la cartella dello zip e avvia {programma}. Serve Microsoft Edge WebView2 Runtime.'
