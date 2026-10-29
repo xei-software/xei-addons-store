@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" href="{{ url_base }}/static/img/icona-x.png">
   <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
 </head>
-<body>
+<body{% block attributi_body %}{% endblock %}>
   <header class="testata">
     <div class="contenitore testata-riga">
       <a class="marchio" href="{{ url_base }}/{{ lingua }}/"><img src="{{ url_base }}/static/img/logo-xei.png" alt="XEI" width="1544" height="780"> <span>Store</span></a>

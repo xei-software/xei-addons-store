@@ -102,8 +102,9 @@ code { font-size: 0.85rem; }
   display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center;
   margin: 28px 0; padding: 28px; border: 1px solid rgba(0, 159, 227, 0.35); border-radius: 20px;
   color: #e8eef3;
-  background: radial-gradient(120% 140% at 25% 110%, #00314f 0%, #001726 45%, #000a11 75%, #000203 100%);
-  box-shadow: 0 12px 32px rgba(0, 20, 40, 0.25);
+  background: radial-gradient(120% 140% at 25% 110%, rgba(0, 49, 79, 0.85) 0%, rgba(0, 23, 38, 0.85) 45%,
+              rgba(0, 10, 17, 0.9) 100%);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 @media (min-width: 760px) {
   .scheda.download { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); }
@@ -151,3 +152,22 @@ dialog::backdrop { background: rgba(0, 6, 10, 0.8); }
 .spunta input { margin-top: 5px; width: 18px; height: 18px; flex: none; accent-color: var(--primario); }
 .condizioni .pulsante { cursor: pointer; font: inherit; font-weight: 600; }
 .condizioni .pulsante:disabled { opacity: 0.45; cursor: not-allowed; }
+
+/* Pagina download su sfondo notte, come il logo XEI su fondo scuro (nero con alone blu #002036).
+   L'intestazione resta chiara; contenuto, piede e finestra delle condizioni usano i colori per fondo scuro. */
+body.pagina-scura {
+  background: #000203 radial-gradient(ellipse 90% 70% at 30% 30%, #002036 0%, #000c14 50%, #000203 85%) fixed;
+}
+.pagina-scura main, .pagina-scura .piede {
+  --testo: #e8eef3;
+  --testo-tenue: #9fb4c2;
+  --primario: #4cc3f5;
+  --primario-testo: #001726;
+  --bordo: #1d3445;
+  --avviso: #10303d;
+  color: var(--testo);
+}
+.pagina-scura .piede { border-top-color: #1d3445; }
+.pagina-scura .condizioni { background: #06131c; color: var(--testo); border-top-color: #009fe3; }
+.pagina-scura .condizioni .pulsante { background: #009fe3; border-color: #009fe3; color: #001726; }
+.pagina-scura .condizioni .pulsante.secondario { background: transparent; color: #ffffff; }

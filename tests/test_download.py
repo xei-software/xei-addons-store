@@ -151,3 +151,11 @@ def test_con_condizioni_approvate_i_pulsanti_chiedono_l_accettazione(tmp_path, m
         assert testo.count('type="checkbox"') == 2, lingua
         assert testi["condizioni_approvo"] in testo and "1341" in testi["condizioni_approvo"], lingua
         assert (uscita / lingua / "condizioni.html").exists(), lingua
+
+
+def test_la_pagina_download_ha_lo_sfondo_scuro_del_marchio(sito):
+    # Sfondo notte come quello del logo XEI; le altre pagine restano chiare.
+    for lingua in build.carica_config()["lingue"]:
+        assert '<body class="pagina-scura">' in (sito / lingua / "download.html").read_text(encoding="utf-8"), lingua
+        assert "pagina-scura" not in (sito / lingua / "index.html").read_text(encoding="utf-8"), lingua
+    assert ".pagina-scura" in (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
