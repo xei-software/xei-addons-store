@@ -74,6 +74,19 @@ def formatta_dimensione(byte):
     return f"{byte / (1024 * 1024):.1f} MB" if byte >= 1024 * 1024 else f"{byte / 1024:.0f} KB"
 
 
+def sezioni_richiedi_prova(html):
+    """Testo approvato della pagina richiedi-prova diviso nelle sue due sezioni (titoli ##): con e senza i dati dell'add-on.
+
+    {prodotto} diventa un segnaposto che riempie lo script della pagina; il paragrafo [Testo] diventa il pulsante del modulo.
+    """
+    html = re.sub(r"<!--.*?-->", "", togli_primo_titolo(html), flags=re.DOTALL)
+    _, con_dati, senza_dati = re.split(r"<h2[^>]*>.*?</h2>", html, maxsplit=2, flags=re.DOTALL)
+    con_dati = con_dati.replace("{prodotto}", '<span class="prova-prodotto"></span>')
+    con_dati = re.sub(r"<p>\[([^\]]+)\]</p>",
+                      r'<p class="azioni"><a class="pulsante" id="prova-vai" href="#">\1</a></p>', con_dati)
+    return con_dati, senza_dati
+
+
 def prova_dal_programma(addon):
     """Con XEICore 1.3.0 o successiva la prova è legata alla società: si chiede dal menu Licenza dell'add-on."""
     return tuple(int(parte) for parte in str(addon["xeicore"]).split(".")) >= (1, 3, 0)
@@ -261,7 +274,10 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
         privacy = leggi_contenuto(lingua, "pagine/privacy.md", config["lingua_predefinita"])
         pagina("testo.html", "privacy.html", contenuto=privacy)
         # aperta dal menu Licenza dell'add-on (XEICore 1.3.0): {addon} e {codice} li mette lo script della pagina
+        testo_prova = leggi_contenuto(lingua, "pagine/richiedi-prova.md", config["lingua_predefinita"])
         pagina("richiedi_prova.html", "richiedi-prova.html",
+               sezioni_prova=sezioni_richiedi_prova(testo_prova[1]) if testo_prova else None,
+               titolo_prova=testo_prova[0]["title"] if testo_prova else testi["richiedi_prova_titolo"],
                modello_prova=config["modulo_registrazione"].replace("{lingua}", quote(testi["nome_lingua"])),
                prodotti_prova=[addon["pacchetto"] for addon in addons])
 
