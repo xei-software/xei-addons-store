@@ -291,7 +291,7 @@ Envoi du relevé aux agents par e-mail
 Active le bouton **Envoyer aux agents** dans le Relevé des commissions : chaque agent ne reçoit que son propre
 relevé (pièce jointe HTML, lisible et imprimable dans n'importe quel navigateur) à l'adresse e-mail de l'employé
 de vente (ou du fournisseur lié). Il faut indiquer le serveur SMTP, le port, SSL/TLS, l'utilisateur et le mot de
-passe de la boîte et l'expéditeur ; exemple : `smtp.office365.com`, port 587, SSL oui, expéditeur
+passe de la boîte et l'expéditeur ; exemple : `smtp.azienda.it`, port 587, SSL oui, expéditeur
 `provvigioni@azienda.it`. Le mot de passe est enregistré chiffré.
 
 Tester l'envoi  

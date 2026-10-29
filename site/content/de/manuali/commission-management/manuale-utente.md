@@ -283,7 +283,7 @@ Auszug per E-Mail an die Vertreter senden
 Aktiviert die Schaltfläche **An Vertreter senden** im Provisionsauszug: Jeder Vertreter erhält nur seinen eigenen
 Auszug (HTML-Anhang, in jedem Browser zu öffnen und zu drucken) an die E-Mail-Adresse des Vertriebsmitarbeiters
 (oder des verknüpften Lieferanten). Anzugeben sind SMTP-Server, Port, SSL/TLS, Benutzer und Kennwort des Postfachs
-sowie der Absender; Beispiel: `smtp.office365.com`, Port 587, SSL ja, Absender `provvigioni@azienda.it`. Das
+sowie der Absender; Beispiel: `smtp.azienda.it`, Port 587, SSL ja, Absender `provvigioni@azienda.it`. Das
 Kennwort wird verschlüsselt gespeichert.
 
 Testversand  

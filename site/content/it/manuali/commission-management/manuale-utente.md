@@ -264,7 +264,7 @@ Invio dell'estratto agli agenti via email
 Attiva il pulsante **Invia agli agenti** nell'Estratto provvigioni: ogni agente riceve solo il proprio estratto
 (allegato HTML, apribile e stampabile da qualunque browser) all'indirizzo email dell'addetto alle vendite (o del
 fornitore collegato). Vanno indicati server SMTP, porta, SSL/TLS, utente e password della casella e il mittente;
-esempio: `smtp.office365.com`, porta 587, SSL sì, mittente `provvigioni@azienda.it`. La
+esempio: `smtp.azienda.it`, porta 587, SSL sì, mittente `provvigioni@azienda.it`. La
 password è salvata cifrata.
 
 Prova invio  
