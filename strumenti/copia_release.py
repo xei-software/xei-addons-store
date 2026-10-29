@@ -26,8 +26,12 @@ import yaml
 
 ELENCO_ADDONS = Path(__file__).resolve().parent.parent / "site" / "addons.yml"
 # File che non devono mai arrivare in un pacchetto pubblico.
-ESTENSIONI_VIETATE_NELLO_ZIP = (".xei", ".pdb", ".cs", ".csproj", ".sln", ".pfx", ".snk")
+ESTENSIONI_VIETATE_NELLO_ZIP = (".xei", ".pdb", ".cs", ".csproj", ".sln", ".pfx", ".snk", ".user", ".log")
 PAROLE_VIETATE_NELLO_ZIP = ("obfuscation-map",)
+# Dati locali delle app (XEI App Framework): collegamento SAP, segreti, utenti, sessioni, log. Un publish pulito ha
+# solo exe, dll, wwwroot, lang e appsettings.json.
+NOMI_VIETATI_NELLO_ZIP = ("appsettings.development.json", "impostazioni.json", "users.json")
+CARTELLE_VIETATE_NELLO_ZIP = ("logs", "chiavi", "sessions")
 
 
 def controlla_nome_file(nome_file):
@@ -40,9 +44,15 @@ def problemi_pacchetto(percorso_zip):
     """Elenco dei file vietati trovati nello zip (vuoto se il pacchetto è pulito)."""
     with zipfile.ZipFile(percorso_zip) as archivio:
         nomi = archivio.namelist()
-    return [nome for nome in nomi
-            if nome.lower().endswith(ESTENSIONI_VIETATE_NELLO_ZIP)
-            or any(parola in nome.lower() for parola in PAROLE_VIETATE_NELLO_ZIP)]
+    return [nome for nome in nomi if _vietato(nome.lower())]
+
+
+def _vietato(nome):
+    parti = nome.split("/")
+    return (nome.endswith(ESTENSIONI_VIETATE_NELLO_ZIP)
+            or any(parola in nome for parola in PAROLE_VIETATE_NELLO_ZIP)
+            or parti[-1] in NOMI_VIETATI_NELLO_ZIP
+            or any(cartella in CARTELLE_VIETATE_NELLO_ZIP for cartella in parti[:-1]))
 
 
 def impronta(percorso):
