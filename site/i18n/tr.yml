@@ -68,3 +68,4 @@ condizioni_approvo: İtalyan Medeni Kanunu'nun 1341 ve 1342. maddeleri uyarınca
 condizioni_nota: 'Açılan formda kabulünüzü e-posta adresinizle onaylarsınız: seçiminiz kaydedilir ve koşulların PDF kopyası size e-postayla gönderilir.'
 condizioni_annulla: İptal
 condizioni_continua: Devam
+download_app_installazione: 'Windows programı: zip içindeki klasörü çıkarın ve {programma} programını başlatın. Microsoft Edge WebView2 Runtime gereklidir.'

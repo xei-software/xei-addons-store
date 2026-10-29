@@ -68,3 +68,4 @@ condizioni_approvo: De conformidad con los artículos 1341 y 1342 del Código Ci
 condizioni_nota: 'En el formulario que se abre confirma la aceptación con su dirección de correo electrónico: su elección queda registrada y recibe por correo una copia en PDF de las condiciones.'
 condizioni_annulla: Cancelar
 condizioni_continua: Continuar
+download_app_installazione: 'Programa para Windows: extraiga la carpeta del zip e inicie {programma}. Se necesita Microsoft Edge WebView2 Runtime.'

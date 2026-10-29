@@ -200,6 +200,8 @@ def _prepara_addon(addon, lingua, config, url_base, anteprime):
         "tradotto": tradotto,
         "manuali": manuali,
         "installazione": next((m for m in manuali if m["nome"] == "installazione"), None),
+        # app (XEI App Framework): programma Windows da estrarre e avviare, non un pacchetto per l'Extension Manager
+        "app": addon.get("tipo") == "app",
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
                          f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),

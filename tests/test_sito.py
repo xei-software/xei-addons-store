@@ -236,3 +236,20 @@ def test_la_home_non_parla_di_add_on_ne_di_sap(sito):
         intestazione, corpo = build.leggi_markdown(percorso)
         testo = f"{intestazione['title']} {intestazione['description']} {corpo}"
         assert not re.search(r"add-?on|eklenti|SAP|Extension Manager", testo, re.IGNORECASE), lingua
+
+
+def test_per_un_app_la_pagina_download_spiega_come_si_avvia(tmp_path, monkeypatch):
+    # Un'app è un programma Windows da copiare e avviare, non un pacchetto per l'Extension Manager.
+    addons = [dict(voce) for voce in build.carica_addons()]
+    app = addons[0]
+    app["tipo"], app["framework"] = "app", "0.7.0"
+    del app["xeicore"]
+    monkeypatch.setattr(build, "carica_addons", lambda: addons)
+    build.genera_sito(tmp_path)
+    for lingua in build.carica_config()["lingue"]:
+        testi = build.carica_testi(lingua)
+        testo = html.unescape((tmp_path / lingua / "download.html").read_text(encoding="utf-8"))
+        nota = testi["download_app_installazione"].replace("{programma}", app["pacchetto"] + ".exe")
+        assert testo.count(nota) == 1, lingua
+        # la prova dell'app si chiede dal sito, come per gli add-on
+        assert testo.count('data-azione="prova"') == len(addons)

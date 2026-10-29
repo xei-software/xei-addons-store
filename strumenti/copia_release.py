@@ -90,14 +90,43 @@ def verifica_xeicore(voce, versione_nel_progetto):
                          f"{voce.get('xeicore')} in site/addons.yml: pacchetto NON pubblicato")
 
 
-def leggi_csproj(origine, tag, pacchetto):
-    """Progetto dell'add-on (<pacchetto>.csproj) alla versione del tag, letto con l'API REST.
+def leggi_file_del_tag(origine, tag, percorso):
+    """Un file del repository <origine> alla versione del tag, letto con l'API REST.
 
     Il tag si indica come refs/tags/<tag>: se esiste anche un ramo con lo stesso nome, GitHub leggerebbe il ramo.
     """
     return subprocess.run(
-        ["gh", "api", "-H", "Accept: application/vnd.github.raw", f"repos/{origine}/contents/{pacchetto}.csproj?ref=refs/tags/{tag}"],
+        ["gh", "api", "-H", "Accept: application/vnd.github.raw", f"repos/{origine}/contents/{percorso}?ref=refs/tags/{tag}"],
         check=True, capture_output=True, text=True).stdout
+
+
+def leggi_csproj(origine, tag, pacchetto):
+    """Progetto dell'add-on (<pacchetto>.csproj) alla versione del tag."""
+    return leggi_file_del_tag(origine, tag, f"{pacchetto}.csproj")
+
+
+def versione_framework(testo_props):
+    """Versione dell'XEI App Framework dichiarata da un'app (XeiFrameworkVersion in Directory.Packages.props)."""
+    trovato = re.search(r"<XeiFrameworkVersion>\s*([^<\s]+)\s*</XeiFrameworkVersion>", testo_props)
+    if not trovato:
+        raise SystemExit("XeiFrameworkVersion non dichiarato nell'app: pacchetto NON pubblicato")
+    return trovato.group(1)
+
+
+def verifica_framework(voce, versione_nel_progetto):
+    """Come per XEICore: la versione del framework dell'app dev'essere definita e coincidere con site/addons.yml."""
+    if str(voce.get("framework")) != versione_nel_progetto:
+        raise SystemExit(f"{voce['tag_pubblico']}: framework {versione_nel_progetto} nell'app, "
+                         f"{voce.get('framework')} in site/addons.yml: pacchetto NON pubblicato")
+
+
+def verifica_dipendenza(voce):
+    """XEICore per gli add-on, XEI App Framework per le app: letto dal repository alla versione del tag."""
+    if voce.get("tipo") == "app":
+        props = leggi_file_del_tag(voce["origine"], voce["tag_origine"], "Directory.Packages.props")
+        verifica_framework(voce, versione_framework(props))
+    else:
+        verifica_xeicore(voce, versione_xeicore(leggi_csproj(voce["origine"], voce["tag_origine"], voce["pacchetto"])))
 
 
 def tag_pubblici(elenco=ELENCO_ADDONS):
@@ -137,14 +166,19 @@ def comando_voce(argomenti):
         raise SystemExit(f"Pacchetto NON pubblicabile, contiene file vietati: {problemi}")
     voce = voce_addons(percorso, argomenti.id, Path(argomenti.file).stem, argomenti.tag.lstrip("v"),
                        argomenti.data, argomenti.origine, argomenti.tag)
-    voce["xeicore"] = versione_xeicore(leggi_csproj(argomenti.origine, argomenti.tag, voce["pacchetto"]))
+    if argomenti.tipo == "app":
+        voce["tipo"] = "app"
+        voce["framework"] = versione_framework(
+            leggi_file_del_tag(argomenti.origine, argomenti.tag, "Directory.Packages.props"))
+    else:
+        voce["xeicore"] = versione_xeicore(leggi_csproj(argomenti.origine, argomenti.tag, voce["pacchetto"]))
     print("Voce per site/addons.yml (aggiungere lingue_programma e le date dei due consensi):")
     print(yaml.safe_dump([voce], sort_keys=False, allow_unicode=True))
 
 
 def comando_prepara(argomenti):
     voce = cerca_voce(argomenti.tag_pubblico)
-    verifica_xeicore(voce, versione_xeicore(leggi_csproj(voce["origine"], voce["tag_origine"], voce["pacchetto"])))
+    verifica_dipendenza(voce)
     percorso = scarica_pacchetto(voce["origine"], voce["tag_origine"], voce["file"], argomenti.out)
     verifica_pacchetto(percorso, voce)
     print(f"{percorso} verificato ({voce['sha256']})")
@@ -161,6 +195,8 @@ def main():
     voce.add_argument("--id", required=True, help="identificativo sul sito, es. item-generator")
     voce.add_argument("--data", required=True, help="data di rilascio, es. 2026-10-20")
     voce.add_argument("--out", default="pacchetti", help="cartella dove scaricare il pacchetto")
+    voce.add_argument("--tipo", choices=["add-on", "app"], default="add-on",
+                      help="app: programma dell'XEI App Framework (si controlla XeiFrameworkVersion, non XEICore)")
     voce.set_defaults(esegui=comando_voce)
 
     prepara = comandi.add_parser("prepara", help="scarica e verifica il pacchetto di un tag pubblico")
