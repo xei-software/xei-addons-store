@@ -4,29 +4,26 @@ menu_home: Home
 menu_download: Downloads
 menu_manuali: Manuals
 menu_privacy: Privacy
-home_titolo: XEI add-ons for SAP Business One
-home_intro: Extensions developed by XEI for SAP Business One. Every add-on can be tried free of charge for {giorni} days.
-home_addon_titolo: Add-ons
+home_titolo: XEI software solutions
+home_intro: Ready-to-use software solutions developed by XEI. Every application can be tried free of charge for {giorni} days.
+home_addon_titolo: Software solutions
 scheda_scopri: Learn more
 addon_versione: Version
 addon_rilascio: Released on
 addon_lingue_programma: Program languages
 addon_manuale: Manual
 addon_note: Release notes
-addon_scarica: Download and try
+addon_scarica: Free download
 download_titolo: Downloads
-download_intro: Download the add-ons and try them free of charge for {giorni} days.
+download_intro: Download the applications and try them free of charge for {giorni} days.
 download_come_titolo: How the trial works
-download_passo1: Request the trial using the form.
-download_passo2: You will receive by email the package link and a trial code valid for {giorni} days.
-download_passo3: Install the package with the SAP Business One Extension Manager.
-download_passo4: Open the add-on's Licenza (License) menu and paste the code.
-download_richiedi_prova: Request the free trial
-download_guida_installazione: "Installation guide"
-download_diretto: Download the package
-download_controllo: SHA-256 checksum
+download_passo1: Click «Free download», accept the terms of use and fill in the form.
+download_passo2: You will receive by email a trial code valid for {giorni} days and a copy of the accepted terms.
+download_passo3: Install the program following the installation guide.
+download_passo4: Enter the trial code in the program, as explained in the guide.
+download_guida_installazione: Installation guide
 download_dimensione: Size
-download_nota_licenza: The add-on does not start without a valid license code. To buy a license, write to
+download_nota_licenza: The application does not start without a valid license code. To buy a license, click «Buy» or write to
 email_oggetto_prova: Trial request
 email_corpo_prova: |
   Hello,
@@ -36,15 +33,38 @@ email_corpo_prova: |
   VAT number:
   First and last name:
   Country:
-  SAP Business One version:
-  Database (SQL Server or SAP HANA):
 
   Thank you
 manuali_titolo: Manuals
-manuali_intro: User and installation manuals for the add-ons.
+manuali_intro: User and installation manuals for the applications.
 manuali_in_preparazione: Manual in preparation.
-manuale_pdf: "Download the PDF"
+manuale_pdf: Download the PDF
 privacy_titolo: Privacy policy
 privacy_in_preparazione: The privacy policy is being prepared.
 avviso_traduzione: This text is not yet available in your language and is shown in Italian.
 piede_contatti: Contact
+download_scarica_gratis: Free download
+download_acquista: Buy
+email_oggetto_acquisto: Purchase request
+email_corpo_acquisto: |
+  Hello,
+  I would like to buy a license for {addon}.
+
+  Company:
+  VAT number:
+  First and last name:
+  Country:
+
+  Thank you
+anteprima_apri: View screenshots
+anteprima_alt: Screenshot of
+anteprima_precedente: Previous screenshot
+anteprima_successiva: Next screenshot
+chiudi: Close
+condizioni_sintesi: 'The software may contain errors and cause malfunctions, data loss or other damage: it must first be tested in a test environment, with a copy of the data. To the extent permitted by law, XEI S.r.l. is not liable for damage arising from its use.'
+condizioni_leggi: Read the full terms of use
+condizioni_accetto: I have read and accept the terms of use and confirm that I will test the software in a test environment before using it with real data.
+condizioni_approvo: Pursuant to articles 1341 and 1342 of the Italian Civil Code, I specifically approve articles 4 (software provided as is and testing in a test environment), 5 (limitation of liability), 6 (indemnification) and 8 (place of jurisdiction) of the terms of use.
+condizioni_nota: 'In the form that opens you confirm your acceptance with your email address: your choice is recorded and you receive a PDF copy of the terms by email.'
+condizioni_annulla: Cancel
+condizioni_continua: Continue

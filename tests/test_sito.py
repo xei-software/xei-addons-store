@@ -61,14 +61,13 @@ def test_i_collegamenti_interni_portano_a_file_esistenti(sito):
     assert not rotti, rotti
 
 
-def test_la_pagina_download_mostra_pacchetto_controllo_e_registrazione(sito):
+def test_la_pagina_download_mostra_pacchetto_versione_e_registrazione(sito):
     config = build.carica_config()
     testo = (sito / "it" / "download.html").read_text(encoding="utf-8")
     for addon in build.carica_addons():
         url = (f"https://github.com/{config['repository']}/releases/download/"
                f"{addon['tag_pubblico']}/{addon['file']}")
         assert url in testo
-        assert addon["sha256"] in testo
         assert addon["versione"] in testo
     assert config["email_licenze"] in testo
 
@@ -224,6 +223,7 @@ def test_il_modulo_vero_si_apre_con_add_on_e_lingua_della_pagina(sito):
             assert parametri[domanda_addon] == [f'"{addon["pacchetto"]}"']
             assert parametri[domanda_lingua] == [f'"{nome}"']
         testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
-        assert "forms.cloud.microsoft" in testo and "mailto:license@xeisrl.com?subject" not in testo
+        # la prova passa dal modulo, non dall'email (l'email resta solo per l'acquisto, finché il modulo non lo gestisce)
+        assert re.search(r'href="https://forms\.cloud\.microsoft[^"]*" data-azione="prova"', testo), lingua
     assert "%22Fran%C3%A7ais%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("fr"), config)
     assert "%22T%C3%BCrk%C3%A7e%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("tr"), config)

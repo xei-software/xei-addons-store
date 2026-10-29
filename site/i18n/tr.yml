@@ -4,47 +4,67 @@ menu_home: Ana sayfa
 menu_download: İndirmeler
 menu_manuali: Kılavuzlar
 menu_privacy: Gizlilik
-home_titolo: SAP Business One için XEI eklentileri
-home_intro: XEI tarafından SAP Business One için geliştirilen eklentiler. Her eklenti {giorni} gün boyunca ücretsiz denenebilir.
-home_addon_titolo: Eklentiler
+home_titolo: XEI yazılım çözümleri
+home_intro: XEI tarafından geliştirilen, kullanıma hazır yazılım çözümleri. Her uygulama {giorni} gün boyunca ücretsiz denenebilir.
+home_addon_titolo: Yazılım çözümleri
 scheda_scopri: Daha fazla bilgi
 addon_versione: Sürüm
 addon_rilascio: Yayın tarihi
 addon_lingue_programma: Program dilleri
 addon_manuale: Kılavuz
 addon_note: Sürüm notları
-addon_scarica: İndir ve dene
+addon_scarica: Ücretsiz indir
 download_titolo: İndirmeler
-download_intro: Eklentileri indirin ve {giorni} gün boyunca ücretsiz deneyin.
+download_intro: Uygulamaları indirin ve {giorni} gün boyunca ücretsiz deneyin.
 download_come_titolo: Deneme nasıl çalışır
-download_passo1: Denemeyi form ile talep edin.
-download_passo2: Paket bağlantısını ve {giorni} gün geçerli deneme kodunu e-posta ile alırsınız.
-download_passo3: Paketi SAP Business One Extension Manager ile kurun.
-download_passo4: Eklentinin Licenza (Lisans) menüsünü açın ve kodu yapıştırın.
-download_richiedi_prova: Ücretsiz deneme talep et
-download_guida_installazione: "Kurulum kılavuzu"
-download_diretto: Paketi indir
-download_controllo: SHA-256 sağlama toplamı
+download_passo1: «Ücretsiz indir» düğmesine basın, kullanım koşullarını kabul edin ve formu doldurun.
+download_passo2: E-posta ile {giorni} gün geçerli bir deneme kodu ve kabul edilen koşulların bir kopyasını alırsınız.
+download_passo3: Programı kurulum kılavuzuna göre kurun.
+download_passo4: Deneme kodunu, kılavuzda açıklandığı gibi programa girin.
+download_guida_installazione: Kurulum kılavuzu
 download_dimensione: Boyut
-download_nota_licenza: Eklenti geçerli bir lisans kodu olmadan çalışmaz. Lisans satın almak için yazın
+download_nota_licenza: 'Geçerli bir lisans kodu olmadan uygulama başlamaz. Lisans satın almak için «Satın al» düğmesine basın veya şu adrese yazın:'
 email_oggetto_prova: Deneme talebi
 email_corpo_prova: |
   Merhaba,
-  {addon} eklentisini {giorni} gün boyunca denemek istiyorum.
+  {addon} uygulamasını {giorni} gün denemek istiyorum.
 
   Şirket:
   Vergi numarası:
-  Ad ve soyad:
+  Ad soyad:
   Ülke:
-  SAP Business One sürümü:
-  Veritabanı (SQL Server veya SAP HANA):
 
   Teşekkürler
 manuali_titolo: Kılavuzlar
-manuali_intro: Eklentilerin kullanım ve kurulum kılavuzları.
+manuali_intro: Uygulamaların kullanım ve kurulum kılavuzları.
 manuali_in_preparazione: Kılavuz hazırlanıyor.
-manuale_pdf: "PDF'yi indir"
+manuale_pdf: PDF'yi indir
 privacy_titolo: Gizlilik politikası
 privacy_in_preparazione: Gizlilik politikası hazırlanıyor.
 avviso_traduzione: Bu metin henüz sizin dilinizde mevcut değil ve İtalyanca gösteriliyor.
 piede_contatti: İletişim
+download_scarica_gratis: Ücretsiz indir
+download_acquista: Satın al
+email_oggetto_acquisto: Satın alma talebi
+email_corpo_acquisto: |
+  Merhaba,
+  {addon} için lisans satın almak istiyorum.
+
+  Şirket:
+  Vergi numarası:
+  Ad soyad:
+  Ülke:
+
+  Teşekkürler
+anteprima_apri: Ekran görüntülerini gör
+anteprima_alt: 'Ekran görüntüsü:'
+anteprima_precedente: Önceki ekran görüntüsü
+anteprima_successiva: Sonraki ekran görüntüsü
+chiudi: Kapat
+condizioni_sintesi: 'Yazılım hatalar içerebilir ve arızalara, veri kaybına veya başka zararlara yol açabilir: önce verilerin bir kopyasıyla bir test ortamında denenmelidir. Yasanın izin verdiği ölçüde XEI S.r.l., kullanımından doğan zararlardan sorumlu değildir.'
+condizioni_leggi: Kullanım koşullarının tamamını okuyun
+condizioni_accetto: Kullanım koşullarını okudum ve kabul ediyorum; yazılımı gerçek verilerle kullanmadan önce bir test ortamında deneyeceğimi onaylıyorum.
+condizioni_approvo: İtalyan Medeni Kanunu'nun 1341 ve 1342. maddeleri uyarınca, kullanım koşullarının 4. (yazılımın olduğu gibi sağlanması ve test ortamında deneme), 5. (sorumluluğun sınırlandırılması), 6. (tazmin) ve 8. (yetkili mahkeme) maddelerini özellikle onaylıyorum.
+condizioni_nota: 'Açılan formda kabulünüzü e-posta adresinizle onaylarsınız: seçiminiz kaydedilir ve koşulların PDF kopyası size e-postayla gönderilir.'
+condizioni_annulla: İptal
+condizioni_continua: Devam

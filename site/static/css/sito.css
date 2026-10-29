@@ -95,3 +95,59 @@ code { font-size: 0.85rem; }
 .scelta-lingua { text-align: center; }
 .scelta-lingua .elenco { list-style: none; padding: 0; }
 .testo thead th:empty { padding: 0; border: none; }
+
+/* Pannello di download: sfondo notte del marchio XEI (logo su fondo scuro), bordi arrotondati, azzurro XEI.
+   Le schermate di anteprima stanno a destra, senza cornice; un clic apre la galleria (static/js/sito.js). */
+.scheda.download {
+  display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center;
+  margin: 28px 0; padding: 28px; border: 1px solid rgba(0, 159, 227, 0.35); border-radius: 20px;
+  color: #e8eef3;
+  background: radial-gradient(120% 140% at 25% 110%, #00314f 0%, #001726 45%, #000a11 75%, #000203 100%);
+  box-shadow: 0 12px 32px rgba(0, 20, 40, 0.25);
+}
+@media (min-width: 760px) {
+  .scheda.download { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); }
+}
+.scheda.download h2 { color: #ffffff; font-size: 1.4rem; line-height: 1.3; }
+.scheda.download .versione { color: #9fb4c2; }
+.scheda.download .dati dt { color: #8fa3b0; }
+.scheda.download a { color: #4cc3f5; }
+.scheda.download .pulsante {
+  border-radius: 999px; padding: 11px 24px; color: #001726; background: #009fe3; border-color: #009fe3;
+  transition: background-color 0.15s, color 0.15s;
+}
+.scheda.download .pulsante:hover { background: #33b5ea; border-color: #33b5ea; }
+.scheda.download .pulsante.secondario { background: transparent; color: #ffffff; border-color: #009fe3; }
+.scheda.download .pulsante.secondario:hover { background: rgba(0, 159, 227, 0.18); }
+.scheda.download .guida { margin-bottom: 0; }
+
+.anteprima { display: block; position: relative; text-decoration: none; cursor: zoom-in; }
+.anteprima img { display: block; width: 100%; height: auto; max-height: 260px; object-fit: cover; object-position: top left;
+  border-radius: 8px; transition: transform 0.2s; }
+.anteprima:hover img { transform: scale(1.02); }
+.scheda.download .anteprima-etichetta {
+  display: inline-block; margin-top: 10px; color: #4cc3f5; font-size: 0.9rem;
+}
+
+/* Finestre (galleria e condizioni d'uso) */
+dialog { border: none; border-radius: 16px; padding: 0; color: var(--testo); background: var(--sfondo); }
+dialog::backdrop { background: rgba(0, 6, 10, 0.8); }
+.galleria { max-width: 96vw; max-height: 96vh; background: #000a11; color: #e8eef3; padding: 48px 56px 16px; }
+.galleria img { display: block; max-width: 100%; max-height: 80vh; margin: 0 auto; border-radius: 6px; }
+.galleria button {
+  position: absolute; border: none; background: transparent; color: #ffffff; font-size: 2.2rem; line-height: 1;
+  cursor: pointer; padding: 8px 12px;
+}
+.galleria button:hover { color: #009fe3; }
+.galleria-chiudi { top: 4px; right: 8px; }
+.galleria-precedente { left: 8px; top: 50%; transform: translateY(-50%); }
+.galleria-successiva { right: 8px; top: 50%; transform: translateY(-50%); }
+.galleria-conteggio { text-align: center; margin: 10px 0 0; color: #9fb4c2; font-size: 0.9rem; }
+
+.condizioni { max-width: 640px; width: calc(100% - 32px); border-top: 4px solid var(--azzurro); }
+.condizioni form { padding: 24px 28px; }
+.condizioni h2 { margin-top: 0; }
+.spunta { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0; cursor: pointer; }
+.spunta input { margin-top: 5px; width: 18px; height: 18px; flex: none; accent-color: var(--primario); }
+.condizioni .pulsante { cursor: pointer; font: inherit; font-weight: 600; }
+.condizioni .pulsante:disabled { opacity: 0.45; cursor: not-allowed; }

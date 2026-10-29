@@ -14,25 +14,61 @@
 </section>
 {% for addon in addons %}
 <article class="scheda download" id="{{ addon.id }}">
-  <h2>{{ addon.titolo }} <span class="versione">{{ addon.versione }}</span></h2>
-  <p>{{ addon.sommario }}</p>
-  <dl class="dati">
-    <dt>{{ t.addon_rilascio }}</dt><dd>{{ addon.data_rilascio }}</dd>
-    <dt>{{ t.download_dimensione }}</dt><dd>{{ addon.file }} · {{ addon.dimensione_leggibile }}</dd>
-    <dt>{{ t.download_controllo }}</dt><dd><code>{{ addon.sha256 }}</code></dd>
-  </dl>
-  <p class="azioni">
-    <a class="pulsante" href="{{ link_prova(addon) }}">{{ t.download_richiedi_prova }}</a>
-    <a class="pulsante secondario" href="{{ addon.url_download }}">{{ t.download_diretto }}</a>
-  </p>
-  {% if addon.installazione %}
-  {% set guida = url_base ~ "/" ~ lingua ~ "/manuali/" ~ addon.id ~ "/installazione" %}
-  <p class="guida">
-    <a href="{{ guida }}.html">{{ t.download_guida_installazione }}</a>
-    {% if addon.installazione.pdf %} · <a href="{{ guida }}.pdf">{{ t.manuale_pdf }}</a>{% endif %}
-  </p>
+  <div class="download-testo">
+    <h2>{{ addon.titolo }} <span class="versione">{{ addon.versione }}</span></h2>
+    <p>{{ addon.sommario }}</p>
+    <dl class="dati">
+      <dt>{{ t.addon_rilascio }}</dt><dd>{{ addon.data_rilascio }}</dd>
+      <dt>{{ t.download_dimensione }}</dt><dd>{{ addon.file }} · {{ addon.dimensione_leggibile }}</dd>
+    </dl>
+    <p class="azioni">
+      {# Senza JavaScript i pulsanti aprono direttamente il modulo (o l'email); con JavaScript prima si accettano le
+         condizioni d'uso, poi "Scarica gratis" apre il modulo e scarica il pacchetto (sito.js). #}
+      <a class="pulsante" href="{{ link_prova(addon) }}" data-azione="prova" data-pacchetto="{{ addon.url_download }}">{{ t.download_scarica_gratis }}</a>
+      <a class="pulsante secondario" href="{{ link_acquisto(addon) }}" data-azione="acquisto">{{ t.download_acquista }}</a>
+    </p>
+    {% if addon.installazione %}
+    {% set guida = url_base ~ "/" ~ lingua ~ "/manuali/" ~ addon.id ~ "/installazione" %}
+    <p class="guida">
+      <a href="{{ guida }}.html">{{ t.download_guida_installazione }}</a>
+      {% if addon.installazione.pdf %} · <a href="{{ guida }}.pdf">{{ t.manuale_pdf }}</a>{% endif %}
+    </p>
+    {% endif %}
+  </div>
+  {% if addon.anteprime %}
+  <a class="anteprima" href="{{ addon.anteprime[0] }}" data-immagini="{{ addon.anteprime | join(' ') }}">
+    <img src="{{ addon.anteprime[0] }}" alt="{{ t.anteprima_alt }} {{ addon.titolo }}" loading="lazy">
+    <span class="anteprima-etichetta">{{ t.anteprima_apri }} ({{ addon.anteprime | length }})</span>
+  </a>
   {% endif %}
 </article>
 {% endfor %}
 <p class="nota">{{ t.download_nota_licenza }} <a href="mailto:{{ config.email_licenze }}">{{ config.email_licenze }}</a>.</p>
+
+<dialog class="galleria" aria-label="{{ t.anteprima_apri }}">
+  <button type="button" class="galleria-chiudi" aria-label="{{ t.chiudi }}">×</button>
+  <button type="button" class="galleria-precedente" aria-label="{{ t.anteprima_precedente }}">‹</button>
+  <img src="data:," alt="">
+  <button type="button" class="galleria-successiva" aria-label="{{ t.anteprima_successiva }}">›</button>
+  <p class="galleria-conteggio"></p>
+</dialog>
+
+{% if condizioni %}
+{% set intestazione_condizioni, html_condizioni, condizioni_tradotte = condizioni %}
+<dialog class="condizioni" aria-labelledby="condizioni-titolo">
+  <form method="dialog">
+    <h2 id="condizioni-titolo">{{ intestazione_condizioni.title }}</h2>
+    <p>{{ t.condizioni_sintesi }}</p>
+    <p><a href="{{ url_base }}/{{ lingua }}/condizioni.html" target="_blank" rel="noopener">{{ t.condizioni_leggi }}</a></p>
+    <label class="spunta"><input type="checkbox" name="accetto"> <span>{{ t.condizioni_accetto }}</span></label>
+    <label class="spunta"><input type="checkbox" name="approvo"> <span>{{ t.condizioni_approvo }}</span></label>
+    <p class="nota">{{ t.condizioni_nota }}</p>
+    <p class="azioni">
+      <button type="button" class="pulsante secondario" value="annulla">{{ t.condizioni_annulla }}</button>
+      <button type="button" class="pulsante" value="continua" disabled>{{ t.condizioni_continua }}</button>
+    </p>
+  </form>
+</dialog>
+{% endif %}
+<script src="{{ url_base }}/static/js/sito.js" defer></script>
 {% endblock %}

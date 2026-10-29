@@ -1,0 +1,10 @@
+# Schermate di anteprima di ogni applicazione nella pagina download (da 1 a 6), in ordine: la prima si vede nel
+# pannello, le altre nella galleria. Solo immagini già importate con i manuali da xei-model-docs e controllate una per
+# una (site/content/_img/<cartella>/).
+item-generator:
+  cartella: itemgenerator
+  immagini: [08_genera.png, 02_configurazione.png, 03_varianti.png, 15_distinta.png, 22_excel.png]
+
+commission-management:
+  cartella: commissionmanagement
+  immagini: [liquidazione.png, regole.png, scaglioni.png, estratto_stampa.png, cfg.png]

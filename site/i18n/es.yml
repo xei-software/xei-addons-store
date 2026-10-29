@@ -4,47 +4,67 @@ menu_home: Inicio
 menu_download: Descargas
 menu_manuali: Manuales
 menu_privacy: Privacidad
-home_titolo: Add-ons de XEI para SAP Business One
-home_intro: Extensiones desarrolladas por XEI para SAP Business One. Cada add-on se puede probar gratis durante {giorni} días.
-home_addon_titolo: Los add-ons
+home_titolo: Soluciones de software XEI
+home_intro: Soluciones de software listas para usar desarrolladas por XEI. Cada aplicación se puede probar gratis durante {giorni} días.
+home_addon_titolo: Las soluciones de software
 scheda_scopri: Más información
 addon_versione: Versión
 addon_rilascio: Publicado el
 addon_lingue_programma: Idiomas del programa
 addon_manuale: Manual
 addon_note: Notas de la versión
-addon_scarica: Descargar y probar
+addon_scarica: Descargar gratis
 download_titolo: Descargas
-download_intro: Descarga los add-ons y pruébalos gratis durante {giorni} días.
+download_intro: Descargue las aplicaciones y pruébelas gratis durante {giorni} días.
 download_come_titolo: Cómo funciona la prueba
-download_passo1: Solicita la prueba con el formulario.
-download_passo2: Recibirás por correo electrónico el enlace al paquete y un código de prueba válido {giorni} días.
-download_passo3: Instala el paquete con el Extension Manager de SAP Business One.
-download_passo4: Abre el menú Licenza (Licencia) del add-on y pega el código.
-download_richiedi_prova: Solicitar la prueba gratuita
-download_guida_installazione: "Guía de instalación"
-download_diretto: Descargar el paquete
-download_controllo: Suma de control SHA-256
+download_passo1: Pulse «Descargar gratis», acepte las condiciones de uso y rellene el formulario.
+download_passo2: Recibirá por correo electrónico un código de prueba válido {giorni} días y una copia de las condiciones aceptadas.
+download_passo3: Instale el programa siguiendo la guía de instalación.
+download_passo4: Introduzca el código de prueba en el programa, como se explica en la guía.
+download_guida_installazione: Guía de instalación
 download_dimensione: Tamaño
-download_nota_licenza: El add-on no se inicia sin un código de licencia válido. Para comprar una licencia, escribe a
+download_nota_licenza: La aplicación no se inicia sin un código de licencia válido. Para comprar una licencia, pulse «Comprar» o escriba a
 email_oggetto_prova: Solicitud de prueba
 email_corpo_prova: |
-  Hola,
+  Buenos días:
   me gustaría probar {addon} durante {giorni} días.
 
   Empresa:
   NIF/CIF:
   Nombre y apellidos:
   País:
-  Versión de SAP Business One:
-  Base de datos (SQL Server o SAP HANA):
 
   Gracias
 manuali_titolo: Manuales
-manuali_intro: Manuales de uso e instalación de los add-ons.
+manuali_intro: Manuales de uso e instalación de las aplicaciones.
 manuali_in_preparazione: Manual en preparación.
-manuale_pdf: "Descargar el PDF"
+manuale_pdf: Descargar el PDF
 privacy_titolo: Política de privacidad
 privacy_in_preparazione: La política de privacidad está en preparación.
 avviso_traduzione: Este texto aún no está disponible en tu idioma y se muestra en italiano.
 piede_contatti: Contacto
+download_scarica_gratis: Descargar gratis
+download_acquista: Comprar
+email_oggetto_acquisto: Solicitud de compra
+email_corpo_acquisto: |
+  Buenos días:
+  me gustaría comprar una licencia de {addon}.
+
+  Empresa:
+  NIF/CIF:
+  Nombre y apellidos:
+  País:
+
+  Gracias
+anteprima_apri: Ver capturas de pantalla
+anteprima_alt: Captura de pantalla de
+anteprima_precedente: Captura anterior
+anteprima_successiva: Captura siguiente
+chiudi: Cerrar
+condizioni_sintesi: 'El software puede contener errores y causar fallos, pérdidas de datos u otros daños: debe probarse primero en un entorno de pruebas, con una copia de los datos. En la medida permitida por la ley, XEI S.r.l. no responde de los daños derivados de su uso.'
+condizioni_leggi: Leer las condiciones de uso completas
+condizioni_accetto: He leído y acepto las condiciones de uso y confirmo que probaré el software en un entorno de pruebas antes de usarlo con datos reales.
+condizioni_approvo: De conformidad con los artículos 1341 y 1342 del Código Civil italiano, apruebo específicamente los artículos 4 (software suministrado tal cual y prueba en un entorno de pruebas), 5 (limitación de responsabilidad), 6 (indemnidad) y 8 (fuero competente) de las condiciones de uso.
+condizioni_nota: 'En el formulario que se abre confirma la aceptación con su dirección de correo electrónico: su elección queda registrada y recibe por correo una copia en PDF de las condiciones.'
+condizioni_annulla: Cancelar
+condizioni_continua: Continuar

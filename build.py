@@ -74,23 +74,47 @@ def formatta_dimensione(byte):
     return f"{byte / (1024 * 1024):.1f} MB" if byte >= 1024 * 1024 else f"{byte / 1024:.0f} KB"
 
 
-def link_richiesta_prova(addon, testi, config):
-    """Dove porta il pulsante "Richiedi la prova": il modulo di registrazione o, finché manca, un'email.
+def _link_modulo(addon, testi, config, richiesta):
+    """Link precompilato del modulo di registrazione: {addon}, {lingua} e {richiesta} diventano le scelte del modulo
+    (nome del pacchetto, nome della lingua della pagina, prova o acquisto), così il modulo si apre già compilato."""
+    return (config["modulo_registrazione"]
+            .replace("{addon}", quote(addon.get("pacchetto", "")))
+            .replace("{lingua}", quote(testi["nome_lingua"]))
+            .replace("{richiesta}", quote(richiesta)))
 
-    Il link del modulo può contenere {addon} e {lingua}: diventano il nome del pacchetto e il nome della lingua della
-    pagina (come le scelte delle domande «Add-on» e «Lingua per le email»), così il modulo si apre già compilato.
-    """
-    if config["modulo_registrazione"]:
-        return (config["modulo_registrazione"]
-                .replace("{addon}", quote(addon.get("pacchetto", "")))
-                .replace("{lingua}", quote(testi["nome_lingua"])))
-    oggetto = quote(f"{testi['email_oggetto_prova']} - {addon['titolo']}")
+
+def _link_email(addon, testi, config, chiave):
+    """Email a email_licenze con oggetto e testo già pronti (chiave: "prova" o "acquisto")."""
+    oggetto = quote(f"{testi['email_oggetto_' + chiave]} - {addon['titolo']}")
     # testo già pronto con i dati da compilare; nelle email gli a capo sono \r\n
-    corpo = (testi["email_corpo_prova"].strip()
+    corpo = (testi["email_corpo_" + chiave].strip()
              .replace("{addon}", addon["titolo"])
              .replace("{giorni}", str(config["giorni_prova"]))
              .replace("\n", "\r\n"))
     return f"mailto:{config['email_licenze']}?subject={oggetto}&body={quote(corpo)}"
+
+
+def link_richiesta_prova(addon, testi, config):
+    """Dove porta il pulsante "Scarica gratis": il modulo di registrazione o, finché manca, un'email."""
+    if config["modulo_registrazione"]:
+        return _link_modulo(addon, testi, config, config["richiesta_prova"])
+    return _link_email(addon, testi, config, "prova")
+
+
+def link_acquisto(addon, testi, config):
+    """Dove porta il pulsante "Acquista": il modulo, se ha la domanda «Richiesta» ({richiesta}); altrimenti un'email.
+
+    Senza quella domanda il modulo tratterebbe l'acquisto come una richiesta di prova.
+    """
+    if "{richiesta}" in config["modulo_registrazione"]:
+        return _link_modulo(addon, testi, config, config["richiesta_acquisto"])
+    return _link_email(addon, testi, config, "acquisto")
+
+
+def carica_anteprime():
+    """Schermate di anteprima di ogni applicazione (site/anteprime.yml): {id: {"cartella": ..., "immagini": [...]}}."""
+    percorso = CARTELLA_SITO / "anteprime.yml"
+    return (_leggi_yaml(percorso) or {}) if percorso.exists() else {}
 
 
 def togli_primo_titolo(html):
@@ -160,12 +184,13 @@ def _copia_risorse_manuali(cartella_uscita):
             shutil.copytree(sorgente, cartella_uscita / "static" / "manuali" / sotto)
 
 
-def _prepara_addon(addon, lingua, config, url_base):
+def _prepara_addon(addon, lingua, config, url_base, anteprime):
     """Unisce i dati dell'add-on (addons.yml) con la sua descrizione nella lingua della pagina."""
     predefinita = config["lingua_predefinita"]
     intestazione, html, tradotto = leggi_contenuto(lingua, f"addons/{addon['id']}.md", predefinita)
     manuali = elenco_manuali(addon["id"], lingua, predefinita, url_base)
     note = leggi_contenuto(lingua, f"note/{addon['id']}-{addon['versione']}.md", predefinita)
+    voce_anteprime = anteprime.get(addon["id"], {"immagini": []})
     return {
         **addon,
         "titolo": intestazione["title"],
@@ -178,6 +203,9 @@ def _prepara_addon(addon, lingua, config, url_base):
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
                          f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),
+        # copiate da content/_img in static/manuali/_img con le immagini dei manuali
+        "anteprime": [f"{url_base}/static/manuali/_img/{voce_anteprime['cartella']}/{immagine}"
+                      for immagine in voce_anteprime["immagini"]],
     }
 
 
@@ -212,9 +240,12 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
     (cartella_uscita / ".nojekyll").write_text("", encoding="utf-8")
     (cartella_uscita / "CNAME").write_text(config["dominio"] + "\n", encoding="utf-8")
 
+    anteprime = carica_anteprime()
     for lingua in lingue:
-        addons = [_prepara_addon(addon, lingua, config, url_base) for addon in carica_addons()]
+        addons = [_prepara_addon(addon, lingua, config, url_base, anteprime) for addon in carica_addons()]
         testi = carica_testi(lingua)
+        # condizioni d'uso da accettare prima di scaricare o acquistare: solo se approvate
+        condizioni = leggi_contenuto(lingua, "pagine/condizioni.md", config["lingua_predefinita"])
         comuni = {
             "config": config,
             "url_base": url_base,
@@ -226,6 +257,8 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
             # testo con i giorni di prova al posto di {giorni}
             "testo": lambda chiave: testi[chiave].replace("{giorni}", str(config["giorni_prova"])),
             "link_prova": lambda addon: link_richiesta_prova(addon, testi, config),
+            "link_acquisto": lambda addon: link_acquisto(addon, testi, config),
+            "condizioni": condizioni,
         }
 
         def pagina(modello, percorso_relativo, **dati):
@@ -253,7 +286,9 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
                 pagina("documento.html", f"note/{addon['id']}-{addon['versione']}.html", documento=addon["note"],
                        titolo_pagina=addon["note"][0]["title"], pdf_url=None)
         privacy = leggi_contenuto(lingua, "pagine/privacy.md", config["lingua_predefinita"])
-        pagina("testo.html", "privacy.html", contenuto=privacy)
+        pagina("testo.html", "privacy.html", contenuto=privacy, titolo_pagina=testi["privacy_titolo"])
+        if condizioni:
+            pagina("testo.html", "condizioni.html", contenuto=condizioni, titolo_pagina=condizioni[0]["title"])
 
     radice = {"config": config, "url_base": url_base, "lingue": lingue, "nomi_lingue": nomi_lingue,
               "lingua_predefinita": config["lingua_predefinita"]}

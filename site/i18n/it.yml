@@ -4,29 +4,26 @@ menu_home: Home
 menu_download: Download
 menu_manuali: Manuali
 menu_privacy: Privacy
-home_titolo: Add-on XEI per SAP Business One
-home_intro: Estensioni sviluppate da XEI per SAP Business One. Ogni add-on si può provare gratuitamente per {giorni} giorni.
-home_addon_titolo: Gli add-on
+home_titolo: Soluzioni software XEI
+home_intro: Soluzioni software sviluppate da XEI, pronte all'uso. Ogni applicazione si può provare gratuitamente per {giorni} giorni.
+home_addon_titolo: Le soluzioni software
 scheda_scopri: Scopri di più
 addon_versione: Versione
 addon_rilascio: Rilasciato il
 addon_lingue_programma: Lingue del programma
 addon_manuale: Manuale
 addon_note: Note di rilascio
-addon_scarica: Scarica e prova
+addon_scarica: Scarica gratis
 download_titolo: Download
-download_intro: Scarica gli add-on e provali gratuitamente per {giorni} giorni.
+download_intro: Scarica le applicazioni e provale gratuitamente per {giorni} giorni.
 download_come_titolo: Come funziona la prova
-download_passo1: Richiedi la prova con il modulo.
-download_passo2: Ricevi per email il link al pacchetto e il codice di prova valido {giorni} giorni.
-download_passo3: Installa il pacchetto con l'Extension Manager di SAP Business One.
-download_passo4: Apri il menu Licenza dell'add-on e incolla il codice.
-download_richiedi_prova: Richiedi la prova gratuita
-download_guida_installazione: "Guida di installazione"
-download_diretto: Scarica il pacchetto
-download_controllo: Controllo SHA-256
+download_passo1: Premi «Scarica gratis», accetta le condizioni d'uso e compila il modulo.
+download_passo2: Ricevi per email il codice di prova valido {giorni} giorni e una copia delle condizioni accettate.
+download_passo3: Installa il programma seguendo la guida di installazione.
+download_passo4: Inserisci il codice di prova nel programma, come spiegato nella guida.
+download_guida_installazione: Guida di installazione
 download_dimensione: Dimensione
-download_nota_licenza: Senza un codice di licenza valido l'add-on non si avvia. Per acquistare una licenza scrivi a
+download_nota_licenza: Senza un codice di licenza valido l'applicazione non si avvia. Per acquistare la licenza premi «Acquista» o scrivi a
 email_oggetto_prova: Richiesta prova
 email_corpo_prova: |
   Buongiorno,
@@ -36,15 +33,38 @@ email_corpo_prova: |
   Partita IVA:
   Nome e cognome:
   Paese:
-  Versione di SAP Business One:
-  Database (SQL Server o SAP HANA):
 
   Grazie
 manuali_titolo: Manuali
-manuali_intro: Manuali d'uso e di installazione degli add-on.
+manuali_intro: Manuali d'uso e di installazione delle applicazioni.
 manuali_in_preparazione: Manuale in preparazione.
-manuale_pdf: "Scarica il PDF"
+manuale_pdf: Scarica il PDF
 privacy_titolo: Informativa sulla privacy
 privacy_in_preparazione: L'informativa sulla privacy è in preparazione.
 avviso_traduzione: Questo testo non è ancora disponibile nella tua lingua ed è mostrato in italiano.
 piede_contatti: Contatti
+download_scarica_gratis: Scarica gratis
+download_acquista: Acquista
+email_oggetto_acquisto: Richiesta acquisto
+email_corpo_acquisto: |
+  Buongiorno,
+  vorrei acquistare la licenza di {addon}.
+
+  Azienda:
+  Partita IVA:
+  Nome e cognome:
+  Paese:
+
+  Grazie
+anteprima_apri: Guarda le schermate
+anteprima_alt: Schermata di
+anteprima_precedente: Schermata precedente
+anteprima_successiva: Schermata successiva
+chiudi: Chiudi
+condizioni_sintesi: 'Il software può contenere errori e causare malfunzionamenti, perdite di dati o altri danni: va provato prima in un ambiente di test, con una copia dei dati. Nei limiti consentiti dalla legge, XEI S.r.l. non risponde dei danni derivanti dal suo uso.'
+condizioni_leggi: Leggi le condizioni d'uso complete
+condizioni_accetto: Ho letto e accetto le condizioni d'uso e confermo che proverò il software in un ambiente di test prima di usarlo con dati reali.
+condizioni_approvo: Ai sensi degli articoli 1341 e 1342 del Codice civile approvo specificamente gli articoli 4 (software fornito così com'è e prova in ambiente di test), 5 (limitazione di responsabilità), 6 (manleva) e 8 (foro competente) delle condizioni d'uso.
+condizioni_nota: 'Nel modulo che si apre confermi l''accettazione con il tuo indirizzo email: la scelta viene registrata e ricevi per email una copia delle condizioni in PDF.'
+condizioni_annulla: Annulla
+condizioni_continua: Continua
