@@ -153,10 +153,17 @@ dialog::backdrop { background: rgba(0, 6, 10, 0.8); }
 .condizioni .pulsante { cursor: pointer; font: inherit; font-weight: 600; }
 .condizioni .pulsante:disabled { opacity: 0.45; cursor: not-allowed; }
 
-/* Pagina download su sfondo notte, come il logo XEI su fondo scuro (nero con alone blu #002036).
+/* Pagina download su sfondo notte, come la home di xeisrl.com: nero (#000203) con un alone blu in basso al centro
+   e aloni più tenui in alto a sinistra, a destra e in basso a sinistra.
    L'intestazione resta chiara; contenuto, piede e finestra delle condizioni usano i colori per fondo scuro. */
 body.pagina-scura {
-  background: #000203 radial-gradient(ellipse 90% 70% at 30% 30%, #002036 0%, #000c14 50%, #000203 85%) fixed;
+  background:
+    radial-gradient(ellipse 32% 26% at 50% 74%, rgba(0, 38, 62, 0.8), transparent 75%),
+    radial-gradient(ellipse 14% 16% at 17% 27%, rgba(0, 20, 36, 0.6), transparent 75%),
+    radial-gradient(ellipse 28% 32% at 86% 60%, rgba(4, 22, 34, 0.5), transparent 75%),
+    radial-gradient(ellipse 55% 35% at 25% 88%, rgba(2, 16, 22, 0.6), transparent 75%),
+    #000203;
+  background-attachment: fixed;
 }
 .pagina-scura main, .pagina-scura .piede {
   --testo: #e8eef3;
