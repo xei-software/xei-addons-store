@@ -48,3 +48,10 @@ privacy_titolo: Privacy policy
 privacy_in_preparazione: The privacy policy is being prepared.
 avviso_traduzione: This text is not yet available in your language and is shown in Italian.
 piede_contatti: Contact
+richiedi_prova_titolo: Request the free trial
+richiedi_prova_intro: 'Check the details and continue with the form: the trial code arrives by email and is valid only for this company.'
+richiedi_prova_prodotto: Add-on
+richiedi_prova_codice: Company code
+richiedi_prova_continua: Fill in the form
+richiedi_prova_senza_dati: To request the trial, install the add-on and use the «Richiedi una prova» (Request a trial) button in the add-on's Licenza (License) menu.
+prova_dal_programma: Install the add-on and request the trial from the Licenza (License) menu › Richiedi una prova (Request a trial).

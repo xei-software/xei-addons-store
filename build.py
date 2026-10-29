@@ -74,6 +74,11 @@ def formatta_dimensione(byte):
     return f"{byte / (1024 * 1024):.1f} MB" if byte >= 1024 * 1024 else f"{byte / 1024:.0f} KB"
 
 
+def prova_dal_programma(addon):
+    """Con XEICore 1.3.0 o successiva la prova è legata alla società: si chiede dal menu Licenza dell'add-on."""
+    return tuple(int(parte) for parte in str(addon["xeicore"]).split(".")) >= (1, 3, 0)
+
+
 def link_richiesta_prova(addon, testi, config):
     """Dove porta il pulsante "Richiedi la prova": il modulo di registrazione o, finché manca, un'email.
 
@@ -178,6 +183,7 @@ def _prepara_addon(addon, lingua, config, url_base):
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
                          f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),
+        "prova_dal_programma": prova_dal_programma(addon),
     }
 
 
@@ -254,6 +260,10 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
                        titolo_pagina=addon["note"][0]["title"], pdf_url=None)
         privacy = leggi_contenuto(lingua, "pagine/privacy.md", config["lingua_predefinita"])
         pagina("testo.html", "privacy.html", contenuto=privacy)
+        # aperta dal menu Licenza dell'add-on (XEICore 1.3.0): {addon} e {codice} li mette lo script della pagina
+        pagina("richiedi_prova.html", "richiedi-prova.html",
+               modello_prova=config["modulo_registrazione"].replace("{lingua}", quote(testi["nome_lingua"])),
+               prodotti_prova=[addon["pacchetto"] for addon in addons])
 
     radice = {"config": config, "url_base": url_base, "lingue": lingue, "nomi_lingue": nomi_lingue,
               "lingua_predefinita": config["lingua_predefinita"]}

@@ -22,9 +22,10 @@
     <dt>{{ t.download_controllo }}</dt><dd><code>{{ addon.sha256 }}</code></dd>
   </dl>
   <p class="azioni">
-    <a class="pulsante" href="{{ link_prova(addon) }}">{{ t.download_richiedi_prova }}</a>
+    {% if not addon.prova_dal_programma %}<a class="pulsante" href="{{ link_prova(addon) }}">{{ t.download_richiedi_prova }}</a>{% endif %}
     <a class="pulsante secondario" href="{{ addon.url_download }}">{{ t.download_diretto }}</a>
   </p>
+  {% if addon.prova_dal_programma %}<p class="nota">{{ t.prova_dal_programma }}</p>{% endif %}
   {% if addon.installazione %}
   {% set guida = url_base ~ "/" ~ lingua ~ "/manuali/" ~ addon.id ~ "/installazione" %}
   <p class="guida">
