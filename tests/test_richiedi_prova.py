@@ -82,33 +82,5 @@ def test_con_un_add_on_xeicore_130_sul_sito_il_modulo_deve_avere_il_codice():
             assert "{codice}" in config["modulo_registrazione"], addon["id"]
 
 
-def test_il_testo_approvato_si_divide_nelle_due_sezioni_della_pagina():
-    html = ('<h1>Richiedi una prova</h1>\n<!-- nota -->\n<h2 id="a">Con i dati</h2>\n'
-            '<p>Prova di <strong>{prodotto}</strong>.</p>\n<p>[Apri il modulo]</p>\n'
-            '<h2 id="b">Senza i dati</h2>\n<p>Installa l\'add-on.</p>')
-    con_dati, senza_dati = build.sezioni_richiedi_prova(html)
-    assert '<strong><span class="prova-prodotto"></span></strong>' in con_dati
-    assert '<a class="pulsante" id="prova-vai" href="#">Apri il modulo</a>' in con_dati
-    assert "Richiedi una prova" not in con_dati and "nota" not in con_dati
-    assert senza_dati.strip() == "<p>Installa l'add-on.</p>"
-
-
 def test_senza_modulo_configurato_non_si_va_da_nessuna_parte():
     assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=7K3F-9QPA-2MXB", modello="") is None
-
-
-def test_con_il_testo_approvato_la_pagina_usa_le_sue_sezioni_e_apre_subito_il_modulo(tmp_path, monkeypatch):
-    sito = tmp_path / "site"
-    shutil.copytree(build.CARTELLA_SITO, sito)
-    (sito / "content" / "it" / "pagine" / "richiedi-prova.md").write_text(
-        "---\ntitle: Richiedi una prova\nlang: it\nstato: approvato\n---\n\n# Richiedi una prova\n\n"
-        "## Con i dati dell'add-on\n\nProva di **{prodotto}**.\n\n[Apri il modulo]\n\n"
-        "## Senza i dati dell'add-on\n\nUsa il menu **Licenza**.\n", encoding="utf-8")
-    monkeypatch.setattr(build, "CARTELLA_SITO", sito)
-    build.genera_sito(tmp_path / "out")
-    testo = (tmp_path / "out" / "it" / "richiedi-prova.html").read_text(encoding="utf-8")
-    assert 'data-apri-subito="si"' in testo
-    assert 'id="prova-vai" href="#">Apri il modulo</a>' in testo
-    assert "Usa il menu <strong>Licenza</strong>." in testo
-    # le altre lingue, finché manca la loro traduzione approvata, usano il testo italiano
-    assert 'data-apri-subito="si"' in (tmp_path / "out" / "de" / "richiedi-prova.html").read_text(encoding="utf-8")

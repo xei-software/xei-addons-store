@@ -42,18 +42,9 @@ if (typeof document !== "undefined") {
       return;
     }
     var parametri = new URLSearchParams(location.search);
-    document.querySelectorAll(".prova-prodotto").forEach(function (campo) {
-      campo.textContent = parametri.get("prodotto").trim();
-    });
-    var codice = document.getElementById("prova-codice");
-    if (codice) {
-      codice.textContent = codiceSocieta(parametri.get("codice"));
-    }
+    document.getElementById("prova-prodotto").textContent = parametri.get("prodotto").trim();
+    document.getElementById("prova-codice").textContent = codiceSocieta(parametri.get("codice"));
     document.getElementById("prova-vai").href = indirizzo;
     document.getElementById("prova-dati").hidden = false;
-    // apre subito il modulo; il pulsante resta se il browser lo blocca (replace: «indietro» non riapre la pagina)
-    if (pagina.dataset.apriSubito === "si") {
-      location.replace(indirizzo);
-    }
   });
 }
