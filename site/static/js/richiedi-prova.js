@@ -15,7 +15,7 @@ function indirizzoModulo(modello, ricerca, prodottiAmmessi) {
   var parametri = new URLSearchParams(ricerca);
   var prodotto = (parametri.get("prodotto") || "").trim();
   var codice = codiceSocieta(parametri.get("codice"));
-  if (prodottiAmmessi.indexOf(prodotto) < 0 || codice === null) {
+  if (!modello || prodottiAmmessi.indexOf(prodotto) < 0 || codice === null) {
     return null;
   }
   return modello.split("{addon}").join(encodeURIComponent(prodotto))
@@ -42,9 +42,18 @@ if (typeof document !== "undefined") {
       return;
     }
     var parametri = new URLSearchParams(location.search);
-    document.getElementById("prova-prodotto").textContent = parametri.get("prodotto");
-    document.getElementById("prova-codice").textContent = codiceSocieta(parametri.get("codice"));
+    document.querySelectorAll(".prova-prodotto").forEach(function (campo) {
+      campo.textContent = parametri.get("prodotto").trim();
+    });
+    var codice = document.getElementById("prova-codice");
+    if (codice) {
+      codice.textContent = codiceSocieta(parametri.get("codice"));
+    }
     document.getElementById("prova-vai").href = indirizzo;
     document.getElementById("prova-dati").hidden = false;
+    // apre subito il modulo; il pulsante resta se il browser lo blocca (replace: «indietro» non riapre la pagina)
+    if (pagina.dataset.apriSubito === "si") {
+      location.replace(indirizzo);
+    }
   });
 }
