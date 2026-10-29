@@ -11,10 +11,10 @@
   <link rel="icon" type="image/png" href="{{ url_base }}/static/img/icona-x.png">
   <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
 </head>
-<body{% block attributi_body %}{% endblock %}>
+<body class="pagina-scura">
   <header class="testata">
     <div class="contenitore testata-riga">
-      <a class="marchio" href="{{ url_base }}/{{ lingua }}/"><img src="{{ url_base }}/static/img/{% block logo %}logo-xei.png{% endblock %}" alt="XEI" width="1544" height="780"> <span>Store</span></a>
+      <a class="marchio" href="{{ url_base }}/{{ lingua }}/"><img src="{{ url_base }}/static/img/logo-xei-bianco.png" alt="XEI" width="1544" height="780"> <span>Store</span></a>
       <nav class="menu" aria-label="menu">
         <a href="{{ url_base }}/{{ lingua }}/">{{ t.menu_home }}</a>
         <a href="{{ url_base }}/{{ lingua }}/download.html">{{ t.menu_download }}</a>

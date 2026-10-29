@@ -153,9 +153,9 @@ dialog::backdrop { background: rgba(0, 6, 10, 0.8); }
 .condizioni .pulsante { cursor: pointer; font: inherit; font-weight: 600; }
 .condizioni .pulsante:disabled { opacity: 0.45; cursor: not-allowed; }
 
-/* Pagina download su sfondo notte, come la home di xeisrl.com: nero (#000203) con un alone blu in basso al centro
+/* Tutte le pagine (classe pagina-scura sul body) su sfondo notte, come la home di xeisrl.com: nero (#000203) con un alone blu in basso al centro
    e aloni più tenui in alto a sinistra, a destra e in basso a sinistra.
-   L'intestazione resta chiara; contenuto, piede e finestra delle condizioni usano i colori per fondo scuro. */
+   Intestazione nera; contenuto, piede e finestra delle condizioni usano i colori per fondo scuro. */
 body.pagina-scura {
   background:
     radial-gradient(ellipse 32% 26% at 50% 74%, rgba(0, 38, 62, 0.8), transparent 75%),
@@ -166,6 +166,8 @@ body.pagina-scura {
   background-attachment: fixed;
 }
 .pagina-scura main, .pagina-scura .piede {
+  --sfondo: #06131c;
+  --sfondo-tenue: rgba(0, 32, 54, 0.45);
   --testo: #e8eef3;
   --testo-tenue: #9fb4c2;
   --primario: #4cc3f5;
@@ -178,7 +180,7 @@ body.pagina-scura {
 .pagina-scura .condizioni { background: #06131c; color: var(--testo); border-top-color: #009fe3; }
 .pagina-scura .condizioni .pulsante { background: #009fe3; border-color: #009fe3; color: #001726; }
 .pagina-scura .condizioni .pulsante.secondario { background: transparent; color: #ffffff; }
-/* Intestazione nera con il logo a lettere bianche (static/img/logo-xei-bianco.png, dal logo ufficiale) */
+/* Intestazione nera con il logo a lettere bianche (static/img/logo-xei-bianco.png, ricavato dal logo ufficiale) */
 .pagina-scura .testata { background: #000203; border-bottom-color: var(--azzurro); }
 .pagina-scura .testata .menu a, .pagina-scura .marchio span { color: #e8eef3; }
 .pagina-scura .testata .menu a:hover { color: #4cc3f5; }
@@ -186,3 +188,4 @@ body.pagina-scura {
 .pagina-scura .lingue ul { background: #06131c; border-color: #1d3445; }
 .pagina-scura .lingue li a { color: #4cc3f5; }
 .pagina-scura .marchio img { background: none; padding: 0; }
+.pagina-scura .griglia .scheda { border-color: rgba(0, 159, 227, 0.35); border-radius: 16px; }

@@ -134,10 +134,10 @@ def test_il_titolo_della_scheda_non_si_ripete(sito):
 
 
 def test_logo_e_icona_ufficiali(sito):
-    for file in ("static/img/logo-xei.png", "static/img/icona-x.png"):
+    for file in ("static/img/logo-xei.png", "static/img/logo-xei-bianco.png", "static/img/icona-x.png"):
         assert (sito / file).exists(), file
     testo = (sito / "it" / "index.html").read_text(encoding="utf-8")
-    assert 'src="/static/img/logo-xei.png"' in testo
+    assert 'src="/static/img/logo-xei-bianco.png"' in testo  # logo per fondo scuro
     assert 'rel="icon"' in testo
 
 
