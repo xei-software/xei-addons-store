@@ -271,7 +271,7 @@ Envío del extracto a los agentes por correo
 Activa el botón **Enviar a los agentes** en el Extracto de comisiones: cada agente recibe solo su propio extracto
 (adjunto HTML, que se abre e imprime con cualquier navegador) en la dirección de correo del empleado de ventas (o del
 proveedor vinculado). Hay que indicar servidor SMTP, puerto, SSL/TLS, usuario y contraseña del buzón y el remitente;
-ejemplo: `smtp.office365.com`, puerto 587, SSL sí, remitente `provvigioni@azienda.it`. La
+ejemplo: `smtp.azienda.it`, puerto 587, SSL sí, remitente `provvigioni@azienda.it`. La
 contraseña se guarda cifrada.
 
 Probar envío  

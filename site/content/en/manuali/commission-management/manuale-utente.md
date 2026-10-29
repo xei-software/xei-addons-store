@@ -271,7 +271,7 @@ Send the statement to agents by email
 Enables the **Send to agents** button in the Commission statement: each agent receives only their own statement
 (HTML attachment, which can be opened and printed from any browser) at the email address of the sales employee (or of
 the linked vendor). SMTP server, port, SSL/TLS, mailbox user and password and the sender must be entered;
-example: `smtp.office365.com`, port 587, SSL yes, sender `provvigioni@azienda.it`. The
+example: `smtp.azienda.it`, port 587, SSL yes, sender `provvigioni@azienda.it`. The
 password is saved encrypted.
 
 Test send  

@@ -267,7 +267,7 @@ Ekstrenin temsilcilere e-postayla gönderimi
 Komisyon ekstresindeki **Temsilcilere gönder** düğmesini etkinleştirir: her temsilci yalnızca kendi ekstresini
 (HTML eki, her tarayıcıda açılıp yazdırılabilir) satış çalışanının (veya bağlı satıcının) e-posta adresine alır.
 SMTP sunucusu, port, SSL/TLS, posta kutusunun kullanıcısı ve parolası ile gönderen girilmelidir; örnek:
-`smtp.office365.com`, port 587, SSL evet, gönderen `provvigioni@azienda.it`. Parola şifrelenmiş olarak
+`smtp.azienda.it`, port 587, SSL evet, gönderen `provvigioni@azienda.it`. Parola şifrelenmiş olarak
 kaydedilir.
 
 Gönderimi dene  
