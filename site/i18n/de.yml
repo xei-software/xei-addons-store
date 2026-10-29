@@ -20,7 +20,7 @@ download_come_titolo: So funktioniert der Test
 download_passo1: Fordern Sie die Testversion über das Formular an.
 download_passo2: Sie erhalten per E-Mail den Link zum Paket und einen {giorni} Tage gültigen Testcode.
 download_passo3: Installieren Sie das Paket mit dem Extension Manager von SAP Business One.
-download_passo4: Öffnen Sie das Menü Licenza (Lizenz) des Add-ons und fügen Sie den Code ein.
+download_passo4: Öffnen Sie das Menü Lizenz des Add-ons und fügen Sie den Code ein.
 download_richiedi_prova: Kostenlosen Test anfordern
 download_guida_installazione: "Installationsanleitung"
 download_diretto: Paket herunterladen
@@ -53,5 +53,5 @@ richiedi_prova_intro: 'Prüfen Sie die Daten und fahren Sie mit dem Formular for
 richiedi_prova_prodotto: Add-on
 richiedi_prova_codice: Firmencode
 richiedi_prova_continua: Formular ausfüllen
-richiedi_prova_senza_dati: Um die Testversion anzufordern, installieren Sie das Add-on und verwenden Sie die Schaltfläche „Richiedi una prova“ (Testversion anfordern) im Menü Licenza (Lizenz) des Add-ons.
-prova_dal_programma: Installieren Sie das Add-on und fordern Sie die Testversion im Menü Licenza (Lizenz) › Richiedi una prova (Testversion anfordern) an.
+richiedi_prova_senza_dati: Um die Testversion anzufordern, installieren Sie das Add-on und verwenden Sie die Schaltfläche „Testversion anfordern“ im Menü Lizenz des Add-ons.
+prova_dal_programma: Installieren Sie das Add-on und fordern Sie die Testversion im Menü Lizenz › Testversion anfordern an.

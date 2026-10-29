@@ -20,7 +20,7 @@ download_come_titolo: How the trial works
 download_passo1: Request the trial using the form.
 download_passo2: You will receive by email the package link and a trial code valid for {giorni} days.
 download_passo3: Install the package with the SAP Business One Extension Manager.
-download_passo4: Open the add-on's Licenza (License) menu and paste the code.
+download_passo4: Open the add-on's License menu and paste the code.
 download_richiedi_prova: Request the free trial
 download_guida_installazione: "Installation guide"
 download_diretto: Download the package
@@ -53,5 +53,5 @@ richiedi_prova_intro: 'Check the details and continue with the form: the trial c
 richiedi_prova_prodotto: Add-on
 richiedi_prova_codice: Company code
 richiedi_prova_continua: Fill in the form
-richiedi_prova_senza_dati: To request the trial, install the add-on and use the «Richiedi una prova» (Request a trial) button in the add-on's Licenza (License) menu.
-prova_dal_programma: Install the add-on and request the trial from the Licenza (License) menu › Richiedi una prova (Request a trial).
+richiedi_prova_senza_dati: To request the trial, install the add-on and use the «Request a trial» button in the add-on's License menu.
+prova_dal_programma: Install the add-on and request the trial from the License menu › Request a trial.

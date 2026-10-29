@@ -20,7 +20,7 @@ download_come_titolo: Comment fonctionne l'essai
 download_passo1: Demandez l'essai avec le formulaire.
 download_passo2: Vous recevrez par e-mail le lien vers le paquet et un code d'essai valable {giorni} jours.
 download_passo3: Installez le paquet avec l'Extension Manager de SAP Business One.
-download_passo4: Ouvrez le menu Licenza (Licence) de l'add-on et collez le code.
+download_passo4: Ouvrez le menu Licence de l'add-on et collez le code.
 download_richiedi_prova: Demander l'essai gratuit
 download_guida_installazione: "Guide d'installation"
 download_diretto: Télécharger le paquet
@@ -53,5 +53,5 @@ richiedi_prova_intro: 'Vérifiez les données et continuez avec le formulaire : 
 richiedi_prova_prodotto: Add-on
 richiedi_prova_codice: Code de la société
 richiedi_prova_continua: Remplir le formulaire
-richiedi_prova_senza_dati: Pour demander l'essai, installez l'add-on et utilisez le bouton « Richiedi una prova » (Demander un essai) du menu Licenza (Licence) de l'add-on.
-prova_dal_programma: Installez l'add-on et demandez l'essai depuis le menu Licenza (Licence) › Richiedi una prova (Demander un essai).
+richiedi_prova_senza_dati: Pour demander l'essai, installez l'add-on et utilisez le bouton « Demander un essai » du menu Licence de l'add-on.
+prova_dal_programma: Installez l'add-on et demandez l'essai depuis le menu Licence › Demander un essai.

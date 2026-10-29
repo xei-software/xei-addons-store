@@ -23,15 +23,21 @@ def _indirizzo(ricerca, modello=MODELLO, ammessi=AMMESSI):
 
 
 def test_prodotto_e_codice_della_societa_vanno_nel_modulo():
-    assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=AB12-CD34-EF56") == \
-        "https://forms.example/r?id=X&rA=%22XEI.ItemGenerator%22&rL=%22Italiano%22&rC=%22AB12-CD34-EF56%22"
+    assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=7K3F-9QPA-2MXB") == \
+        "https://forms.example/r?id=X&rA=%22XEI.ItemGenerator%22&rL=%22Italiano%22&rC=%227K3F-9QPA-2MXB%22"
+
+
+def test_il_codice_si_accetta_maiuscolo_e_senza_spazi():
+    assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=%207k3f-9qpa-2mxb%20").endswith("rC=%227K3F-9QPA-2MXB%22")
 
 
 def test_senza_parametri_o_con_valori_non_ammessi_non_si_va_al_modulo():
     assert _indirizzo("") is None
     assert _indirizzo("?prodotto=XEI.ItemGenerator") is None
-    assert _indirizzo("?codice=AB12CD34EF56") is None
-    assert _indirizzo("?prodotto=XEI.Altro&codice=AB12CD34EF56") is None
+    assert _indirizzo("?codice=7K3F-9QPA-2MXB") is None
+    assert _indirizzo("?prodotto=XEI.Altro&codice=7K3F-9QPA-2MXB") is None
+    assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=7K3F9QPA2MXB") is None      # senza trattini
+    assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=7K3F-9QPA-2MXI") is None    # I non è Base32 di Crockford
     assert _indirizzo("?prodotto=XEI.ItemGenerator&codice=%22%3E%3Cscript%3E") is None
 
 
@@ -65,3 +71,11 @@ def test_la_pagina_download_spiega_la_prova_dal_programma(tmp_path, monkeypatch)
     assert build.carica_testi("it")["prova_dal_programma"] in testo
     # l'altro add-on (XEICore 1.2.x) mantiene il pulsante della prova
     assert testo.count(build.carica_testi("it")["download_richiedi_prova"]) == 1
+
+
+def test_con_un_add_on_xeicore_130_sul_sito_il_modulo_deve_avere_il_codice():
+    # Senza {codice} nel link, la prova dal menu Licenza arriverebbe al servizio senza codice e verrebbe rifiutata.
+    config = build.carica_config()
+    for addon in build.carica_addons():
+        if build.prova_dal_programma(addon):
+            assert "{codice}" in config["modulo_registrazione"], addon["id"]
