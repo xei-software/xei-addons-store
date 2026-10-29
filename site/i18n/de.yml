@@ -53,5 +53,5 @@ richiedi_prova_intro: 'Prüfen Sie die Daten und fahren Sie mit dem Formular for
 richiedi_prova_prodotto: Add-on
 richiedi_prova_codice: Firmencode
 richiedi_prova_continua: Formular ausfüllen
-richiedi_prova_senza_dati: Um die Testversion anzufordern, installieren Sie das Add-on und verwenden Sie die Schaltfläche „Testphase anfordern“ im Menü Lizenz des Add-ons.
-prova_dal_programma: Installieren Sie das Add-on und fordern Sie die Testversion im Menü Lizenz › Testphase anfordern an.
+richiedi_prova_senza_dati: Um die Testphase anzufordern, installieren Sie das Add-on und verwenden Sie die Schaltfläche Testphase anfordern im Menü Lizenz des Add-ons.
+prova_dal_programma: Installieren Sie das Add-on und fordern Sie die Testphase über das Menü Lizenz > Testphase anfordern an.

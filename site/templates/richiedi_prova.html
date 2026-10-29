@@ -1,31 +1,21 @@
 {% extends "base.html" %}
-{% block titolo %}{{ titolo_prova }}{% endblock %}
+{% block titolo %}{{ t.richiedi_prova_titolo }}{% endblock %}
 {% block contenuto %}
-<h1>{{ titolo_prova }}</h1>
-{# con il testo approvato della documentazione il modulo si apre da solo; con i testi dell'interfaccia si preme il pulsante #}
-<section id="richiedi-prova" data-modello="{{ modello_prova }}" data-prodotti="{{ prodotti_prova | tojson | forceescape }}"
-         data-apri-subito="{{ 'si' if sezioni_prova else 'no' }}">
+<h1>{{ t.richiedi_prova_titolo }}</h1>
+<section id="richiedi-prova" data-modello="{{ modello_prova }}" data-prodotti="{{ prodotti_prova | tojson | forceescape }}">
   <div id="prova-dati" hidden>
-    {% if sezioni_prova %}
-    {{ sezioni_prova[0] | safe }}
-    {% else %}
     <p>{{ t.richiedi_prova_intro }}</p>
     <dl class="dati">
-      <dt>{{ t.richiedi_prova_prodotto }}</dt><dd class="prova-prodotto"></dd>
+      <dt>{{ t.richiedi_prova_prodotto }}</dt><dd id="prova-prodotto"></dd>
       <dt>{{ t.richiedi_prova_codice }}</dt><dd><code id="prova-codice"></code></dd>
     </dl>
     <p class="azioni"><a class="pulsante" id="prova-vai" href="#">{{ t.richiedi_prova_continua }}</a></p>
-    {% endif %}
   </div>
   <div id="prova-senza-dati" hidden>
-    {% if sezioni_prova %}
-    {{ sezioni_prova[1] | safe }}
-    {% else %}
     <p>{{ t.richiedi_prova_senza_dati }}</p>
     <p><a href="{{ url_base }}/{{ lingua }}/download.html">{{ t.menu_download }}</a></p>
-    {% endif %}
   </div>
-  <noscript>{% if sezioni_prova %}{{ sezioni_prova[1] | safe }}{% else %}<p>{{ t.richiedi_prova_senza_dati }}</p>{% endif %}</noscript>
+  <noscript><p>{{ t.richiedi_prova_senza_dati }}</p></noscript>
 </section>
 <script src="{{ url_base }}/static/js/richiedi-prova.js"></script>
 {% endblock %}
