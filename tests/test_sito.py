@@ -109,7 +109,7 @@ def test_la_home_usa_il_testo_approvato(sito):
     intestazione, _ = build.leggi_markdown(percorso)
     assert intestazione["stato"] == "approvato"
     testo = (sito / "it" / "index.html").read_text(encoding="utf-8")
-    assert "Perché scegliere gli add-on XEI" in testo
+    assert "Perché scegliere le soluzioni software XEI" in testo
 
 
 def test_nessun_collegamento_a_file_markdown(sito):
@@ -227,3 +227,12 @@ def test_il_modulo_vero_si_apre_con_add_on_e_lingua_della_pagina(sito):
         assert re.search(r'href="https://forms\.cloud\.microsoft[^"]*" data-azione="prova"', testo), lingua
     assert "%22Fran%C3%A7ais%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("fr"), config)
     assert "%22T%C3%BCrk%C3%A7e%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("tr"), config)
+
+
+def test_la_home_non_parla_di_add_on_ne_di_sap(sito):
+    # Il sito pubblica soluzioni software di ogni tipo (richiesta di Enrico Cella, 29/10/2026).
+    for lingua in build.carica_config()["lingue"]:
+        percorso = build.CARTELLA_SITO / "content" / lingua / "pagine" / "home.md"
+        intestazione, corpo = build.leggi_markdown(percorso)
+        testo = f"{intestazione['title']} {intestazione['description']} {corpo}"
+        assert not re.search(r"add-?on|eklenti|SAP|Extension Manager", testo, re.IGNORECASE), lingua

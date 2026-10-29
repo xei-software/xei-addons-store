@@ -17,8 +17,8 @@ addon_scarica: Ücretsiz indir
 download_titolo: İndirmeler
 download_intro: Uygulamaları indirin ve {giorni} gün boyunca ücretsiz deneyin.
 download_come_titolo: Deneme nasıl çalışır
-download_passo1: «Ücretsiz indir» düğmesine basın, kullanım koşullarını kabul edin ve formu doldurun.
-download_passo2: E-posta ile {giorni} gün geçerli bir deneme kodu ve kabul edilen koşulların bir kopyasını alırsınız.
+download_passo1: «Ücretsiz indir» düğmesine basın ve formu doldurun.
+download_passo2: E-posta ile {giorni} gün geçerli bir deneme kodu alırsınız.
 download_passo3: Programı kurulum kılavuzuna göre kurun.
 download_passo4: Deneme kodunu, kılavuzda açıklandığı gibi programa girin.
 download_guida_installazione: Kurulum kılavuzu

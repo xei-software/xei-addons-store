@@ -17,8 +17,8 @@ addon_scarica: Télécharger gratuitement
 download_titolo: Téléchargements
 download_intro: Téléchargez les applications et essayez-les gratuitement pendant {giorni} jours.
 download_come_titolo: Comment fonctionne l'essai
-download_passo1: Cliquez sur « Télécharger gratuitement », acceptez les conditions d'utilisation et remplissez le formulaire.
-download_passo2: Vous recevez par e-mail un code d'essai valable {giorni} jours et une copie des conditions acceptées.
+download_passo1: Cliquez sur « Télécharger gratuitement » et remplissez le formulaire.
+download_passo2: Vous recevez par e-mail un code d'essai valable {giorni} jours.
 download_passo3: Installez le programme en suivant le guide d'installation.
 download_passo4: Saisissez le code d'essai dans le programme, comme expliqué dans le guide.
 download_guida_installazione: Guide d'installation

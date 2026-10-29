@@ -1,30 +1,33 @@
 ---
-title: XEI – Add-ons for SAP Business One
-description: XEI add-ons extend SAP Business One with ready-to-use features, installed with the Extension Manager.
+title: XEI – Software solutions
+description: Ready-to-use XEI software solutions, free to try for 30 days.
 lang: en
 stato: approvato
+# Eccezione: testo scritto dalla sessione del sito e approvato da Enrico Cella il 29/10/2026; da riportare in
+# xei-model-docs (sito/en/home.md) dal Coordinatore Documentazione.
+approvato_da: Enrico Cella (2026-10-29)
 ---
 
-# Add-ons for SAP Business One
+# XEI software solutions
 
-XEI develops add-ons for **SAP Business One** that add ready-to-use features to the
-ERP. They are installed with the SAP Extension Manager and work inside the SAP client
-your users already know, with the same menus and the same authorizations.
+XEI develops ready-to-use software solutions for businesses: applications, integrations and tools that work with the
+programs and data your company already uses. Each application has its own page with a description, screenshots,
+manuals and an installation guide.
 
-## Why choose XEI add-ons
+## Why choose XEI software solutions
 
-- **Built into SAP Business One**: menus, windows and data are those of SAP, with no
-  external programs to learn.
-- **SQL Server and SAP HANA**: they work with both databases; on SAP HANA, a test during installation is recommended.
-- **In the user's language**: the interfaces follow the language set in SAP.
-- **Free trial**: download, request the trial and receive by email a trial code
-  valid for 30 days.
+- **Ready to use**: install them following the guide and use them right away, with no custom development.
+- **In the user's language**: the applications are available in several languages; those of each application are
+  listed on its page.
+- **Documented**: a user manual, an installation guide and release notes for every application.
+- **Free trial**: download them free of charge and receive by email a trial code valid for 30 days.
 
 ## Getting started
 
-1. Choose the add-on and download the package.
-2. Request the free trial with the button on the add-on's page.
-3. Install the package with the SAP Business One Extension Manager.
-4. Enter the trial code you receive by email in the add-on's **Licenza** (License) menu.
+1. Choose the application on the Downloads page and click «Free download».
+2. Fill in the form and receive the trial code by email.
+3. Install the program following the installation guide.
+4. Enter the trial code in the program, as explained in the guide.
 
-For licensing information write to [license@xeisrl.com](mailto:license@xeisrl.com).
+To buy a license, click «Buy» on the Downloads page or write to
+[license@xeisrl.com](mailto:license@xeisrl.com).

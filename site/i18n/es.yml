@@ -17,8 +17,8 @@ addon_scarica: Descargar gratis
 download_titolo: Descargas
 download_intro: Descargue las aplicaciones y pruébelas gratis durante {giorni} días.
 download_come_titolo: Cómo funciona la prueba
-download_passo1: Pulse «Descargar gratis», acepte las condiciones de uso y rellene el formulario.
-download_passo2: Recibirá por correo electrónico un código de prueba válido {giorni} días y una copia de las condiciones aceptadas.
+download_passo1: Pulse «Descargar gratis» y rellene el formulario.
+download_passo2: Recibirá por correo electrónico un código de prueba válido {giorni} días.
 download_passo3: Instale el programa siguiendo la guía de instalación.
 download_passo4: Introduzca el código de prueba en el programa, como se explica en la guía.
 download_guida_installazione: Guía de instalación

@@ -1,32 +1,34 @@
 ---
-title: XEI – Add-ons pour SAP Business One
-description: Les add-ons XEI enrichissent SAP Business One de fonctions prêtes à l'emploi, installées avec l'Extension Manager.
+title: XEI – Solutions logicielles
+description: Solutions logicielles XEI prêtes à l'emploi, à essayer gratuitement pendant 30 jours.
 lang: fr
 stato: approvato
+# Eccezione: testo scritto dalla sessione del sito e approvato da Enrico Cella il 29/10/2026; da riportare in
+# xei-model-docs (sito/fr/home.md) dal Coordinatore Documentazione.
+approvato_da: Enrico Cella (2026-10-29)
 ---
 
-# Add-ons pour SAP Business One
+# Solutions logicielles XEI
 
-XEI développe des add-ons pour **SAP Business One** qui ajoutent à l'ERP des fonctions
-prêtes à l'emploi. Ils s'installent avec l'Extension Manager de SAP et fonctionnent
-dans le client SAP que vos utilisateurs connaissent déjà, avec les mêmes menus et les
-mêmes autorisations.
+XEI développe des solutions logicielles prêtes à l'emploi pour les entreprises : applications, intégrations et outils
+qui fonctionnent avec les programmes et les données que l'entreprise utilise déjà. Chaque application a sa page avec
+une description, des captures d'écran, des manuels et un guide d'installation.
 
-## Pourquoi choisir les add-ons XEI
+## Pourquoi choisir les solutions logicielles XEI
 
-- **Intégrés à SAP Business One** : les menus, les fenêtres et les données sont ceux de
-  SAP, sans programme externe à apprendre.
-- **SQL Server et SAP HANA** : ils fonctionnent avec les deux bases de données ; sur SAP HANA, un test lors de l'installation est conseillé.
-- **Dans la langue de l'utilisateur** : les interfaces suivent la langue définie dans SAP.
-- **Essai gratuit** : téléchargez, demandez l'essai et recevez par e-mail un code
-  d'essai valable 30 jours.
+- **Prêtes à l'emploi** : elles s'installent en suivant le guide et s'utilisent tout de suite, sans développement
+  sur mesure.
+- **Dans la langue de l'utilisateur** : les applications sont disponibles en plusieurs langues ; celles de chaque
+  application sont indiquées sur sa page.
+- **Documentées** : pour chaque application, un manuel d'utilisation, un guide d'installation et des notes de version.
+- **Essai gratuit** : téléchargez-les gratuitement et recevez par e-mail un code d'essai valable 30 jours.
 
 ## Pour commencer
 
-1. Choisissez l'add-on et téléchargez le package.
-2. Demandez l'essai gratuit avec le bouton de la page de l'add-on.
-3. Installez le package avec l'Extension Manager de SAP Business One.
-4. Saisissez le code d'essai reçu par e-mail dans le menu **Licenza** (Licence) de l'add-on.
+1. Choisissez l'application dans la page Téléchargements et cliquez sur « Télécharger gratuitement ».
+2. Remplissez le formulaire et recevez le code d'essai par e-mail.
+3. Installez le programme en suivant le guide d'installation.
+4. Saisissez le code d'essai dans le programme, comme expliqué dans le guide.
 
-Pour toute information sur les licences, écrivez à
+Pour acheter une licence, cliquez sur « Acheter » dans la page Téléchargements ou écrivez à
 [license@xeisrl.com](mailto:license@xeisrl.com).

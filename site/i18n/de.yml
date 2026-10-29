@@ -17,8 +17,8 @@ addon_scarica: Kostenlos herunterladen
 download_titolo: Downloads
 download_intro: Laden Sie die Anwendungen herunter und testen Sie sie {giorni} Tage lang kostenlos.
 download_come_titolo: So funktioniert der Test
-download_passo1: Klicken Sie auf „Kostenlos herunterladen“, akzeptieren Sie die Nutzungsbedingungen und füllen Sie das Formular aus.
-download_passo2: Sie erhalten per E-Mail einen {giorni} Tage gültigen Testcode und eine Kopie der akzeptierten Bedingungen.
+download_passo1: Klicken Sie auf „Kostenlos herunterladen“ und füllen Sie das Formular aus.
+download_passo2: Sie erhalten per E-Mail einen {giorni} Tage gültigen Testcode.
 download_passo3: Installieren Sie das Programm gemäß der Installationsanleitung.
 download_passo4: Geben Sie den Testcode im Programm ein, wie in der Anleitung beschrieben.
 download_guida_installazione: Installationsanleitung

@@ -17,8 +17,8 @@ addon_scarica: Free download
 download_titolo: Downloads
 download_intro: Download the applications and try them free of charge for {giorni} days.
 download_come_titolo: How the trial works
-download_passo1: Click «Free download», accept the terms of use and fill in the form.
-download_passo2: You will receive by email a trial code valid for {giorni} days and a copy of the accepted terms.
+download_passo1: Click «Free download» and fill in the form.
+download_passo2: You will receive by email a trial code valid for {giorni} days.
 download_passo3: Install the program following the installation guide.
 download_passo4: Enter the trial code in the program, as explained in the guide.
 download_guida_installazione: Installation guide
