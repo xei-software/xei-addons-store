@@ -8,3 +8,7 @@ item-generator:
 commission-management:
   cartella: commissionmanagement
   immagini: [liquidazione.png, regole.png, scaglioni.png, estratto_stampa.png, cfg.png]
+
+rate-updater:
+  cartella: rateupdater
+  immagini: [01-cambi.png, 02-cambi-esito.png, 03b-storico-valute.png, 04-impostazioni-cambi.png]

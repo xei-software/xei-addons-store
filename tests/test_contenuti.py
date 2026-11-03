@@ -78,7 +78,9 @@ def _file_del_repository():
 
 # Dati che non devono mai finire nel repository pubblico.
 SCHEMI_VIETATI = {
-    "percorso interno Windows": re.compile(r"[A-Za-z]:\\\\?(SORGENTI|Users|xei)", re.IGNORECASE),
+    # percorsi dei PC di sviluppo (C:\SORGENTI, C:\Users, C:\xei-software...); una cartella d'esempio per installare un
+    # programma (C:\XEI\RateUpdater) è permessa
+    "percorso interno Windows": re.compile(r"[A-Za-z]:\\\\?(SORGENTI|Users|xei-)", re.IGNORECASE),
     "token GitHub": re.compile(r"gh[pousr]_[A-Za-z0-9]{20,}"),
     "chiave privata": re.compile(r"BEGIN [A-Z ]*PRIVATE KEY|<D>[A-Za-z0-9+/=]{20,}</D>"),
     "mappa di offuscamento": re.compile(r"obfuscation-map", re.IGNORECASE),
@@ -186,3 +188,10 @@ def test_ogni_app_ha_il_framework_definito():
         if voce.get("tipo") == "app":
             assert re.fullmatch(r"\d+\.\d+\.\d+", str(voce.get("framework", ""))), f"{voce['id']}: framework mancante"
             assert "xeicore" not in voce, f"{voce['id']}: un'app non ha xeicore"
+
+
+def test_percorsi_interni_bloccati_e_cartella_di_installazione_permessa():
+    schema = SCHEMI_VIETATI["percorso interno Windows"]
+    for interno in (r"C:\SORGENTI\xei-software\xei-core", r"C:\Users\ivan\Desktop", r"D:\xei-software\app"):
+        assert schema.search(interno), interno
+    assert not schema.search(r"Estrai la cartella in `C:\XEI\RateUpdater`.")
