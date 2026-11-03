@@ -9,6 +9,14 @@ Gestione Provvigioni
 U_VOPR\w*
 Time ?Up
 U_SYNW\w*
+SboExchangeUpdater
+Var-One
+
+# Programmi di etichette e stampa di altri produttori (il manuale descrive i comandi e i report, non i programmi)
+BarTender
+NiceLabel
+ZebraDesigner
+Loftware
 SYNW\w*
 
 # Migrazioni e importazioni da programmi precedenti (it, en, fr, de, es, tr)
