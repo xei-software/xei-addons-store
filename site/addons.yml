@@ -42,7 +42,7 @@
   tag_origine: v1.0.0
   tipo: app
   framework: 0.8.6
-  # ok_coordinatore_xei: da aggiungere con il controllo del pacchetto (Issue #7 di xei-core)
+  ok_coordinatore_xei: '2026-11-05'
   ok_coordinatore_documentazione: '2026-11-03'
   tag_pubblico: rate-updater-v1.0.0
   file: XEI.RateUpdater.zip
