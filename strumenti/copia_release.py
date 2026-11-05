@@ -105,9 +105,13 @@ def leggi_file_del_tag(origine, tag, percorso):
 
     Il tag si indica come refs/tags/<tag>: se esiste anche un ramo con lo stesso nome, GitHub leggerebbe il ramo.
     """
-    return subprocess.run(
+    risultato = subprocess.run(
         ["gh", "api", "-H", "Accept: application/vnd.github.raw", f"repos/{origine}/contents/{percorso}?ref=refs/tags/{tag}"],
-        check=True, capture_output=True, text=True).stdout
+        capture_output=True, text=True)
+    if risultato.returncode != 0:
+        raise SystemExit(f"{origine}: {percorso} al tag {tag} non leggibile ({risultato.stderr.strip()}). "
+                         "Con 404 di solito il token XEI_ADDON_READ_TOKEN non ha accesso al repository.")
+    return risultato.stdout
 
 
 def leggi_csproj(origine, tag, pacchetto):

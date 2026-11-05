@@ -153,3 +153,15 @@ def test_nello_zip_di_un_app_non_vanno_dati_locali_e_segreti(tmp_path):
         for nome in vietati + ammessi:
             archivio.writestr(nome, "x")
     assert sorted(copia_release.problemi_pacchetto(zip_app)) == sorted(vietati)
+
+
+def test_se_github_rifiuta_la_lettura_il_messaggio_dice_perche(monkeypatch):
+    # Esempio: il token del workflow non vede il repository dell'add-on (404).
+    import subprocess
+    from strumenti import copia_release
+    monkeypatch.setattr(copia_release.subprocess, "run", lambda argomenti, **opzioni: subprocess.CompletedProcess(
+        argomenti, 1, stdout="", stderr="gh: Not Found (HTTP 404)"))
+    with pytest.raises(SystemExit) as errore:
+        copia_release.leggi_file_del_tag("xei-software/xei-rateupdater", "v1.0.0", "Directory.Packages.props")
+    assert "HTTP 404" in str(errore.value) and "xei-rateupdater" in str(errore.value)
+    assert "XEI_ADDON_READ_TOKEN" in str(errore.value)
