@@ -33,3 +33,19 @@
   dimensione: 792122
   sha256: d17827c1759af43dbcf6aa4ebf36b2d6027a9d7328b90d27adc8bb430133c841
   lingue_programma: [it, en, de, fr, es, tr]
+
+- id: rate-updater
+  pacchetto: XEI.RateUpdater
+  versione: 1.0.0
+  data_rilascio: '2026-11-05'
+  origine: xei-software/xei-rateupdater
+  tag_origine: v1.0.0
+  tipo: app
+  framework: 0.8.6
+  # ok_coordinatore_xei: da aggiungere con il controllo del pacchetto (Issue #7 di xei-core)
+  ok_coordinatore_documentazione: '2026-11-03'
+  tag_pubblico: rate-updater-v1.0.0
+  file: XEI.RateUpdater.zip
+  dimensione: 78972997
+  sha256: 475ba39a709c822bff4790daf98aa8d20fb20f325db5dba17aa0a45504ea0017
+  lingue_programma: [it, en, de, fr, es, tr]
