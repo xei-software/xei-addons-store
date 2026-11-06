@@ -8,6 +8,8 @@ lingue: [it, en, fr, de, tr, es]
 lingua_predefinita: it
 # Casella che riceve le registrazioni e invia i codici di prova.
 email_licenze: license@xeisrl.com
+# Casella delle richieste di informazioni dei programmi su richiesta (su_richiesta: true in addons.yml).
+email_informazioni: info@xeisrl.com
 # Indirizzo del modulo Microsoft Forms per la registrazione: il link precompilato di Forms («Ottieni collegamento
 # precompilato») con {addon} al posto della scelta della domanda «Add-on» e {lingua} al posto di quella della domanda
 # «Lingua per le email». Finché è vuoto, il pulsante "Scarica gratis" apre un'email a email_licenze.

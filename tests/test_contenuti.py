@@ -28,7 +28,7 @@ def test_ogni_lingua_ha_tutti_i_testi_dell_interfaccia():
 
 
 def test_ogni_add_on_ha_i_dati_obbligatori():
-    for addon in build.carica_addons():
+    for addon in build.addons_con_pacchetto():
         assert re.fullmatch(r"[a-z0-9-]+", addon["id"]), addon["id"]
         assert re.fullmatch(r"\d+\.\d+\.\d+", addon["versione"]), addon["versione"]
         assert addon["file"].endswith(".zip")
@@ -40,7 +40,7 @@ def test_ogni_add_on_ha_i_dati_obbligatori():
 def test_si_pubblicano_solo_add_on_commerciali():
     # Mai gli add-on di prova o dei clienti (indicazione del Coordinatore XEI).
     for addon in build.carica_addons():
-        testo = f"{addon['id']} {addon['pacchetto']} {addon['file']}".lower()
+        testo = f"{addon['id']} {addon['pacchetto']} {addon.get('file', '')}".lower()
         assert "addontest" not in testo
         assert "cliente" not in testo
         assert "_test" not in testo, "il pacchetto _TEST non va pubblicato"
@@ -174,12 +174,23 @@ def _versione(testo):
 def test_prima_del_rilascio_xeicore_definito_e_consenso_dei_due_coordinatori():
     # Regola di Ivan: senza pacchetto XEICore definito e senza i due consensi non si pubblica.
     # Per le app vale il framework (test_ogni_app_ha_il_framework_definito).
-    for addon in build.carica_addons():
+    for addon in build.addons_con_pacchetto():
         if addon.get("tipo") != "app":
             assert re.fullmatch(r"\d+\.\d+\.\d+", str(addon.get("xeicore", ""))), f"{addon['id']}: xeicore mancante"
             assert _versione(addon["xeicore"]) >= (1, 1, 1), "servono le licenze offline (XEICore 1.1.1 o successiva)"
         for consenso in ("ok_coordinatore_xei", "ok_coordinatore_documentazione"):
             assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(addon.get(consenso, ""))), f"{addon['id']}: manca {consenso}"
+
+
+def test_un_programma_su_richiesta_ha_nome_e_i_due_consensi():
+    # Senza pacchetto non servono XEICore né SHA-256, ma la pagina nuova va concordata come ogni pubblicazione.
+    for voce in build.carica_addons():
+        if voce.get("su_richiesta") is True:
+            assert re.fullmatch(r"[a-z0-9-]+", voce["id"]), voce["id"]
+            assert re.fullmatch(r"XEI\.[A-Za-z0-9]+", voce["pacchetto"]), voce["pacchetto"]
+            assert "file" not in voce and "tag_pubblico" not in voce, f"{voce['id']}: su richiesta senza pacchetto"
+            for consenso in ("ok_coordinatore_xei", "ok_coordinatore_documentazione"):
+                assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(voce.get(consenso, ""))), f"{voce['id']}: manca {consenso}"
 
 
 def test_ogni_app_ha_il_framework_definito():

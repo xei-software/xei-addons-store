@@ -56,6 +56,19 @@ email_corpo_acquisto: |
   Ülke:
 
   Teşekkürler
+richiedi_informazioni: Bilgi iste
+email_oggetto_informazioni: "Bilgi talebi"
+email_corpo_informazioni: |
+  Merhaba,
+  {addon} hakkında bilgi almak istiyorum.
+
+  Şirket:
+  Vergi numarası:
+  Ad soyad:
+  Ülke:
+  Telefon:
+
+  Teşekkürler
 anteprima_apri: Ekran görüntülerini gör
 anteprima_alt: 'Ekran görüntüsü:'
 anteprima_precedente: Önceki ekran görüntüsü

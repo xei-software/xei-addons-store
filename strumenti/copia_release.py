@@ -144,13 +144,17 @@ def verifica_dipendenza(voce):
 
 
 def tag_pubblici(elenco=ELENCO_ADDONS):
-    """Tag delle Release pubbliche previste da site/addons.yml, nell'ordine del file."""
-    return [voce["tag_pubblico"] for voce in yaml.safe_load(Path(elenco).read_text(encoding="utf-8")) or []]
+    """Tag delle Release pubbliche previste da site/addons.yml, nell'ordine del file.
+
+    Le voci su richiesta (su_richiesta: true) non hanno pacchetto né Release.
+    """
+    return [voce["tag_pubblico"] for voce in yaml.safe_load(Path(elenco).read_text(encoding="utf-8")) or []
+            if voce.get("su_richiesta") is not True]
 
 
 def cerca_voce(tag_pubblico, elenco=ELENCO_ADDONS):
     for voce in yaml.safe_load(Path(elenco).read_text(encoding="utf-8")) or []:
-        if voce["tag_pubblico"] == tag_pubblico:
+        if voce.get("tag_pubblico") == tag_pubblico:
             return voce
     raise SystemExit(f"{tag_pubblico} non è in site/addons.yml")
 

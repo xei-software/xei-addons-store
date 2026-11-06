@@ -57,6 +57,9 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   codice, anche nel pacchetto pubblicato (all'avvio, senza menu, senza messaggi, solo log; nessuna build dedicata). Mai
   in ciò che il cliente legge: sito, manuali, note, guide, email, schermate, testi dell'interfaccia e file a vista del
   pacchetto (menu, `lang`).
+- **Disponibilità** (decisione di Ivan del 06/11/2026): `attivo: false` in `addons.yml` toglie un programma da tutto il
+  sito; `su_richiesta: true` lo pubblica senza pacchetto, con il solo pulsante «Richiedi informazioni» (email a
+  info@xeisrl.com, mai a license@). Dettagli nel README.
 - **Lingue standard degli add-on:** it, en, de, fr, es, tr (il turco nel programma arriva con le prossime versioni;
   in `addons.yml` `lingue_programma` indica quelle davvero presenti nella versione pubblicata).
 - **Nessun riferimento** a programmi di partenza (es. il vecchio configuratore), a migrazioni da altri programmi o a

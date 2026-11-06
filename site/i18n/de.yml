@@ -56,6 +56,19 @@ email_corpo_acquisto: |
   Land:
 
   Vielen Dank
+richiedi_informazioni: Informationen anfordern
+email_oggetto_informazioni: "Informationsanfrage"
+email_corpo_informazioni: |
+  Guten Tag,
+  ich möchte Informationen zu {addon} erhalten.
+
+  Unternehmen:
+  USt-IdNr.:
+  Vor- und Nachname:
+  Land:
+  Telefon:
+
+  Vielen Dank
 anteprima_apri: Screenshots ansehen
 anteprima_alt: Screenshot von
 anteprima_precedente: Vorheriger Screenshot

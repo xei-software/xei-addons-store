@@ -40,7 +40,7 @@ def test_il_pannello_non_mostra_piu_il_controllo_sha256(sito):
     # Al cliente non serve; l'impronta resta in addons.yml per il workflow delle Release.
     for lingua in build.carica_config()["lingue"]:
         testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             assert addon["sha256"] not in testo, lingua
         assert "SHA-256" not in testo, lingua
 
@@ -49,7 +49,7 @@ def test_i_pulsanti_si_chiamano_scarica_gratis_e_acquista(sito):
     for lingua in build.carica_config()["lingue"]:
         testi = build.carica_testi(lingua)
         testo = html.unescape((sito / lingua / "download.html").read_text(encoding="utf-8"))
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             pannello = html.unescape(_pannello(testo, addon["id"]))
             assert f">{testi['download_scarica_gratis']}</a>" in pannello, lingua
             assert f">{testi['download_acquista']}</a>" in pannello, lingua
@@ -58,7 +58,7 @@ def test_i_pulsanti_si_chiamano_scarica_gratis_e_acquista(sito):
 def test_scarica_gratis_apre_il_modulo_e_porta_il_pacchetto(sito):
     config = build.carica_config()
     testo = (sito / "it" / "download.html").read_text(encoding="utf-8")
-    for addon in build.carica_addons():
+    for addon in build.addons_con_pacchetto():
         pannello = html.unescape(_pannello(testo, addon["id"]))
         pacchetto = (f"https://github.com/{config['repository']}/releases/download/"
                      f"{addon['tag_pubblico']}/{addon['file']}")
@@ -174,7 +174,7 @@ def test_la_pagina_dell_applicazione_ha_il_pulsante_acquista(sito):
     for lingua in build.carica_config()["lingue"]:
         testi = build.carica_testi(lingua)
         download = (sito / lingua / "download.html").read_text(encoding="utf-8")
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             pulsante = re.search(r'<a class="pulsante secondario" href="[^"]*" data-azione="acquisto">[^<]*</a>',
                                  _pannello(download, addon["id"])).group(0)
             assert html.unescape(pulsante).endswith(f'>{testi["download_acquista"]}</a>'), lingua

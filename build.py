@@ -37,9 +37,24 @@ def carica_testi(lingua):
     return _leggi_yaml(CARTELLA_SITO / "i18n" / f"{lingua}.yml")
 
 
-def carica_addons():
-    """Add-on pubblicati, nell'ordine in cui compaiono nel sito."""
+def carica_voci():
+    """Tutte le voci di site/addons.yml, anche quelle spente."""
     return _leggi_yaml(CARTELLA_SITO / "addons.yml") or []
+
+
+def carica_addons():
+    """Programmi visibili sul sito, nell'ordine di addons.yml: «attivo: false» toglie una voce da tutto il sito."""
+    return [voce for voce in carica_voci() if voce.get("attivo", True) is not False]
+
+
+def addons_con_pacchetto():
+    """Programmi visibili con un pacchetto da scaricare (tutti tranne quelli su richiesta)."""
+    return [voce for voce in carica_addons() if voce.get("su_richiesta") is not True]
+
+
+def cartella_risorse(voce):
+    """Cartella delle immagini e dei file dei manuali del programma (content/_img/<cartella>), es. "itemgenerator"."""
+    return voce["pacchetto"].removeprefix("XEI.").lower()
 
 
 def leggi_markdown(percorso):
@@ -82,6 +97,13 @@ def _link_modulo(addon, testi, config, richiesta):
             .replace("{addon}", quote(addon.get("pacchetto", "")))
             .replace("{lingua}", quote(testi["nome_lingua"]))
             .replace("{richiesta}", quote(richiesta)))
+
+
+def link_informazioni(addon, testi, config):
+    """Pulsante «Richiedi informazioni» dei programmi su richiesta: email già pronta a email_informazioni."""
+    oggetto = quote(f"{testi['email_oggetto_informazioni']} - {addon['titolo']}")
+    corpo = testi["email_corpo_informazioni"].strip().replace("{addon}", addon["titolo"]).replace("\n", "\r\n")
+    return f"mailto:{config['email_informazioni']}?subject={oggetto}&body={quote(corpo)}"
 
 
 def _link_email(addon, testi, config, chiave):
@@ -184,11 +206,16 @@ def elenco_manuali(addon_id, lingua, lingua_predefinita, url_base):
 
 
 def _copia_risorse_manuali(cartella_uscita):
-    """Immagini e file di esempio dei manuali (content/_img, content/_file), comuni a tutte le lingue."""
+    """Immagini e file di esempio dei manuali (content/_img, content/_file), comuni a tutte le lingue.
+
+    Quelli dei programmi spenti («attivo: false») non si pubblicano.
+    """
+    spente = {cartella_risorse(voce) for voce in carica_voci() if voce.get("attivo", True) is False}
     for sotto in ("_img", "_file"):
         sorgente = CARTELLA_SITO / "content" / sotto
         if sorgente.is_dir():
-            shutil.copytree(sorgente, cartella_uscita / "static" / "manuali" / sotto)
+            shutil.copytree(sorgente, cartella_uscita / "static" / "manuali" / sotto,
+                            ignore=lambda cartella, nomi: [n for n in nomi if Path(cartella) == sorgente and n in spente])
 
 
 def _prepara_addon(addon, lingua, config, url_base, anteprime):
@@ -196,7 +223,9 @@ def _prepara_addon(addon, lingua, config, url_base, anteprime):
     predefinita = config["lingua_predefinita"]
     intestazione, html, tradotto = leggi_contenuto(lingua, f"addons/{addon['id']}.md", predefinita)
     manuali = elenco_manuali(addon["id"], lingua, predefinita, url_base)
-    note = leggi_contenuto(lingua, f"note/{addon['id']}-{addon['versione']}.md", predefinita)
+    su_richiesta = addon.get("su_richiesta") is True
+    # su richiesta: nessun pacchetto, quindi niente versione, note di rilascio né download
+    note = None if su_richiesta else leggi_contenuto(lingua, f"note/{addon['id']}-{addon['versione']}.md", predefinita)
     voce_anteprime = anteprime.get(addon["id"], {"immagini": []})
     return {
         **addon,
@@ -209,9 +238,10 @@ def _prepara_addon(addon, lingua, config, url_base, anteprime):
         "installazione": next((m for m in manuali if m["nome"] == "installazione"), None),
         # app (XEI App Framework): programma Windows da estrarre e avviare, non un pacchetto per l'Extension Manager
         "app": addon.get("tipo") == "app",
-        "url_download": (f"https://github.com/{config['repository']}/releases/download/"
-                         f"{addon['tag_pubblico']}/{addon['file']}"),
-        "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),
+        "su_richiesta": su_richiesta,
+        "url_download": None if su_richiesta else (f"https://github.com/{config['repository']}/releases/download/"
+                                                   f"{addon['tag_pubblico']}/{addon['file']}"),
+        "dimensione_leggibile": None if su_richiesta else formatta_dimensione(addon["dimensione"]),
         # copiate da content/_img in static/manuali/_img con le immagini dei manuali
         "anteprime": [f"{url_base}/static/manuali/_img/{voce_anteprime['cartella']}/{immagine}"
                       for immagine in voce_anteprime["immagini"]],
@@ -233,11 +263,11 @@ def prodotti_prova(addons):
 
     Il servizio lo legge dal sito: per aggiungere un prodotto alle prove basta pubblicarne la voce in addons.yml.
     Ogni voce ha il nome del prodotto (come nei codici di licenza), la versione pubblicata e, per gli add-on, la versione
-    di XEICore (da 1.3.0 la prova è legata alla società). Una voce con "prova: false" non offre la prova.
+    di XEICore (da 1.3.0 la prova è legata alla società). Le voci con "prova: false" o "su_richiesta: true" non offrono la prova.
     """
     prodotti = []
     for addon in addons:
-        if addon.get("prova", True) is False:
+        if addon.get("prova", True) is False or addon.get("su_richiesta") is True:
             continue
         voce = {"nome": addon["pacchetto"], "versione": str(addon["versione"])}
         if addon.get("xeicore"):
@@ -285,6 +315,7 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
             "testo": lambda chiave: testi[chiave].replace("{giorni}", str(config["giorni_prova"])),
             "link_prova": lambda addon: link_richiesta_prova(addon, testi, config),
             "link_acquisto": lambda addon: link_acquisto(addon, testi, config),
+            "link_informazioni": lambda addon: link_informazioni(addon, testi, config),
             "condizioni": condizioni,
         }
 

@@ -75,6 +75,8 @@ def test_pacchetto_con_file_vietati_non_verificato(tmp_path):
 
 def test_ogni_voce_di_addons_yml_indica_la_release_di_origine():
     for voce in yaml.safe_load(copia_release.ELENCO_ADDONS.read_text(encoding="utf-8")):
+        if voce.get("su_richiesta") is True:
+            continue  # nessun pacchetto, nessuna Release
         assert voce["origine"].startswith("xei-software/")
         assert voce["tag_origine"] == f"v{voce['versione']}"
         assert copia_release.cerca_voce(voce["tag_pubblico"]) == voce

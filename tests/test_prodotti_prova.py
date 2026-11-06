@@ -21,7 +21,7 @@ def _elenco(sito):
 
 def test_il_sito_pubblica_l_elenco_dei_prodotti_con_la_prova(sito):
     prodotti = {voce["nome"]: voce for voce in _elenco(sito)["prodotti"]}
-    addons = build.carica_addons()
+    addons = build.addons_con_pacchetto()
     assert set(prodotti) == {addon["pacchetto"] for addon in addons}
     for addon in addons:
         voce = prodotti[addon["pacchetto"]]

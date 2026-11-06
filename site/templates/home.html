@@ -18,7 +18,7 @@
   <article class="scheda">
     <h3>{{ addon.titolo }}</h3>
     <p>{{ addon.sommario }}</p>
-    <p class="dettaglio">{{ t.addon_versione }} {{ addon.versione }}</p>
+    {% if not addon.su_richiesta %}<p class="dettaglio">{{ t.addon_versione }} {{ addon.versione }}</p>{% endif %}
     <a href="{{ url_base }}/{{ lingua }}/addons/{{ addon.id }}.html">{{ t.scheda_scopri }} →</a>
   </article>
   {% endfor %}
