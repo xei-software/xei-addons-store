@@ -94,9 +94,15 @@ def _link_email(addon, testi, config, chiave):
     return f"mailto:{config['email_licenze']}?subject={oggetto}&body={quote(corpo)}"
 
 
+def _modulo_ha_il_prodotto(addon, config):
+    """Vero se c'è il modulo di registrazione e il prodotto è tra le sue scelte (prodotti_modulo; senza elenco: tutti)."""
+    prodotti = config.get("prodotti_modulo")
+    return bool(config["modulo_registrazione"]) and (not prodotti or addon["pacchetto"] in prodotti)
+
+
 def link_richiesta_prova(addon, testi, config):
-    """Dove porta il pulsante "Scarica gratis": il modulo di registrazione o, finché manca, un'email."""
-    if config["modulo_registrazione"]:
+    """Dove porta il pulsante "Scarica gratis": il modulo di registrazione o, se manca o non ha il prodotto, un'email."""
+    if _modulo_ha_il_prodotto(addon, config):
         return _link_modulo(addon, testi, config, config["richiesta_prova"])
     return _link_email(addon, testi, config, "prova")
 
@@ -106,7 +112,7 @@ def link_acquisto(addon, testi, config):
 
     Senza quella domanda il modulo tratterebbe l'acquisto come una richiesta di prova.
     """
-    if "{richiesta}" in config["modulo_registrazione"]:
+    if "{richiesta}" in config["modulo_registrazione"] and _modulo_ha_il_prodotto(addon, config):
         return _link_modulo(addon, testi, config, config["richiesta_acquisto"])
     return _link_email(addon, testi, config, "acquisto")
 

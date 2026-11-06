@@ -215,7 +215,7 @@ def test_il_modulo_vero_si_apre_con_add_on_e_lingua_della_pagina(sito):
     config = build.carica_config()
     attesi = {"it": "Italiano", "en": "English", "fr": "Français", "de": "Deutsch", "tr": "Türkçe", "es": "Español"}
     for lingua, nome in attesi.items():
-        for addon in build.carica_addons():
+        for addon in [a for a in build.carica_addons() if a["pacchetto"] in config["prodotti_modulo"]]:
             link = build.link_richiesta_prova(addon, build.carica_testi(lingua), config)
             assert link.startswith("https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=")
             assert "{" not in link and "%7B" not in link
@@ -253,3 +253,20 @@ def test_per_un_app_la_pagina_download_spiega_come_si_avvia(tmp_path, monkeypatc
         assert testo.count(nota) == 1, lingua
         # la prova dell'app si chiede dal sito, come per gli add-on
         assert testo.count('data-azione="prova"') == len(addons)
+
+
+def test_i_prodotti_che_il_modulo_forms_non_ha_usano_l_email(tmp_path):
+    # Il modulo Forms ha nell'elenco «Add-on» solo i prodotti di prodotti_modulo: per gli altri (es. Rate Updater) i
+    # pulsanti aprono l'email precompilata a license@.
+    config = build.carica_config()
+    assert config["modulo_registrazione"] and config["prodotti_modulo"]
+    testi = build.carica_testi("it")
+    for addon in build.carica_addons():
+        prova = build.link_richiesta_prova(addon | {"titolo": addon["pacchetto"]}, testi, config)
+        acquisto = build.link_acquisto(addon | {"titolo": addon["pacchetto"]}, testi, config)
+        if addon["pacchetto"] in config["prodotti_modulo"]:
+            assert prova.startswith("https://"), addon["id"]
+        else:
+            assert prova.startswith(f"mailto:{config['email_licenze']}"), addon["id"]
+            assert acquisto.startswith(f"mailto:{config['email_licenze']}"), addon["id"]
+    assert "XEI.RateUpdater" not in config["prodotti_modulo"]
