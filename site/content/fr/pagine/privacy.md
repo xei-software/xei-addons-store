@@ -10,7 +10,7 @@ stato: approvato
 Information au sens des articles 13 et 14 du Règlement (UE) 2016/679 (RGPD) pour les visiteurs de ce
 site et pour les personnes qui demandent l'essai gratuit d'une application XEI.
 
-En vigueur à partir du 27 octobre 2026.
+En vigueur à partir du 6 novembre 2026.
 
 ## Responsable du traitement
 

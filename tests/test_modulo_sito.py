@@ -152,3 +152,24 @@ def test_invia_la_richiesta_ha_lo_stile_dei_pulsanti_principali(sito):
     assert re.search(r"button\.pulsante \{[^}]*font: inherit", foglio)
     modulo = _modulo(sito, "it", build.addons_con_pacchetto()[0]["id"])
     assert '<button type="submit" class="pulsante">' in modulo
+
+
+def test_il_sito_pubblicato_usa_il_modulo_del_sito_e_non_piu_forms():
+    # Acceso il 06/11/2026 dopo la prova di Ivan: niente link a Microsoft Forms in nessuna pagina.
+    config = build.carica_config()
+    assert config["servizio_prove"].startswith("https://") and config["servizio_prove"].endswith("/api/richiesta")
+    assert config["modulo_registrazione"] == ""
+
+
+def test_nessuna_pagina_del_sito_porta_a_microsoft_forms(tmp_path):
+    build.genera_sito(tmp_path)
+    for pagina in tmp_path.rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        assert "forms.cloud.microsoft" not in testo and "forms.office.com" not in testo, pagina
+
+
+def test_l_informativa_e_in_vigore_dal_giorno_dell_accensione():
+    attese = {"it": "6 novembre 2026", "en": "6 November 2026", "fr": "6 novembre 2026", "de": "6. November 2026",
+              "es": "6 de noviembre de 2026", "tr": "6 Kasım 2026"}
+    for lingua, data in attese.items():
+        assert data in (build.CARTELLA_SITO / "content" / lingua / "pagine" / "privacy.md").read_text(encoding="utf-8")

@@ -10,7 +10,7 @@ stato: approvato
 Information nach Artikel 13 und 14 der Verordnung (EU) 2016/679 (DSGVO) für Besucher dieser Website
 und für Personen, die den kostenlosen Test einer XEI-Anwendung anfordern.
 
-Gültig ab 27. Oktober 2026.
+Gültig ab 6. November 2026.
 
 ## Verantwortlicher
 

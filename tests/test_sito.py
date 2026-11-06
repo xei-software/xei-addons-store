@@ -81,7 +81,7 @@ def test_senza_modulo_la_richiesta_di_prova_va_per_email(tmp_path):
 
 
 def test_con_modulo_la_richiesta_di_prova_apre_il_modulo(tmp_path):
-    config = build.carica_config()
+    config = {**build.carica_config(), "servizio_prove": "", "prodotti_modulo": []}
     config["modulo_registrazione"] = "https://forms.office.com/r/esempio"
     build.genera_sito(tmp_path, url_base="", config=config)
     testo = (tmp_path / "de" / "download.html").read_text(encoding="utf-8")
@@ -144,7 +144,7 @@ def test_logo_e_icona_ufficiali(sito):
 def test_l_email_di_richiesta_prova_e_gia_compilata():
     # Senza modulo il pulsante apre un'email con oggetto e testo già pronti, nella lingua della pagina.
     from urllib.parse import parse_qs, urlsplit
-    config = {**build.carica_config(), "modulo_registrazione": ""}
+    config = {**build.carica_config(), "modulo_registrazione": "", "servizio_prove": ""}
     addon = {"titolo": "XEI Prova"}
     for lingua in config["lingue"]:
         testi = build.carica_testi(lingua)
@@ -200,33 +200,12 @@ def test_il_sito_usa_il_dominio_store(sito):
 
 def test_il_modulo_si_apre_con_add_on_e_lingua_gia_scelti():
     # Link precompilato di Forms: {addon} e {lingua} diventano la scelta delle domande 1 e 9 del modulo.
-    config = {**build.carica_config(),
+    config = {**build.carica_config(), "servizio_prove": "", "prodotti_modulo": [],
               "modulo_registrazione": "https://forms.office.com/Pages/ResponsePage.aspx?id=ABC&rA=%22{addon}%22&rL=%22{lingua}%22"}
     addon = {"titolo": "XEI Prova", "pacchetto": "XEI.ItemGenerator"}
     link = build.link_richiesta_prova(addon, build.carica_testi("tr"), config)
     assert link == ("https://forms.office.com/Pages/ResponsePage.aspx?id=ABC"
                     "&rA=%22XEI.ItemGenerator%22&rL=%22T%C3%BCrk%C3%A7e%22")
-
-
-def test_il_modulo_vero_si_apre_con_add_on_e_lingua_della_pagina(sito):
-    # Link precompilato del modulo XEI: domanda «Add-on» e domanda «Lingua per le email» (ID del modulo Forms).
-    from urllib.parse import parse_qs, urlsplit
-    domanda_addon, domanda_lingua = "rd727d2389c344ae1a77c99049f6c745c", "r51bc4dc5e72c41798cb4c306594ee910"
-    config = build.carica_config()
-    attesi = {"it": "Italiano", "en": "English", "fr": "Français", "de": "Deutsch", "tr": "Türkçe", "es": "Español"}
-    for lingua, nome in attesi.items():
-        for addon in [a for a in build.carica_addons() if a["pacchetto"] in config["prodotti_modulo"]]:
-            link = build.link_richiesta_prova(addon, build.carica_testi(lingua), config)
-            assert link.startswith("https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=")
-            assert "{" not in link and "%7B" not in link
-            parametri = parse_qs(urlsplit(link).query)
-            assert parametri[domanda_addon] == [f'"{addon["pacchetto"]}"']
-            assert parametri[domanda_lingua] == [f'"{nome}"']
-        testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
-        # la prova passa dal modulo, non dall'email (l'email resta solo per l'acquisto, finché il modulo non lo gestisce)
-        assert re.search(r'href="https://forms\.cloud\.microsoft[^"]*" data-azione="prova"', testo), lingua
-    assert "%22Fran%C3%A7ais%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("fr"), config)
-    assert "%22T%C3%BCrk%C3%A7e%22" in build.link_richiesta_prova(build.carica_addons()[0], build.carica_testi("tr"), config)
 
 
 def test_la_home_non_parla_di_add_on_ne_di_sap(sito):
@@ -258,8 +237,9 @@ def test_per_un_app_la_pagina_download_spiega_come_si_avvia(tmp_path, monkeypatc
 def test_i_prodotti_che_il_modulo_forms_non_ha_usano_l_email(tmp_path):
     # Il modulo Forms ha nell'elenco «Add-on» solo i prodotti di prodotti_modulo: per gli altri (es. Rate Updater) i
     # pulsanti aprono l'email precompilata a license@.
-    config = build.carica_config()
-    assert config["modulo_registrazione"] and config["prodotti_modulo"]
+    # ripiego senza modulo del sito: Forms per i prodotti del suo elenco, email per gli altri
+    config = {**build.carica_config(), "servizio_prove": "", "prodotti_modulo": ["XEI.ItemGenerator", "XEI.CommissionManagement"],
+              "modulo_registrazione": "https://forms.office.com/r/esempio?a=%22{addon}%22"}
     testi = build.carica_testi("it")
     for addon in build.carica_addons():
         prova = build.link_richiesta_prova(addon | {"titolo": addon["pacchetto"]}, testi, config)

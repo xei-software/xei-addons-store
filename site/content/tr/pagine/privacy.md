@@ -10,7 +10,7 @@ stato: approvato
 Bu siteyi ziyaret edenler ve bir XEI uygulamasının ücretsiz denemesini talep edenler için (AB)
 2016/679 sayılı Tüzük'ün (GDPR) 13. ve 14. maddeleri uyarınca bilgilendirme.
 
-27 Ekim 2026'dan itibaren geçerlidir.
+6 Kasım 2026'dan itibaren geçerlidir.
 
 ## Veri sorumlusu
 

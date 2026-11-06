@@ -10,7 +10,7 @@ stato: approvato
 Información conforme a los artículos 13 y 14 del Reglamento (UE) 2016/679 (RGPD) para quienes visitan
 este sitio y para quienes solicitan la prueba gratuita de una aplicación de XEI.
 
-Vigente desde el 27 de octubre de 2026.
+Vigente desde el 6 de noviembre de 2026.
 
 ## Responsable del tratamiento
 

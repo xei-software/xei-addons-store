@@ -10,7 +10,7 @@ stato: approvato
 Information pursuant to Articles 13 and 14 of Regulation (EU) 2016/679 (GDPR) for visitors to this
 website and for those who request the free trial of a XEI application.
 
-Effective from 27 October 2026.
+Effective from 6 November 2026.
 
 ## Data controller
 

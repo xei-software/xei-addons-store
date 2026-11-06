@@ -80,7 +80,7 @@ def test_acquista_senza_domanda_richiesta_nel_modulo_apre_un_email_di_acquisto()
 
 
 def test_con_la_domanda_richiesta_entrambi_i_pulsanti_usano_il_modulo():
-    config = {**build.carica_config(), "prodotti_modulo": ["XEI.Prova"],
+    config = {**build.carica_config(), "prodotti_modulo": ["XEI.Prova"], "servizio_prove": "",
               "modulo_registrazione": "https://forms.office.com/r/x?a=%22{addon}%22&r=%22{richiesta}%22"}
     testi = build.carica_testi("en")
     addon = {"titolo": "XEI Prova", "pacchetto": "XEI.Prova"}

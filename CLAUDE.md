@@ -34,10 +34,12 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   `XeiFrameworkVersion` di `Directory.Packages.props` alla versione del tag) al posto di `xeicore`; stessi consensi e
   stessi controlli del pacchetto. Nella pagina download una nota spiega che si estrae la cartella e si avvia il
   programma (serve Microsoft Edge WebView2 Runtime). `copia_release voce` con `--tipo app`.
-- **Licenza di prova:** lo zip è pubblico e senza codice. Il pulsante «Richiedi la prova gratuita» apre il modulo
-  Microsoft Forms (`modulo_registrazione` in `site/config.yml`, link precompilato con `{addon}` e `{lingua}`); la Logic
-  App e il servizio `xei-trial-service` inviano in automatico da license@xeisrl.com il codice di prova di 30 giorni.
-  Con `modulo_registrazione` vuoto il pulsante apre un'email precompilata.
+- **Licenza di prova:** lo zip è pubblico e senza codice. Dal 06/11/2026 «Scarica gratis» porta al modulo nella
+  pagina dell'applicazione, che invia i dati al servizio `xei-trial-service` (`servizio_prove` in `site/config.yml`,
+  POST /api/richiesta); il servizio invia da license@xeisrl.com il codice di prova di 30 giorni e rimanda alle pagine
+  `richiesta-ricevuta` o `richiesta-non-valida`. I prodotti con la prova il servizio li legge da `/prodotti-prova.json`
+  (generato da `addons.yml`). Microsoft Forms non si usa più (`modulo_registrazione` vuoto); con `servizio_prove`
+  vuoto si torna a Forms, se c'è il link, oppure all'email precompilata.
 - I testi delle pagine vengono dal Coordinatore Documentazione (repository `xei-model-docs`, front matter `title`,
   `description`, `lang`, `prodotto`, `versione`, `stato`). Si copiano in `site/content/` solo i file con
   `stato: approvato`; il generatore scarta comunque ogni altro stato (`bozza`, `interno`, nessuno).

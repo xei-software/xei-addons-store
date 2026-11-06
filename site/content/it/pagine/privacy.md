@@ -10,7 +10,7 @@ stato: approvato
 Informativa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR) per chi visita
 questo sito e per chi richiede la prova gratuita di un'applicazione XEI.
 
-In vigore dal 27 ottobre 2026.
+In vigore dal 6 novembre 2026.
 
 ## Titolare del trattamento
 
