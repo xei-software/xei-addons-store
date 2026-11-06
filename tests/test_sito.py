@@ -259,3 +259,13 @@ def test_il_titolo_della_pagina_e_solo_testo(sito):
     for pagina in sito.rglob("*.html"):
         titolo = re.search(r"<title>(.*?)</title>", pagina.read_text(encoding="utf-8"), re.S)
         assert titolo and "<" not in titolo.group(1), pagina
+
+
+def test_nei_contatti_c_e_info(sito):
+    # Decisione di Ivan (06/11/2026): il contatto generale del sito è info@xeisrl.com.
+    for pagina in sito.rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        piede = re.search(r'<footer class="piede">(.*?)</footer>', testo, re.S)
+        if piede:
+            assert 'href="mailto:info@xeisrl.com"' in piede.group(1), pagina
+            assert "license@" not in piede.group(1), pagina

@@ -197,3 +197,11 @@ def test_con_condizioni_approvate_anche_acquista_della_pagina_applicazione_le_ch
         testo = (uscita / lingua / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
         assert '<dialog class="condizioni"' in testo, lingua
         assert 'src="/static/js/sito.js"' in testo, lingua
+
+
+def test_i_link_azzurri_del_pannello_non_colorano_i_pulsanti(sito):
+    # «Scarica gratis» con il testo azzurro chiaro dei link su fondo azzurro non si leggeva: i link del pannello
+    # hanno il loro colore, i pulsanti quello dei pulsanti principali (testo scuro).
+    foglio = (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
+    assert ".scheda.download a:not(.pulsante) {" in foglio
+    assert ".scheda.download a {" not in foglio

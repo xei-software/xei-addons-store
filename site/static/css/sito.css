@@ -114,7 +114,7 @@ button.pulsante { font: inherit; font-weight: 600; cursor: pointer; }
 .scheda.download h2 { color: #ffffff; font-size: 1.4rem; line-height: 1.3; }
 .scheda.download .versione { color: #9fb4c2; }
 .scheda.download .dati dt { color: #8fa3b0; }
-.scheda.download a { color: #4cc3f5; }
+.scheda.download a:not(.pulsante) { color: #4cc3f5; }
 .scheda.download .guida { margin-bottom: 0; }
 
 .anteprima { display: block; position: relative; text-decoration: none; cursor: zoom-in; }
