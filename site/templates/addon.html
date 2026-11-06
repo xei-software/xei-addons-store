@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 {% from "_acquisto.html" import pulsante_acquisto with context %}
-{% block titolo %}{{ addon.titolo }}{% include "_condizioni.html" %}
-<script src="{{ url_base }}/static/js/sito.js" defer></script>
-{% endblock %}
+{% block titolo %}{{ addon.titolo }}{% endblock %}
 {% block contenuto %}
 {% if not addon.tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
 <h1>{{ addon.titolo }}</h1>

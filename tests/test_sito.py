@@ -270,3 +270,10 @@ def test_i_prodotti_che_il_modulo_forms_non_ha_usano_l_email(tmp_path):
             assert prova.startswith(f"mailto:{config['email_licenze']}"), addon["id"]
             assert acquisto.startswith(f"mailto:{config['email_licenze']}"), addon["id"]
     assert "XEI.RateUpdater" not in config["prodotti_modulo"]
+
+
+def test_il_titolo_della_pagina_e_solo_testo(sito):
+    # Nel <title> niente tag: il browser li mostrerebbe come testo nella scheda.
+    for pagina in sito.rglob("*.html"):
+        titolo = re.search(r"<title>(.*?)</title>", pagina.read_text(encoding="utf-8"), re.S)
+        assert titolo and "<" not in titolo.group(1), pagina
