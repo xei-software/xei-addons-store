@@ -75,7 +75,7 @@ richiedi_prova_prodotto: Anwendung
 richiedi_prova_codice: Firmencode
 richiedi_prova_continua: Formular ausfüllen
 richiedi_prova_senza_dati: Um die Testphase anzufordern, installieren Sie die Anwendung und verwenden Sie die Schaltfläche Testphase anfordern im Menü Lizenz der Anwendung.
-prova_dal_programma: Installieren Sie die Anwendung und fordern Sie die Testphase über das Menü Lizenz > Testphase anfordern an.
+prova_dal_programma: Installieren Sie die Anwendung und fordern Sie die Testphase über das Menü Lizenz › Testphase anfordern an.
 modulo_titolo: Kostenlose Testphase anfordern
 modulo_intro: Füllen Sie das Formular aus und erhalten Sie per E-Mail den Code, mit dem Sie die Anwendung {giorni} Tage kostenlos testen können.
 modulo_nome: Vor- und Nachname
@@ -93,4 +93,4 @@ ricevuta_titolo: Anfrage erhalten
 ricevuta_testo: Vielen Dank! In wenigen Minuten erhalten Sie eine E-Mail von {email}. Falls Sie sie nicht finden, sehen Sie bitte auch im Spam-Ordner nach.
 non_valida_titolo: Ungültige Anfrage
 non_valida_testo: Einige Daten fehlen oder sind ungültig. Kehren Sie zum Formular zurück, prüfen Sie die Felder und senden Sie die Anfrage erneut.
-non_valida_torna: Zurück zu den Downloads
+non_valida_torna: Zurück zum Formular

@@ -4,5 +4,9 @@
 {# pagine a cui rimanda il servizio delle prove dopo l'invio del modulo: mai il codice né l'esito della richiesta #}
 <h1>{{ titolo_pagina }}</h1>
 <p>{{ messaggio }}</p>
-{% if ritorno %}<p class="azioni"><a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html">{{ t.non_valida_torna }}</a></p>{% endif %}
+{% if ritorno %}
+{# il servizio aggiunge ?prodotto=<pacchetto>: lo script porta al modulo di quell'applicazione, altrimenti download #}
+<p class="azioni"><a class="pulsante" id="torna-modulo" href="{{ url_base }}/{{ lingua }}/download.html" data-pagine='{{ pagine_ritorno | tojson }}'>{{ t.non_valida_torna }}</a></p>
+<script src="{{ url_base }}/static/js/richiedi-prova.js"></script>
+{% endif %}
 {% endblock %}

@@ -75,7 +75,7 @@ richiedi_prova_prodotto: Applicazione
 richiedi_prova_codice: Codice della società
 richiedi_prova_continua: Compila il modulo
 richiedi_prova_senza_dati: Per richiedere la prova installa l'applicazione e usa il pulsante Richiedi una prova nel menu Licenza dell'applicazione.
-prova_dal_programma: Installa l'applicazione e richiedi la prova dal menu Licenza > Richiedi una prova.
+prova_dal_programma: Installa l'applicazione e richiedi la prova dal menu Licenza › Richiedi una prova.
 modulo_titolo: Richiedi la prova gratuita
 modulo_intro: Compila il modulo e ricevi via email il codice per provare l'applicazione gratis per {giorni} giorni.
 modulo_nome: Nome e cognome
@@ -93,4 +93,4 @@ ricevuta_titolo: Richiesta ricevuta
 ricevuta_testo: Grazie! Tra pochi minuti ricevi un'email da {email}. Se non la trovi, controlla anche la posta indesiderata.
 non_valida_titolo: Richiesta non valida
 non_valida_testo: Alcuni dati mancano o non sono validi. Torna al modulo, controlla i campi e invia di nuovo la richiesta.
-non_valida_torna: Torna al download
+non_valida_torna: Torna al modulo

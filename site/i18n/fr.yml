@@ -75,7 +75,7 @@ richiedi_prova_prodotto: Application
 richiedi_prova_codice: Code de la société
 richiedi_prova_continua: Remplir le formulaire
 richiedi_prova_senza_dati: Pour demander l'essai, installez l'application et utilisez le bouton Demander un essai du menu Licence de l'application.
-prova_dal_programma: Installez l'application et demandez l'essai depuis le menu Licence > Demander un essai.
+prova_dal_programma: Installez l'application et demandez l'essai depuis le menu Licence › Demander un essai.
 modulo_titolo: Demander l'essai gratuit
 modulo_intro: Remplissez le formulaire et recevez par e-mail le code pour essayer l'application gratuitement pendant {giorni} jours.
 modulo_nome: Nom et prénom
@@ -93,4 +93,4 @@ ricevuta_titolo: Demande reçue
 ricevuta_testo: Merci ! Dans quelques minutes, vous recevrez un e-mail de {email}. Si vous ne le trouvez pas, vérifiez aussi vos courriers indésirables.
 non_valida_titolo: Demande non valide
 non_valida_testo: Certaines données manquent ou ne sont pas valides. Revenez au formulaire, vérifiez les champs et envoyez à nouveau la demande.
-non_valida_torna: Retour aux téléchargements
+non_valida_torna: Retour au formulaire

@@ -322,7 +322,8 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
             pagina("esito.html", "richiesta-ricevuta.html", titolo_pagina=testi["ricevuta_titolo"],
                    messaggio=testi["ricevuta_testo"].replace("{email}", config["email_licenze"]), ritorno=False)
             pagina("esito.html", "richiesta-non-valida.html", titolo_pagina=testi["non_valida_titolo"],
-                   messaggio=testi["non_valida_testo"], ritorno=True)
+                   messaggio=testi["non_valida_testo"], ritorno=True,
+                   pagine_ritorno={addon["pacchetto"]: addon["pagina"] for addon in addons})
 
     radice = {"config": config, "url_base": url_base, "lingue": lingue, "nomi_lingue": nomi_lingue,
               "lingua_predefinita": config["lingua_predefinita"]}

@@ -30,8 +30,15 @@ function paginaModulo(pagine, ricerca) {
   return pagina && codice ? pagina + "?codice=" + encodeURIComponent(codice) + "#prova" : null;
 }
 
+// Pagina «richiesta non valida»: il modulo dell'applicazione indicata dal servizio (?prodotto=<pacchetto>), o null.
+function paginaRitorno(pagine, ricerca) {
+  var pagina = pagine[(new URLSearchParams(ricerca).get("prodotto") || "").trim()];
+  return pagina ? pagina + "#prova" : null;
+}
+
 if (typeof module !== "undefined") {
-  module.exports = { indirizzoModulo: indirizzoModulo, codiceSocieta: codiceSocieta, paginaModulo: paginaModulo };
+  module.exports = { indirizzoModulo: indirizzoModulo, codiceSocieta: codiceSocieta, paginaModulo: paginaModulo,
+                     paginaRitorno: paginaRitorno };
 }
 
 if (typeof document !== "undefined") {
@@ -75,6 +82,17 @@ if (typeof document !== "undefined") {
     var codice = codiceSocieta(new URLSearchParams(location.search).get("codice"));
     if (campo && codice && !campo.value) {
       campo.value = codice;
+    }
+  });
+}
+
+// Pagina «richiesta non valida»: il pulsante torna al modulo dell'applicazione (senza prodotto resta la pagina download).
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", function () {
+    var pulsante = document.getElementById("torna-modulo");
+    var pagina = pulsante && paginaRitorno(JSON.parse(pulsante.dataset.pagine || "{}"), location.search);
+    if (pagina) {
+      pulsante.href = pagina;
     }
   });
 }

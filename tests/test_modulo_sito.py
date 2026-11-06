@@ -100,3 +100,36 @@ def test_la_pagina_richiedi_prova_porta_al_modulo_dell_applicazione_con_il_codic
               f" r.paginaModulo({json.dumps(pagine)}, '?prodotto=XEI.Altro&codice=7K3F-9QPA-2MXB')]))")
     uscita = json.loads(subprocess.run(["node", "-e", codice], capture_output=True, text=True, check=True).stdout)
     assert uscita == ["/it/addons/item-generator.html?codice=7K3F-9QPA-2MXB#prova", None]
+
+
+def test_il_menu_licenza_si_scrive_con_il_separatore_dei_menu():
+    # Indicazione del Coordinatore Documentazione: «Licenza › Richiedi una prova», non «>».
+    for lingua in build.carica_config()["lingue"]:
+        testo = build.carica_testi(lingua)["prova_dal_programma"]
+        assert "›" in testo and ">" not in testo, lingua
+
+
+def test_la_pagina_non_valida_torna_al_modulo_dell_applicazione(sito):
+    for lingua in build.carica_config()["lingue"]:
+        testi = build.carica_testi(lingua)
+        testo = html.unescape((sito / lingua / "richiesta-non-valida.html").read_text(encoding="utf-8"))
+        pulsante = re.search(r'<a [^>]*id="torna-modulo"[^>]*>([^<]*)</a>', testo)
+        assert pulsante and pulsante.group(1) == testi["non_valida_torna"], lingua
+        # senza JavaScript o con un prodotto sconosciuto si torna alla pagina download
+        assert f'href="/{lingua}/download.html"' in pulsante.group(0), lingua
+        pagine = json.loads(re.search(r"data-pagine='([^']*)'", pulsante.group(0)).group(1))
+        for addon in build.carica_addons():
+            assert pagine[addon["pacchetto"]] == f"/{lingua}/addons/{addon['id']}.html", (lingua, addon["id"])
+        assert 'src="/static/js/richiedi-prova.js"' in testo, lingua
+
+
+def test_il_ritorno_al_modulo_usa_il_prodotto_dell_indirizzo():
+    if not shutil.which("node"):
+        pytest.skip("node non installato")
+    script = build.CARTELLA_SITO / "static" / "js" / "richiedi-prova.js"
+    pagine = {"XEI.ItemGenerator": "/it/addons/item-generator.html"}
+    codice = (f"const r = require({json.dumps(str(script))});"
+              f"console.log(JSON.stringify([r.paginaRitorno({json.dumps(pagine)}, '?prodotto=XEI.ItemGenerator'),"
+              f" r.paginaRitorno({json.dumps(pagine)}, '?prodotto=XEI.Altro'), r.paginaRitorno({json.dumps(pagine)}, '')]))")
+    uscita = json.loads(subprocess.run(["node", "-e", codice], capture_output=True, text=True, check=True).stdout)
+    assert uscita == ["/it/addons/item-generator.html#prova", None, None]

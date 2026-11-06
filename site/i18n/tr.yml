@@ -75,7 +75,7 @@ richiedi_prova_prodotto: Uygulama
 richiedi_prova_codice: Şirket kodu
 richiedi_prova_continua: Formu doldur
 richiedi_prova_senza_dati: Denemeyi talep etmek için uygulamayı kurun ve uygulamanın Lisans menüsündeki Deneme talep et düğmesini kullanın.
-prova_dal_programma: Uygulamayı kurun ve denemeyi Lisans > Deneme talep et menüsünden talep edin.
+prova_dal_programma: Uygulamayı kurun ve denemeyi Lisans › Deneme talep et menüsünden talep edin.
 modulo_titolo: Ücretsiz deneme talep et
 modulo_intro: Formu doldurun; uygulamayı {giorni} gün ücretsiz denemek için gereken kodu e-posta ile alın.
 modulo_nome: Ad ve soyad
@@ -93,4 +93,4 @@ ricevuta_titolo: Talep alındı
 ricevuta_testo: Teşekkürler! Birkaç dakika içinde {email} adresinden bir e-posta alacaksınız. Bulamazsanız istenmeyen e-posta klasörünü de kontrol edin.
 non_valida_titolo: Geçersiz talep
 non_valida_testo: Bazı bilgiler eksik veya geçersiz. Forma dönün, alanları kontrol edin ve talebi yeniden gönderin.
-non_valida_torna: İndirmelere dön
+non_valida_torna: Forma dön
