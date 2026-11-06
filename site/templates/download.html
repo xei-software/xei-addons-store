@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_acquisto.html" import pulsante_acquisto with context %}
 {% block titolo %}{{ t.download_titolo }}{% endblock %}
 {% block contenuto %}
 <h1>{{ t.download_titolo }}</h1>
@@ -25,7 +26,7 @@
       {# Senza JavaScript i pulsanti aprono direttamente il modulo (o l'email); con JavaScript prima si accettano le
          condizioni d'uso, poi "Scarica gratis" apre il modulo e scarica il pacchetto (sito.js). #}
       <a class="pulsante" href="{{ link_prova(addon) }}" data-azione="prova" data-pacchetto="{{ addon.url_download }}">{{ t.download_scarica_gratis }}</a>
-      <a class="pulsante secondario" href="{{ link_acquisto(addon) }}" data-azione="acquisto">{{ t.download_acquista }}</a>
+      {{ pulsante_acquisto(addon) }}
     </p>
     {% if addon.prova_dal_programma %}<p class="nota">{{ t.prova_dal_programma }}</p>{% endif %}
     {% if addon.app %}<p class="nota">{{ t.download_app_installazione | replace("{programma}", addon.pacchetto ~ ".exe") }}</p>{% endif %}
@@ -55,22 +56,6 @@
   <p class="galleria-conteggio"></p>
 </dialog>
 
-{% if condizioni %}
-{% set intestazione_condizioni, html_condizioni, condizioni_tradotte = condizioni %}
-<dialog class="condizioni" aria-labelledby="condizioni-titolo">
-  <form method="dialog">
-    <h2 id="condizioni-titolo">{{ intestazione_condizioni.title }}</h2>
-    <p>{{ t.condizioni_sintesi }}</p>
-    <p><a href="{{ url_base }}/{{ lingua }}/condizioni.html" target="_blank" rel="noopener">{{ t.condizioni_leggi }}</a></p>
-    <label class="spunta"><input type="checkbox" name="accetto"> <span>{{ t.condizioni_accetto }}</span></label>
-    <label class="spunta"><input type="checkbox" name="approvo"> <span>{{ t.condizioni_approvo }}</span></label>
-    <p class="nota">{{ t.condizioni_nota }}</p>
-    <p class="azioni">
-      <button type="button" class="pulsante secondario" value="annulla">{{ t.condizioni_annulla }}</button>
-      <button type="button" class="pulsante" value="continua" disabled>{{ t.condizioni_continua }}</button>
-    </p>
-  </form>
-</dialog>
-{% endif %}
+{% include "_condizioni.html" %}
 <script src="{{ url_base }}/static/js/sito.js" defer></script>
 {% endblock %}

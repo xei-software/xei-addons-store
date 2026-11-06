@@ -167,3 +167,27 @@ def test_tutte_le_pagine_hanno_lo_sfondo_scuro_e_il_logo_bianco(sito):
     assert (sito / "static" / "img" / "logo-xei-bianco.png").exists()
     foglio = (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
     assert ".pagina-scura .testata" in foglio and "body.pagina-scura" in foglio
+
+
+def test_la_pagina_dell_applicazione_ha_il_pulsante_acquista(sito):
+    # Richiesta di Ivan: «Acquista» anche nella scheda prodotto, con lo stesso link della pagina download.
+    for lingua in build.carica_config()["lingue"]:
+        testi = build.carica_testi(lingua)
+        download = (sito / lingua / "download.html").read_text(encoding="utf-8")
+        for addon in build.carica_addons():
+            pulsante = re.search(r'<a class="pulsante secondario" href="[^"]*" data-azione="acquisto">[^<]*</a>',
+                                 _pannello(download, addon["id"])).group(0)
+            assert html.unescape(pulsante).endswith(f'>{testi["download_acquista"]}</a>'), lingua
+            testo = (sito / lingua / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
+            assert pulsante in testo, (lingua, addon["id"])
+
+
+def test_con_condizioni_approvate_anche_acquista_della_pagina_applicazione_le_chiede(tmp_path, monkeypatch):
+    _con_condizioni_approvate(tmp_path, monkeypatch)
+    uscita = tmp_path / "uscita"
+    build.genera_sito(uscita)
+    addon = build.carica_addons()[0]
+    for lingua in build.carica_config()["lingue"]:
+        testo = (uscita / lingua / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
+        assert '<dialog class="condizioni"' in testo, lingua
+        assert 'src="/static/js/sito.js"' in testo, lingua

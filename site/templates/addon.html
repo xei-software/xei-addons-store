@@ -1,5 +1,8 @@
 {% extends "base.html" %}
-{% block titolo %}{{ addon.titolo }}{% endblock %}
+{% from "_acquisto.html" import pulsante_acquisto with context %}
+{% block titolo %}{{ addon.titolo }}{% include "_condizioni.html" %}
+<script src="{{ url_base }}/static/js/sito.js" defer></script>
+{% endblock %}
 {% block contenuto %}
 {% if not addon.tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
 <h1>{{ addon.titolo }}</h1>
@@ -12,6 +15,7 @@
 <div class="testo">{{ addon.descrizione_html | safe }}</div>
 <p class="azioni">
   <a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html#{{ addon.id }}">{{ t.addon_scarica }}</a>
+  {{ pulsante_acquisto(addon) }}
   {% if addon.manuali %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}/{{ addon.manuali[0].nome }}.html">{{ t.addon_manuale }}</a>{% endif %}
   {% if addon.note %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/note/{{ addon.id }}-{{ addon.versione }}.html">{{ t.addon_note }}</a>{% endif %}
 </p>
@@ -49,4 +53,6 @@
 </section>
 <script src="{{ url_base }}/static/js/richiedi-prova.js"></script>
 {% endif %}
+{% include "_condizioni.html" %}
+<script src="{{ url_base }}/static/js/sito.js" defer></script>
 {% endblock %}

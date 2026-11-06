@@ -1,0 +1,5 @@
+{# Pulsante «Acquista»: un solo punto per la pagina download e la pagina dell'applicazione.
+   Con la vendita online (Issue #8 di xei-core) cambia qui, e in link_acquisto di build.py. #}
+{% macro pulsante_acquisto(addon) -%}
+<a class="pulsante secondario" href="{{ link_acquisto(addon) }}" data-azione="acquisto">{{ t.download_acquista }}</a>
+{%- endmacro %}

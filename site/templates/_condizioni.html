@@ -1,0 +1,18 @@
+{# Finestra delle condizioni d'uso: i pulsanti con data-azione chiedono di accettarle (sito.js). Solo se approvate. #}
+{% if condizioni %}
+{% set intestazione_condizioni, html_condizioni, condizioni_tradotte = condizioni %}
+<dialog class="condizioni" aria-labelledby="condizioni-titolo">
+  <form method="dialog">
+    <h2 id="condizioni-titolo">{{ intestazione_condizioni.title }}</h2>
+    <p>{{ t.condizioni_sintesi }}</p>
+    <p><a href="{{ url_base }}/{{ lingua }}/condizioni.html" target="_blank" rel="noopener">{{ t.condizioni_leggi }}</a></p>
+    <label class="spunta"><input type="checkbox" name="accetto"> <span>{{ t.condizioni_accetto }}</span></label>
+    <label class="spunta"><input type="checkbox" name="approvo"> <span>{{ t.condizioni_approvo }}</span></label>
+    <p class="nota">{{ t.condizioni_nota }}</p>
+    <p class="azioni">
+      <button type="button" class="pulsante secondario" value="annulla">{{ t.condizioni_annulla }}</button>
+      <button type="button" class="pulsante" value="continua" disabled>{{ t.condizioni_continua }}</button>
+    </p>
+  </form>
+</dialog>
+{% endif %}
