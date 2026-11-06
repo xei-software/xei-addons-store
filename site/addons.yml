@@ -7,7 +7,7 @@
 - id: item-generator
   pacchetto: XEI.ItemGenerator
   versione: 1.5.0
-  data_rilascio: '2026-10-28'
+  data_rilascio: '2026-11-16'
   origine: xei-software/xei-itemgenerator
   tag_origine: v1.5.0
   xeicore: 1.2.2
@@ -22,7 +22,7 @@
 - id: commission-management
   pacchetto: XEI.CommissionManagement
   versione: 1.1.1
-  data_rilascio: '2026-10-28'
+  data_rilascio: '2026-11-16'
   origine: xei-software/xei-commissionmanagement
   tag_origine: v1.1.1
   xeicore: 1.2.1
@@ -37,7 +37,7 @@
 - id: rate-updater
   pacchetto: XEI.RateUpdater
   versione: 1.0.0
-  data_rilascio: '2026-11-05'
+  data_rilascio: '2026-11-16'
   origine: xei-software/xei-rateupdater
   tag_origine: v1.0.0
   tipo: app

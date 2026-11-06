@@ -206,3 +206,10 @@ def test_percorsi_interni_bloccati_e_cartella_di_installazione_permessa():
     for interno in (r"C:\SORGENTI\xei-software\xei-core", r"C:\Users\ivan\Desktop", r"D:\xei-software\app"):
         assert schema.search(interno), interno
     assert not schema.search(r"Estrai la cartella in `C:\XEI\RateUpdater`.")
+
+
+def test_le_date_di_rilascio_sono_dal_16_novembre_2026():
+    # Decisione di Ivan (06/11/2026): sul sito nessuna data di rilascio prima del 16/11/2026, dopo qualsiasi data.
+    for addon in build.addons_con_pacchetto():
+        assert re.fullmatch(r"\d{4}-\d{2}-\d{2}", str(addon["data_rilascio"])), addon["id"]
+        assert str(addon["data_rilascio"]) >= "2026-11-16", f"{addon['id']}: data_rilascio prima del 16/11/2026"
