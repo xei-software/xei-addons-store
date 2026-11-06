@@ -69,3 +69,28 @@ condizioni_nota: 'Im sich öffnenden Formular bestätigen Sie die Annahme mit Ih
 condizioni_annulla: Abbrechen
 condizioni_continua: Weiter
 download_app_installazione: 'Windows-Programm: Ordner aus dem ZIP entpacken und {programma} starten. Microsoft Edge WebView2 Runtime ist erforderlich.'
+richiedi_prova_titolo: Kostenlose Testphase anfordern
+richiedi_prova_intro: 'Prüfen Sie die Daten und fahren Sie mit dem Formular fort: Der Testcode kommt per E-Mail und gilt nur für diese Firma.'
+richiedi_prova_prodotto: Anwendung
+richiedi_prova_codice: Firmencode
+richiedi_prova_continua: Formular ausfüllen
+richiedi_prova_senza_dati: Um die Testphase anzufordern, installieren Sie die Anwendung und verwenden Sie die Schaltfläche Testphase anfordern im Menü Lizenz der Anwendung.
+prova_dal_programma: Installieren Sie die Anwendung und fordern Sie die Testphase über das Menü Lizenz > Testphase anfordern an.
+modulo_titolo: Kostenlose Testphase anfordern
+modulo_intro: Füllen Sie das Formular aus und erhalten Sie per E-Mail den Code, mit dem Sie die Anwendung {giorni} Tage kostenlos testen können.
+modulo_nome: Vor- und Nachname
+modulo_azienda: Firma
+modulo_partita_iva: USt-IdNr.
+modulo_paese: Land
+modulo_paesi: [Italien, Schweiz, Deutschland, Österreich, Frankreich, Spanien, Türkei, Vereinigtes Königreich, Vereinigte Staaten, Anderes Land]
+modulo_email: E-Mail
+modulo_email_aiuto: Der Testcode wird an diese Adresse gesendet.
+modulo_codice: Firmencode
+modulo_codice_aiuto: Sie finden ihn im Menü Lizenz der Anwendung (z. B. 7K3F-9QPA-2MXB).
+modulo_informativa: Ich habe die Datenschutzerklärung gelesen.
+modulo_invia: Anfrage senden
+ricevuta_titolo: Anfrage erhalten
+ricevuta_testo: Vielen Dank! In wenigen Minuten erhalten Sie eine E-Mail von {email}. Falls Sie sie nicht finden, sehen Sie bitte auch im Spam-Ordner nach.
+non_valida_titolo: Ungültige Anfrage
+non_valida_testo: Einige Daten fehlen oder sind ungültig. Kehren Sie zum Formular zurück, prüfen Sie die Felder und senden Sie die Anfrage erneut.
+non_valida_torna: Zurück zu den Downloads

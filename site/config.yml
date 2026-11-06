@@ -17,6 +17,9 @@ modulo_registrazione: "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=
 # Prodotti che il modulo Forms ha nell'elenco «Add-on»: per gli altri i pulsanti aprono l'email a email_licenze.
 prodotti_modulo: [XEI.ItemGenerator, XEI.CommissionManagement]
 giorni_prova: 30
+# Indirizzo del modulo del sito nel servizio delle prove (POST /api/richiesta di xei-trial-service), senza Microsoft
+# Forms: quando c'è, ogni pagina di applicazione ha il modulo e "Scarica gratis" porta lì. Vuoto = modulo_registrazione.
+servizio_prove: ""
 # Scelte della domanda «Richiesta» del modulo, identiche a quelle di Forms.
 richiesta_prova: Prova gratuita
 richiesta_acquisto: Acquisto

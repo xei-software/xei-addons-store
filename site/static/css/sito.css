@@ -189,3 +189,13 @@ body.pagina-scura {
 .pagina-scura .lingue li a { color: #4cc3f5; }
 .pagina-scura .marchio img { background: none; padding: 0; }
 .pagina-scura .griglia .scheda { border-color: rgba(0, 159, 227, 0.35); border-radius: 16px; }
+
+/* Modulo della prova nella pagina dell'applicazione */
+.modulo-prova form { display: grid; gap: 0.75rem; max-width: 36rem; }
+.modulo-prova label { display: grid; gap: 0.25rem; }
+.modulo-prova label.spunta { display: flex; gap: 0.5rem; align-items: flex-start; }
+.modulo-prova input[type="text"], .modulo-prova input[type="email"], .modulo-prova select {
+  padding: 0.5rem; border: 1px solid #686A6F; border-radius: 4px; font: inherit; }
+.modulo-prova small { color: #686A6F; }
+/* campo trappola: fuori dallo schermo per le persone, visibile ai programmi automatici */
+.trappola { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }

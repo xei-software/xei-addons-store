@@ -69,3 +69,28 @@ condizioni_nota: 'In the form that opens you confirm your acceptance with your e
 condizioni_annulla: Cancel
 condizioni_continua: Continue
 download_app_installazione: 'Windows program: extract the folder from the zip and start {programma}. Microsoft Edge WebView2 Runtime is required.'
+richiedi_prova_titolo: Request the free trial
+richiedi_prova_intro: 'Check the data and continue with the form: the trial code arrives by email and is valid only for this company.'
+richiedi_prova_prodotto: Application
+richiedi_prova_codice: Company code
+richiedi_prova_continua: Fill in the form
+richiedi_prova_senza_dati: To request the trial, install the application and use the Request a trial button in the application's License menu.
+prova_dal_programma: Install the application and request the trial from the License > Request a trial menu.
+modulo_titolo: Request the free trial
+modulo_intro: Fill in the form and receive by email the code to try the application free of charge for {giorni} days.
+modulo_nome: First and last name
+modulo_azienda: Company
+modulo_partita_iva: VAT number
+modulo_paese: Country
+modulo_paesi: [Italy, Switzerland, Germany, Austria, France, Spain, Türkiye, United Kingdom, United States, Other]
+modulo_email: Email
+modulo_email_aiuto: The trial code is sent to this address.
+modulo_codice: Company code
+modulo_codice_aiuto: You find it in the application's License menu (e.g. 7K3F-9QPA-2MXB).
+modulo_informativa: I have read the privacy policy.
+modulo_invia: Send the request
+ricevuta_titolo: Request received
+ricevuta_testo: Thank you! In a few minutes you will receive an email from {email}. If you can't find it, please also check your spam folder.
+non_valida_titolo: Invalid request
+non_valida_testo: Some data are missing or not valid. Go back to the form, check the fields and send the request again.
+non_valida_torna: Back to downloads

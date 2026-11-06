@@ -74,6 +74,14 @@ def formatta_dimensione(byte):
     return f"{byte / (1024 * 1024):.1f} MB" if byte >= 1024 * 1024 else f"{byte / 1024:.0f} KB"
 
 
+def prova_dal_programma(addon):
+    """Con XEICore 1.3.0 o successiva la prova è legata alla società: si chiede dal menu Licenza dell'add-on.
+    Le app non usano XEICore: la prova si chiede dal sito."""
+    if addon.get("tipo") == "app":
+        return False
+    return tuple(int(parte) for parte in str(addon["xeicore"]).split(".")) >= (1, 3, 0)
+
+
 def _link_modulo(addon, testi, config, richiesta):
     """Link precompilato del modulo di registrazione: {addon}, {lingua} e {richiesta} diventano le scelte del modulo
     (nome del pacchetto, nome della lingua della pagina, prova o acquisto), così il modulo si apre già compilato."""
@@ -101,7 +109,10 @@ def _modulo_ha_il_prodotto(addon, config):
 
 
 def link_richiesta_prova(addon, testi, config):
-    """Dove porta il pulsante "Scarica gratis": il modulo di registrazione o, se manca o non ha il prodotto, un'email."""
+    """Dove porta il pulsante "Scarica gratis": il modulo del sito (servizio_prove), il modulo di registrazione se ha il
+    prodotto, altrimenti un'email."""
+    if config.get("servizio_prove"):
+        return addon["pagina"] + "#prova"
     if _modulo_ha_il_prodotto(addon, config):
         return _link_modulo(addon, testi, config, config["richiesta_prova"])
     return _link_email(addon, testi, config, "prova")
@@ -208,12 +219,14 @@ def _prepara_addon(addon, lingua, config, url_base, anteprime):
         "installazione": next((m for m in manuali if m["nome"] == "installazione"), None),
         # app (XEI App Framework): programma Windows da estrarre e avviare, non un pacchetto per l'Extension Manager
         "app": addon.get("tipo") == "app",
+        "pagina": f"{url_base}/{lingua}/addons/{addon['id']}.html",
         "url_download": (f"https://github.com/{config['repository']}/releases/download/"
                          f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": formatta_dimensione(addon["dimensione"]),
         # copiate da content/_img in static/manuali/_img con le immagini dei manuali
         "anteprime": [f"{url_base}/static/manuali/_img/{voce_anteprime['cartella']}/{immagine}"
                       for immagine in voce_anteprime["immagini"]],
+        "prova_dal_programma": prova_dal_programma(addon),
     }
 
 
@@ -297,6 +310,19 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
         pagina("testo.html", "privacy.html", contenuto=privacy, titolo_pagina=testi["privacy_titolo"])
         if condizioni:
             pagina("testo.html", "condizioni.html", contenuto=condizioni, titolo_pagina=condizioni[0]["title"])
+        # aperta dal menu Licenza dell'add-on (XEICore 1.3.0): {addon} e {codice} li mette lo script della pagina
+        pagina("richiedi_prova.html", "richiedi-prova.html",
+               modello_prova=config["modulo_registrazione"].replace("{lingua}", quote(testi["nome_lingua"])),
+               prodotti_prova=[addon["pacchetto"] for addon in addons],
+               # con il modulo del sito: la pagina porta al modulo dell'applicazione, con il codice della società
+               pagine_prova=({addon["pacchetto"]: addon["pagina"] for addon in addons}
+                             if config.get("servizio_prove") else {}))
+        if config.get("servizio_prove"):
+            # pagine di esito del modulo del sito: il servizio rimanda qui, mai con il codice
+            pagina("esito.html", "richiesta-ricevuta.html", titolo_pagina=testi["ricevuta_titolo"],
+                   messaggio=testi["ricevuta_testo"].replace("{email}", config["email_licenze"]), ritorno=False)
+            pagina("esito.html", "richiesta-non-valida.html", titolo_pagina=testi["non_valida_titolo"],
+                   messaggio=testi["non_valida_testo"], ritorno=True)
 
     radice = {"config": config, "url_base": url_base, "lingue": lingue, "nomi_lingue": nomi_lingue,
               "lingua_predefinita": config["lingua_predefinita"]}

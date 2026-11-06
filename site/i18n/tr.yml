@@ -69,3 +69,28 @@ condizioni_nota: 'Açılan formda kabulünüzü e-posta adresinizle onaylarsın�
 condizioni_annulla: İptal
 condizioni_continua: Devam
 download_app_installazione: 'Windows programı: zip içindeki klasörü çıkarın ve {programma} programını başlatın. Microsoft Edge WebView2 Runtime gereklidir.'
+richiedi_prova_titolo: Ücretsiz deneme talep et
+richiedi_prova_intro: 'Bilgileri kontrol edin ve formla devam edin: deneme kodu e-postayla gelir ve yalnızca bu şirket için geçerlidir.'
+richiedi_prova_prodotto: Uygulama
+richiedi_prova_codice: Şirket kodu
+richiedi_prova_continua: Formu doldur
+richiedi_prova_senza_dati: Denemeyi talep etmek için uygulamayı kurun ve uygulamanın Lisans menüsündeki Deneme talep et düğmesini kullanın.
+prova_dal_programma: Uygulamayı kurun ve denemeyi Lisans > Deneme talep et menüsünden talep edin.
+modulo_titolo: Ücretsiz deneme talep et
+modulo_intro: Formu doldurun; uygulamayı {giorni} gün ücretsiz denemek için gereken kodu e-posta ile alın.
+modulo_nome: Ad ve soyad
+modulo_azienda: Şirket
+modulo_partita_iva: Vergi numarası
+modulo_paese: Ülke
+modulo_paesi: [İtalya, İsviçre, Almanya, Avusturya, Fransa, İspanya, Türkiye, Birleşik Krallık, Amerika Birleşik Devletleri, Diğer]
+modulo_email: E-posta
+modulo_email_aiuto: Deneme kodu bu adrese gönderilir.
+modulo_codice: Şirket kodu
+modulo_codice_aiuto: Uygulamanın Lisans menüsünde bulabilirsiniz (ör. 7K3F-9QPA-2MXB).
+modulo_informativa: Gizlilik politikasını okudum.
+modulo_invia: Talebi gönder
+ricevuta_titolo: Talep alındı
+ricevuta_testo: Teşekkürler! Birkaç dakika içinde {email} adresinden bir e-posta alacaksınız. Bulamazsanız istenmeyen e-posta klasörünü de kontrol edin.
+non_valida_titolo: Geçersiz talep
+non_valida_testo: Bazı bilgiler eksik veya geçersiz. Forma dönün, alanları kontrol edin ve talebi yeniden gönderin.
+non_valida_torna: İndirmelere dön

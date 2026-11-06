@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block titolo %}{{ titolo_pagina }}{% endblock %}
+{% block contenuto %}
+{# pagine a cui rimanda il servizio delle prove dopo l'invio del modulo: mai il codice né l'esito della richiesta #}
+<h1>{{ titolo_pagina }}</h1>
+<p>{{ messaggio }}</p>
+{% if ritorno %}<p class="azioni"><a class="pulsante" href="{{ url_base }}/{{ lingua }}/download.html">{{ t.non_valida_torna }}</a></p>{% endif %}
+{% endblock %}
