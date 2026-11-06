@@ -56,6 +56,19 @@ email_corpo_acquisto: |
   Pays :
 
   Merci
+richiedi_informazioni: Demander des informations
+email_oggetto_informazioni: "Demande d'informations"
+email_corpo_informazioni: |
+  Bonjour,
+  je souhaite recevoir des informations sur {addon}.
+
+  Société :
+  Numéro de TVA :
+  Nom et prénom :
+  Pays :
+  Téléphone :
+
+  Merci
 anteprima_apri: Voir les captures d'écran
 anteprima_alt: Capture d'écran de
 anteprima_precedente: Capture précédente

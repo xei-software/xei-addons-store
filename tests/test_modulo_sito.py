@@ -29,7 +29,7 @@ def _modulo(sito, lingua, addon_id):
 
 def test_ogni_pagina_di_applicazione_ha_il_modulo_che_invia_al_servizio(sito):
     for lingua in build.carica_config()["lingue"]:
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             modulo = _modulo(sito, lingua, addon["id"])
             assert f'action="{SERVIZIO}"' in modulo
             assert 'method="post"' in modulo
@@ -41,7 +41,7 @@ def test_ogni_pagina_di_applicazione_ha_il_modulo_che_invia_al_servizio(sito):
 
 
 def test_il_campo_trappola_e_nascosto_e_fuori_dalla_tastiera(sito):
-    modulo = _modulo(sito, "it", build.carica_addons()[0]["id"])
+    modulo = _modulo(sito, "it", build.addons_con_pacchetto()[0]["id"])
     trappola = re.search(r'<div class="trappola"[^>]*>.*?</div>', modulo, re.S).group(0)
     assert 'aria-hidden="true"' in trappola
     assert 'name="sito_web"' in trappola and 'tabindex="-1"' in trappola and 'autocomplete="off"' in trappola
@@ -50,13 +50,13 @@ def test_il_campo_trappola_e_nascosto_e_fuori_dalla_tastiera(sito):
 
 
 def test_il_paese_si_sceglie_dall_elenco_del_modulo(sito):
-    modulo = _modulo(sito, "de", build.carica_addons()[0]["id"])
+    modulo = _modulo(sito, "de", build.addons_con_pacchetto()[0]["id"])
     for paese in build.carica_testi("de")["modulo_paesi"]:
         assert f'<option value="{html.escape(paese)}">' in modulo or f'<option>{html.escape(paese)}</option>' in modulo
 
 
 def test_il_codice_della_societa_solo_per_xeicore_130(tmp_path, monkeypatch):
-    addons = [dict(voce) for voce in build.carica_addons()]
+    addons = [dict(voce) for voce in build.addons_con_pacchetto()]
     addons[0]["xeicore"] = "1.3.0"
     monkeypatch.setattr(build, "carica_addons", lambda: addons)
     build.genera_sito(tmp_path, config={**build.carica_config(), "servizio_prove": SERVIZIO})
@@ -70,7 +70,7 @@ def test_il_codice_della_societa_solo_per_xeicore_130(tmp_path, monkeypatch):
 def test_il_pulsante_della_pagina_download_porta_al_modulo(sito):
     for lingua in build.carica_config()["lingue"]:
         testo = (sito / lingua / "download.html").read_text(encoding="utf-8")
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             assert f'href="/{lingua}/addons/{addon["id"]}.html#prova" data-azione="prova"' in testo, (lingua, addon["id"])
 
 
@@ -85,7 +85,7 @@ def test_le_pagine_di_esito_esistono_in_ogni_lingua(sito):
 
 def test_senza_servizio_resta_il_modulo_di_oggi(tmp_path):
     build.genera_sito(tmp_path, config={**build.carica_config(), "servizio_prove": ""})
-    testo = (tmp_path / "it" / "addons" / f"{build.carica_addons()[0]['id']}.html").read_text(encoding="utf-8")
+    testo = (tmp_path / "it" / "addons" / f"{build.addons_con_pacchetto()[0]['id']}.html").read_text(encoding="utf-8")
     assert 'id="modulo-prova"' not in testo
     assert not (tmp_path / "it" / "richiesta-ricevuta.html").exists()
 
@@ -118,7 +118,7 @@ def test_la_pagina_non_valida_torna_al_modulo_dell_applicazione(sito):
         # senza JavaScript o con un prodotto sconosciuto si torna alla pagina download
         assert f'href="/{lingua}/download.html"' in pulsante.group(0), lingua
         pagine = json.loads(re.search(r"data-pagine='([^']*)'", pulsante.group(0)).group(1))
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             assert pagine[addon["pacchetto"]] == f"/{lingua}/addons/{addon['id']}.html", (lingua, addon["id"])
         assert 'src="/static/js/richiedi-prova.js"' in testo, lingua
 
@@ -139,7 +139,7 @@ def test_il_paese_parte_da_una_voce_che_chiede_di_sceglierlo(sito):
     # Una prima voce vuota sembrava un campo rotto: «Scegli il paese…», disabilitata e già selezionata.
     for lingua in build.carica_config()["lingue"]:
         testi = build.carica_testi(lingua)
-        modulo = html.unescape(_modulo(sito, lingua, build.carica_addons()[0]["id"]))
+        modulo = html.unescape(_modulo(sito, lingua, build.addons_con_pacchetto()[0]["id"]))
         prima = re.search(r'<select name="paese" required>\s*(<option[^>]*>[^<]*</option>)', modulo)
         assert prima, lingua
         assert prima.group(1) == f'<option value="" disabled selected>{testi["modulo_scegli_paese"]}</option>', lingua
@@ -150,5 +150,5 @@ def test_invia_la_richiesta_ha_lo_stile_dei_pulsanti_principali(sito):
     # stesso aspetto di «Scarica gratis» in tutte le pagine, anche per i <button>
     assert ".pagina-scura .pulsante {" in foglio
     assert re.search(r"button\.pulsante \{[^}]*font: inherit", foglio)
-    modulo = _modulo(sito, "it", build.carica_addons()[0]["id"])
+    modulo = _modulo(sito, "it", build.addons_con_pacchetto()[0]["id"])
     assert '<button type="submit" class="pulsante">' in modulo

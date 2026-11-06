@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_acquisto.html" import pulsante_acquisto with context %}
+{% from "_acquisto.html" import pulsante_acquisto, pulsante_informazioni with context %}
 {% block titolo %}{{ t.download_titolo }}{% endblock %}
 {% block contenuto %}
 <h1>{{ t.download_titolo }}</h1>
@@ -16,8 +16,12 @@
 {% for addon in addons %}
 <article class="scheda download" id="{{ addon.id }}">
   <div class="download-testo">
-    <h2>{{ addon.titolo }} <span class="versione">{{ addon.versione }}</span></h2>
+    <h2>{{ addon.titolo }}{% if not addon.su_richiesta %} <span class="versione">{{ addon.versione }}</span>{% endif %}</h2>
     <p>{{ addon.sommario }}</p>
+    {% if addon.su_richiesta %}
+    {# su richiesta: nessun pacchetto da scaricare, solo una richiesta di informazioni a info@ #}
+    <p class="azioni">{{ pulsante_informazioni(addon) }}</p>
+    {% else %}
     <dl class="dati">
       <dt>{{ t.addon_rilascio }}</dt><dd>{{ addon.data_rilascio }}</dd>
       <dt>{{ t.download_dimensione }}</dt><dd>{{ addon.file }} · {{ addon.dimensione_leggibile }}</dd>
@@ -29,8 +33,9 @@
       {{ pulsante_acquisto(addon) }}
     </p>
     {% if addon.prova_dal_programma %}<p class="nota">{{ t.prova_dal_programma }}</p>{% endif %}
+    {% endif %}
     {% if addon.app %}<p class="nota">{{ t.download_app_installazione | replace("{programma}", addon.pacchetto ~ ".exe") }}</p>{% endif %}
-    {% if addon.installazione %}
+    {% if addon.installazione and not addon.su_richiesta %}
     {% set guida = url_base ~ "/" ~ lingua ~ "/manuali/" ~ addon.id ~ "/installazione" %}
     <p class="guida">
       <a href="{{ guida }}.html">{{ t.download_guida_installazione }}</a>

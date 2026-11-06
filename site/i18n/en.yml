@@ -56,6 +56,19 @@ email_corpo_acquisto: |
   Country:
 
   Thank you
+richiedi_informazioni: Request information
+email_oggetto_informazioni: "Information request"
+email_corpo_informazioni: |
+  Hello,
+  I would like to receive information about {addon}.
+
+  Company:
+  VAT number:
+  First and last name:
+  Country:
+  Phone:
+
+  Thank you
 anteprima_apri: View screenshots
 anteprima_alt: Screenshot of
 anteprima_precedente: Previous screenshot

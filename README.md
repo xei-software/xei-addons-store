@@ -27,6 +27,18 @@ license@xeisrl.com.
 
 Se un testo manca in una lingua, la pagina mostra l'italiano con un avviso.
 
+Il sito pubblica anche `/prodotti-prova.json`, l'elenco dei prodotti con la prova (nome, versione pubblicata, XEICore)
+ricavato da `site/addons.yml`: il servizio delle prove (`xei-trial-service`) lo legge da qui. Per aggiungere un prodotto
+alle prove basta pubblicarne la voce in `addons.yml`; `prova: false` in una voce la toglie dall'elenco.
+
+Disponibilità di un programma, in `site/addons.yml`:
+
+- `attivo: false`: il programma sparisce da tutto il sito (pagine, link, manuali e loro immagini, elenco delle prove);
+  togliendo la riga torna com'era. La Release pubblica già creata resta su GitHub, ma il sito non la mostra.
+- `su_richiesta: true`: nessun pacchetto (niente `versione`, `file`, `sha256`, `tag_pubblico`, `xeicore`); al posto di
+  «Scarica gratis» e «Acquista» un solo pulsante «Richiedi informazioni», email già compilata a `email_informazioni`
+  (info@xeisrl.com, in `site/config.yml`). Niente prova automatica né Release. Servono comunque i due consensi.
+
 ## Comandi
 
 ```

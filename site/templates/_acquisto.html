@@ -3,3 +3,8 @@
 {% macro pulsante_acquisto(addon) -%}
 <a class="pulsante secondario" href="{{ link_acquisto(addon) }}" data-azione="acquisto">{{ t.download_acquista }}</a>
 {%- endmacro %}
+
+{# Pulsante «Richiedi informazioni» dei programmi su richiesta (su_richiesta: true): email a info@, nessun pacchetto. #}
+{% macro pulsante_informazioni(addon) -%}
+<a class="pulsante" href="{{ link_informazioni(addon) }}">{{ t.richiedi_informazioni }}</a>
+{%- endmacro %}

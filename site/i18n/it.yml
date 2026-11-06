@@ -56,6 +56,19 @@ email_corpo_acquisto: |
   Paese:
 
   Grazie
+richiedi_informazioni: Richiedi informazioni
+email_oggetto_informazioni: "Richiesta informazioni"
+email_corpo_informazioni: |
+  Buongiorno,
+  vorrei ricevere informazioni su {addon}.
+
+  Azienda:
+  Partita IVA:
+  Nome e cognome:
+  Paese:
+  Telefono:
+
+  Grazie
 anteprima_apri: Guarda le schermate
 anteprima_alt: Schermata di
 anteprima_precedente: Schermata precedente

@@ -64,7 +64,7 @@ def test_i_collegamenti_interni_portano_a_file_esistenti(sito):
 def test_la_pagina_download_mostra_pacchetto_versione_e_registrazione(sito):
     config = build.carica_config()
     testo = (sito / "it" / "download.html").read_text(encoding="utf-8")
-    for addon in build.carica_addons():
+    for addon in build.addons_con_pacchetto():
         url = (f"https://github.com/{config['repository']}/releases/download/"
                f"{addon['tag_pubblico']}/{addon['file']}")
         assert url in testo
@@ -120,7 +120,7 @@ def test_nessun_collegamento_a_file_markdown(sito):
 
 def test_le_note_di_rilascio_hanno_una_pagina(sito):
     for lingua in build.carica_config()["lingue"]:
-        for addon in build.carica_addons():
+        for addon in build.addons_con_pacchetto():
             pagina = sito / lingua / "note" / f"{addon['id']}-{addon['versione']}.html"
             assert pagina.exists(), pagina
             scheda = (sito / lingua / "addons" / f"{addon['id']}.html").read_text(encoding="utf-8")
@@ -240,7 +240,7 @@ def test_la_home_non_parla_di_add_on_ne_di_sap(sito):
 
 def test_per_un_app_la_pagina_download_spiega_come_si_avvia(tmp_path, monkeypatch):
     # Un'app è un programma Windows da copiare e avviare, non un pacchetto per l'Extension Manager.
-    addons = [dict(voce) for voce in build.carica_addons()]
+    addons = [dict(voce) for voce in build.addons_con_pacchetto()]
     app = addons[0]
     app["tipo"], app["framework"] = "app", "0.7.0"
     del app["xeicore"]
@@ -270,3 +270,10 @@ def test_i_prodotti_che_il_modulo_forms_non_ha_usano_l_email(tmp_path):
             assert prova.startswith(f"mailto:{config['email_licenze']}"), addon["id"]
             assert acquisto.startswith(f"mailto:{config['email_licenze']}"), addon["id"]
     assert "XEI.RateUpdater" not in config["prodotti_modulo"]
+
+
+def test_il_titolo_della_pagina_e_solo_testo(sito):
+    # Nel <title> niente tag: il browser li mostrerebbe come testo nella scheda.
+    for pagina in sito.rglob("*.html"):
+        titolo = re.search(r"<title>(.*?)</title>", pagina.read_text(encoding="utf-8"), re.S)
+        assert titolo and "<" not in titolo.group(1), pagina
