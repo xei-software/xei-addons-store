@@ -27,6 +27,10 @@ license@xeisrl.com.
 
 Se un testo manca in una lingua, la pagina mostra l'italiano con un avviso.
 
+Il sito pubblica anche `/prodotti-prova.json`, l'elenco dei prodotti con la prova (nome, versione pubblicata, XEICore)
+ricavato da `site/addons.yml`: il servizio delle prove (`xei-trial-service`) lo legge da qui. Per aggiungere un prodotto
+alle prove basta pubblicarne la voce in `addons.yml`; `prova: false` in una voce la toglie dall'elenco.
+
 ## Comandi
 
 ```

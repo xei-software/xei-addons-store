@@ -8,6 +8,7 @@ Uso:
     python build.py --out anteprima --url-base ""   # anteprima locale (python -m http.server -d anteprima)
 """
 import argparse
+import json
 import re
 import shutil
 from pathlib import Path
@@ -227,6 +228,24 @@ def _ambiente_modelli():
     )
 
 
+def prodotti_prova(addons):
+    """Elenco dei prodotti con la prova per il servizio delle prove (/prodotti-prova.json).
+
+    Il servizio lo legge dal sito: per aggiungere un prodotto alle prove basta pubblicarne la voce in addons.yml.
+    Ogni voce ha il nome del prodotto (come nei codici di licenza), la versione pubblicata e, per gli add-on, la versione
+    di XEICore (da 1.3.0 la prova è legata alla società). Una voce con "prova: false" non offre la prova.
+    """
+    prodotti = []
+    for addon in addons:
+        if addon.get("prova", True) is False:
+            continue
+        voce = {"nome": addon["pacchetto"], "versione": str(addon["versione"])}
+        if addon.get("xeicore"):
+            voce["xeicore"] = str(addon["xeicore"])
+        prodotti.append(voce)
+    return {"prodotti": prodotti}
+
+
 def _scrivi(cartella_uscita, percorso_relativo, html):
     destinazione = cartella_uscita / percorso_relativo
     destinazione.parent.mkdir(parents=True, exist_ok=True)
@@ -302,6 +321,8 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
               "lingua_predefinita": config["lingua_predefinita"]}
     _scrivi(cartella_uscita, "index.html", ambiente.get_template("scelta_lingua.html").render(**radice))
     _scrivi(cartella_uscita, "404.html", ambiente.get_template("404.html").render(**radice))
+    _scrivi(cartella_uscita, "prodotti-prova.json",
+            json.dumps(prodotti_prova(carica_addons()), ensure_ascii=False, indent=2) + "\n")
 
 
 def main():
