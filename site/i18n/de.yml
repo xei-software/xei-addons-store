@@ -105,6 +105,7 @@ modulo_informativa: Ich habe die Datenschutzerklärung gelesen.
 modulo_invia: Anfrage senden
 ricevuta_titolo: Anfrage erhalten
 ricevuta_testo: Vielen Dank! In wenigen Minuten erhalten Sie eine E-Mail von {email}. Falls Sie sie nicht finden, sehen Sie bitte auch im Spam-Ordner nach.
+ricevuta_scarica: "Anwendung herunterladen"
 non_valida_titolo: Ungültige Anfrage
 non_valida_testo: Einige Daten fehlen oder sind ungültig. Kehren Sie zum Formular zurück, prüfen Sie die Felder und senden Sie die Anfrage erneut.
 non_valida_torna: Zurück zum Formular

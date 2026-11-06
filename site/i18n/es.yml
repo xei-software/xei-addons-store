@@ -105,6 +105,7 @@ modulo_informativa: He leído la política de privacidad.
 modulo_invia: Enviar la solicitud
 ricevuta_titolo: Solicitud recibida
 ricevuta_testo: ¡Gracias! En pocos minutos recibirá un correo de {email}. Si no lo encuentra, revise también la carpeta de correo no deseado.
+ricevuta_scarica: "Descargar la aplicación"
 non_valida_titolo: Solicitud no válida
 non_valida_testo: Faltan algunos datos o no son válidos. Vuelva al formulario, revise los campos y envíe de nuevo la solicitud.
 non_valida_torna: Volver al formulario

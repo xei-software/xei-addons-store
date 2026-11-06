@@ -27,9 +27,10 @@
       <dt>{{ t.download_dimensione }}</dt><dd>{{ addon.file }} · {{ addon.dimensione_leggibile }}</dd>
     </dl>
     <p class="azioni">
-      {# Senza JavaScript i pulsanti aprono direttamente il modulo (o l'email); con JavaScript prima si accettano le
-         condizioni d'uso, poi "Scarica gratis" apre il modulo e scarica il pacchetto (sito.js). #}
-      <a class="pulsante" href="{{ link_prova(addon) }}" data-azione="prova" data-pacchetto="{{ addon.url_download }}">{{ t.download_scarica_gratis }}</a>
+      {# Con il modulo del sito "Scarica gratis" porta al modulo e il pacchetto si scarica dalla pagina «Richiesta
+         ricevuta»; senza, apre Forms (o l'email) e scarica subito il pacchetto (sito.js). Con le condizioni d'uso
+         approvate, prima si accettano. #}
+      <a class="pulsante" href="{{ link_prova(addon) }}" data-azione="prova"{% if not config.servizio_prove %} data-pacchetto="{{ addon.url_download }}"{% endif %}>{{ t.download_scarica_gratis }}</a>
       {{ pulsante_acquisto(addon) }}
     </p>
     {% if addon.prova_dal_programma %}<p class="nota">{{ t.prova_dal_programma }}</p>{% endif %}

@@ -173,3 +173,33 @@ def test_l_informativa_e_in_vigore_dal_giorno_dell_accensione():
               "es": "6 de noviembre de 2026", "tr": "6 Kasım 2026"}
     for lingua, data in attese.items():
         assert data in (build.CARTELLA_SITO / "content" / lingua / "pagine" / "privacy.md").read_text(encoding="utf-8")
+
+
+def test_dopo_la_richiesta_si_scarica_o_si_acquista(sito):
+    # La pagina «Richiesta ricevuta» ha, per ogni applicazione, «Scarica» (il pacchetto) e «Acquista»; lo script mostra
+    # solo quella del modulo (?prodotto=<pacchetto>, aggiunto dal servizio).
+    config = build.carica_config()
+    for lingua in config["lingue"]:
+        testi = build.carica_testi(lingua)
+        testo = html.unescape((sito / lingua / "richiesta-ricevuta.html").read_text(encoding="utf-8"))
+        for addon in build.addons_con_pacchetto():
+            blocco = re.search(rf'<div class="dopo-richiesta" data-prodotto="{re.escape(addon["pacchetto"])}">(.*?)</div>',
+                               testo, re.S)
+            assert blocco, (lingua, addon["id"])
+            pacchetto = (f"https://github.com/{config['repository']}/releases/download/"
+                         f"{addon['tag_pubblico']}/{addon['file']}")
+            assert f'href="{pacchetto}" data-azione="scarica">{testi["ricevuta_scarica"]}</a>' in blocco.group(1)
+            assert 'data-azione="acquisto"' in blocco.group(1)
+        assert 'src="/static/js/sito.js"' in testo and 'src="/static/js/richiedi-prova.js"' in testo
+
+
+def test_la_ricevuta_mostra_solo_l_applicazione_del_modulo():
+    if not shutil.which("node"):
+        pytest.skip("node non installato")
+    script = build.CARTELLA_SITO / "static" / "js" / "richiedi-prova.js"
+    prodotti = ["XEI.ItemGenerator", "XEI.RateUpdater"]
+    codice = (f"const r = require({json.dumps(str(script))});"
+              f"console.log(JSON.stringify([r.prodottoRicevuta({json.dumps(prodotti)}, '?prodotto=XEI.RateUpdater'),"
+              f" r.prodottoRicevuta({json.dumps(prodotti)}, '?prodotto=XEI.Altro'), r.prodottoRicevuta({json.dumps(prodotti)}, '')]))")
+    uscita = json.loads(subprocess.run(["node", "-e", codice], capture_output=True, text=True, check=True).stdout)
+    assert uscita == ["XEI.RateUpdater", None, None]  # senza prodotto valido restano visibili tutte

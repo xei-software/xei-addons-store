@@ -58,6 +58,12 @@
 
   // "Scarica gratis": modulo per il codice di prova e, subito dopo, il pacchetto. "Acquista": modulo o email.
   function esegui(pulsante) {
+    var azione = pulsante.getAttribute("data-azione");
+    // pagine del sito (modulo della prova) e pacchetto dalla pagina «Richiesta ricevuta»: nella stessa scheda
+    if (azione === "scarica" || pulsante.host === location.host) {
+      location.href = pulsante.href;
+      return;
+    }
     apri(pulsante.href);
     var pacchetto = pulsante.getAttribute("data-pacchetto");
     if (pulsante.getAttribute("data-azione") === "prova" && pacchetto) {

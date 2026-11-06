@@ -64,10 +64,12 @@ def test_i_collegamenti_interni_portano_a_file_esistenti(sito):
 def test_la_pagina_download_mostra_pacchetto_versione_e_registrazione(sito):
     config = build.carica_config()
     testo = (sito / "it" / "download.html").read_text(encoding="utf-8")
+    # il pacchetto si scarica dopo il modulo, dalla pagina «Richiesta ricevuta»
+    ricevuta = (sito / "it" / "richiesta-ricevuta.html").read_text(encoding="utf-8")
     for addon in build.addons_con_pacchetto():
         url = (f"https://github.com/{config['repository']}/releases/download/"
                f"{addon['tag_pubblico']}/{addon['file']}")
-        assert url in testo
+        assert url in ricevuta
         assert addon["versione"] in testo
     assert config["email_licenze"] in testo
 

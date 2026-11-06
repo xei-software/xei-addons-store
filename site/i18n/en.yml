@@ -105,6 +105,7 @@ modulo_informativa: I have read the privacy policy.
 modulo_invia: Send the request
 ricevuta_titolo: Request received
 ricevuta_testo: Thank you! In a few minutes you will receive an email from {email}. If you can't find it, please also check your spam folder.
+ricevuta_scarica: "Download the application"
 non_valida_titolo: Invalid request
 non_valida_testo: Some data are missing or not valid. Go back to the form, check the fields and send the request again.
 non_valida_torna: Back to the form

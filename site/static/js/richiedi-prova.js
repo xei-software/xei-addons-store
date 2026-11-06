@@ -36,9 +36,15 @@ function paginaRitorno(pagine, ricerca) {
   return pagina ? pagina + "#prova" : null;
 }
 
+// Pagina «richiesta ricevuta»: l'applicazione del modulo (?prodotto=<pacchetto>) se è tra quelle della pagina, o null.
+function prodottoRicevuta(prodotti, ricerca) {
+  var prodotto = (new URLSearchParams(ricerca).get("prodotto") || "").trim();
+  return prodotti.indexOf(prodotto) >= 0 ? prodotto : null;
+}
+
 if (typeof module !== "undefined") {
   module.exports = { indirizzoModulo: indirizzoModulo, codiceSocieta: codiceSocieta, paginaModulo: paginaModulo,
-                     paginaRitorno: paginaRitorno };
+                     paginaRitorno: paginaRitorno, prodottoRicevuta: prodottoRicevuta };
 }
 
 if (typeof document !== "undefined") {
@@ -93,6 +99,17 @@ if (typeof document !== "undefined") {
     var pagina = pulsante && paginaRitorno(JSON.parse(pulsante.dataset.pagine || "{}"), location.search);
     if (pagina) {
       pulsante.href = pagina;
+    }
+  });
+}
+
+// Pagina «richiesta ricevuta»: si lascia visibile solo l'applicazione richiesta (senza prodotto restano tutte).
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", function () {
+    var blocchi = Array.prototype.slice.call(document.querySelectorAll(".dopo-richiesta"));
+    var prodotto = prodottoRicevuta(blocchi.map(function (b) { return b.dataset.prodotto; }), location.search);
+    if (prodotto) {
+      blocchi.forEach(function (b) { b.hidden = b.dataset.prodotto !== prodotto; });
     }
   });
 }

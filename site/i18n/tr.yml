@@ -105,6 +105,7 @@ modulo_informativa: Gizlilik politikasını okudum.
 modulo_invia: Talebi gönder
 ricevuta_titolo: Talep alındı
 ricevuta_testo: Teşekkürler! Birkaç dakika içinde {email} adresinden bir e-posta alacaksınız. Bulamazsanız istenmeyen e-posta klasörünü de kontrol edin.
+ricevuta_scarica: "Uygulamayı indir"
 non_valida_titolo: Geçersiz talep
 non_valida_testo: Bazı bilgiler eksik veya geçersiz. Forma dönün, alanları kontrol edin ve talebi yeniden gönderin.
 non_valida_torna: Forma dön

@@ -55,19 +55,25 @@ def test_i_pulsanti_si_chiamano_scarica_gratis_e_acquista(sito):
             assert f">{testi['download_acquista']}</a>" in pannello, lingua
 
 
-def test_scarica_gratis_apre_il_modulo_e_porta_il_pacchetto(sito):
-    config = build.carica_config()
+def test_scarica_gratis_porta_al_modulo_senza_scaricare(sito):
+    # Richiesta di Ivan (06/11/2026): prima si compila il modulo, poi si scarica o si acquista.
     testo = (sito / "it" / "download.html").read_text(encoding="utf-8")
     for addon in build.addons_con_pacchetto():
         pannello = html.unescape(_pannello(testo, addon["id"]))
+        assert f'href="/it/addons/{addon["id"]}.html#prova" data-azione="prova">' in pannello, addon["id"]
+        assert "data-pacchetto" not in pannello and "releases/download" not in pannello, addon["id"]
+        assert 'data-azione="acquisto"' in pannello
+
+
+def test_senza_modulo_del_sito_scarica_gratis_porta_anche_il_pacchetto(tmp_path):
+    # ripiego (servizio_prove vuoto): email o Forms e subito il pacchetto, come prima del modulo del sito
+    config = {**build.carica_config(), "servizio_prove": ""}
+    build.genera_sito(tmp_path, config=config)
+    testo = (tmp_path / "it" / "download.html").read_text(encoding="utf-8")
+    for addon in build.addons_con_pacchetto():
         pacchetto = (f"https://github.com/{config['repository']}/releases/download/"
                      f"{addon['tag_pubblico']}/{addon['file']}")
-        assert f'data-pacchetto="{pacchetto}"' in pannello
-        assert 'data-azione="prova"' in pannello and 'data-azione="acquisto"' in pannello
-        # il modulo Forms solo per i prodotti che ha nell'elenco; gli altri usano l'email
-        atteso = "forms.cloud.microsoft" if addon["pacchetto"] in config["prodotti_modulo"] else "mailto:"
-        assert atteso in pannello, addon["id"]
-
+        assert f'data-pacchetto="{pacchetto}"' in html.unescape(_pannello(testo, addon["id"]))
 
 def test_acquista_senza_domanda_richiesta_nel_modulo_apre_un_email_di_acquisto():
     # Finché il modulo non ha la domanda «Richiesta» ({richiesta}), l'acquisto non deve finire tra le prove.

@@ -105,6 +105,7 @@ modulo_informativa: J'ai lu la politique de confidentialité.
 modulo_invia: Envoyer la demande
 ricevuta_titolo: Demande reçue
 ricevuta_testo: Merci ! Dans quelques minutes, vous recevrez un e-mail de {email}. Si vous ne le trouvez pas, vérifiez aussi vos courriers indésirables.
+ricevuta_scarica: "Télécharger l'application"
 non_valida_titolo: Demande non valide
 non_valida_testo: Certaines données manquent ou ne sont pas valides. Revenez au formulaire, vérifiez les champs et envoyez à nouveau la demande.
 non_valida_torna: Retour au formulaire

@@ -1,9 +1,23 @@
 {% extends "base.html" %}
+{% from "_acquisto.html" import pulsante_acquisto with context %}
 {% block titolo %}{{ titolo_pagina }}{% endblock %}
 {% block contenuto %}
 {# pagine a cui rimanda il servizio delle prove dopo l'invio del modulo: mai il codice né l'esito della richiesta #}
 <h1>{{ titolo_pagina }}</h1>
 <p>{{ messaggio }}</p>
+{% if not ritorno %}
+{# dopo la richiesta si scarica o si acquista: lo script lascia visibile solo l'applicazione del modulo (?prodotto=) #}
+{% for addon in addons if not addon.su_richiesta %}
+<div class="dopo-richiesta" data-prodotto="{{ addon.pacchetto }}">
+  <h2>{{ addon.titolo }}</h2>
+  <p class="azioni"><a class="pulsante" href="{{ addon.url_download }}" data-azione="scarica">{{ t.ricevuta_scarica }}</a>
+  {{ pulsante_acquisto(addon) }}</p>
+</div>
+{% endfor %}
+{% include "_condizioni.html" %}
+<script src="{{ url_base }}/static/js/sito.js" defer></script>
+<script src="{{ url_base }}/static/js/richiedi-prova.js"></script>
+{% endif %}
 {% if ritorno %}
 {# il servizio aggiunge ?prodotto=<pacchetto>: lo script porta al modulo di quell'applicazione, altrimenti download #}
 <p class="azioni"><a class="pulsante" id="torna-modulo" href="{{ url_base }}/{{ lingua }}/download.html" data-pagine='{{ pagine_ritorno | tojson }}'>{{ t.non_valida_torna }}</a></p>
