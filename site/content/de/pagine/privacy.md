@@ -1,6 +1,6 @@
 ---
 title: Datenschutzerklärung
-description: Wie XEI S.r.l. die personenbezogenen Daten der Besucher der Website und der Personen verarbeitet, die einen Test der Add-ons anfordern.
+description: Wie XEI S.r.l. die personenbezogenen Daten der Besucher der Website und der Personen verarbeitet, die einen Test der XEI-Anwendungen anfordern.
 lang: de
 stato: approvato
 ---
@@ -8,9 +8,9 @@ stato: approvato
 # Datenschutzerklärung
 
 Information nach Artikel 13 und 14 der Verordnung (EU) 2016/679 (DSGVO) für Besucher dieser Website
-und für Personen, die den kostenlosen Test eines XEI-Add-ons anfordern.
+und für Personen, die den kostenlosen Test einer XEI-Anwendung anfordern.
 
-Gültig ab 27. Oktober 2026.
+Gültig ab 6. November 2026.
 
 ## Verantwortlicher
 
@@ -30,24 +30,31 @@ Datenschutzerklärung von GitHub beschrieben.
 
 ## Anforderung des kostenlosen Tests
 
-Der Test wird mit dem Formular der Website, erstellt mit Microsoft Forms, oder per E-Mail an
-[license@xeisrl.com](mailto:license@xeisrl.com) angefordert. Die Antworten des Formulars gehen an
-XEI S.r.l., die den Testcode automatisch an die angegebene Adresse sendet.
+Der Test wird mit dem Formular auf der Seite jeder Anwendung der Website oder per E-Mail an
+[license@xeisrl.com](mailto:license@xeisrl.com) angefordert. Die Daten des Formulars gehen an den Dienst
+der XEI S.r.l., der die Testcodes ausstellt. Er wird auf Microsoft Azure in der Europäischen Union
+(Italien) betrieben und sendet den Testcode automatisch an die angegebene Adresse.
 
-**Verarbeitete Daten**: angefordertes Add-on, E-Mail-Adresse, Vor- und Nachname, Firma, USt-IdNr.,
-Land, SAP-Business-One-Version, Datenbank, Sprache der E-Mails; in E-Mails auch alles Weitere, was
-darin geschrieben wird.
+**Verarbeitete Daten**: angeforderte Anwendung, E-Mail-Adresse, Vor- und Nachname, Firma, USt-IdNr.,
+Land, Sprache der Seite und, falls angegeben, Firmencode; in E-Mails auch alles Weitere, was darin
+geschrieben wird.
 
 **Zwecke**: Ausstellung des Testcodes, Prüfung, dass dieselbe Firma nicht mehrere Testcodes erhält,
-Beantwortung von Fragen zum Add-on und zur Lizenz, Unterstützung während des Tests.
+Beantwortung von Fragen zur Anwendung und zur Lizenz, Unterstützung während des Tests.
 
 Zur Prüfung wiederholter Anfragen speichert der Dienst, der die Testcodes ausstellt, USt-IdNr.,
 E-Mail-Adresse und Domain nicht im Klartext, sondern nur ihren Fingerabdruck (SHA-256-Hash), aus dem
 sich die Daten nicht ableiten lassen, zusammen mit dem ausgestellten Testcode. Die eingegangenen
 Anfragen werden in einer Microsoft-SharePoint-Liste der XEI S.r.l. erfasst.
 
+Um Missbrauch des Formulars zu begrenzen, zählt der Dienst die Anfragen des Tages mit einem
+Fingerabdruck (Hash) der IP-Adresse, von der sie kommen, und der angegebenen E-Mail-Adresse, nie mit
+den Adressen im Klartext. Diese Fingerabdrücke werden jede Nacht gelöscht.
+
 **Rechtsgrundlage**: vorvertragliche Maßnahmen auf Anfrage der betroffenen Person (Artikel 6 Absatz 1
-Buchstabe b DSGVO). Die Daten sind für die Ausstellung des Testcodes erforderlich: Ohne sie kann der
+Buchstabe b DSGVO); für die täglichen Fingerabdrücke der IP-Adresse und der E-Mail das berechtigte
+Interesse der XEI S.r.l. an der Sicherheit des Dienstes (Artikel 6 Absatz 1 Buchstabe f DSGVO). Die
+Daten sind für die Ausstellung des Testcodes erforderlich: Ohne sie kann der
 Test nicht aktiviert werden.
 
 **Speicherdauer**: 36 Monate ab der Anfrage, wenn auf den Test kein Kauf der Lizenz folgt. Bei Kunden
@@ -57,7 +64,7 @@ Fristen.
 ## Empfänger der Daten
 
 Die Daten werden von befugten Mitarbeitern der XEI S.r.l. und von den Anbietern der Dienste für
-E-Mail, Formular, automatische Ausstellung und Versand der Codes (Microsoft) sowie Hosting verarbeitet,
+E-Mail, automatische Ausstellung und Versand der Codes (Microsoft) sowie Hosting (GitHub) verarbeitet,
 die als Auftragsverarbeiter benannt sind. Sie werden weder verkauft noch verbreitet und nicht für
 Werbung verwendet.
 

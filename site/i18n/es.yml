@@ -82,3 +82,29 @@ condizioni_nota: 'En el formulario que se abre confirma la aceptación con su di
 condizioni_annulla: Cancelar
 condizioni_continua: Continuar
 download_app_installazione: 'Programa para Windows: extraiga la carpeta del zip e inicie {programma}. Se necesita Microsoft Edge WebView2 Runtime.'
+richiedi_prova_titolo: Solicitar la prueba gratuita
+richiedi_prova_intro: 'Compruebe los datos y continúe con el formulario: el código de prueba llega por correo electrónico y solo es válido para esta empresa.'
+richiedi_prova_prodotto: Aplicación
+richiedi_prova_codice: Código de la empresa
+richiedi_prova_continua: Rellenar el formulario
+richiedi_prova_senza_dati: Para solicitar la prueba, instale la aplicación y use el botón Solicitar una prueba del menú Licencia de la aplicación.
+prova_dal_programma: Instale la aplicación y solicite la prueba desde el menú Licencia › Solicitar una prueba.
+modulo_titolo: Solicitar la prueba gratuita
+modulo_intro: Rellene el formulario y reciba por correo electrónico el código para probar la aplicación gratis durante {giorni} días.
+modulo_nome: Nombre y apellidos
+modulo_azienda: Empresa
+modulo_partita_iva: NIF/CIF
+modulo_paese: País
+modulo_scegli_paese: Elija el país…
+modulo_paesi: [Italia, Suiza, Alemania, Austria, Francia, España, Turquía, Reino Unido, Estados Unidos, Otro]
+modulo_email: Correo electrónico
+modulo_email_aiuto: El código de prueba se envía a esta dirección.
+modulo_codice: Código de la empresa
+modulo_codice_aiuto: Lo encuentra en el menú Licencia de la aplicación (p. ej. 7K3F-9QPA-2MXB).
+modulo_informativa: He leído la política de privacidad.
+modulo_invia: Enviar la solicitud
+ricevuta_titolo: Solicitud recibida
+ricevuta_testo: ¡Gracias! En pocos minutos recibirá un correo de {email}. Si no lo encuentra, revise también la carpeta de correo no deseado.
+non_valida_titolo: Solicitud no válida
+non_valida_testo: Faltan algunos datos o no son válidos. Vuelva al formulario, revise los campos y envíe de nuevo la solicitud.
+non_valida_torna: Volver al formulario

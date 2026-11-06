@@ -23,6 +23,40 @@
   {% if addon.manuali %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/manuali/{{ addon.id }}/{{ addon.manuali[0].nome }}.html">{{ t.addon_manuale }}</a>{% endif %}
   {% if addon.note %}<a class="pulsante secondario" href="{{ url_base }}/{{ lingua }}/note/{{ addon.id }}-{{ addon.versione }}.html">{{ t.addon_note }}</a>{% endif %}
 </p>
+{% if config.servizio_prove and not addon.su_richiesta %}
+{# Modulo della prova: un normale modulo HTML (funziona senza JavaScript), inviato al servizio delle prove. Nessuno
+   script o servizio di altri siti; il campo sito_web è la trappola per i programmi automatici. #}
+<section class="modulo-prova" id="prova">
+  <h2>{{ t.modulo_titolo }}</h2>
+  <p>{{ testo('modulo_intro') }}</p>
+  <form id="modulo-prova" method="post" action="{{ config.servizio_prove }}" accept-charset="utf-8">
+    <input type="hidden" name="prodotto" value="{{ addon.pacchetto }}">
+    <input type="hidden" name="lingua" value="{{ lingua }}">
+    <label>{{ t.modulo_nome }} <input type="text" name="nome" maxlength="100" autocomplete="name" required></label>
+    <label>{{ t.modulo_azienda }} <input type="text" name="azienda" maxlength="150" autocomplete="organization" required></label>
+    <label>{{ t.modulo_partita_iva }} <input type="text" name="partitaIva" maxlength="30" required></label>
+    <label>{{ t.modulo_paese }}
+      <select name="paese" required>
+        <option value="" disabled selected>{{ t.modulo_scegli_paese }}</option>
+        {% for paese in t.modulo_paesi %}<option value="{{ paese }}">{{ paese }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>{{ t.modulo_email }} <input type="email" name="email" maxlength="254" autocomplete="email" required>
+      <small>{{ t.modulo_email_aiuto }}</small></label>
+    {% if addon.prova_dal_programma %}
+    <label>{{ t.modulo_codice }} <input type="text" name="codiceSocieta" id="codiceSocieta" maxlength="14" required
+      pattern="[0-9A-Za-z]{4}-[0-9A-Za-z]{4}-[0-9A-Za-z]{4}" autocomplete="off">
+      <small>{{ t.modulo_codice_aiuto }}</small></label>
+    {% endif %}
+    <div class="trappola" aria-hidden="true"><label>Web <input type="text" name="sito_web" tabindex="-1" autocomplete="off"></label></div>
+    <label class="spunta"><input type="checkbox" name="informativa" value="si" required>
+      <span><a href="{{ url_base }}/{{ lingua }}/privacy.html">{{ t.modulo_informativa }}</a></span></label>
+    <p class="azioni"><button type="submit" class="pulsante">{{ t.modulo_invia }}</button></p>
+  </form>
+</section>
+<script src="{{ url_base }}/static/js/richiedi-prova.js"></script>
+{% endif %}
 {% include "_condizioni.html" %}
 <script src="{{ url_base }}/static/js/sito.js" defer></script>
 {% endblock %}

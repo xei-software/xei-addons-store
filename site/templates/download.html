@@ -32,6 +32,7 @@
       <a class="pulsante" href="{{ link_prova(addon) }}" data-azione="prova" data-pacchetto="{{ addon.url_download }}">{{ t.download_scarica_gratis }}</a>
       {{ pulsante_acquisto(addon) }}
     </p>
+    {% if addon.prova_dal_programma %}<p class="nota">{{ t.prova_dal_programma }}</p>{% endif %}
     {% endif %}
     {% if addon.app %}<p class="nota">{{ t.download_app_installazione | replace("{programma}", addon.pacchetto ~ ".exe") }}</p>{% endif %}
     {% if addon.installazione and not addon.su_richiesta %}

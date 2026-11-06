@@ -82,3 +82,29 @@ condizioni_nota: 'Dans le formulaire qui s''ouvre, vous confirmez votre acceptat
 condizioni_annulla: Annuler
 condizioni_continua: Continuer
 download_app_installazione: 'Programme Windows : extrayez le dossier du zip et lancez {programma}. Microsoft Edge WebView2 Runtime est requis.'
+richiedi_prova_titolo: Demander l'essai gratuit
+richiedi_prova_intro: 'Vérifiez les données et continuez avec le formulaire : le code d''essai arrive par e-mail et n''est valable que pour cette société.'
+richiedi_prova_prodotto: Application
+richiedi_prova_codice: Code de la société
+richiedi_prova_continua: Remplir le formulaire
+richiedi_prova_senza_dati: Pour demander l'essai, installez l'application et utilisez le bouton Demander un essai du menu Licence de l'application.
+prova_dal_programma: Installez l'application et demandez l'essai depuis le menu Licence › Demander un essai.
+modulo_titolo: Demander l'essai gratuit
+modulo_intro: Remplissez le formulaire et recevez par e-mail le code pour essayer l'application gratuitement pendant {giorni} jours.
+modulo_nome: Nom et prénom
+modulo_azienda: Société
+modulo_partita_iva: Numéro de TVA
+modulo_paese: Pays
+modulo_scegli_paese: Choisissez le pays…
+modulo_paesi: [Italie, Suisse, Allemagne, Autriche, France, Espagne, Turquie, Royaume-Uni, États-Unis, Autre]
+modulo_email: E-mail
+modulo_email_aiuto: Le code d'essai est envoyé à cette adresse.
+modulo_codice: Code de la société
+modulo_codice_aiuto: Vous le trouvez dans le menu Licence de l'application (ex. 7K3F-9QPA-2MXB).
+modulo_informativa: J'ai lu la politique de confidentialité.
+modulo_invia: Envoyer la demande
+ricevuta_titolo: Demande reçue
+ricevuta_testo: Merci ! Dans quelques minutes, vous recevrez un e-mail de {email}. Si vous ne le trouvez pas, vérifiez aussi vos courriers indésirables.
+non_valida_titolo: Demande non valide
+non_valida_testo: Certaines données manquent ou ne sont pas valides. Revenez au formulaire, vérifiez les champs et envoyez à nouveau la demande.
+non_valida_torna: Retour au formulaire

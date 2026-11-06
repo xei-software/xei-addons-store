@@ -1,6 +1,6 @@
 ---
 title: Informativa sulla privacy
-description: Come XEI S.r.l. tratta i dati personali di chi visita il sito e richiede la prova degli add-on.
+description: Come XEI S.r.l. tratta i dati personali di chi visita il sito e richiede la prova delle applicazioni XEI.
 lang: it
 stato: approvato
 ---
@@ -8,9 +8,9 @@ stato: approvato
 # Informativa sulla privacy
 
 Informativa ai sensi degli articoli 13 e 14 del Regolamento (UE) 2016/679 (GDPR) per chi visita
-questo sito e per chi richiede la prova gratuita di un add-on XEI.
+questo sito e per chi richiede la prova gratuita di un'applicazione XEI.
 
-In vigore dal 27 ottobre 2026.
+In vigore dal 6 novembre 2026.
 
 ## Titolare del trattamento
 
@@ -30,24 +30,31 @@ sulla privacy di GitHub.
 
 ## Richiesta della prova gratuita
 
-La prova si richiede con il modulo del sito, realizzato con Microsoft Forms, oppure con un'email a
-[license@xeisrl.com](mailto:license@xeisrl.com). Le risposte al modulo arrivano a XEI S.r.l., che
-invia in automatico il codice di prova all'indirizzo indicato.
+La prova si richiede con il modulo nella pagina di ogni applicazione del sito oppure con un'email a
+[license@xeisrl.com](mailto:license@xeisrl.com). I dati del modulo arrivano al servizio di XEI S.r.l.
+che rilascia i codici di prova, ospitato su Microsoft Azure nell'Unione europea (Italia), che invia in
+automatico il codice di prova all'indirizzo indicato.
 
-**Dati trattati**: add-on richiesto, indirizzo email, nome e cognome, azienda, partita IVA, paese,
-versione di SAP Business One, database, lingua per le email; nelle email, anche quanto altro vi si
+**Dati trattati**: applicazione richiesta, indirizzo email, nome e cognome, azienda, partita IVA,
+paese, lingua della pagina e, se indicato, codice della società; nelle email, anche quanto altro vi si
 scrive.
 
 **Finalità**: rilasciare il codice di prova, controllare che la stessa azienda non riceva più codici
-di prova, rispondere alle domande sull'add-on e sulla licenza, dare assistenza durante la prova.
+di prova, rispondere alle domande sull'applicazione e sulla licenza, dare assistenza durante la prova.
 
 Per il controllo delle richieste ripetute, il servizio che rilascia i codici di prova non conserva la
 partita IVA, l'indirizzo email e il dominio in chiaro, ma solo una loro impronta (hash SHA-256), da
 cui non si possono ricavare i dati, insieme al codice di prova emesso. Le richieste ricevute sono
 registrate in un elenco di Microsoft SharePoint di XEI S.r.l.
 
+Per limitare gli abusi del modulo, il servizio conta le richieste del giorno con un'impronta (hash)
+dell'indirizzo IP da cui arrivano e dell'indirizzo email indicato, mai con gli indirizzi in chiaro.
+Queste impronte si cancellano ogni notte.
+
 **Base giuridica**: misure precontrattuali prese su richiesta dell'interessato (articolo 6,
-paragrafo 1, lettera b del GDPR). I dati sono necessari per rilasciare il codice di prova: senza,
+paragrafo 1, lettera b del GDPR); per le impronte giornaliere dell'indirizzo IP e dell'email, il
+legittimo interesse di XEI S.r.l. alla sicurezza del servizio (articolo 6, paragrafo 1, lettera f). I
+dati sono necessari per rilasciare il codice di prova: senza,
 la prova non si può attivare.
 
 **Conservazione**: 36 mesi dalla richiesta, se alla prova non segue l'acquisto della licenza. Per i
@@ -56,7 +63,7 @@ clienti, per la durata del rapporto e poi per i tempi previsti dalle norme civil
 ## Chi riceve i dati
 
 I dati sono trattati dal personale autorizzato di XEI S.r.l. e dai fornitori dei servizi di posta
-elettronica, del modulo, del rilascio e dell'invio automatico dei codici (Microsoft) e di hosting,
+elettronica, del rilascio e dell'invio automatico dei codici (Microsoft) e di hosting (GitHub),
 nominati responsabili del trattamento. Non sono venduti né diffusi e non sono usati per invii
 pubblicitari.
 

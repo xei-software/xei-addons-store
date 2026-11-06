@@ -42,7 +42,9 @@ def sito(tmp_path_factory):
     originale = build.CARTELLA_SITO
     build.CARTELLA_SITO = copia
     try:
-        build.genera_sito(cartella / "uscita")
+        # con il modulo del sito acceso, per controllare che il programma su richiesta non abbia il modulo della prova
+        build.genera_sito(cartella / "uscita",
+                          config={**build.carica_config(), "servizio_prove": "https://prove.example/api/richiesta"})
         yield cartella / "uscita"
     finally:
         build.CARTELLA_SITO = originale
@@ -75,11 +77,13 @@ def test_un_programma_su_richiesta_ha_solo_richiedi_informazioni_verso_info(sito
         pannello = html.unescape(_pannello((sito / lingua / "download.html").read_text(encoding="utf-8"), SU_RICHIESTA))
         pagina = html.unescape((sito / lingua / "addons" / f"{SU_RICHIESTA}.html").read_text(encoding="utf-8"))
         pulsanti = re.search(r'<p class="azioni">(.*?)</p>', pagina, re.S).group(1)  # il piè di pagina ha license@
+        assert 'id="modulo-prova"' not in pagina, lingua
         for testo in (pannello, pulsanti):
             assert f">{testi['richiedi_informazioni']}</a>" in testo, lingua
             assert f'href="mailto:{config["email_informazioni"]}?' in testo, lingua
             assert testi["download_scarica_gratis"] not in testo and f">{testi['download_acquista']}</a>" not in testo
             assert 'data-azione="prova"' not in testo and "releases/download" not in testo
+            assert 'id="modulo-prova"' not in testo
             assert config["email_licenze"] not in testo, lingua
         assert testi["download_guida_installazione"] not in pannello, lingua  # niente da installare dal sito
 

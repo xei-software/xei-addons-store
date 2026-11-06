@@ -1,6 +1,6 @@
 ---
 title: Política de privacidad
-description: Cómo trata XEI S.r.l. los datos personales de quienes visitan el sitio y solicitan la prueba de los add-ons.
+description: Cómo trata XEI S.r.l. los datos personales de quienes visitan el sitio y solicitan la prueba de las aplicaciones de XEI.
 lang: es
 stato: approvato
 ---
@@ -8,9 +8,9 @@ stato: approvato
 # Política de privacidad
 
 Información conforme a los artículos 13 y 14 del Reglamento (UE) 2016/679 (RGPD) para quienes visitan
-este sitio y para quienes solicitan la prueba gratuita de un add-on de XEI.
+este sitio y para quienes solicitan la prueba gratuita de una aplicación de XEI.
 
-Vigente desde el 27 de octubre de 2026.
+Vigente desde el 6 de noviembre de 2026.
 
 ## Responsable del tratamiento
 
@@ -30,16 +30,17 @@ declaración de privacidad de GitHub.
 
 ## Solicitud de la prueba gratuita
 
-La prueba se solicita con el formulario del sitio, creado con Microsoft Forms, o por correo a
-[license@xeisrl.com](mailto:license@xeisrl.com). Las respuestas del formulario llegan a XEI S.r.l., que
+La prueba se solicita con el formulario de la página de cada aplicación del sitio o por correo a
+[license@xeisrl.com](mailto:license@xeisrl.com). Los datos del formulario llegan al servicio de
+XEI S.r.l. que emite los códigos de prueba, alojado en Microsoft Azure en la Unión Europea (Italia), que
 envía automáticamente el código de prueba a la dirección indicada.
 
-**Datos tratados**: add-on solicitado, dirección de correo, nombre y apellidos, empresa, NIF/CIF, país,
-versión de SAP Business One, base de datos, idioma de los correos; en los correos, también todo lo que
-se escriba en ellos.
+**Datos tratados**: aplicación solicitada, dirección de correo, nombre y apellidos, empresa, NIF/CIF,
+país, idioma de la página y, si se indica, código de la empresa; en los correos, también todo lo que se
+escriba en ellos.
 
 **Finalidades**: emitir el código de prueba, comprobar que una misma empresa no reciba varios códigos
-de prueba, responder a las preguntas sobre el add-on y la licencia, prestar asistencia durante la
+de prueba, responder a las preguntas sobre la aplicación y la licencia, prestar asistencia durante la
 prueba.
 
 Para controlar las solicitudes repetidas, el servicio que emite los códigos de prueba no conserva el
@@ -47,8 +48,13 @@ NIF/CIF, la dirección de correo y el dominio en claro, sino solo su huella (has
 se pueden obtener los datos, junto con el código de prueba emitido. Las solicitudes recibidas se
 registran en una lista de Microsoft SharePoint de XEI S.r.l.
 
+Para limitar los abusos del formulario, el servicio cuenta las solicitudes del día con una huella
+(hash) de la dirección IP de la que llegan y de la dirección de correo indicada, nunca con las
+direcciones en claro. Estas huellas se borran cada noche.
+
 **Base jurídica**: medidas precontractuales adoptadas a petición del interesado (artículo 6, apartado
-1, letra b del RGPD). Los datos son necesarios para emitir el código de prueba: sin ellos, la prueba
+1, letra b del RGPD); para las huellas diarias de la dirección IP y del correo, el interés legítimo
+de XEI S.r.l. en la seguridad del servicio (artículo 6, apartado 1, letra f). Los datos son necesarios para emitir el código de prueba: sin ellos, la prueba
 no se puede activar.
 
 **Conservación**: 36 meses desde la solicitud, si a la prueba no le sigue la compra de la licencia.
@@ -58,7 +64,7 @@ fiscales.
 ## Destinatarios de los datos
 
 Los datos los tratan el personal autorizado de XEI S.r.l. y los proveedores de los servicios de correo
-electrónico, formulario, emisión y envío automático de los códigos (Microsoft) y alojamiento,
+electrónico, emisión y envío automático de los códigos (Microsoft) y alojamiento (GitHub),
 designados encargados del tratamiento. No se venden ni se difunden y no se utilizan para publicidad.
 
 ## Derechos del interesado

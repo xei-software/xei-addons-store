@@ -1,6 +1,6 @@
 ---
 title: Politique de confidentialité
-description: Comment XEI S.r.l. traite les données personnelles des visiteurs du site et des personnes qui demandent l'essai des add-ons.
+description: Comment XEI S.r.l. traite les données personnelles des visiteurs du site et des personnes qui demandent l'essai des applications XEI.
 lang: fr
 stato: approvato
 ---
@@ -8,9 +8,9 @@ stato: approvato
 # Politique de confidentialité
 
 Information au sens des articles 13 et 14 du Règlement (UE) 2016/679 (RGPD) pour les visiteurs de ce
-site et pour les personnes qui demandent l'essai gratuit d'un add-on XEI.
+site et pour les personnes qui demandent l'essai gratuit d'une application XEI.
 
-En vigueur à partir du 27 octobre 2026.
+En vigueur à partir du 6 novembre 2026.
 
 ## Responsable du traitement
 
@@ -30,24 +30,31 @@ déclaration de confidentialité de GitHub.
 
 ## Demande d'essai gratuit
 
-L'essai se demande avec le formulaire du site, réalisé avec Microsoft Forms, ou par e-mail à
-[license@xeisrl.com](mailto:license@xeisrl.com). Les réponses au formulaire parviennent à XEI S.r.l.,
+L'essai se demande avec le formulaire de la page de chaque application du site ou par e-mail à
+[license@xeisrl.com](mailto:license@xeisrl.com). Les données du formulaire parviennent au service de
+XEI S.r.l. qui délivre les codes d'essai, hébergé sur Microsoft Azure dans l'Union européenne (Italie),
 qui envoie automatiquement le code d'essai à l'adresse indiquée.
 
-**Données traitées** : add-on demandé, adresse e-mail, nom et prénom, société, numéro de TVA, pays,
-version de SAP Business One, base de données, langue des e-mails ; dans les e-mails, également tout
-ce qui y est écrit.
+**Données traitées** : application demandée, adresse e-mail, nom et prénom, société, numéro de TVA,
+pays, langue de la page et, s'il est indiqué, code de la société ; dans les e-mails, également tout ce
+qui y est écrit.
 
 **Finalités** : délivrer le code d'essai, vérifier qu'une même société ne reçoive pas plusieurs codes
-d'essai, répondre aux questions sur l'add-on et la licence, fournir une assistance pendant l'essai.
+d'essai, répondre aux questions sur l'application et la licence, fournir une assistance pendant l'essai.
 
 Pour contrôler les demandes répétées, le service qui délivre les codes d'essai ne conserve pas le
 numéro de TVA, l'adresse e-mail et le domaine en clair, mais seulement leur empreinte (hachage
 SHA-256), qui ne permet pas de retrouver les données, avec le code d'essai délivré. Les demandes reçues sont
 enregistrées dans une liste Microsoft SharePoint de XEI S.r.l.
 
+Pour limiter les abus du formulaire, le service compte les demandes de la journée avec une empreinte
+(hachage) de l'adresse IP dont elles proviennent et de l'adresse e-mail indiquée, jamais avec les
+adresses en clair. Ces empreintes sont effacées chaque nuit.
+
 **Base juridique** : mesures précontractuelles prises à la demande de la personne concernée
-(article 6, paragraphe 1, point b du RGPD). Les données sont nécessaires pour délivrer le code d'essai :
+(article 6, paragraphe 1, point b du RGPD) ; pour les empreintes journalières de l'adresse IP et de
+l'e-mail, l'intérêt légitime de XEI S.r.l. à la sécurité du service (article 6, paragraphe 1, point f).
+Les données sont nécessaires pour délivrer le code d'essai :
 sans elles, l'essai ne peut pas être activé.
 
 **Conservation** : 36 mois à compter de la demande, si l'essai n'est pas suivi de l'achat de la
@@ -57,8 +64,7 @@ règles civiles et fiscales.
 ## Destinataires des données
 
 Les données sont traitées par le personnel autorisé de XEI S.r.l. et par les fournisseurs des services
-de messagerie, de formulaire, de délivrance et d'envoi automatique des codes (Microsoft) et
-d'hébergement, désignés comme sous-traitants. Elles ne sont ni vendues ni diffusées et ne sont pas
+de messagerie, de délivrance et d'envoi automatique des codes (Microsoft) et d'hébergement (GitHub), désignés comme sous-traitants. Elles ne sont ni vendues ni diffusées et ne sont pas
 utilisées pour de la publicité.
 
 ## Droits de la personne concernée

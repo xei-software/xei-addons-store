@@ -82,6 +82,8 @@ code { font-size: 0.85rem; }
   background: var(--primario); color: var(--primario-testo); border: 1px solid var(--primario);
 }
 .pulsante.secondario { background: transparent; color: var(--primario); }
+/* i <button> con l'aspetto dei link .pulsante (stesso carattere e stessa dimensione) */
+button.pulsante { font: inherit; font-weight: 600; cursor: pointer; }
 
 .avviso { background: var(--avviso); padding: 10px 14px; border-radius: 8px; }
 .passi ol { padding-left: 20px; }
@@ -113,13 +115,6 @@ code { font-size: 0.85rem; }
 .scheda.download .versione { color: #9fb4c2; }
 .scheda.download .dati dt { color: #8fa3b0; }
 .scheda.download a { color: #4cc3f5; }
-.scheda.download .pulsante {
-  border-radius: 999px; padding: 11px 24px; color: #001726; background: #009fe3; border-color: #009fe3;
-  transition: background-color 0.15s, color 0.15s;
-}
-.scheda.download .pulsante:hover { background: #33b5ea; border-color: #33b5ea; }
-.scheda.download .pulsante.secondario { background: transparent; color: #ffffff; border-color: #009fe3; }
-.scheda.download .pulsante.secondario:hover { background: rgba(0, 159, 227, 0.18); }
 .scheda.download .guida { margin-bottom: 0; }
 
 .anteprima { display: block; position: relative; text-decoration: none; cursor: zoom-in; }
@@ -180,6 +175,14 @@ body.pagina-scura {
 .pagina-scura .condizioni { background: #06131c; color: var(--testo); border-top-color: #009fe3; }
 .pagina-scura .condizioni .pulsante { background: #009fe3; border-color: #009fe3; color: #001726; }
 .pagina-scura .condizioni .pulsante.secondario { background: transparent; color: #ffffff; }
+/* Pulsanti principali (come «Scarica gratis»): uguali in tutte le pagine, link e <button> */
+.pagina-scura .pulsante {
+  border-radius: 999px; padding: 11px 24px; color: #001726; background: #009fe3; border-color: #009fe3;
+  transition: background-color 0.15s, color 0.15s;
+}
+.pagina-scura .pulsante:hover { background: #33b5ea; border-color: #33b5ea; }
+.pagina-scura .pulsante.secondario { background: transparent; color: #ffffff; border-color: #009fe3; }
+.pagina-scura .pulsante.secondario:hover { background: rgba(0, 159, 227, 0.18); }
 /* Intestazione nera con il logo a lettere bianche (static/img/logo-xei-bianco.png, ricavato dal logo ufficiale) */
 .pagina-scura .testata { background: #000203; border-bottom-color: var(--azzurro); }
 .pagina-scura .testata .menu a, .pagina-scura .marchio span { color: #e8eef3; }
@@ -189,3 +192,13 @@ body.pagina-scura {
 .pagina-scura .lingue li a { color: #4cc3f5; }
 .pagina-scura .marchio img { background: none; padding: 0; }
 .pagina-scura .griglia .scheda { border-color: rgba(0, 159, 227, 0.35); border-radius: 16px; }
+
+/* Modulo della prova nella pagina dell'applicazione */
+.modulo-prova form { display: grid; gap: 0.75rem; max-width: 36rem; }
+.modulo-prova label { display: grid; gap: 0.25rem; }
+.modulo-prova label.spunta { display: flex; gap: 0.5rem; align-items: flex-start; }
+.modulo-prova input[type="text"], .modulo-prova input[type="email"], .modulo-prova select {
+  padding: 0.5rem; border: 1px solid #686A6F; border-radius: 4px; font: inherit; }
+.modulo-prova small { color: #686A6F; }
+/* campo trappola: fuori dallo schermo per le persone, visibile ai programmi automatici */
+.trappola { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
