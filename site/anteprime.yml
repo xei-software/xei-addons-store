@@ -12,3 +12,7 @@ commission-management:
 rate-updater:
   cartella: rateupdater
   immagini: [01-cambi.png, 02-cambi-esito.png, 03b-storico-valute.png, 04-impostazioni-cambi.png]
+
+conto-lavoro:
+  cartella: contolavoro
+  immagini: [11_config_prezzi.png, 12_config_magazzino.png, 19_config_lotti.png]
