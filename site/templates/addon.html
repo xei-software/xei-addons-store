@@ -29,7 +29,7 @@
     <label>{{ t.modulo_partita_iva }} <input type="text" name="partitaIva" maxlength="30" required></label>
     <label>{{ t.modulo_paese }}
       <select name="paese" required>
-        <option value=""></option>
+        <option value="" disabled selected>{{ t.modulo_scegli_paese }}</option>
         {% for paese in t.modulo_paesi %}<option value="{{ paese }}">{{ paese }}</option>
         {% endfor %}
       </select>

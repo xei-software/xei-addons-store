@@ -82,6 +82,7 @@ modulo_nome: Nombre y apellidos
 modulo_azienda: Empresa
 modulo_partita_iva: NIF/CIF
 modulo_paese: País
+modulo_scegli_paese: Elija el país…
 modulo_paesi: [Italia, Suiza, Alemania, Austria, Francia, España, Turquía, Reino Unido, Estados Unidos, Otro]
 modulo_email: Correo electrónico
 modulo_email_aiuto: El código de prueba se envía a esta dirección.

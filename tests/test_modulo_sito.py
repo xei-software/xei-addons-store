@@ -133,3 +133,22 @@ def test_il_ritorno_al_modulo_usa_il_prodotto_dell_indirizzo():
               f" r.paginaRitorno({json.dumps(pagine)}, '?prodotto=XEI.Altro'), r.paginaRitorno({json.dumps(pagine)}, '')]))")
     uscita = json.loads(subprocess.run(["node", "-e", codice], capture_output=True, text=True, check=True).stdout)
     assert uscita == ["/it/addons/item-generator.html#prova", None, None]
+
+
+def test_il_paese_parte_da_una_voce_che_chiede_di_sceglierlo(sito):
+    # Una prima voce vuota sembrava un campo rotto: «Scegli il paese…», disabilitata e già selezionata.
+    for lingua in build.carica_config()["lingue"]:
+        testi = build.carica_testi(lingua)
+        modulo = html.unescape(_modulo(sito, lingua, build.carica_addons()[0]["id"]))
+        prima = re.search(r'<select name="paese" required>\s*(<option[^>]*>[^<]*</option>)', modulo)
+        assert prima, lingua
+        assert prima.group(1) == f'<option value="" disabled selected>{testi["modulo_scegli_paese"]}</option>', lingua
+
+
+def test_invia_la_richiesta_ha_lo_stile_dei_pulsanti_principali(sito):
+    foglio = (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
+    # stesso aspetto di «Scarica gratis» in tutte le pagine, anche per i <button>
+    assert ".pagina-scura .pulsante {" in foglio
+    assert re.search(r"button\.pulsante \{[^}]*font: inherit", foglio)
+    modulo = _modulo(sito, "it", build.carica_addons()[0]["id"])
+    assert '<button type="submit" class="pulsante">' in modulo

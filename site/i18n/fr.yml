@@ -82,6 +82,7 @@ modulo_nome: Nom et prénom
 modulo_azienda: Société
 modulo_partita_iva: Numéro de TVA
 modulo_paese: Pays
+modulo_scegli_paese: Choisissez le pays…
 modulo_paesi: [Italie, Suisse, Allemagne, Autriche, France, Espagne, Turquie, Royaume-Uni, États-Unis, Autre]
 modulo_email: E-mail
 modulo_email_aiuto: Le code d'essai est envoyé à cette adresse.

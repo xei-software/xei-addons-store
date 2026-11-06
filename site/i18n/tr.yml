@@ -82,6 +82,7 @@ modulo_nome: Ad ve soyad
 modulo_azienda: Şirket
 modulo_partita_iva: Vergi numarası
 modulo_paese: Ülke
+modulo_scegli_paese: Ülkeyi seçin…
 modulo_paesi: [İtalya, İsviçre, Almanya, Avusturya, Fransa, İspanya, Türkiye, Birleşik Krallık, Amerika Birleşik Devletleri, Diğer]
 modulo_email: E-posta
 modulo_email_aiuto: Deneme kodu bu adrese gönderilir.

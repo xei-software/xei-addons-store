@@ -82,6 +82,7 @@ modulo_nome: Vor- und Nachname
 modulo_azienda: Firma
 modulo_partita_iva: USt-IdNr.
 modulo_paese: Land
+modulo_scegli_paese: Land auswählen…
 modulo_paesi: [Italien, Schweiz, Deutschland, Österreich, Frankreich, Spanien, Türkei, Vereinigtes Königreich, Vereinigte Staaten, Anderes Land]
 modulo_email: E-Mail
 modulo_email_aiuto: Der Testcode wird an diese Adresse gesendet.

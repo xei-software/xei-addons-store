@@ -82,6 +82,7 @@ modulo_nome: First and last name
 modulo_azienda: Company
 modulo_partita_iva: VAT number
 modulo_paese: Country
+modulo_scegli_paese: Choose the country…
 modulo_paesi: [Italy, Switzerland, Germany, Austria, France, Spain, Türkiye, United Kingdom, United States, Other]
 modulo_email: Email
 modulo_email_aiuto: The trial code is sent to this address.

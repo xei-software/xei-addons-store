@@ -82,6 +82,7 @@ modulo_nome: Nome e cognome
 modulo_azienda: Azienda
 modulo_partita_iva: Partita IVA
 modulo_paese: Paese
+modulo_scegli_paese: Scegli il paese…
 modulo_paesi: [Italia, Svizzera, Germania, Austria, Francia, Spagna, Turchia, Regno Unito, Stati Uniti, Altro]
 modulo_email: Email
 modulo_email_aiuto: Il codice di prova arriva a questo indirizzo.
