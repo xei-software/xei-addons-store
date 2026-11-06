@@ -37,3 +37,4 @@ versione precedente
 versioni precedenti
 dalla versione \d
 \bdalla \d+\.\d+
+SynWarehouse
