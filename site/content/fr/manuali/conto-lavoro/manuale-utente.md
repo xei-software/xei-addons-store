@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Manuel d'utilisation
 description: Comment gérer avec XEI.ContoLavoro les ordres de sous-traitance, les envois de composants, les réceptions des produits et la sous-traitance depuis les ordres de fabrication.
 lang: fr
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -49,6 +49,7 @@ composant chez le sous-traitant.
 - Au premier démarrage, l'add-on crée les tables, les champs, l'objet (UDO) `XEI_CL_COMMESSA` et la recherche
   formatée du fournisseur sous-traitant sur le magasin. SAP demande de confirmer que *« la structure de la base de
   données a été modifiée »* : répondre et attendre la fin avant d'utiliser le client.
+- Avant de créer les ordres, définissez la **série de numérotation** de l'ordre de sous-traitance, comme pour les documents SAP : **Modules › Gestion › Initialisation système › Numérotation des documents**, élément *Commessa terzista* (Ordre de sous-traitance) en bas de la liste. Sans série, à l'ouverture de *Ordre de sous-traitance* l'add-on indique qu'il faut la définir.
 
 ### Menus
 
@@ -59,7 +60,7 @@ composant chez le sous-traitant.
 | Ordre de sous-traitance | ouverture, recherche et création des ordres de sous-traitance |
 | Créer des ordres depuis les ordres de fabrication | ordres de sous-traitance à partir des façons externes des ordres de fabrication (chapitre 6) |
 | Réception du sous-traitant | un bon de livraison du sous-traitant avec des produits de plusieurs ordres : on choisit le fournisseur, on indique les quantités reçues sur les produits ouverts de ses ordres (*Proposer* = solde) et *Enregistrer* effectue la réception ordre par ordre, avec entrée des produits et sortie des composants |
-| Transfert en masse des composants | envoi de composants pour plusieurs ordres (actif avec l'option correspondante) |
+| Transfert en masse des composants | envoi de composants pour plusieurs ordres (se désactive dans la Configuration, chapitre 3) |
 | Transfert de composants entre ordres | déplace le stock déjà chez le sous-traitant d'un ordre à un autre |
 | Clôture en masse des réceptions de produits | clôture les réceptions de marchandises des produits restées ouvertes |
 | Prix de façon des sous-traitants | prix des façons par fournisseur et produit |
@@ -67,7 +68,7 @@ composant chez le sous-traitant.
 | Informazioni (Informations), Traduzioni (Traductions), Licenza (Licence) | entrées communes aux add-ons XEI ; Licenza : statut et code de licence |
 
 Les mêmes entrées, sauf *Configuration*, *Informazioni*, *Traduzioni* et *Licenza*, se trouvent aussi dans le module
-SAP choisi dans la configuration (chapitre 3), à la position choisie : **Modules › Achats - Fournisseurs ›
+SAP choisi dans la configuration (chapitre 3), à la position choisie : **Modules › Achats ›
 Sous-traitance** (par défaut) ou **Modules › Production › Sous-traitance**.
 
 ### Licence
@@ -90,6 +91,10 @@ les deux codes de la fenêtre **Licenza** (Licence) et on reçoit le code de lic
 Les options se définissent dans un formulaire à onglets (l'onglet *Lots* est décrit au chapitre 7). Les options
 valent pour toute la société ; les formulaires déjà ouverts les utilisent à leur réouverture.
 
+![Général](../../_img/contolavoro/10_config_generale.png)
+
+*Général*
+
 ![Prix](../../_img/contolavoro/11_config_prezzi.png)
 
 *Prix*
@@ -97,6 +102,10 @@ valent pour toute la société ; les formulaires déjà ouverts les utilisent à
 ![Stock](../../_img/contolavoro/12_config_magazzino.png)
 
 *Stock*
+
+![Séries et motifs](../../_img/contolavoro/13_config_documenti.png)
+
+*Séries et motifs*
 
 | Option | Effet | Par défaut |
 |---|---|---|
@@ -107,11 +116,11 @@ valent pour toute la société ; les formulaires déjà ouverts les utilisent à
 | Clôturer la réception de marchandises du produit | après la réception des produits, la réception de marchandises du produit est clôturée (elle n'est pas facturée) | Non |
 | Recalculer le prix de la réception produit | si le prix de façon change, met à jour la réception de marchandises du produit | Non |
 | Offres fournisseur depuis les OF | lors de la création depuis les OF, lie les offres fournisseur | Non |
-| Transfert en masse | active l'entrée de menu | Non |
+| Transfert en masse | permet le transfert en masse des composants ; avec Non, l'entrée de menu avertit que la fonction est désactivée | Oui |
 | Nomenclature sous-traitant | affiche la colonne « Nomenclature sous-traitant » dans la nomenclature | Oui |
 | Contrats fournisseur | prix de façon depuis les contrats (SQL Server uniquement) | Non |
-| Liste de prix par défaut | liste de prix des coûts proposée sur les nouveaux ordres | – |
-| Menu aussi dans le module SAP | module avec le sous-menu *Sous-traitance* : Achats - Fournisseurs ou Production | Achats - Fournisseurs |
+| Liste de prix par défaut des ordres | liste de prix des coûts proposée sur les nouveaux ordres ; sert à créer les ordres depuis les ordres de fabrication (chapitre 6) | – |
+| Menu aussi dans le module SAP | module avec le sous-menu *Sous-traitance* : Achats ou Production | Achats |
 | Position dans le menu du module | en bas, en haut ou après une entrée du module | en bas |
 | **Prix** | | |
 | Prix de façon / des composants modifiable | prix modifiables dans la nomenclature de l'ordre | Non |
@@ -139,6 +148,10 @@ valent pour toute la société ; les formulaires déjà ouverts les utilisent à
 L'en-tête est organisé comme celui du transfert de stock : à gauche fournisseur, référence du fournisseur, projet et
 commandes liées ; à droite numérotation, statut, dates, liste de prix des coûts et les deux magasins.
 
+![Ordre de sous-traitance : en-tête et onglet Produits](../../_img/contolavoro/01_prodotti.png)
+
+*Ordre de sous-traitance : en-tête et onglet Produits*
+
 - **Fournisseur** : à la sélection, propose le magasin de l'utilisateur et le **magasin du sous-traitant** lié au
   fournisseur (champ *Fornitore terzista* (Fournisseur sous-traitant) des données de base du magasin) ou celui marqué
   par défaut.
@@ -149,6 +162,10 @@ commandes liées ; à droite numérotation, statut, dates, liste de prix des co�
 - Si l'on change un magasin de l'en-tête, il est proposé, comme dans le transfert de stock, de le reporter sur les
   lignes de la nomenclature **pas encore mouvementées**.
 
+![Changement du magasin de l'en-tête avec des produits déjà saisis](../../_img/contolavoro/09_propaga_magazzino.png)
+
+*Changement du magasin de l'en-tête avec des produits déjà saisis*
+
 ### Produits
 
 On choisit l'article (aussi plusieurs articles à la fois dans la liste) et la quantité à produire : la nomenclature
@@ -156,6 +173,10 @@ est copiée de SAP et ramenée à une pièce (en tenant compte de la quantité d
 affichent la quantité à produire, réceptionnée, le solde, le coût des composants et des façons.
 
 ### Nomenclature
+
+![Nomenclature par produit : composants avec magasins, prix, besoin, utilisé](../../_img/contolavoro/02_distinta.png)
+
+*Nomenclature par produit : composants avec magasins, prix, besoin, utilisé*
 
 Pour chaque produit : composants (articles en stock à expédier) et façons (services payés au sous-traitant). Avec
 **Modifier la nomenclature**, on change les magasins et les prix des lignes pas encore mouvementées ; avec *Ajouter
@@ -166,6 +187,10 @@ composants choisis).
 
 ### Composants
 
+![Situation des composants : besoin, expédié, stocks et solde à expédier](../../_img/contolavoro/03_componenti.png)
+
+*Situation des composants : besoin, expédié, stocks et solde à expédier*
+
 Les composants de tous les produits regroupés par article et magasins : besoin, utilisé, disponible dans l'entreprise,
 stock dans le magasin du sous-traitant, demandes et listes de prélèvement, expédié, solde à expédier, stock de l'ordre
 chez le sous-traitant, retours et rebuts. Les mouvements se font avec les boutons en bas de l'ordre : **Envoyer les
@@ -174,6 +199,10 @@ rebuts chez le sous-traitant*). Chacun ouvre une fenêtre avec les quantités à
 *Proposer* les remplit, *Remettre à 0* les vide, et on peut les modifier à la main.
 
 ### Documents
+
+![Documents liés à l'ordre, un par ligne, avec les lignes du document choisi](../../_img/contolavoro/04_documenti.png)
+
+*Documents liés à l'ordre, un par ligne, avec les lignes du document choisi*
 
 Tous les documents SAP liés à l'ordre, un par ligne par ordre chronologique, avec le lien pour les ouvrir ; *Afficher*
 filtre par type de document. En dessous, dans *Lignes du document*, les lignes du document choisi avec lots, numéros
@@ -186,14 +215,28 @@ de série et emplacements.
    produit et une pour chaque façon ; si la commande existe déjà, le bouton l'ouvre. Les modifications ultérieures de
    l'ordre (produits nouveaux ou supprimés, quantités, prix, dates) sont reportées sur la commande à l'enregistrement ;
    les lignes déjà réceptionnées ne changent qu'en quantité.
+
+   ![Création de la commande d'achat](../../_img/contolavoro/05_oda.png)
+
+   *Création de la commande d'achat*
+
 3. **Envoyer les composants** : dans la fenêtre *Transfert de composants*, la colonne *À expédier* propose le solde à
    expédier (modifiable à la main) ; *OK* crée le transfert de stock vers le magasin du sous-traitant. Avec l'option
    correspondante, une demande de transfert de stock avec liste de prélèvement est créée.
+
+   ![Transfert de composants](../../_img/contolavoro/06_trasferimento.png)
+
+   *Transfert de composants*
+
 4. **Réceptionner les produits** : dans la fenêtre *Réception des produits*, la colonne *À réceptionner* propose le
    solde (modifiable à la main) et *Type de mouvement* permet de choisir entre *Entrée produits et sortie composants*,
    *Entrée produits uniquement* et *Sortie composants uniquement* ; puis *OK*. Sont créées : la réception de
    marchandises des façons et des produits depuis la commande d'achat, la sortie de marchandises des composants du
    magasin du sous-traitant, les réceptions de production pour les produits issus d'OF (chapitre 6).
+
+   ![Réception des produits](../../_img/contolavoro/07_versamento.png)
+
+   *Réception des produits*
 
 > Le produit entre au coût complet (composants + façon) ; avec l'option « Clôturer la réception de marchandises du
 > produit », la réception est clôturée et n'est pas facturée : on facture les façons.
@@ -220,6 +263,7 @@ réception de production du produit fini.
 | Nomenclature du produit fini | **Nomenclature sous-traitant** = Oui si le produit fini est complet quand toutes les façons externes sont revenues : l'add-on enregistre la réception de production. Avec Non, c'est vous qui enregistrez la réception de production dans SAP | `PF-100` = Oui |
 | Données de base du magasin du sous-traitant | champ **Fornitore terzista** (Fournisseur sous-traitant) (chapitre 4) | `T-TER01` → `F-TER01` ; `T-TER02` → `F-TER02` |
 | *Prix de façon des sous-traitants* | prix par sous-traitant, produit fini et façon (ordre de recherche du prix au chapitre 9) | `F-TER01` / `PF-100` / `LAV-SALD` 12,00 ; `F-TER02` / `PF-100` / `LAV-MONT` 3,50 |
+| Configuration, onglet *Général* (chapitre 3) | **Liste de prix par défaut des ordres** : la liste de prix des coûts des ordres créés depuis les OF. Sans elle, *Créer les ordres* demande de l'indiquer et ne crée pas les ordres | Liste de prix de base |
 
 Les composants en consommation automatique liés à la façon ne sont pas envoyés au sous-traitant : c'est la réception
 de production qui les sort du magasin de la ligne de l'OF. La colonne **Motif / avertissements** de la liste le
@@ -257,13 +301,13 @@ deux essieux. L'OF n° 500 est lancé pour 100 chariots dans le magasin `01` :
 
 | Étape | Document SAP créé | Effet sur l'OF |
 |---|---|---|
-| 1. **Sous-traitance › Créer des ordres depuis les ordres de fabrication** : vous sélectionnez les deux lignes de l'OF 500 et cliquez sur *Créer les ordres* | aucun document SAP : ordre de sous-traitance 1001 (`F-TER01`, de `01` à `T-TER01`, produit `LAV-SALD` 100, nomenclature `CMP-01` 2,5 et `CMP-02` 4 par pièce) et ordre 1002 (`F-TER02`, de `01` à `T-TER02`, produit `LAV-MONT` 200, nomenclature `CMP-03` 2 et `CMP-04` 1 par pièce) | aucun |
+| 1. **Sous-traitance › Créer des ordres depuis les ordres de fabrication** : vous sélectionnez les deux lignes de l'OF 500 et cliquez sur *Créer les ordres* | aucun document SAP : ordre de sous-traitance 1001 (`F-TER02`, de `01` à `T-TER02`, produit `LAV-MONT` 200, nomenclature `CMP-03` 2 et `CMP-04` 1 par pièce) et ordre 1002 (`F-TER01`, de `01` à `T-TER01`, produit `LAV-SALD` 100, nomenclature `CMP-01` 2,5 et `CMP-02` 4 par pièce), dans l'ordre des lignes de la liste | aucun |
 | 2. Dans chaque ordre, cliquez sur *Commande sous-traitant* et confirmez la fenêtre *Commande au sous-traitant* | commande d'achat à `F-TER01` : `LAV-SALD` 100 × 12,00 ; commande d'achat à `F-TER02` : `LAV-MONT` 200 × 3,50 | aucun |
 | 3. Dans chaque ordre, cliquez sur *Envoyer les composants* puis, avec les quantités proposées, sur *OK* | transfert de stock de `01` vers `T-TER01` : `CMP-01` 250, `CMP-02` 400 ; de `01` vers `T-TER02` : `CMP-03` 400, `CMP-04` 200 | aucun |
-| 4. 60 châssis reviennent : dans l'ordre 1001, cliquez sur *Réceptionner les produits*, dans la fenêtre *Réception des produits* saisissez 60 dans *À réceptionner* et cliquez sur *OK* | réception de marchandises depuis la commande : `LAV-SALD` 60 × 12,00 ; sortie pour production de `T-TER01` : `CMP-01` 150, `CMP-02` 240 | composants des lignes 2 et 3 sortis ; pas de réception : les essieux manquent, et un message le dit (*« OF 500 : le produit fini entrera en stock lorsque la façon LAV-MONT sera également revenue. »*) |
-| 5. 100 essieux reviennent : ordre 1002, *Réceptionner les produits*, 100 dans *À réceptionner*, *OK* | réception de marchandises `LAV-MONT` 100 × 3,50 ; sortie pour production de `T-TER02` : `CMP-03` 200, `CMP-04` 100 ; réception de production `PF-100` **50** | 60 châssis et 100 essieux suffisent pour 50 chariots : 50 terminés ; SAP sort en consommation automatique `CMP-05` 800 |
-| 6. 100 autres essieux reviennent : ordre 1002, *Réceptionner les produits*, 100 dans *À réceptionner*, *OK* | réception de marchandises `LAV-MONT` 100 ; sortie pour production `CMP-03` 200, `CMP-04` 100 ; réception de production `PF-100` **10** | 60 terminés, les autres attendent les châssis (*« OF 500 : 10 pièces du produit fini entrées en stock ; les autres entreront lorsque la façon LAV-SALD sera également revenue. »*) ; l'ordre 1002 se clôture tout seul |
-| 7. Les 40 derniers châssis reviennent : ordre 1001, *Réceptionner les produits*, 40 dans *À réceptionner*, *OK* | réception de marchandises `LAV-SALD` 40 ; sortie pour production `CMP-01` 100, `CMP-02` 160 ; réception de production `PF-100` **40** | 100 terminés ; l'ordre 1001 se clôture tout seul. C'est vous qui clôturez l'OF dans SAP |
+| 4. 60 châssis reviennent : dans l'ordre 1002, cliquez sur *Réceptionner les produits*, dans la fenêtre *Réception des produits* saisissez 60 dans *À réceptionner* et cliquez sur *OK* | réception de marchandises depuis la commande : `LAV-SALD` 60 × 12,00 ; sortie pour production de `T-TER01` : `CMP-01` 150, `CMP-02` 240 | composants des lignes 2 et 3 sortis ; pas de réception : les essieux manquent, et un message le dit (*« OF 500 : le produit fini entrera en stock lorsque la façon LAV-MONT sera également revenue. »*) |
+| 5. 100 essieux reviennent : ordre 1001, *Réceptionner les produits*, 100 dans *À réceptionner*, *OK* | réception de marchandises `LAV-MONT` 100 × 3,50 ; sortie pour production de `T-TER02` : `CMP-03` 200, `CMP-04` 100 ; réception de production `PF-100` **50** | 60 châssis et 100 essieux suffisent pour 50 chariots : 50 terminés ; SAP sort en consommation automatique `CMP-05` 800 |
+| 6. 100 autres essieux reviennent : ordre 1001, *Réceptionner les produits*, 100 dans *À réceptionner*, *OK* | réception de marchandises `LAV-MONT` 100 ; sortie pour production `CMP-03` 200, `CMP-04` 100 ; réception de production `PF-100` **10** | 60 terminés, les autres attendent les châssis (*« OF 500 : 10 pièces du produit fini entrées en stock ; les autres entreront lorsque la façon LAV-SALD sera également revenue. »*) ; l'ordre 1001 se clôture tout seul |
+| 7. Les 40 derniers châssis reviennent : ordre 1002, *Réceptionner les produits*, 40 dans *À réceptionner*, *OK* | réception de marchandises `LAV-SALD` 40 ; sortie pour production `CMP-01` 100, `CMP-02` 160 ; réception de production `PF-100` **40** | 100 terminés ; l'ordre 1002 se clôture tout seul. C'est vous qui clôturez l'OF dans SAP |
 
 > La réception de production vaut le coût des façons externes par pièce : pour chaque façon, composants et prix de la
 > façon, multipliés par la quantité par pièce. Dans l'exemple, un chariot vaut
@@ -327,6 +371,10 @@ Pour les transferts, les retours, les rebuts et la sortie des composants lors de
 et les numéros de série se choisissent dans une fenêtre de l'add-on, **avant** de créer les documents. Tous les
 documents sont ensuite créés en une seule opération.
 
+![Réception des produits : le lot LA de l'ordre est proposé, et non le lot LE qui expire avant mais n'est pas de l'ordre](../../_img/contolavoro/23_selezione_lotti.png)
+
+*Réception des produits : le lot LA de l'ordre est proposé, et non le lot LE qui expire avant mais n'est pas de l'ordre*
+
 - **Proposition automatique** : depuis le magasin du sous-traitant (sortie des composants, retour, rebuts), d'abord
   les lots **expédiés à cet ordre** (colonne « De l'ordre », tirée du journal des mouvements de lots de SAP), puis par
   date d'expiration (FEFO) ; depuis le magasin de l'entreprise, par date d'expiration (FEFO).
@@ -340,8 +388,12 @@ documents sont ensuite créés en une seule opération.
 
 Le lot du produit réceptionné est calculé par un **script SQL** configurable (Configuration › Lots), avec trois
 paramètres fixes : `{ItemCode}` article, `{WhsCode}` magasin de réception, `{DocEntry}` ordre de sous-traitance. Le
-script par défaut renvoie le numéro de l'ordre + un numéro séquentiel (p. ex. `20160256-1`) ; *Vérifier* l'exécute
-avec des données de test. Le lot créé apparaît dans le message de fin de réception.
+script par défaut renvoie le numéro de l'ordre + un numéro séquentiel (p. ex. `20160256-1`) ; *Vérifier* l'exécute avec
+des données de test. Le lot créé apparaît dans le message de fin de réception. Le même script donne le lot du produit
+fini de l'ordre de fabrication (chapitre 6) dans la réception de production. Si le produit fini est géré par numéros de
+série, ou si le script ne renvoie pas de lot, la réception n'est pas enregistrée et un message explique ce qu'il faut
+faire. Pour les numéros de série : **Nomenclature sous-traitant** = Non dans la nomenclature du produit fini et
+réception de production enregistrée dans SAP.
 
 ![Script du lot en entrée](../../_img/contolavoro/19_config_lotti.png)
 
@@ -351,7 +403,12 @@ avec des données de test. Le lot créé apparaît dans le message de fin de ré
 
 Le document est créé en brouillon, à compléter dans le formulaire SAP, avec des magasins à **emplacements**, des
 produits en entrée avec **numéros de série**, un script du lot vide ou sans résultat et dans le transfert en masse. On
-complète le document et on clique sur *Ajouter* : l'add-on supprime le brouillon et continue.
+complète le document et on clique sur *Ajouter* : l'add-on supprime le brouillon et continue. Sur les lignes avec des
+lots ou des numéros de série à choisir, dans le brouillon l'emplacement s'indique aussi dans SAP avec les lots.
+
+![Document en brouillon : « Compléter le document (lots, numéros de série, emplacements) et cliquer sur Ajouter pour continuer »](../../_img/contolavoro/20_bozza_trasferimento.png)
+
+*Document en brouillon : « Compléter le document (lots, numéros de série, emplacements) et cliquer sur Ajouter pour continuer »*
 
 ## 8. Retours et rebuts
 
@@ -361,6 +418,10 @@ complète le document et on clique sur *Ajouter* : l'add-on supprime le brouillo
   vers un magasin au choix.
 - **Retours et rebuts › Sortie des rebuts chez le sous-traitant** : dans la fenêtre *Sortie des rebuts*, sortie de
   marchandises des rebuts directement depuis le magasin du sous-traitant.
+
+  ![Sortie des rebuts](../../_img/contolavoro/08_scarti.png)
+
+  *Sortie des rebuts*
 
 Les composants mis au rebut reviennent dans le solde à expédier.
 
@@ -372,6 +433,10 @@ Liste les façons externes des OF lancés, prêtes à devenir un ordre de sous-t
 fournisseur et magasin de retour**. Avec *Afficher aussi les lignes non prêtes*, explique pourquoi une façon n'est pas
 prête. Paramétrage, exemple complet et cas particuliers au chapitre 6.
 
+![Les deux façons externes de l'OF de l'exemple (chapitre 6), une par sous-traitant](../../_img/contolavoro/15_da_odp.png)
+
+*Les deux façons externes de l'OF de l'exemple (chapitre 6), une par sous-traitant*
+
 ### Transfert en masse des composants
 
 Analyse les ordres ouverts (filtres par dates, fournisseur, composant) et propose les composants ayant un solde à
@@ -379,12 +444,20 @@ expédier, en respectant la disponibilité partagée entre les ordres si la soci
 transfert par fournisseur (en brouillon si des lots ou des emplacements sont nécessaires). Les lignes dont le magasin
 du sous-traitant manque ou est identique à celui de départ sont exclues et signalées.
 
+![Composants ayant un solde à expédier, regroupés par fournisseur et par ordre](../../_img/contolavoro/18_trasf_massivo.png)
+
+*Composants ayant un solde à expédier, regroupés par fournisseur et par ordre*
+
 ### Transfert de composants entre ordres
 
 Déplace le stock déjà chez le sous-traitant d'un ordre à un autre sans mouvement de stock (simple enregistrement).
 C'est pourquoi il n'est possible qu'entre ordres **ouverts** ayant le **même magasin du sous-traitant** : la liste ne
 propose que ceux-là ; avec des magasins différents, l'opération est bloquée et la marchandise doit être retournée puis
 renvoyée. Le stock est relu au moment de la confirmation.
+
+![Transfert entre ordres](../../_img/contolavoro/14_trasf_commesse.png)
+
+*Transfert entre ordres*
 
 ### Clôture en masse des réceptions de produits et prix de façon
 
@@ -394,6 +467,14 @@ sous-traitant et produit.
 
 Ordre de recherche du prix d'une façon : contrats fournisseur (option, SQL Server uniquement), prix par sous-traitant,
 nomenclature (option), prix fournisseur SAP, liste de prix de l'ordre.
+
+![Réceptions de marchandises des produits encore ouvertes](../../_img/contolavoro/16_chiusura_emp.png)
+
+*Réceptions de marchandises des produits encore ouvertes*
+
+![Prix des façons par sous-traitant et produit](../../_img/contolavoro/17_prezzi_lav.png)
+
+*Prix des façons par sous-traitant et produit*
 
 ## 10. Données, champs et types de mouvement
 
@@ -459,6 +540,14 @@ Transfer*, *Bill of Materials*, *Batch* en anglais ; *Tedarikçi*, *Kayıt tarih
 2. SAP avertit que toutes les fenêtres ouvertes seront fermées : répondre *Oui*.
 3. L'add-on recharge tout seul les textes et recrée les menus dans la nouvelle langue : il n'est pas nécessaire de le
    redémarrer.
+
+![Ordre de sous-traitance avec le client en anglais](../../_img/contolavoro/24_commessa_en.png)
+
+*Ordre de sous-traitance avec le client en anglais*
+
+![Onglet Documents avec le client en turc](../../_img/contolavoro/25_commessa_tr.png)
+
+*Onglet Documents avec le client en turc*
 
 ### Personnaliser les textes
 

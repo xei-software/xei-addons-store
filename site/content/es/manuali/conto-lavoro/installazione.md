@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Instalación, licencia y menús
 description: Cómo instalar XEI.ContoLavoro, activar la licencia y encontrar los menús.
 lang: es
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -27,6 +27,8 @@ stato: approvato
    modificado..."*: responda **Sí** y espere a que termine antes de usar el cliente.
 
 Cada actualización del add-on se instala de la misma manera.
+
+Antes de crear las órdenes se define la serie de numeración de la orden de subcontratación, como para los documentos de SAP: *Módulos › Gestión › Inicialización del sistema › Numeración de documentos*, elemento **Commessa terzista** (Orden de subcontratación) al final de la lista. Sin serie, al abrir *Orden de subcontratación* el add-on avisa de que hay que definirla.
 
 Después de la instalación: rellene la **Configuración** y luego, en SAP, vincule cada almacén del subcontratista a su
 proveedor (campo *Fornitore terzista* (Proveedor subcontratista) de los datos maestros del almacén) y marque los
@@ -56,14 +58,14 @@ La ventana **Licenza** (Licencia):
 ## Menús
 
 Las entradas están en **XEI-Addon › Subcontratación**. El submenú **Subcontratación** aparece también en el módulo de
-SAP elegido en la Configuración (*Compras - Proveedores* o *Producción*).
+SAP elegido en la Configuración (*Compras* o *Producción*).
 
 | Entrada | Función |
 |---|---|
 | Orden de subcontratación | apertura, búsqueda y creación de las órdenes de subcontratación (manual de uso, capítulos 4 y 5) |
 | Crear órdenes desde órdenes de fabricación | órdenes de subcontratación a partir de las elaboraciones externas de las órdenes de fabricación (capítulo 6) |
 | Recepción del subcontratista | entrada de los productos de un albarán del subcontratista en varias órdenes de subcontratación (entrada de los productos y salida de los componentes) |
-| Transferencia masiva de componentes | envío de los componentes para varias órdenes de subcontratación, si está activo en la Configuración (capítulo 9) |
+| Transferencia masiva de componentes | envío de los componentes para varias órdenes de subcontratación; se desactiva en la Configuración (capítulo 9) |
 | Transferencia de componentes entre órdenes | mueve el stock que ya está en el subcontratista de una orden de subcontratación a otra (capítulo 9) |
 | Cierre masivo de entradas de productos | cierra las entradas de mercancías de los productos que siguen abiertas (capítulo 9) |
 | Precios de elaboración de subcontratistas | precios de las elaboraciones por subcontratista y producto (capítulo 9) |

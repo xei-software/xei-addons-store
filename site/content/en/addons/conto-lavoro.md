@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Subcontracting
 description: Manages in SAP Business One the processing entrusted to subcontractors, from the order and the shipment of the components to the return of the finished product.
 lang: en
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -54,4 +54,4 @@ moment what is at each subcontractor. With XEI.ContoLavoro SAP Business One does
 
 ## Current version
 
-**1.2.0** – see the [release notes](../../manuali/en/contolavoro/note-rilascio-1.2.0.md) and the user manual.
+**1.2.1** – see the [release notes](../../manuali/en/contolavoro/note-rilascio-1.2.1.md) and the user manual.

@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Sous-traitance
 description: Gère dans SAP Business One les travaux confiés aux sous-traitants, de la commande et de l'envoi des composants jusqu'au retour du produit fini.
 lang: fr
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -53,5 +53,5 @@ tout moment ce qui se trouve chez chaque sous-traitant. Avec XEI.ContoLavoro, c'
 
 ## Version actuelle
 
-**1.2.0** – voir les [notes de version](../../manuali/fr/contolavoro/note-rilascio-1.2.0.md) et le manuel
+**1.2.1** – voir les [notes de version](../../manuali/fr/contolavoro/note-rilascio-1.2.1.md) et le manuel
 d'utilisation.

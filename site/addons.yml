@@ -49,3 +49,18 @@
   dimensione: 78972997
   sha256: 475ba39a709c822bff4790daf98aa8d20fb20f325db5dba17aa0a45504ea0017
   lingue_programma: [it, en, de, fr, es, tr]
+
+- id: conto-lavoro
+  pacchetto: XEI.ContoLavoro
+  versione: 1.2.1
+  data_rilascio: '2026-11-16'
+  origine: xei-software/xei-contolavoro
+  tag_origine: v1.2.1
+  xeicore: 1.2.2
+  ok_coordinatore_xei: '2026-11-07'
+  ok_coordinatore_documentazione: '2026-11-07'
+  tag_pubblico: conto-lavoro-v1.2.1
+  file: XEI.ContoLavoro.zip
+  dimensione: 827770
+  sha256: 3cf8689551271865eff4d32213683f09754a11fe6807b4eadd67c4b6246152ce
+  lingue_programma: [it, en, de, fr, es, tr]

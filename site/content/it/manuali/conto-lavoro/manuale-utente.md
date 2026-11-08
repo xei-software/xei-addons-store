@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Manuale d'uso
 description: Come gestire con XEI.ContoLavoro le commesse terzista, gli invii di componenti, i versamenti e il conto lavoro da ordini di produzione.
 lang: it
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -47,6 +47,7 @@ La commessa si chiude da sola quando tutti i prodotti sono versati e presso il t
 - Al primo avvio l'add-on crea tabelle, campi, oggetto (UDO) `XEI_CL_COMMESSA` e la ricerca formattata del fornitore
   terzista sul magazzino. SAP chiede di confermare che *"la struttura del database è stata modificata"*: rispondere e
   attendere la fine prima di usare il client.
+- Prima di creare le commesse si definisce la **serie di numerazione** della commessa terzista, come per i documenti SAP: **Moduli › Amministrazione › Inizializzazione sistema › Numerazione documenti**, voce *Commessa terzista* in fondo all'elenco. Senza serie, aprendo *Commessa terzista* l'add-on avvisa di definirla.
 
 ### Menu
 
@@ -57,7 +58,7 @@ La commessa si chiude da sola quando tutti i prodotti sono versati e presso il t
 | Commessa terzista | apertura, ricerca e creazione delle commesse |
 | Crea commesse da ordini di produzione | commesse dalle lavorazioni esterne degli ODP (capitolo 6) |
 | Ricevimento dal terzista | un DDT del terzista con prodotti di più commesse: si sceglie il fornitore, si indicano le quantità ricevute sui prodotti aperti delle sue commesse (*Proponi* = residuo) e *Registra* fa il versamento commessa per commessa, con carico dei prodotti e scarico dei componenti |
-| Trasferimento massivo componenti | invio componenti per più commesse (attivo con l'opzione relativa) |
+| Trasferimento massivo componenti | invio componenti per più commesse (si disattiva in configurazione, capitolo 3) |
 | Trasferimento componenti tra commesse | sposta la giacenza già presso il terzista da una commessa a un'altra |
 | Chiusura massiva entrate merci prodotti | chiude le entrate merci dei prodotti rimaste aperte |
 | Prezzi lavorazioni terzisti | prezzi delle lavorazioni per fornitore e prodotto |
@@ -65,7 +66,7 @@ La commessa si chiude da sola quando tutti i prodotti sono versati e presso il t
 | Informazioni, Traduzioni, Licenza | voci comuni agli add-on XEI; Licenza: stato e codice di licenza |
 
 Le stesse voci, tranne *Configurazione*, *Informazioni*, *Traduzioni* e *Licenza*, ci sono anche nel modulo SAP
-scelto in configurazione (capitolo 3), nella posizione scelta: **Moduli › Acquisti - Fornitori › Conto lavoro**
+scelto in configurazione (capitolo 3), nella posizione scelta: **Moduli › Acquisti › Conto lavoro**
 (predefinito) oppure **Moduli › Produzione › Conto lavoro**.
 
 ### Licenza
@@ -88,6 +89,10 @@ della finestra **Licenza** e si riceve il codice di licenza.
 Le opzioni si impostano in una form a cartelle (la cartella *Lotti* è descritta nel capitolo 7). Le opzioni valgono
 per tutta la società; le form già aperte le usano alla riapertura.
 
+![Generale](../../_img/contolavoro/10_config_generale.png)
+
+*Generale*
+
 ![Prezzi](../../_img/contolavoro/11_config_prezzi.png)
 
 *Prezzi*
@@ -95,6 +100,10 @@ per tutta la società; le form già aperte le usano alla riapertura.
 ![Magazzino](../../_img/contolavoro/12_config_magazzino.png)
 
 *Magazzino*
+
+![Serie e causali](../../_img/contolavoro/13_config_documenti.png)
+
+*Serie e causali*
 
 | Opzione | Effetto | Predef. |
 |---|---|---|
@@ -105,11 +114,11 @@ per tutta la società; le form già aperte le usano alla riapertura.
 | Chiudi l'entrata merci del prodotto | dopo il versamento l'entrata del prodotto viene chiusa (non va in fattura) | No |
 | Ricalcola prezzo entrata prodotto | se cambia il prezzo della lavorazione aggiorna l'entrata del prodotto | No |
 | Offerte fornitore da ODP | nella creazione da ODP collega le offerte fornitore | No |
-| Trasferimento massivo | attiva la voce di menu | No |
+| Trasferimento massivo | consente il trasferimento massivo dei componenti; con No la voce di menu avvisa che la funzione è disattivata | Sì |
 | Distinta terzista | mostra la colonna "Distinta terzista" nella distinta base | Sì |
 | Contratti fornitore | prezzi lavorazioni dai contratti (solo SQL Server) | No |
-| Listino predefinito | listino dei costi proposto sulle nuove commesse | – |
-| Menu anche nel modulo SAP | modulo con il sottomenu *Conto lavoro*: Acquisti - Fornitori o Produzione | Acquisti - Fornitori |
+| Listino predefinito delle commesse | listino dei costi proposto sulle nuove commesse; serve per creare le commesse dagli ordini di produzione (capitolo 6) | – |
+| Menu anche nel modulo SAP | modulo con il sottomenu *Conto lavoro*: Acquisti o Produzione | Acquisti |
 | Posizione nel menu del modulo | in fondo, in cima o dopo una voce del modulo | in fondo |
 | **Prezzi** | | |
 | Prezzo lavorazioni / componenti modificabile | prezzi modificabili nella distinta della commessa | No |
@@ -137,6 +146,10 @@ per tutta la società; le form già aperte le usano alla riapertura.
 La testata è organizzata come quella del trasferimento di stock: a sinistra fornitore, riferimento del fornitore,
 progetto e ordini collegati; a destra numerazione, stato, date, listino dei costi e i due magazzini.
 
+![Commessa terzista: testata e cartella Prodotti](../../_img/contolavoro/01_prodotti.png)
+
+*Commessa terzista: testata e cartella Prodotti*
+
 - **Fornitore**: alla scelta propone il magazzino dell'utente e il **magazzino terzista** collegato al fornitore
   (campo "Fornitore terzista" dell'anagrafica magazzino) o quello marcato come predefinito.
 - **Da magazzino**: magazzino dell'azienda; da qui partono i componenti, qui rientrano i prodotti e su questo
@@ -146,6 +159,10 @@ progetto e ordini collegati; a destra numerazione, stato, date, listino dei cost
 - Cambiando un magazzino di testata viene proposto, come nel trasferimento di stock, di riportarlo sulle righe della
   distinta **non ancora movimentate**.
 
+![Cambio del magazzino di testata con prodotti già inseriti](../../_img/contolavoro/09_propaga_magazzino.png)
+
+*Cambio del magazzino di testata con prodotti già inseriti*
+
 ### Prodotti
 
 Si sceglie l'articolo (anche più articoli insieme dalla lista) e la quantità da produrre: la distinta base viene
@@ -153,6 +170,10 @@ copiata da SAP rapportandola a un pezzo (considerando la quantità base della di
 da produrre, versata, saldo, costo dei componenti e delle lavorazioni.
 
 ### Distinta base
+
+![Distinta per prodotto: componenti con magazzini, prezzi, fabbisogno, usato](../../_img/contolavoro/02_distinta.png)
+
+*Distinta per prodotto: componenti con magazzini, prezzi, fabbisogno, usato*
 
 Per ogni prodotto: componenti (articoli di magazzino da spedire) e lavorazioni (servizi pagati al terzista). Con
 **Modifica distinta** si cambiano magazzini e prezzi delle righe non ancora movimentate; con *Aggiungi riga* /
@@ -162,6 +183,10 @@ della riga prodotto: **Rilavora** (il prodotto torna al terzista come componente
 
 ### Componenti
 
+![Situazione dei componenti: fabbisogno, spedito, giacenze e saldo da spedire](../../_img/contolavoro/03_componenti.png)
+
+*Situazione dei componenti: fabbisogno, spedito, giacenze e saldo da spedire*
+
 I componenti di tutti i prodotti raggruppati per articolo e magazzini: fabbisogno, usato, disponibile in azienda,
 giacenza nel magazzino del terzista, richieste e liste di prelievo, spedito, saldo da spedire, giacenza della commessa
 presso il terzista, rientri e scarti. I movimenti si fanno con i pulsanti in fondo alla commessa: **Invia componenti**
@@ -170,6 +195,10 @@ terzista*). Ognuno apre una finestra con le quantità da movimentare nelle celle
 *Azzera* le svuota, e si possono cambiare a mano.
 
 ### Documenti
+
+![Documenti collegati alla commessa, uno per riga, con le righe del documento scelto](../../_img/contolavoro/04_documenti.png)
+
+*Documenti collegati alla commessa, uno per riga, con le righe del documento scelto*
 
 Tutti i documenti SAP collegati alla commessa, uno per riga in ordine di tempo, con il collegamento per aprirli;
 *Mostra* filtra per tipo di documento. Sotto, in *Righe del documento*, le righe del documento scelto con lotti,
@@ -182,13 +211,27 @@ numeri di serie e ubicazioni.
    prodotto e una per ogni lavorazione; se l'ordine c'è già, il pulsante lo apre. Le modifiche successive della
    commessa (prodotti nuovi o eliminati, quantità, prezzi, date) si riportano sull'ordine al salvataggio; le righe già
    ricevute cambiano solo di quantità.
+
+   ![Creazione dell'ordine d'acquisto](../../_img/contolavoro/05_oda.png)
+
+   *Creazione dell'ordine d'acquisto*
+
 3. **Invia componenti**: nella finestra *Trasferimento componenti* la colonna *Da spedire* propone il saldo da
    spedire (si cambia a mano); *OK* crea il trasferimento di stock al magazzino del terzista. Con l'opzione relativa
    si crea una richiesta di trasferimento con lista di prelievo.
+
+   ![Trasferimento componenti](../../_img/contolavoro/06_trasferimento.png)
+
+   *Trasferimento componenti*
+
 4. **Ricevi prodotti**: nella finestra *Versamento prodotti* la colonna *Da versare* propone il residuo (si cambia a
    mano) e *Tipo movimento* sceglie tra *Carico prodotti e scarico componenti*, *Solo carico prodotti* e *Solo scarico
    componenti*; poi *OK*. Vengono creati: entrata merci delle lavorazioni e dei prodotti dall'ordine d'acquisto, uscita
    merci dei componenti dal magazzino del terzista, versamenti di produzione per i prodotti da ODP (capitolo 6).
+
+   ![Versamento prodotti](../../_img/contolavoro/07_versamento.png)
+
+   *Versamento prodotti*
 
 > Il prodotto entra al costo pieno (componenti + lavorazione); con l'opzione "Chiudi l'entrata merci del prodotto"
 > l'entrata viene chiusa e non va in fattura: si fatturano le lavorazioni.
@@ -214,6 +257,7 @@ tutte le lavorazioni esterne, registra il versamento di produzione del prodotto 
 | Distinta base del prodotto finito | **Distinta terzista** = Sì se il prodotto finito è completo quando rientrano tutte le lavorazioni esterne: l'add-on registra il versamento di produzione. Con No il versamento di produzione lo registri tu in SAP | `PF-100` = Sì |
 | Anagrafica del magazzino del terzista | campo **Fornitore terzista** (capitolo 4) | `T-TER01` → `F-TER01`; `T-TER02` → `F-TER02` |
 | *Prezzi lavorazioni terzisti* | prezzo per terzista, prodotto finito e lavorazione (ordine di ricerca del prezzo nel capitolo 9) | `F-TER01` / `PF-100` / `LAV-SALD` 12,00; `F-TER02` / `PF-100` / `LAV-MONT` 3,50 |
+| Configurazione, cartella *Generale* (capitolo 3) | **Listino predefinito delle commesse**: il listino dei costi delle commesse create dagli ODP. Senza, *Crea commesse* chiede di indicarlo e non crea le commesse | Listino base |
 
 I componenti a consuntivo collegati alla lavorazione non si inviano al terzista: li preleva il versamento di
 produzione dal magazzino della riga ODP. La colonna **Motivo / avvisi** della lista lo segnala. Gli altri componenti
@@ -250,13 +294,13 @@ assali. L'ODP n. 500 è rilasciato per 100 carrelli nel magazzino `01`:
 
 | Passo | Documento SAP creato | Effetto sull'ODP |
 |---|---|---|
-| 1. **Conto lavoro › Crea commesse da ordini di produzione**: selezioni le due righe dell'ODP 500 e premi *Crea commesse* | nessun documento SAP: commessa terzista 1001 (`F-TER01`, da `01` a `T-TER01`, prodotto `LAV-SALD` 100, distinta `CMP-01` 2,5 e `CMP-02` 4 per pezzo) e commessa 1002 (`F-TER02`, da `01` a `T-TER02`, prodotto `LAV-MONT` 200, distinta `CMP-03` 2 e `CMP-04` 1 per pezzo) | nessuno |
+| 1. **Conto lavoro › Crea commesse da ordini di produzione**: selezioni le due righe dell'ODP 500 e premi *Crea commesse* | nessun documento SAP: commessa terzista 1001 (`F-TER02`, da `01` a `T-TER02`, prodotto `LAV-MONT` 200, distinta `CMP-03` 2 e `CMP-04` 1 per pezzo) e commessa 1002 (`F-TER01`, da `01` a `T-TER01`, prodotto `LAV-SALD` 100, distinta `CMP-01` 2,5 e `CMP-02` 4 per pezzo), nell'ordine delle righe della lista | nessuno |
 | 2. In ogni commessa premi *Ordine al terzista* e conferma la finestra *Ordine d'acquisto terzista* | ordine d'acquisto a `F-TER01`: `LAV-SALD` 100 × 12,00; ordine d'acquisto a `F-TER02`: `LAV-MONT` 200 × 3,50 | nessuno |
 | 3. In ogni commessa premi *Invia componenti* e, con le quantità proposte, *OK* | trasferimento di stock da `01` a `T-TER01`: `CMP-01` 250, `CMP-02` 400; da `01` a `T-TER02`: `CMP-03` 400, `CMP-04` 200 | nessuno |
-| 4. Rientrano 60 telai: nella commessa 1001 premi *Ricevi prodotti*, nella finestra *Versamento prodotti* scrivi 60 in *Da versare* e premi *OK* | entrata merci dall'ordine: `LAV-SALD` 60 × 12,00; uscita merci per produzione da `T-TER01`: `CMP-01` 150, `CMP-02` 240 | prelevati i componenti delle righe 2 e 3; nessun versamento: mancano gli assali, e un messaggio lo dice (*"ODP 500: il prodotto finito entrerà in magazzino quando rientrerà anche la lavorazione LAV-MONT."*) |
-| 5. Rientrano 100 assali: commessa 1002, *Ricevi prodotti*, 100 in *Da versare*, *OK* | entrata merci `LAV-MONT` 100 × 3,50; uscita merci per produzione da `T-TER02`: `CMP-03` 200, `CMP-04` 100; versamento di produzione `PF-100` **50** | 60 telai e 100 assali bastano per 50 carrelli: 50 completati; SAP preleva a consuntivo `CMP-05` 800 |
-| 6. Rientrano altri 100 assali: commessa 1002, *Ricevi prodotti*, 100 in *Da versare*, *OK* | entrata merci `LAV-MONT` 100; uscita merci per produzione `CMP-03` 200, `CMP-04` 100; versamento di produzione `PF-100` **10** | 60 completati, gli altri aspettano i telai (*"ODP 500: entrati 10 pezzi del prodotto finito; gli altri entreranno quando rientrerà anche la lavorazione LAV-SALD."*); la commessa 1002 si chiude da sola |
-| 7. Rientrano gli ultimi 40 telai: commessa 1001, *Ricevi prodotti*, 40 in *Da versare*, *OK* | entrata merci `LAV-SALD` 40; uscita merci per produzione `CMP-01` 100, `CMP-02` 160; versamento di produzione `PF-100` **40** | 100 completati; la commessa 1001 si chiude da sola. L'ODP lo chiudi tu in SAP |
+| 4. Rientrano 60 telai: nella commessa 1002 premi *Ricevi prodotti*, nella finestra *Versamento prodotti* scrivi 60 in *Da versare* e premi *OK* | entrata merci dall'ordine: `LAV-SALD` 60 × 12,00; uscita merci per produzione da `T-TER01`: `CMP-01` 150, `CMP-02` 240 | prelevati i componenti delle righe 2 e 3; nessun versamento: mancano gli assali, e un messaggio lo dice (*"ODP 500: il prodotto finito entrerà in magazzino quando rientrerà anche la lavorazione LAV-MONT."*) |
+| 5. Rientrano 100 assali: commessa 1001, *Ricevi prodotti*, 100 in *Da versare*, *OK* | entrata merci `LAV-MONT` 100 × 3,50; uscita merci per produzione da `T-TER02`: `CMP-03` 200, `CMP-04` 100; versamento di produzione `PF-100` **50** | 60 telai e 100 assali bastano per 50 carrelli: 50 completati; SAP preleva a consuntivo `CMP-05` 800 |
+| 6. Rientrano altri 100 assali: commessa 1001, *Ricevi prodotti*, 100 in *Da versare*, *OK* | entrata merci `LAV-MONT` 100; uscita merci per produzione `CMP-03` 200, `CMP-04` 100; versamento di produzione `PF-100` **10** | 60 completati, gli altri aspettano i telai (*"ODP 500: entrati 10 pezzi del prodotto finito; gli altri entreranno quando rientrerà anche la lavorazione LAV-SALD."*); la commessa 1001 si chiude da sola |
+| 7. Rientrano gli ultimi 40 telai: commessa 1002, *Ricevi prodotti*, 40 in *Da versare*, *OK* | entrata merci `LAV-SALD` 40; uscita merci per produzione `CMP-01` 100, `CMP-02` 160; versamento di produzione `PF-100` **40** | 100 completati; la commessa 1002 si chiude da sola. L'ODP lo chiudi tu in SAP |
 
 > Il versamento di produzione vale il costo delle lavorazioni esterne per pezzo: per ogni lavorazione, componenti e
 > prezzo della lavorazione, per la quantità per pezzo. Nell'esempio un carrello vale
@@ -316,6 +360,10 @@ Per trasferimenti, rientri, scarti e uscita dei componenti nel versamento, i lot
 una finestra dell'add-on, **prima** di creare i documenti. Tutti i documenti vengono poi creati in un'unica
 operazione.
 
+![Versamento: proposto il lotto LA della commessa, non il lotto LE che scade prima ma non è della commessa](../../_img/contolavoro/23_selezione_lotti.png)
+
+*Versamento: proposto il lotto LA della commessa, non il lotto LE che scade prima ma non è della commessa*
+
 - **Proposta automatica**: dal magazzino del terzista (uscita componenti, rientro, scarti) prima i lotti **spediti a
   quella commessa** (colonna "Della commessa", ricavata dal registro movimenti lotti di SAP), poi per scadenza
   (FEFO); dal magazzino dell'azienda per scadenza (FEFO).
@@ -328,9 +376,12 @@ operazione.
 ### Lotto del prodotto in entrata
 
 Il lotto del prodotto versato viene calcolato da uno **script SQL** configurabile (Configurazione › Lotti), con tre
-parametri fissi: `{ItemCode}` articolo, `{WhsCode}` magazzino di carico, `{DocEntry}` commessa. Lo script
-predefinito restituisce numero commessa + progressivo (es. `20160256-1`); *Verifica* lo esegue con dati di prova. Il
-lotto creato compare nel messaggio di fine versamento.
+parametri fissi: `{ItemCode}` articolo, `{WhsCode}` magazzino di carico, `{DocEntry}` commessa. Lo script predefinito
+restituisce numero commessa + progressivo (es. `20160256-1`); *Verifica* lo esegue con dati di prova. Il lotto creato
+compare nel messaggio di fine versamento. Lo stesso script dà il lotto del prodotto finito dell'ordine di produzione
+(capitolo 6) nell'entrata da produzione. Se il prodotto finito è gestito a numeri di serie, o lo script non restituisce
+un lotto, il versamento non si fa e un messaggio spiega cosa fare. Per i numeri di serie: **Distinta terzista** = No
+nella distinta del prodotto finito e versamento di produzione registrato in SAP.
 
 ![Script del lotto in entrata](../../_img/contolavoro/19_config_lotti.png)
 
@@ -339,8 +390,13 @@ lotto creato compare nel messaggio di fine versamento.
 ### Documenti in bozza
 
 Il documento nasce in bozza, da completare nella form SAP, con magazzini a **ubicazioni**, prodotti in entrata con
-**numeri di serie**, script del lotto vuoto o senza risultato e nel trasferimento massivo. Si completa il documento e
-si preme *Aggiungi*: l'add-on elimina la bozza e prosegue.
+**numeri di serie**, script del lotto vuoto o senza risultato e nel trasferimento massivo. Si completa il documento e si
+preme *Aggiungi*: l'add-on elimina la bozza e prosegue. Sulle righe con lotti o numeri di serie da scegliere, nella
+bozza anche l'ubicazione si indica in SAP insieme ai lotti.
+
+![Documento in bozza: "Completare il documento (lotti, serie, ubicazioni) e premere Aggiungi per proseguire"](../../_img/contolavoro/20_bozza_trasferimento.png)
+
+*Documento in bozza: "Completare il documento (lotti, serie, ubicazioni) e premere Aggiungi per proseguire"*
 
 ## 8. Rientri e scarti
 
@@ -350,6 +406,10 @@ si preme *Aggiungi*: l'add-on elimina la bozza e prosegue.
   magazzino a scelta.
 - **Rientro e scarti › Uscita scarti presso il terzista**: nella finestra *Uscita scarti*, uscita merci degli scarti
   direttamente dal magazzino del terzista.
+
+  ![Uscita scarti](../../_img/contolavoro/08_scarti.png)
+
+  *Uscita scarti*
 
 I componenti scartati tornano nel saldo da spedire.
 
@@ -361,12 +421,20 @@ Elenca le lavorazioni esterne degli ODP rilasciati, pronte per diventare commess
 fornitore e magazzino di rientro**. Con *Mostra anche le righe non pronte* spiega perché una lavorazione non è pronta.
 Impostazione, esempio completo e casi particolari nel capitolo 6.
 
+![Le due lavorazioni esterne dell'ODP dell'esempio (capitolo 6), una per terzista](../../_img/contolavoro/15_da_odp.png)
+
+*Le due lavorazioni esterne dell'ODP dell'esempio (capitolo 6), una per terzista*
+
 ### Trasferimento massivo componenti
 
 Analizza le commesse aperte (filtri per date, fornitore, componente) e propone i componenti con saldo da spedire,
 rispettando la disponibilità condivisa tra le commesse se la società blocca le giacenze negative. Crea un
 trasferimento per fornitore (in bozza se servono lotti o ubicazioni). Le righe con magazzino terzista mancante o
 uguale a quello di partenza vengono escluse e segnalate.
+
+![Componenti con saldo da spedire, raggruppati per fornitore e commessa](../../_img/contolavoro/18_trasf_massivo.png)
+
+*Componenti con saldo da spedire, raggruppati per fornitore e commessa*
 
 ### Trasferimento componenti tra commesse
 
@@ -375,6 +443,10 @@ registrazione). Per questo è possibile solo tra commesse **aperte** con lo **st
 propone solo quelle; con magazzini diversi l'operazione è bloccata e la merce va rientrata e rispedita. La giacenza
 viene riletta al momento della conferma.
 
+![Trasferimento tra commesse](../../_img/contolavoro/14_trasf_commesse.png)
+
+*Trasferimento tra commesse*
+
 ### Chiusura massiva entrate merci prodotti e prezzi lavorazioni
 
 *Chiusura massiva entrate merci prodotti* elenca le entrate merci dei prodotti ancora aperte e chiude quelle scelte.
@@ -382,6 +454,14 @@ viene riletta al momento della conferma.
 
 Ordine di ricerca del prezzo di una lavorazione: contratti fornitore (opzione, solo SQL Server), prezzi per terzista,
 distinta base (opzione), prezzo del fornitore SAP, listino della commessa.
+
+![Entrate merci dei prodotti ancora aperte](../../_img/contolavoro/16_chiusura_emp.png)
+
+*Entrate merci dei prodotti ancora aperte*
+
+![Prezzi delle lavorazioni per terzista e prodotto](../../_img/contolavoro/17_prezzi_lav.png)
+
+*Prezzi delle lavorazioni per terzista e prodotto*
 
 ## 10. Dati, campi e tipi di movimento
 
@@ -446,6 +526,14 @@ in turco).
 1. **Amministrazione › Configurazione › Generale › Utenti**, cartella *Visualizzare*, campo *Lingua*, poi *Aggiorna*.
 2. SAP avvisa che tutte le finestre aperte verranno chiuse: rispondere *Sì*.
 3. L'add-on ricarica da solo i testi e ricrea i menu nella nuova lingua: non serve riavviarlo.
+
+![Commessa con il client in inglese](../../_img/contolavoro/24_commessa_en.png)
+
+*Commessa con il client in inglese*
+
+![Cartella Documenti con il client in turco](../../_img/contolavoro/25_commessa_tr.png)
+
+*Cartella Documenti con il client in turco*
 
 ### Personalizzare i testi
 

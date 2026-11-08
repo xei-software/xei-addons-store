@@ -27,3 +27,7 @@ stato: approvato
   ligne de l'ordre de fabrication.
 - Les composants en consommation automatique (backflush) liés à une façon externe ne sont pas envoyés au
   sous-traitant et l'ordre de fabrication ne les prélève qu'une seule fois.
+- Sans la série de numérotation de l'ordre de sous-traitance, à l'ouverture de *Ordre de sous-traitance* l'add-on indique où la définir.
+- Le transfert en masse des composants est actif dans la configuration par défaut ; avec l'option désactivée, l'entrée de menu avertit que la fonction est désactivée.
+- Les ordres de sous-traitance créés depuis les ordres de fabrication utilisent la liste de prix par défaut des ordres (Configuration › Général) : sans elle, « Créer les ordres » demande de l'indiquer.
+- Dans la liste « Créer des ordres depuis les ordres de fabrication », les lignes se sélectionnent et le fournisseur se modifie.

@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Kullanım kılavuzu
 description: XEI.ContoLavoro ile fason iş emirlerinin, bileşen gönderimlerinin, ürün girişlerinin ve üretim siparişlerinden fason üretimin yönetimi.
 lang: tr
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -47,6 +47,7 @@ Tüm ürünler girildiğinde ve fasoncuda bileşen kalmadığında fason iş emr
 - İlk başlatmada eklenti tabloları, alanları, `XEI_CL_COMMESSA` nesnesini (UDO) ve depo üzerinde fasoncu
   tedarikçinin formatlı aramasını oluşturur. SAP *"veritabanı yapısının değiştirildiğini"* onaylamanızı ister:
   yanıtlayın ve istemciyi kullanmadan önce işlemin bitmesini bekleyin.
+- İş emirlerini oluşturmadan önce, SAP belgelerinde olduğu gibi fason iş emrinin **numaralandırma serisi** tanımlanır: **Modules › Administration › System Initialization › Document Numbering** (Modüller › Yönetim › Sistem başlatma › Belge numaralandırma), listenin sonundaki *Commessa terzista* (Fason iş emri) girişi. Seri yoksa *Fason iş emri* açılırken eklenti serinin tanımlanması gerektiğini bildirir.
 
 ### Menüler
 
@@ -57,7 +58,7 @@ Tüm ürünler girildiğinde ve fasoncuda bileşen kalmadığında fason iş emr
 | Fason iş emri | fason iş emirlerinin açılması, aranması ve oluşturulması |
 | Üretim siparişlerinden iş emri oluştur | üretim siparişlerinin dış işçiliklerinden fason iş emirleri (bölüm 6) |
 | Fasoncudan teslim alma | fasoncunun birden çok iş emrine ait ürünler içeren bir irsaliyesi: tedarikçi seçilir, iş emirlerinin açık ürünlerinde teslim alınan miktarlar girilir (*Öner* = kalan) ve *Kaydet* ürün girişini iş emri iş emri yapar; ürünlerin girişi ve bileşenlerin çıkışıyla |
-| Toplu bileşen nakli | birden çok iş emri için bileşen gönderimi (ilgili seçenekle etkin) |
+| Toplu bileşen nakli | birden çok iş emri için bileşen gönderimi (Yapılandırma'da devre dışı bırakılabilir, bölüm 3) |
 | İş emirleri arasında bileşen nakli | fasoncuda bulunan stoku bir iş emrinden diğerine taşır |
 | Ürün mal girişlerini toplu kapatma | açık kalan ürün mal girişlerini kapatır |
 | Fasoncu işçilik fiyatları | tedarikçi ve ürüne göre işçilik fiyatları |
@@ -65,8 +66,8 @@ Tüm ürünler girildiğinde ve fasoncuda bileşen kalmadığında fason iş emr
 | Informazioni (Bilgi), Traduzioni (Çeviriler), Licenza (Lisans) | XEI eklentilerinde ortak girişler; Licenza: lisansın durumu ve kodu |
 
 *Yapılandırma*, *Informazioni*, *Traduzioni* ve *Licenza* dışındaki aynı girişler, yapılandırmada seçilen SAP
-modülünde de (bölüm 3), seçilen konumda bulunur: **Modules › Purchasing - A/P › Fason üretim** (Modüller ›
-Satınalma - Borçlar; varsayılan) veya **Modules › Production › Fason üretim** (Modüller › Üretim).
+modülünde de (bölüm 3), seçilen konumda bulunur: **Modules › Purchasing › Fason üretim** (Modüller ›
+Satınalma; varsayılan) veya **Modules › Production › Fason üretim** (Modüller › Üretim).
 
 ### Lisans
 
@@ -89,6 +90,10 @@ tarihinden itibaren 30 gün boyunca herhangi bir şirkette geçerli bir **deneme
 Seçenekler sekmeli bir formda ayarlanır (*Partiler* sekmesi bölüm 7'de anlatılmıştır). Seçenekler tüm şirket için
 geçerlidir; zaten açık olan formlar bunları yeniden açıldıklarında kullanır.
 
+![Genel](../../_img/contolavoro/10_config_generale.png)
+
+*Genel*
+
 ![Fiyatlar](../../_img/contolavoro/11_config_prezzi.png)
 
 *Fiyatlar*
@@ -96,6 +101,10 @@ geçerlidir; zaten açık olan formlar bunları yeniden açıldıklarında kulla
 ![Stok](../../_img/contolavoro/12_config_magazzino.png)
 
 *Stok*
+
+![Seriler ve nedenler](../../_img/contolavoro/13_config_documenti.png)
+
+*Seriler ve nedenler*
 
 | Seçenek | Etki | Varsayılan |
 |---|---|---|
@@ -106,11 +115,11 @@ geçerlidir; zaten açık olan formlar bunları yeniden açıldıklarında kulla
 | Ürünün mal girişini kapat | ürün girişinden sonra ürünün mal girişi kapatılır (faturalanmaz) | Hayır |
 | Ürün mal girişinin fiyatını yeniden hesapla | işçilik fiyatı değişirse ürünün mal girişini günceller | Hayır |
 | Üretim siparişlerinden tedarikçi teklifleri | üretim siparişlerinden oluştururken tedarikçi tekliflerini bağlar | Hayır |
-| Toplu nakil | menü girişini etkinleştirir | Hayır |
+| Toplu nakil | bileşenlerin toplu naklini sağlar; Hayır seçiliyse menü girişi işlevin devre dışı olduğunu bildirir | Evet |
 | Fasoncu ürün ağacı | ürün ağacında "Fasoncu ürün ağacı" sütununu gösterir | Evet |
 | Tedarikçi sözleşmeleri | işçilik fiyatları sözleşmelerden (yalnızca SQL Server) | Hayır |
-| Varsayılan fiyat listesi | yeni iş emirlerinde önerilen maliyet listesi | – |
-| Menü ayrıca SAP modülünde | *Fason üretim* alt menüsünün bulunduğu modül: Purchasing - A/P (Satınalma - Borçlar) veya Production (Üretim) | Purchasing - A/P |
+| İş emirlerinin varsayılan fiyat listesi | yeni iş emirlerinde önerilen maliyet listesi; üretim siparişlerinden iş emri oluşturmak için gereklidir (bölüm 6) | – |
+| Menü ayrıca SAP modülünde | *Fason üretim* alt menüsünün bulunduğu modül: Purchasing (Satınalma) veya Production (Üretim) | Purchasing |
 | Modül menüsündeki konum | en sonda, en başta veya modülün bir girişinden sonra | en sonda |
 | **Fiyatlar** | | |
 | İşçilik / bileşen fiyatı değiştirilebilir | iş emrinin ürün ağacında fiyatlar değiştirilebilir | Hayır |
@@ -138,6 +147,10 @@ geçerlidir; zaten açık olan formlar bunları yeniden açıldıklarında kulla
 Başlık, stok naklininki gibi düzenlenmiştir: solda tedarikçi, tedarikçi referansı, proje ve bağlı siparişler; sağda
 numaralandırma, durum, tarihler, maliyet listesi ve iki depo.
 
+![Fason iş emri: başlık ve Ürünler sekmesi](../../_img/contolavoro/01_prodotti.png)
+
+*Fason iş emri: başlık ve Ürünler sekmesi*
+
 - **Tedarikçi**: seçildiğinde kullanıcının deposunu ve tedarikçiye bağlı **fasoncu deposunu** (depo ana verilerinin
   *Fornitore terzista* (Fasoncu tedarikçi) alanı) ya da varsayılan olarak işaretlenmiş depoyu önerir.
 - **Çıkış deposu**: şirketin deposu; bileşenler buradan çıkar, ürünler buraya geri gelir ve satınalma siparişinin
@@ -147,6 +160,10 @@ numaralandırma, durum, tarihler, maliyet listesi ve iki depo.
 - Başlıktaki bir depo değiştirildiğinde, stok naklinde olduğu gibi, bunu ürün ağacının **henüz hareket görmemiş**
   satırlarına aktarmak önerilir.
 
+![Ürünler girilmişken başlıktaki deponun değiştirilmesi](../../_img/contolavoro/09_propaga_magazzino.png)
+
+*Ürünler girilmişken başlıktaki deponun değiştirilmesi*
+
 ### Ürünler
 
 Kalem (listeden aynı anda birden çok kalem de) ve üretilecek miktar seçilir: ürün ağacı SAP'den kopyalanır ve bir
@@ -155,12 +172,20 @@ kalanı, bileşenlerin ve işçiliklerin maliyetini gösterir.
 
 ### Ürün ağacı
 
+![Ürün başına ürün ağacı: depolar, fiyatlar, ihtiyaç ve kullanılan ile bileşenler](../../_img/contolavoro/02_distinta.png)
+
+*Ürün başına ürün ağacı: depolar, fiyatlar, ihtiyaç ve kullanılan ile bileşenler*
+
 Her ürün için: bileşenler (gönderilecek stok kalemleri) ve işçilikler (fasoncuya ödenen hizmetler). **Ürün ağacını
 değiştir** ile henüz hareket görmemiş satırların depoları ve fiyatları değiştirilir; SAP'nin *Satır ekle* / *Satırı sil* komutlarıyla bileşen ve işçilik eklenir ya da hareket görmemiş olanlar kaldırılır. Ürün
 satırının bağlam menüsünden: **Yeniden işle** (ürün, yeni işçiliklerle bir bileşen olarak fasoncuya geri gider) ve
 **Ürün ağacını yeniden oluştur** (ürün ağacını seçilen bileşenlerle değiştirir).
 
 ### Bileşenler
+
+![Bileşenlerin durumu: ihtiyaç, gönderilen, stoklar ve gönderilecek kalan](../../_img/contolavoro/03_componenti.png)
+
+*Bileşenlerin durumu: ihtiyaç, gönderilen, stoklar ve gönderilecek kalan*
 
 Tüm ürünlerin bileşenleri, kaleme ve depolara göre gruplanmış olarak: ihtiyaç, kullanılan, şirkette kullanılabilir,
 fasoncu deposundaki stok, talepler ve toplama listeleri, gönderilen, gönderilecek kalan, iş emrinin fasoncudaki
@@ -170,6 +195,10 @@ ettirilecek miktarların sarı hücrelerde olduğu bir pencere açar: *Öner* bu
 değiştirilebilirler.
 
 ### Belgeler
+
+![İş emrine bağlı belgeler, satır başına bir belge, seçilen belgenin satırlarıyla](../../_img/contolavoro/04_documenti.png)
+
+*İş emrine bağlı belgeler, satır başına bir belge, seçilen belgenin satırlarıyla*
 
 İş emrine bağlı tüm SAP belgeleri, zaman sırasına göre satır başına bir belge, açmak için bağlantılarıyla; *Göster*
 belge türüne göre filtreler. Altta, *Belge satırları* içinde, seçilen belgenin satırları partiler, seri numaraları ve
@@ -182,13 +211,27 @@ depo yerleriyle birlikte.
    ve her işçilik için bir satır ile; sipariş zaten varsa düğme onu açar. İş emrinde sonradan yapılan değişiklikler
    (yeni veya silinmiş ürünler, miktarlar, fiyatlar, tarihler) kayıtta siparişe aktarılır; zaten teslim alınmış
    satırların yalnızca miktarı değişir.
+
+   ![Satınalma siparişinin oluşturulması](../../_img/contolavoro/05_oda.png)
+
+   *Satınalma siparişinin oluşturulması*
+
 3. **Bileşenleri gönder**: *Bileşen nakli* penceresinde *Gönderilecek* sütunu gönderilecek kalanı önerir (elle
    değiştirilebilir); *Tamam* fasoncunun deposuna stok naklini oluşturur. İlgili seçenekle, toplama listesiyle
    birlikte bir stok nakli talebi oluşturulur.
+
+   ![Bileşen nakli](../../_img/contolavoro/06_trasferimento.png)
+
+   *Bileşen nakli*
+
 4. **Ürünleri teslim al**: *Ürün girişi* penceresinde *Girilecek* sütunu kalanı önerir (elle değiştirilebilir) ve
    *Hareket türü* *Ürün girişi ve bileşen çıkışı*, *Yalnızca ürün girişi* ve *Yalnızca bileşen çıkışı* arasında seçim
    yapar; ardından *Tamam*. Şunlar oluşturulur: satınalma siparişinden işçiliklerin ve ürünlerin mal girişi,
    bileşenlerin fasoncu deposundan mal çıkışı, üretim siparişlerinden gelen ürünler için üretimden girişler (bölüm 6).
+
+   ![Ürün girişi](../../_img/contolavoro/07_versamento.png)
+
+   *Ürün girişi*
 
 > Ürün tam maliyetle girer (bileşenler + işçilik); "Ürünün mal girişini kapat" seçeneğiyle mal girişi kapatılır ve
 > faturalanmaz: işçilikler faturalanır.
@@ -214,6 +257,7 @@ işçilikler geri geldiğinde mamulün üretimden girişini kaydeder.
 | Mamulün ürün ağacı | tüm dış işçilikler geri geldiğinde mamul tamamlanıyorsa **Fasoncu ürün ağacı** = Evet: eklenti üretimden girişi kaydeder. Hayır ile üretimden girişi SAP'de siz kaydedersiniz | `PF-100` = Evet |
 | Fasoncu deposunun depo ana verileri | **Fornitore terzista** (Fasoncu tedarikçi) alanı (bölüm 4) | `T-TER01` → `F-TER01`; `T-TER02` → `F-TER02` |
 | *Fasoncu işçilik fiyatları* | fasoncu, mamul ve işçiliğe göre fiyat (fiyat arama sırası bölüm 9'da) | `F-TER01` / `PF-100` / `LAV-SALD` 12,00; `F-TER02` / `PF-100` / `LAV-MONT` 3,50 |
+| Yapılandırma, *Genel* sekmesi (bölüm 3) | **İş emirlerinin varsayılan fiyat listesi**: üretim siparişlerinden oluşturulan iş emirlerinin maliyet listesi. Bu liste yoksa *İş emri oluştur* listenin girilmesini ister ve iş emirlerini oluşturmaz | temel fiyat listesi |
 
 İşçiliğe bağlı geriye dönük çekilen bileşenler fasoncuya gönderilmez: bunları üretimden giriş, üretim siparişi
 satırının deposundan çeker. Listenin **Neden / uyarılar** sütunu bunu belirtir. Ürün ağacının işçiliği olmayan diğer
@@ -250,13 +294,13 @@ bileşenleri her üretim siparişinde olduğu gibi kalır.
 
 | Adım | Oluşturulan SAP belgesi | Üretim siparişine etkisi |
 |---|---|---|
-| 1. **Fason üretim › Üretim siparişlerinden iş emri oluştur**: 500 numaralı üretim siparişinin iki satırını seçin ve *İş emri oluştur* düğmesine basın | SAP belgesi yok: 1001 numaralı fason iş emri (`F-TER01`, `01` deposundan `T-TER01` deposuna, ürün `LAV-SALD` 100, ürün ağacı adet başına `CMP-01` 2,5 ve `CMP-02` 4) ve 1002 numaralı iş emri (`F-TER02`, `01` deposundan `T-TER02` deposuna, ürün `LAV-MONT` 200, ürün ağacı adet başına `CMP-03` 2 ve `CMP-04` 1) | yok |
+| 1. **Fason üretim › Üretim siparişlerinden iş emri oluştur**: 500 numaralı üretim siparişinin iki satırını seçin ve *İş emri oluştur* düğmesine basın | SAP belgesi yok: 1001 numaralı fason iş emri (`F-TER02`, `01` deposundan `T-TER02` deposuna, ürün `LAV-MONT` 200, ürün ağacı adet başına `CMP-03` 2 ve `CMP-04` 1) ve 1002 numaralı iş emri (`F-TER01`, `01` deposundan `T-TER01` deposuna, ürün `LAV-SALD` 100, ürün ağacı adet başına `CMP-01` 2,5 ve `CMP-02` 4), listedeki satırların sırasıyla | yok |
 | 2. Her iş emrinde *Fasoncu siparişi* düğmesine basın ve *Fasoncu satınalma siparişi* penceresini onaylayın | `F-TER01` için satınalma siparişi: `LAV-SALD` 100 × 12,00; `F-TER02` için satınalma siparişi: `LAV-MONT` 200 × 3,50 | yok |
 | 3. Her iş emrinde *Bileşenleri gönder* düğmesine ve önerilen miktarlarla *Tamam* düğmesine basın | `01` deposundan `T-TER01` deposuna stok nakli: `CMP-01` 250, `CMP-02` 400; `01` deposundan `T-TER02` deposuna: `CMP-03` 400, `CMP-04` 200 | yok |
-| 4. 60 şasi geri gelir: 1001 numaralı iş emrinde *Ürünleri teslim al* düğmesine basın, *Ürün girişi* penceresinde *Girilecek* alanına 60 yazın ve *Tamam* düğmesine basın | siparişten mal girişi: `LAV-SALD` 60 × 12,00; `T-TER01` deposundan üretim için çıkış: `CMP-01` 150, `CMP-02` 240 | 2. ve 3. satırların bileşenleri çekilir; giriş yok: akslar eksik ve bir mesaj bunu belirtir (*"Üretim siparişi 500: mamul, LAV-MONT işçiliği de geri geldiğinde stoğa girecek."*) |
-| 5. 100 aks geri gelir: 1002 numaralı iş emri, *Ürünleri teslim al*, *Girilecek* alanına 100, *Tamam* | mal girişi `LAV-MONT` 100 × 3,50; `T-TER02` deposundan üretim için çıkış: `CMP-03` 200, `CMP-04` 100; üretimden giriş `PF-100` **50** | 60 şasi ve 100 aks 50 araba için yeterlidir: 50 tamamlanır; SAP `CMP-05` 800 adedi geriye dönük çeker |
-| 6. 100 aks daha geri gelir: 1002 numaralı iş emri, *Ürünleri teslim al*, *Girilecek* alanına 100, *Tamam* | mal girişi `LAV-MONT` 100; üretim için çıkış `CMP-03` 200, `CMP-04` 100; üretimden giriş `PF-100` **10** | 60 tamamlanır, diğerleri şasileri bekler (*"Üretim siparişi 500: mamulün 10 adedi stoğa girdi; diğerleri LAV-SALD işçiliği de geri geldiğinde girecek."*); 1002 numaralı iş emri kendiliğinden kapanır |
-| 7. Son 40 şasi geri gelir: 1001 numaralı iş emri, *Ürünleri teslim al*, *Girilecek* alanına 40, *Tamam* | mal girişi `LAV-SALD` 40; üretim için çıkış `CMP-01` 100, `CMP-02` 160; üretimden giriş `PF-100` **40** | 100 tamamlanır; 1001 numaralı iş emri kendiliğinden kapanır. Üretim siparişini SAP'de siz kapatırsınız |
+| 4. 60 şasi geri gelir: 1002 numaralı iş emrinde *Ürünleri teslim al* düğmesine basın, *Ürün girişi* penceresinde *Girilecek* alanına 60 yazın ve *Tamam* düğmesine basın | siparişten mal girişi: `LAV-SALD` 60 × 12,00; `T-TER01` deposundan üretim için çıkış: `CMP-01` 150, `CMP-02` 240 | 2. ve 3. satırların bileşenleri çekilir; giriş yok: akslar eksik ve bir mesaj bunu belirtir (*"Üretim siparişi 500: mamul, LAV-MONT işçiliği de geri geldiğinde stoğa girecek."*) |
+| 5. 100 aks geri gelir: 1001 numaralı iş emri, *Ürünleri teslim al*, *Girilecek* alanına 100, *Tamam* | mal girişi `LAV-MONT` 100 × 3,50; `T-TER02` deposundan üretim için çıkış: `CMP-03` 200, `CMP-04` 100; üretimden giriş `PF-100` **50** | 60 şasi ve 100 aks 50 araba için yeterlidir: 50 tamamlanır; SAP `CMP-05` 800 adedi geriye dönük çeker |
+| 6. 100 aks daha geri gelir: 1001 numaralı iş emri, *Ürünleri teslim al*, *Girilecek* alanına 100, *Tamam* | mal girişi `LAV-MONT` 100; üretim için çıkış `CMP-03` 200, `CMP-04` 100; üretimden giriş `PF-100` **10** | 60 tamamlanır, diğerleri şasileri bekler (*"Üretim siparişi 500: mamulün 10 adedi stoğa girdi; diğerleri LAV-SALD işçiliği de geri geldiğinde girecek."*); 1001 numaralı iş emri kendiliğinden kapanır |
+| 7. Son 40 şasi geri gelir: 1002 numaralı iş emri, *Ürünleri teslim al*, *Girilecek* alanına 40, *Tamam* | mal girişi `LAV-SALD` 40; üretim için çıkış `CMP-01` 100, `CMP-02` 160; üretimden giriş `PF-100` **40** | 100 tamamlanır; 1002 numaralı iş emri kendiliğinden kapanır. Üretim siparişini SAP'de siz kapatırsınız |
 
 > Üretimden giriş, adet başına dış işçiliklerin maliyetiyle değerlenir: her işçilik için bileşenler ve işçilik
 > fiyatı, adet başına miktarla çarpılarak. Örnekte bir arabanın değeri
@@ -315,6 +359,10 @@ Hazır satırlarda aynı sütun, seçimi engellemeyen uyarıları verir:
 Nakiller, geri almalar, fireler ve ürün girişindeki bileşen çıkışı için partiler ve seri numaraları, belgeler
 oluşturulmadan **önce** eklentinin bir penceresinde seçilir. Ardından tüm belgeler tek bir işlemde oluşturulur.
 
+![Ürün girişi: daha önce sona eren ama iş emrine ait olmayan LE partisi değil, iş emrinin LA partisi önerilir](../../_img/contolavoro/23_selezione_lotti.png)
+
+*Ürün girişi: daha önce sona eren ama iş emrine ait olmayan LE partisi değil, iş emrinin LA partisi önerilir*
+
 - **Otomatik öneri**: fasoncunun deposundan (bileşen çıkışı, geri alma, fire) önce **o iş emrine gönderilmiş**
   partiler (SAP'nin parti hareket günlüğünden alınan "İş emrine ait" sütunu), sonra son kullanma tarihine göre
   (FEFO); şirketin deposundan son kullanma tarihine göre (FEFO).
@@ -327,9 +375,12 @@ oluşturulmadan **önce** eklentinin bir penceresinde seçilir. Ardından tüm b
 ### Giren ürünün partisi
 
 Girilen ürünün partisi, yapılandırılabilir bir **SQL komutuyla** (Yapılandırma › Partiler) üç sabit parametreyle
-hesaplanır: `{ItemCode}` kalem, `{WhsCode}` giriş deposu, `{DocEntry}` fason iş emri. Varsayılan komut iş emri
-numarası + sıra numarası döndürür (örn. `20160256-1`); *Doğrula* komutu test verileriyle çalıştırır. Oluşturulan parti
-ürün girişinin sonundaki mesajda görünür.
+hesaplanır: `{ItemCode}` kalem, `{WhsCode}` giriş deposu, `{DocEntry}` fason iş emri. Varsayılan komut iş emri numarası
++ sıra numarası döndürür (örn. `20160256-1`); *Doğrula* komutu test verileriyle çalıştırır. Oluşturulan parti ürün
+girişinin sonundaki mesajda görünür. Aynı komut, üretimden girişte üretim siparişinin mamulünün (bölüm 6) partisini
+verir. Mamul seri numaralarıyla yönetiliyorsa veya komut bir parti döndürmezse ürün girişi yapılmaz ve bir mesaj ne
+yapılacağını açıklar. Seri numaraları için: mamulün ürün ağacında **Fasoncu ürün ağacı** = Hayır ve üretimden giriş
+SAP'de kaydedilir.
 
 ![Giren ürünün parti komutu](../../_img/contolavoro/19_config_lotti.png)
 
@@ -339,7 +390,12 @@ numarası + sıra numarası döndürür (örn. `20160256-1`); *Doğrula* komutu 
 
 Belge; **depo yerleri** olan depolarda, **seri numaralı** giren ürünlerde, parti komutu boş olduğunda veya sonuç
 vermediğinde ve toplu nakilde, SAP formunda tamamlanmak üzere taslak olarak oluşturulur. Belgeyi tamamlayıp *Ekle*
-düğmesine basarsınız: eklenti taslağı siler ve devam eder.
+düğmesine basarsınız: eklenti taslağı siler ve devam eder. Seçilecek partileri veya seri numaraları olan satırlarda,
+taslakta depo yeri de partilerle birlikte SAP'de belirtilir.
+
+![Taslak belge: "Belgeyi tamamlayın (partiler, seri numaraları, depo yerleri) ve devam etmek için Ekle'ye basın"](../../_img/contolavoro/20_bozza_trasferimento.png)
+
+*Taslak belge: "Belgeyi tamamlayın (partiler, seri numaraları, depo yerleri) ve devam etmek için Ekle'ye basın"*
 
 ## 8. Geri almalar ve fireler
 
@@ -349,6 +405,10 @@ düğmesine basarsınız: eklenti taslağı siler ve devam eder.
   taşır.
 - **Geri alma ve fire › Fasoncuda fire çıkışı**: *Fire çıkışı* penceresinde, firelerin doğrudan fasoncunun deposundan
   mal çıkışı.
+
+  ![Fire çıkışı](../../_img/contolavoro/08_scarti.png)
+
+  *Fire çıkışı*
 
 Fire verilen bileşenler gönderilecek kalana geri döner.
 
@@ -360,6 +420,10 @@ Serbest bırakılmış üretim siparişlerinin iş emri olmaya hazır dış iş�
 deposu başına bir iş emri** oluşturur. *Hazır olmayan satırları da göster* ile bir işçiliğin neden hazır olmadığını
 açıklar. Ayarlar, tam örnek ve özel durumlar bölüm 6'dadır.
 
+![Örnekteki üretim siparişinin iki dış işçiliği (bölüm 6), fasoncu başına bir tane](../../_img/contolavoro/15_da_odp.png)
+
+*Örnekteki üretim siparişinin iki dış işçiliği (bölüm 6), fasoncu başına bir tane*
+
 ### Toplu bileşen nakli
 
 Açık iş emirlerini analiz eder (tarih, tedarikçi, bileşen filtreleri) ve gönderilecek kalanı olan bileşenleri önerir;
@@ -367,11 +431,19 @@ Açık iş emirlerini analiz eder (tarih, tedarikçi, bileşen filtreleri) ve g�
 oluşturur (parti veya depo yeri gerekiyorsa taslak olarak). Fasoncu deposu eksik olan veya çıkış deposuyla aynı olan
 satırlar hariç tutulur ve bildirilir.
 
+![Gönderilecek kalanı olan bileşenler, tedarikçiye ve iş emrine göre gruplanmış](../../_img/contolavoro/18_trasf_massivo.png)
+
+*Gönderilecek kalanı olan bileşenler, tedarikçiye ve iş emrine göre gruplanmış*
+
 ### İş emirleri arasında bileşen nakli
 
 Fasoncuda bulunan stoku stok hareketi olmadan (yalnızca kayıt) bir iş emrinden diğerine taşır. Bu nedenle yalnızca
 **aynı fasoncu deposuna** sahip **açık** iş emirleri arasında mümkündür: liste yalnızca bunları önerir; farklı
 depolarda işlem engellenir ve mal geri alınıp yeniden gönderilmelidir. Stok, onay anında yeniden okunur.
+
+![İş emirleri arasında nakil](../../_img/contolavoro/14_trasf_commesse.png)
+
+*İş emirleri arasında nakil*
 
 ### Ürün mal girişlerini toplu kapatma ve işçilik fiyatları
 
@@ -380,6 +452,14 @@ işçilik fiyatları*, fasoncu ve ürüne göre işçilik fiyatlarının tablosu
 
 Bir işçiliğin fiyatının arama sırası: tedarikçi sözleşmeleri (seçenek, yalnızca SQL Server), fasoncuya göre fiyatlar,
 ürün ağacı (seçenek), SAP tedarikçi fiyatı, iş emrinin fiyat listesi.
+
+![Hâlâ açık olan ürün mal girişleri](../../_img/contolavoro/16_chiusura_emp.png)
+
+*Hâlâ açık olan ürün mal girişleri*
+
+![Fasoncuya ve ürüne göre işçilik fiyatları](../../_img/contolavoro/17_prezzi_lav.png)
+
+*Fasoncuya ve ürüne göre işçilik fiyatları*
 
 ## 10. Veriler, alanlar ve hareket türleri
 
@@ -445,6 +525,14 @@ Transfer*, *Bill of Materials*, *Batch*; Türkçede *Tedarikçi*, *Kayıt tarihi
 2. SAP tüm açık pencerelerin kapatılacağını bildirir: *Evet* yanıtını verin.
 3. Eklenti metinleri kendiliğinden yeniden yükler ve menüleri yeni dilde yeniden oluşturur: yeniden başlatmak
    gerekmez.
+
+![İstemci İngilizceyken fason iş emri](../../_img/contolavoro/24_commessa_en.png)
+
+*İstemci İngilizceyken fason iş emri*
+
+![İstemci Türkçeyken Belgeler sekmesi](../../_img/contolavoro/25_commessa_tr.png)
+
+*İstemci Türkçeyken Belgeler sekmesi*
 
 ### Metinleri özelleştirme
 

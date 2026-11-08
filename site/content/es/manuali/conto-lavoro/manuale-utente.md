@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Manual de uso
 description: Cómo gestionar con XEI.ContoLavoro las órdenes de subcontratación, los envíos de componentes, las recepciones de productos y la subcontratación desde órdenes de fabricación.
 lang: es
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -50,6 +50,7 @@ componentes.
 - En el primer arranque el add-on crea tablas, campos, el objeto (UDO) `XEI_CL_COMMESSA` y la búsqueda formateada del
   proveedor subcontratista en el almacén. SAP pide confirmar que *"la estructura de la base de datos se ha
   modificado"*: responder y esperar a que termine antes de usar el cliente.
+- Antes de crear las órdenes se define la **serie de numeración** de la orden de subcontratación, como para los documentos de SAP: **Módulos › Gestión › Inicialización del sistema › Numeración de documentos**, elemento *Commessa terzista* (Orden de subcontratación) al final de la lista. Sin serie, al abrir *Orden de subcontratación* el add-on avisa de que hay que definirla.
 
 ### Menús
 
@@ -60,7 +61,7 @@ componentes.
 | Orden de subcontratación | apertura, búsqueda y creación de las órdenes de subcontratación |
 | Crear órdenes desde órdenes de fabricación | órdenes a partir de las elaboraciones externas de las órdenes de fabricación (capítulo 6) |
 | Recepción del subcontratista | un albarán del subcontratista con productos de varias órdenes: se elige el proveedor, se indican las cantidades recibidas en los productos abiertos de sus órdenes (*Proponer* = pendiente) y *Registrar* realiza la recepción orden por orden, con entrada de los productos y salida de los componentes |
-| Transferencia masiva de componentes | envío de componentes para varias órdenes (activo con la opción correspondiente) |
+| Transferencia masiva de componentes | envío de componentes para varias órdenes (se desactiva en la Configuración, capítulo 3) |
 | Transferencia de componentes entre órdenes | traslada el stock que ya está en el subcontratista de una orden a otra |
 | Cierre masivo de entradas de productos | cierra las entradas de mercancías de los productos que siguen abiertas |
 | Precios de elaboración de subcontratistas | precios de las elaboraciones por proveedor y producto |
@@ -68,7 +69,7 @@ componentes.
 | Informazioni (Información), Traduzioni (Traducciones), Licenza (Licencia) | entradas comunes a los add-ons XEI; Licenza: estado y código de licencia |
 
 Las mismas entradas, salvo *Configuración*, *Informazioni*, *Traduzioni* y *Licenza*, están también en el módulo SAP
-elegido en la configuración (capítulo 3), en la posición elegida: **Módulos › Compras - Proveedores ›
+elegido en la configuración (capítulo 3), en la posición elegida: **Módulos › Compras ›
 Subcontratación** (predeterminado) o **Módulos › Producción › Subcontratación**.
 
 ### Licencia
@@ -92,6 +93,10 @@ códigos de la ventana **Licenza** (Licencia) y se recibe el código de licencia
 Las opciones se definen en un formulario con carpetas (la carpeta *Lotes* se describe en el capítulo 7). Las opciones
 valen para toda la empresa; los formularios ya abiertos las usan al volver a abrirse.
 
+![General](../../_img/contolavoro/10_config_generale.png)
+
+*General*
+
 ![Precios](../../_img/contolavoro/11_config_prezzi.png)
 
 *Precios*
@@ -99,6 +104,10 @@ valen para toda la empresa; los formularios ya abiertos las usan al volver a abr
 ![Inventario](../../_img/contolavoro/12_config_magazzino.png)
 
 *Inventario*
+
+![Series y motivos](../../_img/contolavoro/13_config_documenti.png)
+
+*Series y motivos*
 
 | Opción | Efecto | Predet. |
 |---|---|---|
@@ -109,11 +118,11 @@ valen para toda la empresa; los formularios ya abiertos las usan al volver a abr
 | Cerrar la entrada de mercancías del producto | tras la recepción, la entrada del producto se cierra (no se factura) | No |
 | Recalcular el precio de la entrada del producto | si cambia el precio de la elaboración, actualiza la entrada del producto | No |
 | Ofertas de proveedor desde OF | al crear desde OF vincula las ofertas de proveedor | No |
-| Transferencia masiva | activa la entrada de menú | No |
+| Transferencia masiva | permite la transferencia masiva de los componentes; con No la entrada de menú avisa de que la función está desactivada | Sí |
 | Lista subcontratista | muestra la columna "Lista subcontratista" en la lista de materiales | Sí |
 | Contratos de proveedor | precios de elaboración desde los contratos (solo SQL Server) | No |
-| Lista de precios predefinida | lista de costes propuesta en las nuevas órdenes | – |
-| Menú también en el módulo SAP | módulo con el submenú *Subcontratación*: Compras - Proveedores o Producción | Compras - Proveedores |
+| Lista de precios predefinida de las órdenes | lista de costes propuesta en las nuevas órdenes; sirve para crear las órdenes desde órdenes de fabricación (capítulo 6) | – |
+| Menú también en el módulo SAP | módulo con el submenú *Subcontratación*: Compras o Producción | Compras |
 | Posición en el menú del módulo | al final, al principio o después de una entrada del módulo | al final |
 | **Precios** | | |
 | Precio de elaboración / componentes modificable | precios modificables en la lista de materiales de la orden | No |
@@ -142,6 +151,10 @@ La cabecera está organizada como la de la transferencia de stock: a la izquierd
 proveedor, proyecto y pedidos vinculados; a la derecha numeración, estado, fechas, lista de costes y los dos
 almacenes.
 
+![Orden de subcontratación: cabecera y pestaña Productos](../../_img/contolavoro/01_prodotti.png)
+
+*Orden de subcontratación: cabecera y pestaña Productos*
+
 - **Proveedor**: al elegirlo propone el almacén del usuario y el **almacén del subcontratista** vinculado al proveedor
   (campo *Fornitore terzista* (Proveedor subcontratista) de los datos maestros del almacén) o el marcado como
   predeterminado.
@@ -152,6 +165,10 @@ almacenes.
 - Al cambiar un almacén de la cabecera se propone, como en la transferencia de stock, trasladarlo a las líneas de la
   lista de materiales **todavía sin movimientos**.
 
+![Cambio de un almacén de la cabecera con productos ya introducidos](../../_img/contolavoro/09_propaga_magazzino.png)
+
+*Cambio de un almacén de la cabecera con productos ya introducidos*
+
 ### Productos
 
 Se elige el artículo (también varios artículos a la vez desde la lista) y la cantidad a producir: la lista de
@@ -159,6 +176,10 @@ materiales se copia de SAP y se refiere a una pieza (teniendo en cuenta la canti
 muestran la cantidad a producir, recibida, pendiente, el coste de los componentes y de las elaboraciones.
 
 ### Lista de materiales
+
+![Lista de materiales por producto: componentes con almacenes, precios, necesidad, usado](../../_img/contolavoro/02_distinta.png)
+
+*Lista de materiales por producto: componentes con almacenes, precios, necesidad, usado*
 
 Para cada producto: componentes (artículos de inventario que se envían) y elaboraciones (servicios que se pagan al
 subcontratista). Con **Modificar lista de materiales** se cambian almacenes y precios de las líneas todavía sin
@@ -169,6 +190,10 @@ por los componentes elegidos).
 
 ### Componentes
 
+![Situación de los componentes: necesidad, enviado, stocks y pendiente de envío](../../_img/contolavoro/03_componenti.png)
+
+*Situación de los componentes: necesidad, enviado, stocks y pendiente de envío*
+
 Los componentes de todos los productos agrupados por artículo y almacenes: necesidad, usado, disponible en la empresa,
 stock en el almacén del subcontratista, solicitudes y listas de picking, enviado, pendiente de envío, stock de la
 orden en el subcontratista, devoluciones y desechos. Los movimientos se hacen con los botones al pie de la orden:
@@ -177,6 +202,10 @@ desechos*, *Salida de desechos en el subcontratista*). Cada uno abre una ventana
 en las celdas amarillas: *Proponer* las rellena, *Poner a cero* las vacía, y se pueden cambiar a mano.
 
 ### Documentos
+
+![Documentos vinculados a la orden, uno por línea, con las líneas del documento elegido](../../_img/contolavoro/04_documenti.png)
+
+*Documentos vinculados a la orden, uno por línea, con las líneas del documento elegido*
 
 Todos los documentos SAP vinculados a la orden, uno por línea en orden cronológico, con el enlace para abrirlos;
 *Mostrar* filtra por tipo de documento. Debajo, en *Líneas del documento*, las líneas del documento elegido con lotes,
@@ -189,14 +218,28 @@ números de serie y ubicaciones.
    producto y una por cada elaboración; si el pedido ya existe, el botón lo abre. Los cambios posteriores de la orden
    (productos nuevos o eliminados, cantidades, precios, fechas) se trasladan al pedido al grabar; las líneas ya
    recibidas solo cambian de cantidad.
+
+   ![Creación del pedido de compra](../../_img/contolavoro/05_oda.png)
+
+   *Creación del pedido de compra*
+
 3. **Enviar componentes**: en la ventana *Transferencia de componentes* la columna *A enviar* propone el pendiente de
    envío (se cambia a mano); *OK* crea la transferencia de stock al almacén del subcontratista. Con la opción
    correspondiente se crea una solicitud de traslado con lista de picking.
+
+   ![Transferencia de componentes](../../_img/contolavoro/06_trasferimento.png)
+
+   *Transferencia de componentes*
+
 4. **Recibir productos**: en la ventana *Recepción de productos* la columna *A recibir* propone el pendiente (se
    cambia a mano) y *Tipo de movimiento* elige entre *Entrada de productos y salida de componentes*, *Solo entrada de
    productos* y *Solo salida de componentes*; después *OK*. Se crean: la entrada de mercancías de las elaboraciones y
    de los productos desde el pedido de compra, la salida de mercancías de los componentes del almacén del
    subcontratista y los recibos de producción para los productos que proceden de OF (capítulo 6).
+
+   ![Recepción de productos](../../_img/contolavoro/07_versamento.png)
+
+   *Recepción de productos*
 
 > El producto entra al coste completo (componentes + elaboración); con la opción "Cerrar la entrada de mercancías del
 > producto" la entrada se cierra y no se factura: se facturan las elaboraciones.
@@ -223,6 +266,7 @@ producto terminado.
 | Lista de materiales del producto terminado | **Lista subcontratista** = Sí si el producto terminado está completo cuando vuelven todas las elaboraciones externas: el add-on registra el recibo de producción. Con No, el recibo de producción lo registra usted en SAP | `PF-100` = Sí |
 | Datos maestros del almacén del subcontratista | campo **Fornitore terzista** (Proveedor subcontratista) (capítulo 4) | `T-TER01` → `F-TER01`; `T-TER02` → `F-TER02` |
 | *Precios de elaboración de subcontratistas* | precio por subcontratista, producto terminado y elaboración (orden de búsqueda del precio en el capítulo 9) | `F-TER01` / `PF-100` / `LAV-SALD` 12,00; `F-TER02` / `PF-100` / `LAV-MONT` 3,50 |
+| Configuración, pestaña *General* (capítulo 3) | **Lista de precios predefinida de las órdenes**: la lista de costes de las órdenes creadas desde las OF. Sin ella, *Crear órdenes* pide indicarla y no crea las órdenes | Lista de precios base |
 
 Los componentes con notificación posterior vinculados a la elaboración no se envían al subcontratista: los emite el
 recibo de producción desde el almacén de la línea de la OF. La columna **Motivo / avisos** de la lista lo indica. Los
@@ -260,13 +304,13 @@ bastidor y dos ejes. La OF n.º 500 está liberada para 100 carros en el almacé
 
 | Paso | Documento SAP creado | Efecto en la OF |
 |---|---|---|
-| 1. **Subcontratación › Crear órdenes desde órdenes de fabricación**: selecciona las dos líneas de la OF 500 y pulsa *Crear órdenes* | ningún documento SAP: orden de subcontratación 1001 (`F-TER01`, de `01` a `T-TER01`, producto `LAV-SALD` 100, lista `CMP-01` 2,5 y `CMP-02` 4 por pieza) y orden 1002 (`F-TER02`, de `01` a `T-TER02`, producto `LAV-MONT` 200, lista `CMP-03` 2 y `CMP-04` 1 por pieza) | ninguno |
+| 1. **Subcontratación › Crear órdenes desde órdenes de fabricación**: selecciona las dos líneas de la OF 500 y pulsa *Crear órdenes* | ningún documento SAP: orden de subcontratación 1001 (`F-TER02`, de `01` a `T-TER02`, producto `LAV-MONT` 200, lista `CMP-03` 2 y `CMP-04` 1 por pieza) y orden 1002 (`F-TER01`, de `01` a `T-TER01`, producto `LAV-SALD` 100, lista `CMP-01` 2,5 y `CMP-02` 4 por pieza), en el orden de las líneas de la lista | ninguno |
 | 2. En cada orden pulse *Pedido al subcontratista* y confirme la ventana *Pedido al subcontratista* | pedido de compra a `F-TER01`: `LAV-SALD` 100 × 12,00; pedido de compra a `F-TER02`: `LAV-MONT` 200 × 3,50 | ninguno |
 | 3. En cada orden pulse *Enviar componentes* y, con las cantidades propuestas, *OK* | transferencia de stock de `01` a `T-TER01`: `CMP-01` 250, `CMP-02` 400; de `01` a `T-TER02`: `CMP-03` 400, `CMP-04` 200 | ninguno |
-| 4. Vuelven 60 bastidores: en la orden 1001 pulse *Recibir productos*, en la ventana *Recepción de productos* escriba 60 en *A recibir* y pulse *OK* | entrada de mercancías desde el pedido: `LAV-SALD` 60 × 12,00; emisión para producción desde `T-TER01`: `CMP-01` 150, `CMP-02` 240 | emitidos los componentes de las líneas 2 y 3; ningún recibo: faltan los ejes, y un mensaje lo indica (*"OF 500: el producto terminado entrará en el almacén cuando vuelva también la elaboración LAV-MONT."*) |
-| 5. Vuelven 100 ejes: orden 1002, *Recibir productos*, 100 en *A recibir*, *OK* | entrada de mercancías `LAV-MONT` 100 × 3,50; emisión para producción desde `T-TER02`: `CMP-03` 200, `CMP-04` 100; recibo de producción `PF-100` **50** | 60 bastidores y 100 ejes bastan para 50 carros: 50 terminados; SAP emite por notificación posterior `CMP-05` 800 |
-| 6. Vuelven otros 100 ejes: orden 1002, *Recibir productos*, 100 en *A recibir*, *OK* | entrada de mercancías `LAV-MONT` 100; emisión para producción `CMP-03` 200, `CMP-04` 100; recibo de producción `PF-100` **10** | 60 terminados, los demás esperan los bastidores (*"OF 500: entradas 10 piezas del producto terminado; las demás entrarán cuando vuelva también la elaboración LAV-SALD."*); la orden 1002 se cierra sola |
-| 7. Vuelven los últimos 40 bastidores: orden 1001, *Recibir productos*, 40 en *A recibir*, *OK* | entrada de mercancías `LAV-SALD` 40; emisión para producción `CMP-01` 100, `CMP-02` 160; recibo de producción `PF-100` **40** | 100 terminados; la orden 1001 se cierra sola. La OF la cierra usted en SAP |
+| 4. Vuelven 60 bastidores: en la orden 1002 pulse *Recibir productos*, en la ventana *Recepción de productos* escriba 60 en *A recibir* y pulse *OK* | entrada de mercancías desde el pedido: `LAV-SALD` 60 × 12,00; emisión para producción desde `T-TER01`: `CMP-01` 150, `CMP-02` 240 | emitidos los componentes de las líneas 2 y 3; ningún recibo: faltan los ejes, y un mensaje lo indica (*"OF 500: el producto terminado entrará en el almacén cuando vuelva también la elaboración LAV-MONT."*) |
+| 5. Vuelven 100 ejes: orden 1001, *Recibir productos*, 100 en *A recibir*, *OK* | entrada de mercancías `LAV-MONT` 100 × 3,50; emisión para producción desde `T-TER02`: `CMP-03` 200, `CMP-04` 100; recibo de producción `PF-100` **50** | 60 bastidores y 100 ejes bastan para 50 carros: 50 terminados; SAP emite por notificación posterior `CMP-05` 800 |
+| 6. Vuelven otros 100 ejes: orden 1001, *Recibir productos*, 100 en *A recibir*, *OK* | entrada de mercancías `LAV-MONT` 100; emisión para producción `CMP-03` 200, `CMP-04` 100; recibo de producción `PF-100` **10** | 60 terminados, los demás esperan los bastidores (*"OF 500: entradas 10 piezas del producto terminado; las demás entrarán cuando vuelva también la elaboración LAV-SALD."*); la orden 1001 se cierra sola |
+| 7. Vuelven los últimos 40 bastidores: orden 1002, *Recibir productos*, 40 en *A recibir*, *OK* | entrada de mercancías `LAV-SALD` 40; emisión para producción `CMP-01` 100, `CMP-02` 160; recibo de producción `PF-100` **40** | 100 terminados; la orden 1002 se cierra sola. La OF la cierra usted en SAP |
 
 > El recibo de producción vale el coste de las elaboraciones externas por pieza: para cada elaboración, componentes y
 > precio de la elaboración, por la cantidad por pieza. En el ejemplo un carro vale
@@ -329,6 +373,10 @@ Para transferencias, devoluciones, desechos y salida de los componentes en la re
 serie se eligen en una ventana del add-on, **antes** de crear los documentos. Después todos los documentos se crean en
 una única operación.
 
+![Recepción: se propone el lote LA de la orden, no el lote LE, que caduca antes pero no es de la orden](../../_img/contolavoro/23_selezione_lotti.png)
+
+*Recepción: se propone el lote LA de la orden, no el lote LE, que caduca antes pero no es de la orden*
+
 - **Propuesta automática**: desde el almacén del subcontratista (salida de componentes, devolución, desechos) primero
   los lotes **enviados a esa orden** (columna "De la orden", obtenida del registro de transacciones de lotes de SAP),
   después por fecha de caducidad (FEFO); desde el almacén de la empresa por fecha de caducidad (FEFO).
@@ -340,10 +388,14 @@ una única operación.
 
 ### Lote del producto entrante
 
-El lote del producto recibido se calcula con un **script SQL** configurable (Configuración › Lotes), con tres
-parámetros fijos: `{ItemCode}` artículo, `{WhsCode}` almacén de entrada, `{DocEntry}` orden de subcontratación. El
-script predefinido devuelve número de orden + número correlativo (p. ej. `20160256-1`); *Verificar* lo ejecuta con
-datos de prueba. El lote creado aparece en el mensaje de fin de recepción.
+El lote del producto recibido se calcula con un **script SQL** configurable (Configuración › Lotes), con tres parámetros
+fijos: `{ItemCode}` artículo, `{WhsCode}` almacén de entrada, `{DocEntry}` orden de subcontratación. El script
+predefinido devuelve número de orden + número correlativo (p. ej. `20160256-1`); *Verificar* lo ejecuta con datos de
+prueba. El lote creado aparece en el mensaje de fin de recepción. El mismo script da el lote del producto terminado de
+la orden de fabricación (capítulo 6) en el recibo de producción. Si el producto terminado se gestiona por números de
+serie, o el script no devuelve un lote, la recepción no se registra y un mensaje explica qué hacer. Para los números de
+serie: **Lista subcontratista** = No en la lista de materiales del producto terminado y recibo de producción registrado
+en SAP.
 
 ![Script del lote entrante](../../_img/contolavoro/19_config_lotti.png)
 
@@ -353,7 +405,12 @@ datos de prueba. El lote creado aparece en el mensaje de fin de recepción.
 
 El documento se crea como borrador, que se completa en el formulario de SAP, con almacenes con **ubicaciones**,
 productos entrantes con **números de serie**, script del lote vacío o sin resultado y en la transferencia masiva. Se
-completa el documento y se pulsa *Añadir*: el add-on elimina el borrador y continúa.
+completa el documento y se pulsa *Añadir*: el add-on elimina el borrador y continúa. En las líneas con lotes o números
+de serie que elegir, en el borrador también la ubicación se indica en SAP junto con los lotes.
+
+![Documento en borrador: "Completar el documento (lotes, números de serie, ubicaciones) y pulsar Añadir para continuar"](../../_img/contolavoro/20_bozza_trasferimento.png)
+
+*Documento en borrador: "Completar el documento (lotes, números de serie, ubicaciones) y pulsar Añadir para continuar"*
 
 ## 8. Devoluciones y desechos
 
@@ -365,6 +422,10 @@ completa el documento y se pulsa *Añadir*: el add-on elimina el borrador y cont
 - **Devoluciones y desechos › Salida de desechos en el subcontratista**: en la ventana *Salida de desechos*, salida de
   mercancías de los desechos directamente desde el almacén del subcontratista.
 
+  ![Salida de desechos](../../_img/contolavoro/08_scarti.png)
+
+  *Salida de desechos*
+
 Los componentes desechados vuelven al pendiente de envío.
 
 ## 9. Funciones de servicio
@@ -375,6 +436,10 @@ Muestra las elaboraciones externas de las OF liberadas, listas para convertirse 
 proveedor y almacén de devolución**. Con *Mostrar también las líneas no preparadas* explica por qué una elaboración no
 está lista. Configuración, ejemplo completo y casos particulares en el capítulo 6.
 
+![Las dos elaboraciones externas de la OF del ejemplo (capítulo 6), una por subcontratista](../../_img/contolavoro/15_da_odp.png)
+
+*Las dos elaboraciones externas de la OF del ejemplo (capítulo 6), una por subcontratista*
+
 ### Transferencia masiva de componentes
 
 Analiza las órdenes abiertas (filtros por fechas, proveedor, componente) y propone los componentes con pendiente de
@@ -382,12 +447,20 @@ envío, respetando la disponibilidad compartida entre las órdenes si la empresa
 transferencia por proveedor (en borrador si se necesitan lotes o ubicaciones). Las líneas con el almacén del
 subcontratista ausente o igual al de partida se excluyen y se indican.
 
+![Componentes con pendiente de envío, agrupados por proveedor y orden](../../_img/contolavoro/18_trasf_massivo.png)
+
+*Componentes con pendiente de envío, agrupados por proveedor y orden*
+
 ### Transferencia de componentes entre órdenes
 
 Traslada el stock que ya está en el subcontratista de una orden a otra sin movimientos de inventario (solo registro).
 Por eso solo es posible entre órdenes **abiertas** con el **mismo almacén del subcontratista**: la lista propone solo
 esas; con almacenes distintos la operación se bloquea y la mercancía debe devolverse y enviarse de nuevo. El stock se
 vuelve a leer en el momento de la confirmación.
+
+![Transferencia entre órdenes](../../_img/contolavoro/14_trasf_commesse.png)
+
+*Transferencia entre órdenes*
 
 ### Cierre masivo de entradas de productos y precios de elaboración
 
@@ -397,6 +470,14 @@ subcontratista y producto.
 
 Orden de búsqueda del precio de una elaboración: contratos de proveedor (opción, solo SQL Server), precios por
 subcontratista, lista de materiales (opción), precio del proveedor de SAP, lista de precios de la orden.
+
+![Entradas de mercancías de los productos todavía abiertas](../../_img/contolavoro/16_chiusura_emp.png)
+
+*Entradas de mercancías de los productos todavía abiertas*
+
+![Precios de las elaboraciones por subcontratista y producto](../../_img/contolavoro/17_prezzi_lav.png)
+
+*Precios de las elaboraciones por subcontratista y producto*
 
 ## 10. Datos, campos y tipos de movimiento
 
@@ -461,6 +542,14 @@ en turco).
 1. **Gestión › Configuración › General › Usuarios**, pestaña *Visualización*, campo *Idioma*, después *Actualizar*.
 2. SAP avisa de que se cerrarán todas las ventanas abiertas: responder *Sí*.
 3. El add-on vuelve a cargar solo los textos y crea de nuevo los menús en el nuevo idioma: no es necesario reiniciarlo.
+
+![Orden de subcontratación con el cliente en inglés](../../_img/contolavoro/24_commessa_en.png)
+
+*Orden de subcontratación con el cliente en inglés*
+
+![Pestaña Documentos con el cliente en turco](../../_img/contolavoro/25_commessa_tr.png)
+
+*Pestaña Documentos con el cliente en turco*
 
 ### Personalizar los textos
 

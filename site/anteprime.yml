@@ -15,4 +15,4 @@ rate-updater:
 
 conto-lavoro:
   cartella: contolavoro
-  immagini: [11_config_prezzi.png, 12_config_magazzino.png, 19_config_lotti.png]
+  immagini: [01_prodotti.png, 04_documenti.png, 18_trasf_massivo.png, 15_da_odp.png, 10_config_generale.png]

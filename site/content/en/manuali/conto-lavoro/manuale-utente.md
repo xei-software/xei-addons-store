@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – User Manual
 description: How to manage Subcontracting Jobs, component shipments, product receipts and subcontracting from production orders with XEI.ContoLavoro.
 lang: en
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -48,6 +48,7 @@ subcontractor.
 - On first start the add-on creates tables, fields, the object (UDO) `XEI_CL_COMMESSA` and the formatted search of
   the subcontractor vendor on the warehouse. SAP asks you to confirm that *"the database structure has been
   modified"*: answer and wait for it to finish before using the client.
+- Before creating jobs, define the **numbering series** of the Subcontracting Job, as for SAP documents: **Modules › Administration › System Initialization › Document Numbering**, item *Commessa terzista* (Subcontracting Job) at the bottom of the list. Without a series, when you open *Subcontracting Job* the add-on tells you to define it.
 
 ### Menus
 
@@ -58,7 +59,7 @@ subcontractor.
 | Subcontracting Job | opening, search and creation of Subcontracting Jobs |
 | Create Jobs from Production Orders | Subcontracting Jobs from the external processing of production orders (chapter 6) |
 | Receipt from Subcontractor | a subcontractor's delivery note with products of several Subcontracting Jobs: you choose the vendor, enter the quantities received on the open products of its Subcontracting Jobs (*Propose* = open quantity) and *Post* performs the product receipt job by job, with receipt of the products and issue of the components |
-| Mass Component Transfer | shipment of components for several Subcontracting Jobs (enabled with the related option) |
+| Mass Component Transfer | shipment of components for several Subcontracting Jobs (can be disabled in Configuration, chapter 3) |
 | Component Transfer Between Jobs | moves the stock already at the subcontractor from one Subcontracting Job to another |
 | Mass Closing of Product Goods Receipts | closes the goods receipts of the products that are still open |
 | Subcontractor Processing Prices | processing prices by vendor and product |
@@ -66,7 +67,7 @@ subcontractor.
 | Informazioni (About), Traduzioni (Translations), Licenza (License) | items common to the XEI add-ons; Licenza: status and license code |
 
 The same items, except *Configuration*, *Informazioni*, *Traduzioni* and *Licenza*, are also in the SAP module chosen
-in Configuration (chapter 3), in the chosen position: **Modules › Purchasing - A/P › Subcontracting** (default) or
+in Configuration (chapter 3), in the chosen position: **Modules › Purchasing › Subcontracting** (default) or
 **Modules › Production › Subcontracting**.
 
 ### License
@@ -89,6 +90,10 @@ code**, valid for 30 days from sending in any company; to purchase, you send XEI
 The options are set in a form with folders (the *Batches* folder is described in chapter 7). The options apply to the
 whole company; forms that are already open use them when they are opened again.
 
+![General](../../_img/contolavoro/10_config_generale.png)
+
+*General*
+
 ![Prices](../../_img/contolavoro/11_config_prezzi.png)
 
 *Prices*
@@ -96,6 +101,10 @@ whole company; forms that are already open use them when they are opened again.
 ![Inventory](../../_img/contolavoro/12_config_magazzino.png)
 
 *Inventory*
+
+![Series and Reasons](../../_img/contolavoro/13_config_documenti.png)
+
+*Series and Reasons*
 
 | Option | Effect | Default |
 |---|---|---|
@@ -106,11 +115,11 @@ whole company; forms that are already open use them when they are opened again.
 | Close the product goods receipt | after the product receipt the goods receipt of the product is closed (it is not invoiced) | No |
 | Recalculate the product goods receipt price | if the processing price changes, updates the goods receipt of the product | No |
 | Vendor quotations from production orders | links the vendor quotations when creating from production orders | No |
-| Mass transfer | enables the menu item | No |
+| Mass transfer | allows the mass transfer of components; with No the menu item warns that the function is disabled | Yes |
 | Subcontractor BOM | shows the "Subcontractor BOM" column in the bill of materials | Yes |
 | Vendor agreements | processing prices from the agreements (SQL Server only) | No |
-| Default price list | cost price list proposed on new Subcontracting Jobs | – |
-| Menu Also in SAP Module | module with the *Subcontracting* submenu: Purchasing - A/P or Production | Purchasing - A/P |
+| Default Price List for Jobs | cost price list proposed on new Subcontracting Jobs; needed to create the Subcontracting Jobs from production orders (chapter 6) | – |
+| Menu Also in SAP Module | module with the *Subcontracting* submenu: Purchasing or Production | Purchasing |
 | Position in Module Menu | at the bottom, at the top or after an item of the module | at the bottom |
 | **Prices** | | |
 | Processing / component price editable | prices editable in the bill of materials of the Subcontracting Job | No |
@@ -138,6 +147,10 @@ whole company; forms that are already open use them when they are opened again.
 The header is organized like that of the inventory transfer: on the left vendor, vendor reference, project and linked
 orders; on the right numbering, status, dates, cost price list and the two warehouses.
 
+![Subcontracting Job: header and Products tab](../../_img/contolavoro/01_prodotti.png)
+
+*Subcontracting Job: header and Products tab*
+
 - **Vendor**: when chosen, it proposes the user's warehouse and the **subcontractor warehouse** linked to the vendor
   (*Fornitore terzista* (Subcontractor Vendor) field of the warehouse master data) or the one marked as default.
 - **From Whse**: the company's warehouse; the components leave from here, the products come back here and the rows of
@@ -147,6 +160,10 @@ orders; on the right numbering, status, dates, cost price list and the two wareh
 - When a header warehouse is changed, as in the inventory transfer, you are offered to copy it to the bill of
   materials rows **that have no movements yet**.
 
+![Change of the header warehouse with products already entered](../../_img/contolavoro/09_propaga_magazzino.png)
+
+*Change of the header warehouse with products already entered*
+
 ### Products
 
 You choose the item (also several items at once from the list) and the quantity to produce: the bill of materials is
@@ -154,6 +171,10 @@ copied from SAP and scaled to one piece (taking into account the base quantity o
 show quantity to produce, received, open quantity, cost of the components and of the processing.
 
 ### Bill of Materials
+
+![Bill of materials per product: components with warehouses, prices, requirement, used](../../_img/contolavoro/02_distinta.png)
+
+*Bill of materials per product: components with warehouses, prices, requirement, used*
 
 For each product: components (inventory items to ship) and processing (services paid to the subcontractor). With
 **Edit Bill of Materials** you change warehouses and prices of the rows that have no movements yet; with SAP's *Add
@@ -163,6 +184,10 @@ product row: **Rework** (the product goes back to the subcontractor as a compone
 
 ### Components
 
+![Component status: requirement, shipped, stock and quantity remaining to ship](../../_img/contolavoro/03_componenti.png)
+
+*Component status: requirement, shipped, stock and quantity remaining to ship*
+
 The components of all products grouped by item and warehouses: requirement, used, available in the company, stock in
 the subcontractor's warehouse, requests and pick lists, shipped, remaining to ship, stock of the Subcontracting Job at
 the subcontractor, returns and scrap. Movements are made with the buttons at the bottom of the Subcontracting Job:
@@ -171,6 +196,10 @@ at Subcontractor*). Each one opens a window with the quantities to move in the y
 *Clear* empties them, and they can be changed by hand.
 
 ### Documents
+
+![Documents linked to the Subcontracting Job, one per row, with the rows of the chosen document](../../_img/contolavoro/04_documenti.png)
+
+*Documents linked to the Subcontracting Job, one per row, with the rows of the chosen document*
 
 All SAP documents linked to the Subcontracting Job, one per row in chronological order, with the link to open them;
 *Show* filters by document type. Below, in *Document Lines*, the rows of the chosen document with batches, serial
@@ -183,14 +212,28 @@ numbers and bin locations.
    product and one for each processing; if the order already exists, the button opens it. Later changes to the
    Subcontracting Job (new or deleted products, quantities, prices, dates) are carried over to the order when saving;
    rows already received change only in quantity.
+
+   ![Creation of the purchase order](../../_img/contolavoro/05_oda.png)
+
+   *Creation of the purchase order*
+
 3. **Send Components**: in the *Component Transfer* window the *To Ship* column proposes the quantity remaining to ship
    (it can be changed by hand); *OK* creates the inventory transfer to the subcontractor's warehouse. With the related
    option an inventory transfer request with a pick list is created.
+
+   ![Component Transfer](../../_img/contolavoro/06_trasferimento.png)
+
+   *Component Transfer*
+
 4. **Receive Products**: in the *Product Receipt* window the *To Receive* column proposes the open quantity (it can be
    changed by hand) and *Movement Type* chooses between *Receive Products and Issue Components*, *Receive Products
    Only* and *Issue Components Only*; then *OK*. The following are created: goods receipt PO of the processing and of
    the products from the purchase order, goods issue of the components from the subcontractor's warehouse, receipts
    from production for the products from production orders (chapter 6).
+
+   ![Product Receipt](../../_img/contolavoro/07_versamento.png)
+
+   *Product Receipt*
 
 > The product is received at full cost (components + processing); with the "Close the product goods receipt" option
 > the goods receipt is closed and is not invoiced: the processing is invoiced.
@@ -217,6 +260,7 @@ of the finished product.
 | Bill of materials of the finished product | **Subcontractor BOM** = Yes if the finished product is complete when all external processing has come back: the add-on posts the receipt from production. With No you post the receipt from production yourself in SAP | `PF-100` = Yes |
 | Warehouse master data of the subcontractor | **Fornitore terzista** (Subcontractor Vendor) field (chapter 4) | `T-TER01` → `F-TER01`; `T-TER02` → `F-TER02` |
 | *Subcontractor Processing Prices* | price by subcontractor, finished product and processing (order in which the price is searched in chapter 9) | `F-TER01` / `PF-100` / `LAV-SALD` 12.00; `F-TER02` / `PF-100` / `LAV-MONT` 3.50 |
+| Configuration, *General* tab (chapter 3) | **Default Price List for Jobs**: the cost price list of the Subcontracting Jobs created from production orders. Without it, *Create Jobs* asks you to enter it and does not create the Subcontracting Jobs | Base Price List |
 
 Backflush components linked to the processing are not sent to the subcontractor: the receipt from production issues
 them from the warehouse of the production order row. The **Reason / warnings** column of the list reports it. The
@@ -254,13 +298,13 @@ frame and two axles. Production order no. 500 is released for 100 trolleys in wa
 
 | Step | SAP document created | Effect on the production order |
 |---|---|---|
-| 1. **Subcontracting › Create Jobs from Production Orders**: you select the two rows of production order 500 and press *Create Jobs* | no SAP document: Subcontracting Job 1001 (`F-TER01`, from `01` to `T-TER01`, product `LAV-SALD` 100, bill of materials `CMP-01` 2.5 and `CMP-02` 4 per piece) and Subcontracting Job 1002 (`F-TER02`, from `01` to `T-TER02`, product `LAV-MONT` 200, bill of materials `CMP-03` 2 and `CMP-04` 1 per piece) | none |
+| 1. **Subcontracting › Create Jobs from Production Orders**: you select the two rows of production order 500 and press *Create Jobs* | no SAP document: Subcontracting Job 1001 (`F-TER02`, from `01` to `T-TER02`, product `LAV-MONT` 200, bill of materials `CMP-03` 2 and `CMP-04` 1 per piece) and Subcontracting Job 1002 (`F-TER01`, from `01` to `T-TER01`, product `LAV-SALD` 100, bill of materials `CMP-01` 2.5 and `CMP-02` 4 per piece), in the order of the rows in the list | none |
 | 2. In each Subcontracting Job press *Subcontractor Order* and confirm the *Subcontractor Purchase Order* window | purchase order to `F-TER01`: `LAV-SALD` 100 × 12.00; purchase order to `F-TER02`: `LAV-MONT` 200 × 3.50 | none |
 | 3. In each Subcontracting Job press *Send Components* and, with the proposed quantities, *OK* | inventory transfer from `01` to `T-TER01`: `CMP-01` 250, `CMP-02` 400; from `01` to `T-TER02`: `CMP-03` 400, `CMP-04` 200 | none |
-| 4. 60 frames come back: in Subcontracting Job 1001 press *Receive Products*, in the *Product Receipt* window enter 60 in *To Receive* and press *OK* | goods receipt PO from the order: `LAV-SALD` 60 × 12.00; issue for production from `T-TER01`: `CMP-01` 150, `CMP-02` 240 | components of rows 2 and 3 issued; no receipt: the axles are missing, and a message says so (*"Production order 500: the finished product will be received into stock when processing LAV-MONT also comes back."*) |
-| 5. 100 axles come back: Subcontracting Job 1002, *Receive Products*, 100 in *To Receive*, *OK* | goods receipt PO `LAV-MONT` 100 × 3.50; issue for production from `T-TER02`: `CMP-03` 200, `CMP-04` 100; receipt from production `PF-100` **50** | 60 frames and 100 axles are enough for 50 trolleys: 50 completed; SAP backflushes `CMP-05` 800 |
-| 6. Another 100 axles come back: Subcontracting Job 1002, *Receive Products*, 100 in *To Receive*, *OK* | goods receipt PO `LAV-MONT` 100; issue for production `CMP-03` 200, `CMP-04` 100; receipt from production `PF-100` **10** | 60 completed, the others wait for the frames (*"Production order 500: 10 pieces of the finished product received; the others will be received when processing LAV-SALD also comes back."*); Subcontracting Job 1002 closes by itself |
-| 7. The last 40 frames come back: Subcontracting Job 1001, *Receive Products*, 40 in *To Receive*, *OK* | goods receipt PO `LAV-SALD` 40; issue for production `CMP-01` 100, `CMP-02` 160; receipt from production `PF-100` **40** | 100 completed; Subcontracting Job 1001 closes by itself. You close the production order yourself in SAP |
+| 4. 60 frames come back: in Subcontracting Job 1002 press *Receive Products*, in the *Product Receipt* window enter 60 in *To Receive* and press *OK* | goods receipt PO from the order: `LAV-SALD` 60 × 12.00; issue for production from `T-TER01`: `CMP-01` 150, `CMP-02` 240 | components of rows 2 and 3 issued; no receipt: the axles are missing, and a message says so (*"Production order 500: the finished product will be received into stock when processing LAV-MONT also comes back."*) |
+| 5. 100 axles come back: Subcontracting Job 1001, *Receive Products*, 100 in *To Receive*, *OK* | goods receipt PO `LAV-MONT` 100 × 3.50; issue for production from `T-TER02`: `CMP-03` 200, `CMP-04` 100; receipt from production `PF-100` **50** | 60 frames and 100 axles are enough for 50 trolleys: 50 completed; SAP backflushes `CMP-05` 800 |
+| 6. Another 100 axles come back: Subcontracting Job 1001, *Receive Products*, 100 in *To Receive*, *OK* | goods receipt PO `LAV-MONT` 100; issue for production `CMP-03` 200, `CMP-04` 100; receipt from production `PF-100` **10** | 60 completed, the others wait for the frames (*"Production order 500: 10 pieces of the finished product received; the others will be received when processing LAV-SALD also comes back."*); Subcontracting Job 1001 closes by itself |
+| 7. The last 40 frames come back: Subcontracting Job 1002, *Receive Products*, 40 in *To Receive*, *OK* | goods receipt PO `LAV-SALD` 40; issue for production `CMP-01` 100, `CMP-02` 160; receipt from production `PF-100` **40** | 100 completed; Subcontracting Job 1002 closes by itself. You close the production order yourself in SAP |
 
 > The receipt from production is valued at the cost of the external processing per piece: for each processing,
 > components and processing price, multiplied by the quantity per piece. In the example one trolley is worth
@@ -323,6 +367,10 @@ For transfers, returns, scrap and the issue of components in the product receipt
 chosen in a window of the add-on, **before** the documents are created. All documents are then created in a single
 operation.
 
+![Product receipt: batch LA of the Subcontracting Job is proposed, not batch LE, which expires first but does not belong to the Subcontracting Job](../../_img/contolavoro/23_selezione_lotti.png)
+
+*Product receipt: batch LA of the Subcontracting Job is proposed, not batch LE, which expires first but does not belong to the Subcontracting Job*
+
 - **Automatic proposal**: from the subcontractor's warehouse (component issue, return, scrap) first the batches
   **shipped to that Subcontracting Job** ("Of the Job" column, taken from SAP's batch transaction log), then by expiry
   date (FEFO); from the company's warehouse by expiry date (FEFO).
@@ -336,8 +384,12 @@ operation.
 
 The batch of the received product is calculated by a configurable **SQL script** (Configuration › Batches), with three
 fixed parameters: `{ItemCode}` item, `{WhsCode}` receiving warehouse, `{DocEntry}` Subcontracting Job. The default
-script returns the Subcontracting Job number + a sequence number (e.g. `20160256-1`); *Test* runs it with test data.
-The batch created appears in the message at the end of the product receipt.
+script returns the Subcontracting Job number + a sequence number (e.g. `20160256-1`); *Test* runs it with test data. The
+batch created appears in the message at the end of the product receipt. The same script gives the batch of the finished
+product of the production order (chapter 6) in the receipt from production. If the finished product is managed by serial
+numbers, or the script does not return a batch, the product receipt is not posted and a message explains what to do. For
+serial numbers: **Subcontractor BOM** = No in the bill of materials of the finished product and receipt from production
+posted in SAP.
 
 ![Incoming product batch script](../../_img/contolavoro/19_config_lotti.png)
 
@@ -347,7 +399,12 @@ The batch created appears in the message at the end of the product receipt.
 
 The document is created as a draft, to be completed in the SAP form, with warehouses with **bin locations**, incoming
 products with **serial numbers**, an empty batch script or one without result, and in the mass transfer. You complete
-the document and press *Add*: the add-on deletes the draft and continues.
+the document and press *Add*: the add-on deletes the draft and continues. On lines with batches or serial numbers to
+choose, in the draft the bin location is also entered in SAP together with the batches.
+
+![Draft document: "Complete the document (batches, serial numbers, bin locations) and press Add to continue"](../../_img/contolavoro/20_bozza_trasferimento.png)
+
+*Draft document: "Complete the document (batches, serial numbers, bin locations) and press Add to continue"*
 
 ## 8. Returns and scrap
 
@@ -359,6 +416,10 @@ the document and press *Add*: the add-on deletes the draft and continues.
 - **Returns and Scrap › Scrap Issue at Subcontractor**: in the *Scrap Issue* window, goods issue of the scrap directly
   from the subcontractor's warehouse.
 
+  ![Scrap Issue](../../_img/contolavoro/08_scarti.png)
+
+  *Scrap Issue*
+
 Scrapped components go back into the quantity remaining to ship.
 
 ## 9. Service functions
@@ -369,12 +430,20 @@ Lists the external processing of released production orders that is ready to bec
 **one Subcontracting Job per vendor and return warehouse**. With *Also show rows that are not ready* it explains why a
 processing is not ready. Setup, complete example and special cases in chapter 6.
 
+![The two external processing steps of the production order in the example (chapter 6), one per subcontractor](../../_img/contolavoro/15_da_odp.png)
+
+*The two external processing steps of the production order in the example (chapter 6), one per subcontractor*
+
 ### Mass Component Transfer
 
 Analyzes the open Subcontracting Jobs (filters by dates, vendor, component) and proposes the components with a
 quantity remaining to ship, respecting the availability shared among the Subcontracting Jobs if the company blocks
 negative stock. Creates one transfer per vendor (as a draft if batches or bin locations are needed). Rows with a
 missing subcontractor warehouse or one equal to the source warehouse are excluded and reported.
+
+![Components with a quantity remaining to ship, grouped by vendor and Subcontracting Job](../../_img/contolavoro/18_trasf_massivo.png)
+
+*Components with a quantity remaining to ship, grouped by vendor and Subcontracting Job*
 
 ### Component Transfer Between Jobs
 
@@ -383,6 +452,10 @@ a record). For this reason it is possible only between **open** Subcontracting J
 warehouse**: the list proposes only those; with different warehouses the operation is blocked and the goods must be
 returned and shipped again. The stock is read again at the moment of confirmation.
 
+![Transfer between Subcontracting Jobs](../../_img/contolavoro/14_trasf_commesse.png)
+
+*Transfer between Subcontracting Jobs*
+
 ### Mass closing of product goods receipts and processing prices
 
 *Mass Closing of Product Goods Receipts* lists the goods receipts of the products that are still open and closes the
@@ -390,6 +463,14 @@ chosen ones. *Subcontractor Processing Prices* is the table of processing prices
 
 Order in which the price of a processing is searched: vendor agreements (option, SQL Server only), prices by
 subcontractor, bill of materials (option), SAP vendor price, price list of the Subcontracting Job.
+
+![Goods receipts of the products that are still open](../../_img/contolavoro/16_chiusura_emp.png)
+
+*Goods receipts of the products that are still open*
+
+![Processing prices by subcontractor and product](../../_img/contolavoro/17_prezzi_lav.png)
+
+*Processing prices by subcontractor and product*
 
 ## 10. Data, fields and movement types
 
@@ -455,6 +536,14 @@ in Turkish).
 2. SAP warns that all open windows will be closed: answer *Yes*.
 3. The add-on reloads the texts by itself and recreates the menus in the new language: there is no need to restart
    it.
+
+![Subcontracting Job with the client in English](../../_img/contolavoro/24_commessa_en.png)
+
+*Subcontracting Job with the client in English*
+
+![Documents tab with the client in Turkish](../../_img/contolavoro/25_commessa_tr.png)
+
+*Documents tab with the client in Turkish*
 
 ### Customizing the texts
 

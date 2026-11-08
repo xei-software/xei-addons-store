@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Lohnfertigung
 description: Verwaltet in SAP Business One die an Lohnfertiger vergebenen Bearbeitungen, vom Auftrag und dem Versand der Komponenten bis zur Rücklieferung des Fertigprodukts.
 lang: de
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -55,4 +55,4 @@ jederzeit zu wissen, was sich bei jedem Lohnfertiger befindet. Mit XEI.ContoLavo
 
 ## Aktuelle Version
 
-**1.2.0** – siehe [Versionshinweise](../../manuali/de/contolavoro/note-rilascio-1.2.0.md) und Benutzerhandbuch.
+**1.2.1** – siehe [Versionshinweise](../../manuali/de/contolavoro/note-rilascio-1.2.1.md) und Benutzerhandbuch.

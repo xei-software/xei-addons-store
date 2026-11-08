@@ -25,3 +25,7 @@ stato: approvato
   line.
 - Backflush components linked to an external processing are not sent to the subcontractor and the production order
   issues them only once.
+- Without the numbering series of the Subcontracting Job, opening *Subcontracting Job* the add-on tells where to define it.
+- The mass transfer of components is enabled in the default configuration; with the option off, the menu item warns that the function is disabled.
+- The Subcontracting Jobs created from production orders use the default price list for jobs (Configuration › General): without it, «Create Jobs» asks you to enter it.
+- In the «Create Jobs from Production Orders» list the rows can be selected and the vendor can be changed.

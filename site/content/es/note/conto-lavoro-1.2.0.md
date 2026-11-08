@@ -26,3 +26,7 @@ stato: approvato
   orden de fabricación.
 - Los componentes con notificación retroactiva vinculados a una elaboración externa no se envían al subcontratista y
   la orden de fabricación los toma una sola vez.
+- Sin la serie de numeración de la orden de subcontratación, al abrir *Orden de subcontratación* el add-on indica dónde definirla.
+- La transferencia masiva de componentes está activa en la configuración predeterminada; con la opción desactivada, la entrada de menú avisa de que la función está desactivada.
+- Las órdenes de subcontratación creadas desde órdenes de fabricación usan la lista de precios predefinida de las órdenes (Configuración › General): sin ella, «Crear órdenes» pide indicarla.
+- En la lista «Crear órdenes desde órdenes de fabricación» las líneas se seleccionan y el proveedor se cambia.

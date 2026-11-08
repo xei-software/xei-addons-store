@@ -24,3 +24,7 @@ stato: approvato
   engellemez.
 - Bir dış işçiliğe bağlı geriye dönük çekilen bileşenler fasoncuya gönderilmez ve üretim siparişi bunları yalnızca bir
   kez çeker.
+- Fason iş emrinin numaralandırma serisi yoksa, *Fason iş emri* açılırken eklenti serinin nerede tanımlanacağını bildirir.
+- Bileşenlerin toplu nakli varsayılan yapılandırmada etkindir; seçenek kapalıyken menü girişi işlevin devre dışı olduğunu bildirir.
+- Üretim siparişlerinden oluşturulan fason iş emirleri, iş emirlerinin varsayılan fiyat listesini kullanır (Yapılandırma › Genel): liste yoksa «İş emri oluştur» listenin girilmesini ister.
+- «Üretim siparişlerinden iş emri oluştur» listesinde satırlar seçilir ve tedarikçi değiştirilir.

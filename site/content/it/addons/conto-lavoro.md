@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Conto lavoro presso terzisti
 description: Gestisce in SAP Business One le lavorazioni affidate ai terzisti, dall'ordine e l'invio dei componenti fino al rientro del prodotto finito.
 lang: it
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -51,4 +51,4 @@ momento cosa c'è presso ogni terzista. Con XEI.ContoLavoro lo fa SAP Business O
 
 ## Versione attuale
 
-**1.2.0** – vedi le [note di rilascio](../../manuali/it/contolavoro/note-rilascio-1.2.0.md) e il manuale d'uso.
+**1.2.1** – vedi le [note di rilascio](../../manuali/it/contolavoro/note-rilascio-1.2.1.md) e il manuale d'uso.

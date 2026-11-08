@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Kurulum, lisans ve menüler
 description: XEI.ContoLavoro'nun nasıl kurulacağı, lisansın nasıl etkinleştirileceği ve menülerin nerede bulunacağı.
 lang: tr
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -27,6 +27,8 @@ stato: approvato
    gösterir: **Yes** (Evet) yanıtını verin ve istemciyi kullanmadan önce işlemin bitmesini bekleyin.
 
 Eklentinin her güncellemesi aynı şekilde kurulur.
+
+İş emirlerini oluşturmadan önce, SAP belgelerinde olduğu gibi fason iş emrinin numaralandırma serisi tanımlanır: *Modules › Administration › System Initialization › Document Numbering* (Modüller › Yönetim › Sistem başlatma › Belge numaralandırma), listenin sonundaki **Commessa terzista** (Fason iş emri) girişi. Seri yoksa *Fason iş emri* açılırken eklenti serinin tanımlanması gerektiğini bildirir.
 
 Kurulumdan sonra: **Yapılandırma**'yı doldurun, ardından SAP'de fasoncunun her deposuna tedarikçisini bağlayın
 (depo ana verilerindeki *Fornitore terzista* (Fasoncu tedarikçi) alanı) ve fason üretim kalemlerini işaretleyin
@@ -56,14 +58,14 @@ Eklenti, XEI tarafından verilen bir **lisans kodu** ile çalışır.
 ## Menüler
 
 Öğeler **XEI-Addon › Fason üretim** altındadır. **Fason üretim** alt menüsü, Yapılandırma'da seçilen SAP modülünde de
-görünür (*Purchasing - A/P* (Satınalma - Borçlar) veya *Production* (Üretim)).
+görünür (*Purchasing* (Satınalma) veya *Production* (Üretim)).
 
 | Öğe | İşlev |
 |---|---|
 | Fason iş emri | fason iş emirlerini açma, arama ve oluşturma (kullanım kılavuzu, bölüm 4 ve 5) |
 | Üretim siparişlerinden iş emri oluştur | üretim siparişlerinin dış işçiliklerinden fason iş emirleri (bölüm 6) |
 | Fasoncudan teslim alma | fasoncunun bir irsaliyesindeki ürünlerin birden fazla fason iş emrine girişi (ürünlerin girişi ve bileşenlerin çıkışı) |
-| Toplu bileşen nakli | Yapılandırma'da etkinse, birden fazla fason iş emri için bileşenlerin gönderilmesi (bölüm 9) |
+| Toplu bileşen nakli | birden fazla fason iş emri için bileşenlerin gönderilmesi; Yapılandırma'da devre dışı bırakılabilir (bölüm 9) |
 | İş emirleri arasında bileşen nakli | fasoncuda bulunan stoku bir fason iş emrinden diğerine taşır (bölüm 9) |
 | Ürün mal girişlerini toplu kapatma | ürünlerin açık kalan mal girişlerini kapatır (bölüm 9) |
 | Fasoncu işçilik fiyatları | fasoncu ve ürün bazında işçilik fiyatları (bölüm 9) |

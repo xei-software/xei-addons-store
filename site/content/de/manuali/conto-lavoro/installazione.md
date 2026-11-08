@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Installation, Lizenz und Menüs
 description: So installieren Sie XEI.ContoLavoro, aktivieren die Lizenz und finden die Menüs.
 lang: de
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -27,6 +27,8 @@ stato: approvato
    Antworten Sie mit **Ja** und warten Sie das Ende ab, bevor Sie den Client verwenden.
 
 Jede Aktualisierung des Add-ons wird auf die gleiche Weise installiert.
+
+Vor dem Anlegen der Aufträge wird die Nummernserie des Lohnfertigungsauftrags definiert, wie für SAP-Belege: *Module › Administration › Systeminitialisierung › Belegnummerierung*, Eintrag **Commessa terzista** (Lohnfertigungsauftrag) am Ende der Liste. Ohne Serie weist das Add-on beim Öffnen von *Lohnfertigungsauftrag* darauf hin, sie zu definieren.
 
 Nach der Installation: die **Konfiguration** ausfüllen, dann in SAP jedem Lager des Lohnfertigers seinen Lieferanten
 zuordnen (Feld *Fornitore terzista* (Lieferant Lohnfertiger) in den Lagerstammdaten) und die Artikel in Lohnfertigung
@@ -57,14 +59,14 @@ Das Fenster **Licenza** (Lizenz):
 ## Menüs
 
 Die Einträge befinden sich unter **XEI-Addon › Lohnfertigung**. Das Untermenü **Lohnfertigung** erscheint auch in dem
-SAP-Modul, das in der Konfiguration gewählt ist (*Einkauf - Kreditoren* oder *Produktion*).
+SAP-Modul, das in der Konfiguration gewählt ist (*Einkauf* oder *Produktion*).
 
 | Eintrag | Funktion |
 |---|---|
 | Lohnfertigungsauftrag | Öffnen, Suchen und Anlegen der Lohnfertigungsaufträge (Benutzerhandbuch, Kapitel 4 und 5) |
 | Aufträge aus Produktionsaufträgen anlegen | Lohnfertigungsaufträge aus den externen Bearbeitungen der Produktionsaufträge (Kapitel 6) |
 | Eingang vom Lohnfertiger | Eingang der Produkte eines Lieferscheins des Lohnfertigers auf mehrere Lohnfertigungsaufträge (Zugang der Produkte und Abgang der Komponenten) |
-| Massenumlagerung Komponenten | Versand der Komponenten für mehrere Lohnfertigungsaufträge, wenn in der Konfiguration aktiviert (Kapitel 9) |
+| Massenumlagerung Komponenten | Versand der Komponenten für mehrere Lohnfertigungsaufträge; in der Konfiguration abschaltbar (Kapitel 9) |
 | Komponenten zwischen Aufträgen umlagern | verschiebt den Bestand, der sich bereits beim Lohnfertiger befindet, von einem Lohnfertigungsauftrag auf einen anderen (Kapitel 9) |
 | Wareneingänge Produkte massenweise schließen | schließt die noch offenen Wareneingänge der Produkte (Kapitel 9) |
 | Bearbeitungspreise Lohnfertiger | Preise der Bearbeitungen je Lohnfertiger und Produkt (Kapitel 9) |

@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Fason üretim
 description: Fasonculara verilen işleri SAP Business One'da, siparişten ve bileşenlerin gönderilmesinden mamulün geri gelmesine kadar yönetir.
 lang: tr
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -50,4 +50,4 @@ fasoncuda ne bulunduğunu bilmek demektir. XEI.ContoLavoro ile bunu SAP Business
 
 ## Güncel sürüm
 
-**1.2.0** – [sürüm notlarına](../../manuali/tr/contolavoro/note-rilascio-1.2.0.md) ve kullanım kılavuzuna bakın.
+**1.2.1** – [sürüm notlarına](../../manuali/tr/contolavoro/note-rilascio-1.2.1.md) ve kullanım kılavuzuna bakın.

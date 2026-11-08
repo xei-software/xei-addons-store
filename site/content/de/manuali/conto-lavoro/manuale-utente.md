@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Benutzerhandbuch
 description: Wie Sie mit XEI.ContoLavoro Lohnfertigungsaufträge, Komponentenversand, Produkteingänge und die Lohnfertigung aus Produktionsaufträgen verwalten.
 lang: de
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -50,6 +50,7 @@ Komponenten mehr liegen.
 - Beim ersten Start legt das Add-on Tabellen, Felder, das Objekt (UDO) `XEI_CL_COMMESSA` und die formatierte Suche
   des Lohnfertiger-Lieferanten am Lager an. SAP fragt nach der Bestätigung, dass *„die Datenbankstruktur geändert
   wurde“*: antworten und das Ende abwarten, bevor Sie den Client verwenden.
+- Vor dem Anlegen der Aufträge wird die **Nummernserie** des Lohnfertigungsauftrags definiert, wie für SAP-Belege: **Module › Administration › Systeminitialisierung › Belegnummerierung**, Eintrag *Commessa terzista* (Lohnfertigungsauftrag) am Ende der Liste. Ohne Serie weist das Add-on beim Öffnen von *Lohnfertigungsauftrag* darauf hin, sie zu definieren.
 
 ### Menüs
 
@@ -60,7 +61,7 @@ Komponenten mehr liegen.
 | Lohnfertigungsauftrag | Öffnen, Suchen und Anlegen der Lohnfertigungsaufträge |
 | Aufträge aus Produktionsaufträgen anlegen | Lohnfertigungsaufträge aus den externen Bearbeitungen der Produktionsaufträge (Kapitel 6) |
 | Eingang vom Lohnfertiger | ein Lieferschein des Lohnfertigers mit Produkten mehrerer Aufträge: Sie wählen den Lieferanten, geben die erhaltenen Mengen bei den offenen Produkten seiner Aufträge ein (*Vorschlagen* = offene Menge), und *Buchen* führt den Produkteingang Auftrag für Auftrag durch, mit Eingang der Produkte und Ausgang der Komponenten |
-| Massenumlagerung Komponenten | Komponentenversand für mehrere Aufträge (aktiv mit der entsprechenden Option) |
+| Massenumlagerung Komponenten | Komponentenversand für mehrere Aufträge (in der Konfiguration abschaltbar, Kapitel 3) |
 | Komponenten zwischen Aufträgen umlagern | verschiebt den bereits beim Lohnfertiger liegenden Bestand von einem Auftrag in einen anderen |
 | Wareneingänge Produkte massenweise schließen | schließt die noch offenen Wareneingänge der Produkte |
 | Bearbeitungspreise Lohnfertiger | Preise der Bearbeitungen pro Lieferant und Produkt |
@@ -68,7 +69,7 @@ Komponenten mehr liegen.
 | Informazioni (Informationen), Traduzioni (Übersetzungen), Licenza (Lizenz) | gemeinsame Einträge der XEI-Add-ons; Licenza: Status und Lizenzcode |
 
 Dieselben Einträge, außer *Konfiguration*, *Informazioni*, *Traduzioni* und *Licenza*, gibt es auch in dem in der
-Konfiguration gewählten SAP-Modul (Kapitel 3), an der gewählten Position: **Module › Einkauf - Kreditoren ›
+Konfiguration gewählten SAP-Modul (Kapitel 3), an der gewählten Position: **Module › Einkauf ›
 Lohnfertigung** (Standard) oder **Module › Produktion › Lohnfertigung**.
 
 ### Lizenz
@@ -94,6 +95,10 @@ Die Optionen werden in einem Formular mit Registerkarten eingestellt (die Regist
 beschrieben). Die Optionen gelten für die gesamte Firma; bereits geöffnete Formulare verwenden sie beim erneuten
 Öffnen.
 
+![Allgemein](../../_img/contolavoro/10_config_generale.png)
+
+*Allgemein*
+
 ![Preise](../../_img/contolavoro/11_config_prezzi.png)
 
 *Preise*
@@ -101,6 +106,10 @@ beschrieben). Die Optionen gelten für die gesamte Firma; bereits geöffnete For
 ![Lager](../../_img/contolavoro/12_config_magazzino.png)
 
 *Lager*
+
+![Serien und Gründe](../../_img/contolavoro/13_config_documenti.png)
+
+*Serien und Gründe*
 
 | Option | Wirkung | Standard |
 |---|---|---|
@@ -111,11 +120,11 @@ beschrieben). Die Optionen gelten für die gesamte Firma; bereits geöffnete For
 | Wareneingang des Produkts schließen | nach dem Produkteingang wird der Wareneingang des Produkts geschlossen (er wird nicht fakturiert) | Nein |
 | Preis des Produkt-Wareneingangs neu berechnen | wenn sich der Bearbeitungspreis ändert, wird der Wareneingang des Produkts aktualisiert | Nein |
 | Lieferantenangebote aus Produktionsaufträgen | verknüpft beim Anlegen aus Produktionsaufträgen die Lieferantenangebote | Nein |
-| Massenumlagerung | aktiviert den Menüeintrag | Nein |
+| Massenumlagerung | ermöglicht die Massenumlagerung der Komponenten; bei Nein weist der Menüeintrag darauf hin, dass die Funktion deaktiviert ist | Ja |
 | Stückliste Lohnfertiger | zeigt die Spalte „Stückliste Lohnfertiger“ in der Stückliste | Ja |
 | Lieferantenrahmenverträge | Bearbeitungspreise aus den Rahmenverträgen (nur SQL Server) | Nein |
-| Standardpreisliste | Kostenliste, die bei neuen Aufträgen vorgeschlagen wird | – |
-| Menü auch im SAP-Modul | Modul mit dem Untermenü *Lohnfertigung*: Einkauf - Kreditoren oder Produktion | Einkauf - Kreditoren |
+| Standardpreisliste der Aufträge | Kostenliste, die bei neuen Aufträgen vorgeschlagen wird; dient zum Anlegen der Aufträge aus Produktionsaufträgen (Kapitel 6) | – |
+| Menü auch im SAP-Modul | Modul mit dem Untermenü *Lohnfertigung*: Einkauf oder Produktion | Einkauf |
 | Position im Modulmenü | am Ende, am Anfang oder nach einem Eintrag des Moduls | am Ende |
 | **Preise** | | |
 | Bearbeitungs- / Komponentenpreis änderbar | Preise in der Stückliste des Auftrags änderbar | Nein |
@@ -143,6 +152,10 @@ beschrieben). Die Optionen gelten für die gesamte Firma; bereits geöffnete For
 Der Kopfbereich ist wie der der Bestandsumlagerung aufgebaut: links Lieferant, Referenz des Lieferanten, Projekt und
 verknüpfte Bestellungen; rechts Nummerierung, Status, Daten, Kostenliste und die beiden Lager.
 
+![Lohnfertigungsauftrag: Kopfbereich und Registerkarte Produkte](../../_img/contolavoro/01_prodotti.png)
+
+*Lohnfertigungsauftrag: Kopfbereich und Registerkarte Produkte*
+
 - **Lieferant**: Bei der Auswahl werden das Lager des Benutzers und das mit dem Lieferanten verknüpfte **Lager des
   Lohnfertigers** vorgeschlagen (Feld *Fornitore terzista* (Lieferant Lohnfertiger) der Lagerstammdaten) oder das als
   Standard markierte.
@@ -153,6 +166,10 @@ verknüpfte Bestellungen; rechts Nummerierung, Status, Daten, Kostenliste und di
 - Wenn ein Lager im Kopfbereich geändert wird, wird wie bei der Bestandsumlagerung angeboten, es in die **noch nicht
   bewegten** Zeilen der Stückliste zu übernehmen.
 
+![Änderung eines Lagers im Kopfbereich bei bereits erfassten Produkten](../../_img/contolavoro/09_propaga_magazzino.png)
+
+*Änderung eines Lagers im Kopfbereich bei bereits erfassten Produkten*
+
 ### Produkte
 
 Sie wählen den Artikel (auch mehrere Artikel gleichzeitig aus der Liste) und die zu produzierende Menge: Die Stückliste
@@ -160,6 +177,10 @@ wird aus SAP kopiert und auf ein Stück umgerechnet (unter Berücksichtigung der
 zeigen zu produzierende Menge, eingegangene Menge, offene Menge, Kosten der Komponenten und der Bearbeitungen.
 
 ### Stückliste
+
+![Stückliste pro Produkt: Komponenten mit Lagern, Preisen, Bedarf, verwendet](../../_img/contolavoro/02_distinta.png)
+
+*Stückliste pro Produkt: Komponenten mit Lagern, Preisen, Bedarf, verwendet*
 
 Für jedes Produkt: Komponenten (zu versendende Lagerartikel) und Bearbeitungen (an den Lohnfertiger bezahlte
 Dienstleistungen). Mit **Stückliste ändern** ändern Sie Lager und Preise der noch nicht bewegten Zeilen; mit *Zeile
@@ -169,6 +190,10 @@ Lohnfertiger zurück) und **Stückliste neu zusammenstellen** (ersetzt die Stüc
 
 ### Komponenten
 
+![Situation der Komponenten: Bedarf, versendet, Bestände und noch zu versenden](../../_img/contolavoro/03_componenti.png)
+
+*Situation der Komponenten: Bedarf, versendet, Bestände und noch zu versenden*
+
 Die Komponenten aller Produkte, gruppiert nach Artikel und Lagern: Bedarf, verwendet, verfügbar im Unternehmen,
 Bestand im Lager des Lohnfertigers, Anforderungen und Picklisten, versendet, noch zu versenden, Bestand des Auftrags
 beim Lohnfertiger, Rückholungen und Ausschuss. Die Bewegungen erfolgen mit den Schaltflächen unten im Auftrag:
@@ -177,6 +202,10 @@ umlagern*, *Ausschuss beim Lohnfertiger ausbuchen*). Jede öffnet ein Fenster mi
 Zellen: *Vorschlagen* füllt sie, *Zurücksetzen* leert sie, und sie können von Hand geändert werden.
 
 ### Belege
+
+![Mit dem Auftrag verknüpfte Belege, einer pro Zeile, mit den Zeilen des gewählten Belegs](../../_img/contolavoro/04_documenti.png)
+
+*Mit dem Auftrag verknüpfte Belege, einer pro Zeile, mit den Zeilen des gewählten Belegs*
 
 Alle mit dem Auftrag verknüpften SAP-Belege, einer pro Zeile in zeitlicher Reihenfolge, mit der Verknüpfung zum
 Öffnen; *Anzeigen* filtert nach Belegart. Darunter, in *Belegzeilen*, die Zeilen des gewählten Belegs mit Chargen,
@@ -189,14 +218,28 @@ Seriennummern und Lagerplätzen.
    Produkt und einer für jede Bearbeitung; wenn die Bestellung bereits existiert, öffnet die Schaltfläche sie. Spätere
    Änderungen am Auftrag (neue oder gelöschte Produkte, Mengen, Preise, Daten) werden beim Speichern in die Bestellung
    übernommen; bereits gelieferte Zeilen ändern sich nur in der Menge.
+
+   ![Anlegen der Bestellung](../../_img/contolavoro/05_oda.png)
+
+   *Anlegen der Bestellung*
+
 3. **Komponenten versenden**: Im Fenster *Umlagerung Komponenten* schlägt die Spalte *Zu versenden* die noch zu
    versendende Menge vor (von Hand änderbar); *OK* legt die Bestandsumlagerung zum Lager des Lohnfertigers an. Mit der
    entsprechenden Option wird eine Bestandsumlagerungsanforderung mit Pickliste angelegt.
+
+   ![Umlagerung Komponenten](../../_img/contolavoro/06_trasferimento.png)
+
+   *Umlagerung Komponenten*
+
 4. **Produkte empfangen**: Im Fenster *Produkteingang* schlägt die Spalte *Einzugehen* die offene Menge vor (von Hand
    änderbar), und *Bewegungsart* wählt zwischen *Produkteingang und Komponentenausgang*, *Nur Produkteingang* und *Nur
    Komponentenausgang*; dann *OK*. Angelegt werden: Wareneingang der Bearbeitungen und der Produkte aus der
    Bestellung, Warenausgang der Komponenten aus dem Lager des Lohnfertigers, Eingänge aus Produktion für die Produkte
    aus Produktionsaufträgen (Kapitel 6).
+
+   ![Produkteingang](../../_img/contolavoro/07_versamento.png)
+
+   *Produkteingang*
 
 > Das Produkt wird zu den vollen Kosten eingebucht (Komponenten + Bearbeitung); mit der Option „Wareneingang des
 > Produkts schließen“ wird der Wareneingang geschlossen und nicht fakturiert: Fakturiert werden die Bearbeitungen.
@@ -223,6 +266,7 @@ zurückgekommen sind, den Eingang aus Produktion des Fertigprodukts.
 | Stückliste des Fertigprodukts | **Stückliste Lohnfertiger** = Ja, wenn das Fertigprodukt vollständig ist, sobald alle externen Bearbeitungen zurückgekommen sind: Das Add-on bucht den Eingang aus Produktion. Mit Nein buchen Sie den Eingang aus Produktion selbst in SAP | `PF-100` = Ja |
 | Lagerstammdaten des Lohnfertigers | Feld **Fornitore terzista** (Lieferant Lohnfertiger) (Kapitel 4) | `T-TER01` → `F-TER01`; `T-TER02` → `F-TER02` |
 | *Bearbeitungspreise Lohnfertiger* | Preis pro Lohnfertiger, Fertigprodukt und Bearbeitung (Reihenfolge der Preissuche in Kapitel 9) | `F-TER01` / `PF-100` / `LAV-SALD` 12,00; `F-TER02` / `PF-100` / `LAV-MONT` 3,50 |
+| Konfiguration, Registerkarte *Allgemein* (Kapitel 3) | **Standardpreisliste der Aufträge**: die Kostenliste der aus Produktionsaufträgen angelegten Aufträge. Ohne sie fordert *Aufträge anlegen* dazu auf, sie anzugeben, und legt die Aufträge nicht an | Basispreisliste |
 
 Retrograde Komponenten, die mit der Bearbeitung verknüpft sind, werden nicht an den Lohnfertiger gesendet: Der Eingang
 aus Produktion entnimmt sie aus dem Lager der Zeile des Produktionsauftrags. Die Spalte **Grund / Hinweise** der Liste
@@ -261,13 +305,13 @@ Rahmen und zwei Achsen. Der Produktionsauftrag Nr. 500 ist für 100 Wagen im Lag
 
 | Schritt | Angelegter SAP-Beleg | Wirkung auf den Produktionsauftrag |
 |---|---|---|
-| 1. **Lohnfertigung › Aufträge aus Produktionsaufträgen anlegen**: Sie markieren die beiden Zeilen des Produktionsauftrags 500 und klicken auf *Aufträge anlegen* | kein SAP-Beleg: Lohnfertigungsauftrag 1001 (`F-TER01`, von `01` nach `T-TER01`, Produkt `LAV-SALD` 100, Stückliste `CMP-01` 2,5 und `CMP-02` 4 pro Stück) und Auftrag 1002 (`F-TER02`, von `01` nach `T-TER02`, Produkt `LAV-MONT` 200, Stückliste `CMP-03` 2 und `CMP-04` 1 pro Stück) | keine |
+| 1. **Lohnfertigung › Aufträge aus Produktionsaufträgen anlegen**: Sie markieren die beiden Zeilen des Produktionsauftrags 500 und klicken auf *Aufträge anlegen* | kein SAP-Beleg: Lohnfertigungsauftrag 1001 (`F-TER02`, von `01` nach `T-TER02`, Produkt `LAV-MONT` 200, Stückliste `CMP-03` 2 und `CMP-04` 1 pro Stück) und Auftrag 1002 (`F-TER01`, von `01` nach `T-TER01`, Produkt `LAV-SALD` 100, Stückliste `CMP-01` 2,5 und `CMP-02` 4 pro Stück), in der Reihenfolge der Zeilen der Liste | keine |
 | 2. Klicken Sie in jedem Auftrag auf *Bestellung Lohnfertiger* und bestätigen Sie das Fenster *Bestellung an Lohnfertiger* | Bestellung an `F-TER01`: `LAV-SALD` 100 × 12,00; Bestellung an `F-TER02`: `LAV-MONT` 200 × 3,50 | keine |
 | 3. Klicken Sie in jedem Auftrag auf *Komponenten versenden* und, mit den vorgeschlagenen Mengen, auf *OK* | Bestandsumlagerung von `01` nach `T-TER01`: `CMP-01` 250, `CMP-02` 400; von `01` nach `T-TER02`: `CMP-03` 400, `CMP-04` 200 | keine |
-| 4. 60 Rahmen kommen zurück: Klicken Sie im Auftrag 1001 auf *Produkte empfangen*, geben Sie im Fenster *Produkteingang* 60 in *Einzugehen* ein und klicken Sie auf *OK* | Wareneingang aus der Bestellung: `LAV-SALD` 60 × 12,00; Ausgabe für Produktion aus `T-TER01`: `CMP-01` 150, `CMP-02` 240 | Komponenten der Zeilen 2 und 3 entnommen; kein Eingang: Die Achsen fehlen, und eine Meldung weist darauf hin (*„Produktionsauftrag 500: Das Fertigprodukt wird eingelagert, sobald auch die Bearbeitung LAV-MONT zurückkommt.“*) |
-| 5. 100 Achsen kommen zurück: Auftrag 1002, *Produkte empfangen*, 100 in *Einzugehen*, *OK* | Wareneingang `LAV-MONT` 100 × 3,50; Ausgabe für Produktion aus `T-TER02`: `CMP-03` 200, `CMP-04` 100; Eingang aus Produktion `PF-100` **50** | 60 Rahmen und 100 Achsen reichen für 50 Wagen: 50 fertiggestellt; SAP entnimmt retrograd `CMP-05` 800 |
-| 6. Weitere 100 Achsen kommen zurück: Auftrag 1002, *Produkte empfangen*, 100 in *Einzugehen*, *OK* | Wareneingang `LAV-MONT` 100; Ausgabe für Produktion `CMP-03` 200, `CMP-04` 100; Eingang aus Produktion `PF-100` **10** | 60 fertiggestellt, die übrigen warten auf die Rahmen (*„Produktionsauftrag 500: 10 Stück des Fertigprodukts eingelagert; die übrigen folgen, sobald auch die Bearbeitung LAV-SALD zurückkommt.“*); der Auftrag 1002 schließt sich von selbst |
-| 7. Die letzten 40 Rahmen kommen zurück: Auftrag 1001, *Produkte empfangen*, 40 in *Einzugehen*, *OK* | Wareneingang `LAV-SALD` 40; Ausgabe für Produktion `CMP-01` 100, `CMP-02` 160; Eingang aus Produktion `PF-100` **40** | 100 fertiggestellt; der Auftrag 1001 schließt sich von selbst. Den Produktionsauftrag schließen Sie selbst in SAP |
+| 4. 60 Rahmen kommen zurück: Klicken Sie im Auftrag 1002 auf *Produkte empfangen*, geben Sie im Fenster *Produkteingang* 60 in *Einzugehen* ein und klicken Sie auf *OK* | Wareneingang aus der Bestellung: `LAV-SALD` 60 × 12,00; Ausgabe für Produktion aus `T-TER01`: `CMP-01` 150, `CMP-02` 240 | Komponenten der Zeilen 2 und 3 entnommen; kein Eingang: Die Achsen fehlen, und eine Meldung weist darauf hin (*„Produktionsauftrag 500: Das Fertigprodukt wird eingelagert, sobald auch die Bearbeitung LAV-MONT zurückkommt.“*) |
+| 5. 100 Achsen kommen zurück: Auftrag 1001, *Produkte empfangen*, 100 in *Einzugehen*, *OK* | Wareneingang `LAV-MONT` 100 × 3,50; Ausgabe für Produktion aus `T-TER02`: `CMP-03` 200, `CMP-04` 100; Eingang aus Produktion `PF-100` **50** | 60 Rahmen und 100 Achsen reichen für 50 Wagen: 50 fertiggestellt; SAP entnimmt retrograd `CMP-05` 800 |
+| 6. Weitere 100 Achsen kommen zurück: Auftrag 1001, *Produkte empfangen*, 100 in *Einzugehen*, *OK* | Wareneingang `LAV-MONT` 100; Ausgabe für Produktion `CMP-03` 200, `CMP-04` 100; Eingang aus Produktion `PF-100` **10** | 60 fertiggestellt, die übrigen warten auf die Rahmen (*„Produktionsauftrag 500: 10 Stück des Fertigprodukts eingelagert; die übrigen folgen, sobald auch die Bearbeitung LAV-SALD zurückkommt.“*); der Auftrag 1001 schließt sich von selbst |
+| 7. Die letzten 40 Rahmen kommen zurück: Auftrag 1002, *Produkte empfangen*, 40 in *Einzugehen*, *OK* | Wareneingang `LAV-SALD` 40; Ausgabe für Produktion `CMP-01` 100, `CMP-02` 160; Eingang aus Produktion `PF-100` **40** | 100 fertiggestellt; der Auftrag 1002 schließt sich von selbst. Den Produktionsauftrag schließen Sie selbst in SAP |
 
 > Der Eingang aus Produktion wird mit den Kosten der externen Bearbeitungen pro Stück bewertet: für jede Bearbeitung
 > Komponenten und Preis der Bearbeitung, multipliziert mit der Menge pro Stück. Im Beispiel ist ein Wagen
@@ -333,6 +377,10 @@ Für Umlagerungen, Rückholungen, Ausschuss und den Komponentenausgang beim Prod
 Seriennummern in einem Fenster des Add-ons ausgewählt, **bevor** die Belege angelegt werden. Alle Belege werden dann
 in einem einzigen Vorgang angelegt.
 
+![Produkteingang: vorgeschlagen wird die Charge LA des Auftrags, nicht die Charge LE, die früher abläuft, aber nicht zum Auftrag gehört](../../_img/contolavoro/23_selezione_lotti.png)
+
+*Produkteingang: vorgeschlagen wird die Charge LA des Auftrags, nicht die Charge LE, die früher abläuft, aber nicht zum Auftrag gehört*
+
 - **Automatischer Vorschlag**: aus dem Lager des Lohnfertigers (Komponentenausgang, Rückholung, Ausschuss) zuerst die
   **an diesen Auftrag versendeten** Chargen (Spalte „Des Auftrags“, ermittelt aus dem Chargentransaktionsprotokoll von
   SAP), dann nach Verfallsdatum (FEFO); aus dem Lager des Unternehmens nach Verfallsdatum (FEFO).
@@ -346,8 +394,12 @@ in einem einzigen Vorgang angelegt.
 
 Die Charge des eingegangenen Produkts wird von einem konfigurierbaren **SQL-Skript** berechnet (Konfiguration ›
 Chargen), mit drei festen Parametern: `{ItemCode}` Artikel, `{WhsCode}` Eingangslager, `{DocEntry}`
-Lohnfertigungsauftrag. Das Standardskript liefert Auftragsnummer + laufende Nummer (z. B. `20160256-1`); *Prüfen*
-führt es mit Testdaten aus. Die angelegte Charge erscheint in der Meldung am Ende des Produkteingangs.
+Lohnfertigungsauftrag. Das Standardskript liefert Auftragsnummer + laufende Nummer (z. B. `20160256-1`); *Prüfen* führt
+es mit Testdaten aus. Die angelegte Charge erscheint in der Meldung am Ende des Produkteingangs. Dasselbe Skript liefert
+die Charge des Fertigprodukts des Produktionsauftrags (Kapitel 6) beim Eingang aus Produktion. Wird das Fertigprodukt
+mit Seriennummern verwaltet oder liefert das Skript keine Charge, wird der Produkteingang nicht gebucht, und eine
+Meldung erklärt, was zu tun ist. Für Seriennummern: **Stückliste Lohnfertiger** = Nein in der Stückliste des
+Fertigprodukts und Eingang aus Produktion in SAP gebucht.
 
 ![Skript für die Charge des eingehenden Produkts](../../_img/contolavoro/19_config_lotti.png)
 
@@ -356,9 +408,14 @@ führt es mit Testdaten aus. Die angelegte Charge erscheint in der Meldung am En
 ### Belege als Entwurf
 
 Der Beleg wird als Entwurf angelegt, der im SAP-Formular zu vervollständigen ist, bei Lagern mit **Lagerplätzen**,
-eingehenden Produkten mit **Seriennummern**, leerem Chargenskript oder einem ohne Ergebnis und bei der
-Massenumlagerung. Sie vervollständigen den Beleg und klicken auf *Hinzufügen*: Das Add-on löscht den Entwurf und fährt
-fort.
+eingehenden Produkten mit **Seriennummern**, leerem Chargenskript oder einem ohne Ergebnis und bei der Massenumlagerung.
+Sie vervollständigen den Beleg und klicken auf *Hinzufügen*: Das Add-on löscht den Entwurf und fährt fort. Bei Zeilen
+mit auszuwählenden Chargen oder Seriennummern wird im Entwurf auch der Lagerplatz zusammen mit den Chargen in SAP
+angegeben.
+
+![Beleg als Entwurf: „Beleg vervollständigen (Chargen, Seriennummern, Lagerplätze) und zum Fortfahren auf Hinzufügen klicken“](../../_img/contolavoro/20_bozza_trasferimento.png)
+
+*Beleg als Entwurf: „Beleg vervollständigen (Chargen, Seriennummern, Lagerplätze) und zum Fortfahren auf Hinzufügen klicken“*
 
 ## 8. Rückholungen und Ausschuss
 
@@ -370,6 +427,10 @@ fort.
 - **Rückholung und Ausschuss › Ausschuss beim Lohnfertiger ausbuchen**: im Fenster *Ausschuss-Warenausgang*
   Warenausgang des Ausschusses direkt aus dem Lager des Lohnfertigers.
 
+  ![Ausschuss-Warenausgang](../../_img/contolavoro/08_scarti.png)
+
+  *Ausschuss-Warenausgang*
+
 Ausgesonderte Komponenten kehren in die noch zu versendende Menge zurück.
 
 ## 9. Hilfsfunktionen
@@ -380,12 +441,20 @@ Listet die externen Bearbeitungen der freigegebenen Produktionsaufträge auf, di
 und legt **einen Auftrag pro Lieferant und Rückgabelager** an. Mit *Auch nicht bereite Zeilen anzeigen* erklärt es,
 warum eine Bearbeitung nicht bereit ist. Einrichtung, vollständiges Beispiel und Sonderfälle in Kapitel 6.
 
+![Die beiden externen Bearbeitungen des Produktionsauftrags aus dem Beispiel (Kapitel 6), eine pro Lohnfertiger](../../_img/contolavoro/15_da_odp.png)
+
+*Die beiden externen Bearbeitungen des Produktionsauftrags aus dem Beispiel (Kapitel 6), eine pro Lohnfertiger*
+
 ### Massenumlagerung Komponenten
 
 Analysiert die offenen Aufträge (Filter nach Daten, Lieferant, Komponente) und schlägt die Komponenten mit noch zu
 versendender Menge vor, unter Beachtung der zwischen den Aufträgen geteilten Verfügbarkeit, wenn die Firma negative
 Bestände sperrt. Legt eine Umlagerung pro Lieferant an (als Entwurf, wenn Chargen oder Lagerplätze nötig sind). Zeilen
 mit fehlendem Lager des Lohnfertigers oder einem, das dem Ausgangslager entspricht, werden ausgeschlossen und gemeldet.
+
+![Komponenten mit noch zu versendender Menge, gruppiert nach Lieferant und Auftrag](../../_img/contolavoro/18_trasf_massivo.png)
+
+*Komponenten mit noch zu versendender Menge, gruppiert nach Lieferant und Auftrag*
 
 ### Komponenten zwischen Aufträgen umlagern
 
@@ -394,6 +463,10 @@ Verschiebt den bereits beim Lohnfertiger liegenden Bestand von einem Auftrag in 
 Die Liste schlägt nur diese vor; bei unterschiedlichen Lagern ist der Vorgang gesperrt, und die Ware muss
 zurückgeholt und erneut versendet werden. Der Bestand wird im Moment der Bestätigung neu gelesen.
 
+![Umlagerung zwischen Aufträgen](../../_img/contolavoro/14_trasf_commesse.png)
+
+*Umlagerung zwischen Aufträgen*
+
 ### Wareneingänge Produkte massenweise schließen und Bearbeitungspreise
 
 *Wareneingänge Produkte massenweise schließen* listet die noch offenen Wareneingänge der Produkte auf und schließt die
@@ -401,6 +474,14 @@ gewählten. *Bearbeitungspreise Lohnfertiger* ist die Tabelle der Bearbeitungspr
 
 Reihenfolge der Suche nach dem Preis einer Bearbeitung: Lieferantenrahmenverträge (Option, nur SQL Server), Preise pro
 Lohnfertiger, Stückliste (Option), Lieferantenpreis aus SAP, Preisliste des Auftrags.
+
+![Noch offene Wareneingänge der Produkte](../../_img/contolavoro/16_chiusura_emp.png)
+
+*Noch offene Wareneingänge der Produkte*
+
+![Bearbeitungspreise pro Lohnfertiger und Produkt](../../_img/contolavoro/17_prezzi_lav.png)
+
+*Bearbeitungspreise pro Lohnfertiger und Produkt*
 
 ## 10. Daten, Felder und Bewegungsarten
 
@@ -466,6 +547,14 @@ ağacı*, *Parti* auf Türkisch).
    *Aktualisieren*.
 2. SAP weist darauf hin, dass alle geöffneten Fenster geschlossen werden: mit *Ja* antworten.
 3. Das Add-on lädt die Texte von selbst neu und erstellt die Menüs in der neuen Sprache: Ein Neustart ist nicht nötig.
+
+![Lohnfertigungsauftrag mit dem Client auf Englisch](../../_img/contolavoro/24_commessa_en.png)
+
+*Lohnfertigungsauftrag mit dem Client auf Englisch*
+
+![Registerkarte Belege mit dem Client auf Türkisch](../../_img/contolavoro/25_commessa_tr.png)
+
+*Registerkarte Belege mit dem Client auf Türkisch*
 
 ### Texte anpassen
 

@@ -3,7 +3,7 @@ title: XEI.ContoLavoro – Installation, licence et menus
 description: Comment installer XEI.ContoLavoro, activer la licence et trouver les menus.
 lang: fr
 prodotto: XEI.ContoLavoro
-versione: 1.2.0
+versione: 1.2.1
 stato: approvato
 ---
 
@@ -27,6 +27,8 @@ stato: approvato
    base de données : répondez **Oui** et attendez la fin avant d'utiliser le client.
 
 Chaque mise à jour de l'add-on s'installe de la même façon.
+
+Avant de créer les ordres, définissez la série de numérotation de l'ordre de sous-traitance, comme pour les documents SAP : *Modules › Gestion › Initialisation système › Numérotation des documents*, élément **Commessa terzista** (Ordre de sous-traitance) en bas de la liste. Sans série, à l'ouverture de *Ordre de sous-traitance* l'add-on indique qu'il faut la définir.
 
 Après l'installation : remplissez la **Configuration**, puis dans SAP associez à chaque magasin du sous-traitant son
 fournisseur (champ *Fornitore terzista* (Fournisseur sous-traitant) de la fiche du magasin) et marquez les articles en
@@ -57,14 +59,14 @@ La fenêtre **Licenza** (Licence) :
 ## Menus
 
 Les entrées se trouvent dans **XEI-Addon › Sous-traitance**. Le sous-menu **Sous-traitance** apparaît aussi dans le
-module SAP choisi dans la Configuration (*Achats - Fournisseurs* ou *Production*).
+module SAP choisi dans la Configuration (*Achats* ou *Production*).
 
 | Entrée | Fonction |
 |---|---|
 | Ordre de sous-traitance | ouverture, recherche et création des ordres de sous-traitance (manuel d'utilisation, chapitres 4 et 5) |
 | Créer des ordres depuis les ordres de fabrication | ordres de sous-traitance à partir des façons externes des ordres de fabrication (chapitre 6) |
 | Réception du sous-traitant | réception des produits d'un bon de livraison du sous-traitant sur plusieurs ordres de sous-traitance (entrée des produits et sortie des composants) |
-| Transfert en masse des composants | envoi des composants pour plusieurs ordres de sous-traitance, si activé dans la Configuration (chapitre 9) |
+| Transfert en masse des composants | envoi des composants pour plusieurs ordres de sous-traitance ; se désactive dans la Configuration (chapitre 9) |
 | Transfert de composants entre ordres | déplace le stock déjà chez le sous-traitant d'un ordre de sous-traitance à un autre (chapitre 9) |
 | Clôture en masse des réceptions de produits | clôture les réceptions de marchandises des produits restées ouvertes (chapitre 9) |
 | Prix de façon des sous-traitants | prix des façons par sous-traitant et produit (chapitre 9) |

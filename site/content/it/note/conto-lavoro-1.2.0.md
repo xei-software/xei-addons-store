@@ -24,3 +24,7 @@ stato: approvato
 - Una commessa interrotta non impedisce di creare un'altra commessa dalla stessa riga dell'ordine di produzione.
 - I componenti a consuntivo collegati a una lavorazione esterna non si inviano al terzista e l'ordine di produzione li
   preleva una volta sola.
+- Senza la serie di numerazione della commessa terzista, aprendo *Commessa terzista* l'add-on dice dove definirla.
+- Il trasferimento massivo dei componenti è attivo nella configurazione predefinita; con l'opzione spenta la voce di menu avvisa che la funzione è disattivata.
+- Le commesse create dagli ordini di produzione usano il listino predefinito delle commesse (Configurazione › Generale): senza, «Crea commesse» chiede di indicarlo.
+- Nella lista «Crea commesse da ordini di produzione» le righe si selezionano e il fornitore si cambia.
