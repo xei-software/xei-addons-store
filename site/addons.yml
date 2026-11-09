@@ -53,7 +53,7 @@
 - id: conto-lavoro
   pacchetto: XEI.ContoLavoro
   versione: 1.2.1
-  data_rilascio: '2026-11-07'
+  data_rilascio: '2026-11-16'
   origine: xei-software/xei-contolavoro
   tag_origine: v1.2.1
   xeicore: 1.2.2
