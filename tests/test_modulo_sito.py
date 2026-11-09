@@ -10,6 +10,11 @@ import pytest
 
 import build
 
+
+@pytest.fixture(scope="module", autouse=True)
+def _tutti_i_programmi(tutti_attivi):
+    """Anche i programmi spenti: qui si prova il generatore, non quali programmi sono sul sito."""
+
 SERVIZIO = "https://xei-prove.example/api/richiesta"
 
 

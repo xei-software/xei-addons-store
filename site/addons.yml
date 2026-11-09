@@ -5,6 +5,7 @@
 # I dati del pacchetto vengono dalla Release "tag_origine" del repository "origine"; al push di questo file su main
 # il workflow release.yml copia il file, identico, nella Release pubblica "tag_pubblico" (vedi strumenti/copia_release.py).
 - id: item-generator
+  attivo: false  # spento il 09/11/2026 su richiesta di Ivan: controllo in corso
   pacchetto: XEI.ItemGenerator
   versione: 1.5.0
   data_rilascio: '2026-11-16'
@@ -20,6 +21,7 @@
   lingue_programma: [it, en, de, fr, es, tr]
 
 - id: commission-management
+  attivo: false  # spento il 09/11/2026 su richiesta di Ivan: controllo in corso
   pacchetto: XEI.CommissionManagement
   versione: 1.1.1
   data_rilascio: '2026-11-16'
@@ -51,6 +53,7 @@
   lingue_programma: [it, en, de, fr, es, tr]
 
 - id: conto-lavoro
+  attivo: false  # spento il 09/11/2026 su richiesta di Ivan: controllo in corso
   pacchetto: XEI.ContoLavoro
   versione: 1.2.1
   data_rilascio: '2026-11-16'

@@ -224,7 +224,7 @@ def test_per_un_app_la_pagina_download_spiega_come_si_avvia(tmp_path, monkeypatc
     addons = [dict(voce) for voce in build.addons_con_pacchetto()]
     app = addons[0]
     app["tipo"], app["framework"] = "app", "0.7.0"
-    del app["xeicore"]
+    app.pop("xeicore", None)
     monkeypatch.setattr(build, "carica_addons", lambda: addons)
     build.genera_sito(tmp_path)
     for lingua in build.carica_config()["lingue"]:

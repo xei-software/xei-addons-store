@@ -9,6 +9,11 @@ import pytest
 
 import build
 
+
+@pytest.fixture(scope="module", autouse=True)
+def _tutti_i_programmi(tutti_attivi):
+    """Anche i programmi spenti: qui si prova il generatore, non quali programmi sono sul sito."""
+
 SCRIPT = build.CARTELLA_SITO / "static" / "js" / "richiedi-prova.js"
 MODELLO = "https://forms.example/r?id=X&rA=%22{addon}%22&rL=%22Italiano%22&rC=%22{codice}%22"
 AMMESSI = ["XEI.ItemGenerator", "XEI.CommissionManagement"]

@@ -32,6 +32,7 @@ def sito(tmp_path_factory):
     shutil.copytree(build.CARTELLA_SITO, copia)
     voci = yaml.safe_load((copia / "addons.yml").read_text(encoding="utf-8"))
     for voce in voci:
+        voce.pop("attivo", None)  # si parte da tutti i programmi accesi, anche se oggi qualcuno è spento sul sito
         if voce["id"] == SU_RICHIESTA:
             for campo in CAMPI_PACCHETTO:
                 voce.pop(campo, None)
