@@ -76,8 +76,8 @@ anteprima_successiva: Next screenshot
 chiudi: Close
 condizioni_sintesi: 'The software may contain errors and cause malfunctions, data loss or other damage: it must first be tested in a test environment, with a copy of the data. To the extent permitted by law, XEI S.r.l. is not liable for damage arising from its use.'
 condizioni_leggi: Read the full terms of use
-condizioni_accetto: I have read and accept the terms of use and confirm that I will test the software in a test environment before using it with real data.
-condizioni_approvo: Pursuant to articles 1341 and 1342 of the Italian Civil Code, I specifically approve articles 4 (software provided as is and testing in a test environment), 5 (limitation of liability), 6 (indemnification) and 8 (place of jurisdiction) of the terms of use.
+condizioni_accetto: 'I have read and accept the terms of use and confirm that, after making a full backup, I will test the software in a test environment before using it with real data.'
+condizioni_approvo: 'Pursuant to articles 1341 and 1342 of the Italian Civil Code, I specifically approve articles 3 (licence and restrictions), 4.6 (revocation of the licence), 5 (customer obligations: testing and backup), 6 (disclaimer of warranty, limitation of liability and indemnification), 7.1 (termination) and 7.5 (governing law and place of jurisdiction) of the terms of use.'
 condizioni_nota: 'In the form that opens you confirm your acceptance with your email address: your choice is recorded and you receive a PDF copy of the terms by email.'
 condizioni_annulla: Cancel
 condizioni_continua: Continue

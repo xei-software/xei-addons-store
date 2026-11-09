@@ -76,8 +76,8 @@ anteprima_successiva: Capture suivante
 chiudi: Fermer
 condizioni_sintesi: 'Le logiciel peut contenir des erreurs et provoquer des dysfonctionnements, des pertes de données ou d''autres dommages : il doit d''abord être essayé dans un environnement de test, avec une copie des données. Dans les limites permises par la loi, XEI S.r.l. n''est pas responsable des dommages découlant de son utilisation.'
 condizioni_leggi: Lire les conditions d'utilisation complètes
-condizioni_accetto: J'ai lu et j'accepte les conditions d'utilisation et je confirme que j'essaierai le logiciel dans un environnement de test avant de l'utiliser avec des données réelles.
-condizioni_approvo: Conformément aux articles 1341 et 1342 du Code civil italien, j'approuve expressément les articles 4 (logiciel fourni en l'état et essai dans un environnement de test), 5 (limitation de responsabilité), 6 (garantie) et 8 (tribunal compétent) des conditions d'utilisation.
+condizioni_accetto: 'J''ai lu et j''accepte les conditions d''utilisation et je confirme que, après avoir fait une sauvegarde complète, j''essaierai le logiciel dans un environnement de test avant de l''utiliser avec des données réelles.'
+condizioni_approvo: 'Conformément aux articles 1341 et 1342 du Code civil italien, j''approuve expressément les articles 3 (licence et limites), 4.6 (révocation de la licence), 5 (obligations du client : test et sauvegarde), 6 (exclusion de garantie, limitation de responsabilité et garantie contre les recours), 7.1 (résiliation) et 7.5 (droit applicable et tribunal compétent) des conditions d''utilisation.'
 condizioni_nota: 'Dans le formulaire qui s''ouvre, vous confirmez votre acceptation avec votre adresse e-mail : votre choix est enregistré et vous recevez par e-mail une copie PDF des conditions.'
 condizioni_annulla: Annuler
 condizioni_continua: Continuer

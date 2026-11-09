@@ -76,8 +76,8 @@ anteprima_successiva: Sonraki ekran görüntüsü
 chiudi: Kapat
 condizioni_sintesi: 'Yazılım hatalar içerebilir ve arızalara, veri kaybına veya başka zararlara yol açabilir: önce verilerin bir kopyasıyla bir test ortamında denenmelidir. Yasanın izin verdiği ölçüde XEI S.r.l., kullanımından doğan zararlardan sorumlu değildir.'
 condizioni_leggi: Kullanım koşullarının tamamını okuyun
-condizioni_accetto: Kullanım koşullarını okudum ve kabul ediyorum; yazılımı gerçek verilerle kullanmadan önce bir test ortamında deneyeceğimi onaylıyorum.
-condizioni_approvo: İtalyan Medeni Kanunu'nun 1341 ve 1342. maddeleri uyarınca, kullanım koşullarının 4. (yazılımın olduğu gibi sağlanması ve test ortamında deneme), 5. (sorumluluğun sınırlandırılması), 6. (tazmin) ve 8. (yetkili mahkeme) maddelerini özellikle onaylıyorum.
+condizioni_accetto: 'Kullanım koşullarını okudum ve kabul ediyorum; tam bir yedek aldıktan sonra yazılımı gerçek verilerle kullanmadan önce bir test ortamında deneyeceğimi onaylıyorum.'
+condizioni_approvo: 'İtalyan Medeni Kanunu''nun 1341 ve 1342. maddeleri uyarınca, kullanım koşullarının 3. (lisans ve sınırlamalar), 4.6 (lisansın iptali), 5. (müşterinin yükümlülükleri: test ve yedekleme), 6. (garanti dışlama, sorumluluğun sınırlandırılması ve tazmin), 7.1 (fesih) ve 7.5 (uygulanacak hukuk ve yetkili mahkeme) maddelerini özellikle onaylıyorum.'
 condizioni_nota: 'Açılan formda kabulünüzü e-posta adresinizle onaylarsınız: seçiminiz kaydedilir ve koşulların PDF kopyası size e-postayla gönderilir.'
 condizioni_annulla: İptal
 condizioni_continua: Devam
