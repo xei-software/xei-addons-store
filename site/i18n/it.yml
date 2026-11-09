@@ -76,8 +76,8 @@ anteprima_successiva: Schermata successiva
 chiudi: Chiudi
 condizioni_sintesi: 'Il software può contenere errori e causare malfunzionamenti, perdite di dati o altri danni: va provato prima in un ambiente di test, con una copia dei dati. Nei limiti consentiti dalla legge, XEI S.r.l. non risponde dei danni derivanti dal suo uso.'
 condizioni_leggi: Leggi le condizioni d'uso complete
-condizioni_accetto: Ho letto e accetto le condizioni d'uso e confermo che proverò il software in un ambiente di test prima di usarlo con dati reali.
-condizioni_approvo: Ai sensi degli articoli 1341 e 1342 del Codice civile approvo specificamente gli articoli 4 (software fornito così com'è e prova in ambiente di test), 5 (limitazione di responsabilità), 6 (manleva) e 8 (foro competente) delle condizioni d'uso.
+condizioni_accetto: 'Ho letto e accetto le condizioni d''uso e confermo che, dopo aver fatto un backup completo, proverò il software in un ambiente di test prima di usarlo con dati reali.'
+condizioni_approvo: 'Ai sensi degli articoli 1341 e 1342 del Codice civile approvo specificamente gli articoli 3 (licenza d''uso e limiti), 4.6 (revoca della licenza), 5 (obblighi del cliente: test e backup), 6 (esclusione di garanzia, limitazione di responsabilità e manleva), 7.1 (risoluzione) e 7.5 (legge applicabile e foro competente) delle condizioni d''uso.'
 condizioni_nota: 'Nel modulo che si apre confermi l''accettazione con il tuo indirizzo email: la scelta viene registrata e ricevi per email una copia delle condizioni in PDF.'
 condizioni_annulla: Annulla
 condizioni_continua: Continua
