@@ -78,7 +78,7 @@ condizioni_sintesi: 'The software may contain errors and cause malfunctions, dat
 condizioni_leggi: Read the full terms of use
 condizioni_accetto: 'I have read and accept the terms of use and confirm that, after making a full backup, I will test the software in a test environment before using it with real data.'
 condizioni_approvo: 'Pursuant to articles 1341 and 1342 of the Italian Civil Code, I specifically approve articles 3 (licence and restrictions), 4.6 (revocation of the licence), 5 (customer obligations: testing and backup), 6 (disclaimer of warranty, limitation of liability and indemnification), 7.1 (termination) and 7.5 (governing law and place of jurisdiction) of the terms of use.'
-condizioni_nota: 'In the form that opens you confirm your acceptance with your email address: your choice is recorded and you receive a PDF copy of the terms by email.'
+condizioni_nota: 'The terms are always available on the Terms of use page of the website: keep a copy.'
 condizioni_annulla: Cancel
 condizioni_continua: Continue
 download_app_installazione: 'Windows program: extract the folder from the zip and start {programma}. Microsoft Edge WebView2 Runtime is required.'

@@ -78,7 +78,7 @@ condizioni_sintesi: 'Le logiciel peut contenir des erreurs et provoquer des dysf
 condizioni_leggi: Lire les conditions d'utilisation complètes
 condizioni_accetto: 'J''ai lu et j''accepte les conditions d''utilisation et je confirme que, après avoir fait une sauvegarde complète, j''essaierai le logiciel dans un environnement de test avant de l''utiliser avec des données réelles.'
 condizioni_approvo: 'Conformément aux articles 1341 et 1342 du Code civil italien, j''approuve expressément les articles 3 (licence et limites), 4.6 (révocation de la licence), 5 (obligations du client : test et sauvegarde), 6 (exclusion de garantie, limitation de responsabilité et garantie contre les recours), 7.1 (résiliation) et 7.5 (droit applicable et tribunal compétent) des conditions d''utilisation.'
-condizioni_nota: 'Dans le formulaire qui s''ouvre, vous confirmez votre acceptation avec votre adresse e-mail : votre choix est enregistré et vous recevez par e-mail une copie PDF des conditions.'
+condizioni_nota: 'Les conditions sont toujours disponibles sur la page Conditions d''utilisation du site : conservez-en une copie.'
 condizioni_annulla: Annuler
 condizioni_continua: Continuer
 download_app_installazione: 'Programme Windows : extrayez le dossier du zip et lancez {programma}. Microsoft Edge WebView2 Runtime est requis.'

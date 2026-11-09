@@ -205,3 +205,20 @@ def test_i_link_azzurri_del_pannello_non_colorano_i_pulsanti(sito):
     foglio = (sito / "static" / "css" / "sito.css").read_text(encoding="utf-8")
     assert ".scheda.download a:not(.pulsante) {" in foglio
     assert ".scheda.download a {" not in foglio
+
+
+def test_la_nota_delle_condizioni_non_promette_registrazione_ne_pdf():
+    # Revisione dei coordinatori (xei-model-docs revisioni/xei-addons-store-condizioni.md): oggi il servizio non registra
+    # l'accettazione e non manda il PDF; la nota dice solo dove trovare le condizioni (nome del link della finestra).
+    attese = {
+        "it": "Le condizioni sono sempre disponibili nella pagina Condizioni d'uso del sito: conservane una copia.",
+        "en": "The terms are always available on the Terms of use page of the website: keep a copy.",
+        "fr": "Les conditions sont toujours disponibles sur la page Conditions d'utilisation du site : conservez-en une copie.",
+        "de": "Die Bedingungen sind jederzeit auf der Seite Nutzungsbedingungen der Website verfügbar: Bewahren Sie eine Kopie auf.",
+        "es": "Las condiciones están siempre disponibles en la página Condiciones de uso del sitio: conserve una copia.",
+        "tr": "Koşullar her zaman sitenin Kullanım koşulları sayfasında bulunur: bir kopyasını saklayın.",
+    }
+    for lingua, testo in attese.items():
+        nota = build.carica_testi(lingua)["condizioni_nota"]
+        assert nota == testo, lingua
+        assert "PDF" not in nota and "email" not in nota.lower() and "e-mail" not in nota.lower(), lingua

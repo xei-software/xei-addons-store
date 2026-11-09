@@ -78,7 +78,7 @@ condizioni_sintesi: 'El software puede contener errores y causar fallos, pérdid
 condizioni_leggi: Leer las condiciones de uso completas
 condizioni_accetto: 'He leído y acepto las condiciones de uso y confirmo que, tras hacer una copia de seguridad completa, probaré el software en un entorno de pruebas antes de usarlo con datos reales.'
 condizioni_approvo: 'De conformidad con los artículos 1341 y 1342 del Código Civil italiano, apruebo específicamente los artículos 3 (licencia y limitaciones), 4.6 (revocación de la licencia), 5 (obligaciones del cliente: pruebas y copia de seguridad), 6 (exclusión de garantía, limitación de responsabilidad e indemnidad), 7.1 (resolución) y 7.5 (ley aplicable y fuero competente) de las condiciones de uso.'
-condizioni_nota: 'En el formulario que se abre confirma la aceptación con su dirección de correo electrónico: su elección queda registrada y recibe por correo una copia en PDF de las condiciones.'
+condizioni_nota: 'Las condiciones están siempre disponibles en la página Condiciones de uso del sitio: conserve una copia.'
 condizioni_annulla: Cancelar
 condizioni_continua: Continuar
 download_app_installazione: 'Programa para Windows: extraiga la carpeta del zip e inicie {programma}. Se necesita Microsoft Edge WebView2 Runtime.'
