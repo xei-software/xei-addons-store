@@ -4,6 +4,8 @@ azienda: XEI S.r.l.
 repository: xei-software/xei-addons-store
 # Dominio personalizzato di GitHub Pages (file CNAME del sito).
 dominio: store.xeisrl.com
+# Sito principale di XEI: ogni pagina dello store ha il collegamento per tornarci (menu e piè di pagina).
+sito_principale: https://xeisrl.com/
 lingue: [it, en, fr, de, tr, es]
 lingua_predefinita: it
 # Casella che riceve le registrazioni e invia i codici di prova.

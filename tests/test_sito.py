@@ -269,3 +269,17 @@ def test_nei_contatti_c_e_info(sito):
         if piede:
             assert 'href="mailto:info@xeisrl.com"' in piede.group(1), pagina
             assert "license@" not in piede.group(1), pagina
+
+
+def test_ogni_pagina_torna_al_sito_principale(sito):
+    # Richiesta di Ivan (11/11/2026): da ogni pagina dello store si torna a xeisrl.com.
+    config = build.carica_config()
+    assert config["sito_principale"] == "https://xeisrl.com/"
+    for pagina in sito.rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        assert 'href="https://xeisrl.com/"' in testo, pagina
+    for lingua in config["lingue"]:
+        testi = build.carica_testi(lingua)
+        testo = html.unescape((sito / lingua / "download.html").read_text(encoding="utf-8"))
+        menu = re.search(r'<nav class="menu"[^>]*>(.*?)</nav>', testo, re.S).group(1)
+        assert f'href="https://xeisrl.com/">{testi["menu_sito_principale"]}</a>' in menu, lingua

@@ -202,3 +202,11 @@ body.pagina-scura {
 .modulo-prova small { color: #686A6F; }
 /* campo trappola: fuori dallo schermo per le persone, visibile ai programmi automatici */
 .trappola { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+/* Ritorno al sito principale xeisrl.com, prima voce del menu */
+.pagina-scura .testata .menu a.sito-principale { color: #4cc3f5; }
+.pagina-scura .testata .menu a.sito-principale:hover { color: #ffffff; }
+.menu a { white-space: nowrap; }
+/* Telefono: il menu va su una riga sua, sotto il logo e la lingua, invece che in una colonna stretta */
+@media (max-width: 759px) {
+  .testata-riga .menu { order: 3; flex-basis: 100%; gap: 8px 18px; }
+}
