@@ -295,6 +295,34 @@ def _scrivi(cartella_uscita, percorso_relativo, html):
     destinazione.write_text(html, encoding="utf-8")
 
 
+def messaggio_manutenzione(testi, data):
+    """«Torna a trovarci il 30 novembre 2026» nella lingua di testi (mesi e ordine delle parole da i18n)."""
+    return testi["manutenzione_titolo"].format(giorno=data.day, mese=testi["mesi"][data.month - 1], anno=data.year)
+
+
+def _genera_manutenzione(cartella_uscita, url_base, config, ambiente):
+    """Manutenzione: al posto del sito, una pagina con il messaggio per ogni lingua; ogni altro indirizzo va nella
+    404, con il messaggio in tutte le lingue. Restano lo stile, CNAME e l'elenco delle prove (lo legge il servizio)."""
+    data = config["manutenzione"]["fino_al"]
+    lingue = config["lingue"]
+    messaggi = []
+    for lingua in lingue:
+        testi = carica_testi(lingua)
+        messaggi.append((lingua, messaggio_manutenzione(testi, data), testi["menu_sito_principale"]))
+    modello = ambiente.get_template("manutenzione.html")
+    for messaggio in messaggi:
+        _scrivi(cartella_uscita / messaggio[0], "index.html",
+                modello.render(config=config, url_base=url_base, lingua=messaggio[0], messaggi=[messaggio]))
+    _scrivi(cartella_uscita, "404.html", modello.render(config=config, url_base=url_base,
+                                                         lingua=config["lingua_predefinita"], messaggi=messaggi))
+    nomi_lingue = {lingua: carica_testi(lingua)["nome_lingua"] for lingua in lingue}
+    _scrivi(cartella_uscita, "index.html", ambiente.get_template("scelta_lingua.html").render(
+        config=config, url_base=url_base, lingue=lingue, nomi_lingue=nomi_lingue,
+        lingua_predefinita=config["lingua_predefinita"]))
+    _scrivi(cartella_uscita, "prodotti-prova.json",
+            json.dumps(prodotti_prova(carica_addons()), ensure_ascii=False, indent=2) + "\n")
+
+
 def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
     """Genera tutto il sito in cartella_uscita, sostituendone il contenuto."""
     cartella_uscita = Path(cartella_uscita)
@@ -306,9 +334,12 @@ def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
     if cartella_uscita.exists():
         shutil.rmtree(cartella_uscita)
     shutil.copytree(CARTELLA_SITO / "static", cartella_uscita / "static")
-    _copia_risorse_manuali(cartella_uscita)
     (cartella_uscita / ".nojekyll").write_text("", encoding="utf-8")
     (cartella_uscita / "CNAME").write_text(config["dominio"] + "\n", encoding="utf-8")
+    if config.get("manutenzione"):
+        _genera_manutenzione(cartella_uscita, url_base, config, ambiente)
+        return
+    _copia_risorse_manuali(cartella_uscita)
 
     anteprime = carica_anteprime()
     for lingua in lingue:

@@ -28,3 +28,7 @@ servizio_prove: "https://xei-prove-wx5wrugkh6kac.azurewebsites.net/api/richiesta
 # Scelte della domanda «Richiesta» del modulo, identiche a quelle di Forms.
 richiesta_prova: Prova gratuita
 richiesta_acquisto: Acquisto
+# Manutenzione temporanea (richiesta di Ivan del 13/11/2026): tutto lo store mostra solo «Torna a trovarci il …».
+# Per riaprire il sito togliere queste due righe.
+manutenzione:
+  fino_al: 2026-11-30

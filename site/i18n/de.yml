@@ -110,3 +110,5 @@ ricevuta_scarica: "Anwendung herunterladen"
 non_valida_titolo: Ungültige Anfrage
 non_valida_testo: Einige Daten fehlen oder sind ungültig. Kehren Sie zum Formular zurück, prüfen Sie die Felder und senden Sie die Anfrage erneut.
 non_valida_torna: Zurück zum Formular
+manutenzione_titolo: "Besuchen Sie uns wieder am {giorno}. {mese} {anno}"
+mesi: [Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]

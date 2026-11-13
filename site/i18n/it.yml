@@ -110,3 +110,5 @@ ricevuta_scarica: "Scarica l'applicazione"
 non_valida_titolo: Richiesta non valida
 non_valida_testo: Alcuni dati mancano o non sono validi. Torna al modulo, controlla i campi e invia di nuovo la richiesta.
 non_valida_torna: Torna al modulo
+manutenzione_titolo: "Torna a trovarci il {giorno} {mese} {anno}"
+mesi: [gennaio, febbraio, marzo, aprile, maggio, giugno, luglio, agosto, settembre, ottobre, novembre, dicembre]

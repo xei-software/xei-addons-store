@@ -110,3 +110,5 @@ ricevuta_scarica: "Descargar la aplicación"
 non_valida_titolo: Solicitud no válida
 non_valida_testo: Faltan algunos datos o no son válidos. Vuelva al formulario, revise los campos y envíe de nuevo la solicitud.
 non_valida_torna: Volver al formulario
+manutenzione_titolo: "Vuelva a visitarnos el {giorno} de {mese} de {anno}"
+mesi: [enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre]

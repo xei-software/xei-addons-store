@@ -110,3 +110,5 @@ ricevuta_scarica: "Uygulamayı indir"
 non_valida_titolo: Geçersiz talep
 non_valida_testo: Bazı bilgiler eksik veya geçersiz. Forma dönün, alanları kontrol edin ve talebi yeniden gönderin.
 non_valida_torna: Forma dön
+manutenzione_titolo: "{giorno} {mese} {anno}'da tekrar bekleriz"
+mesi: [Ocak, Şubat, Mart, Nisan, Mayıs, Haziran, Temmuz, Ağustos, Eylül, Ekim, Kasım, Aralık]

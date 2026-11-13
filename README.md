@@ -31,6 +31,10 @@ Il sito pubblica anche `/prodotti-prova.json`, l'elenco dei prodotti con la prov
 ricavato da `site/addons.yml`: il servizio delle prove (`xei-trial-service`) lo legge da qui. Per aggiungere un prodotto
 alle prove basta pubblicarne la voce in `addons.yml`; `prova: false` in una voce la toglie dall'elenco.
 
+Manutenzione: con `manutenzione: {fino_al: aaaa-mm-gg}` in `site/config.yml` tutto lo store diventa una sola pagina
+«Torna a trovarci il …» (6 lingue, stile del sito, link a xeisrl.com); ogni altro indirizzo mostra lo stesso messaggio
+(404). Resta `/prodotti-prova.json` per il servizio delle prove. Togliendo le righe il sito torna com'era.
+
 Disponibilità di un programma, in `site/addons.yml`:
 
 - `attivo: false`: il programma sparisce da tutto il sito (pagine, link, manuali e loro immagini, elenco delle prove);

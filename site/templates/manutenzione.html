@@ -1,0 +1,35 @@
+<!doctype html>
+{# Manutenzione (manutenzione.fino_al in config.yml): una sola pagina con il messaggio, nello stile del sito.
+   messaggi: [(lingua, testo)], uno per la pagina di una lingua, tutti per la 404. #}
+<html lang="{{ lingua }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{{ config.nome_sito }}</title>
+  <link rel="icon" type="image/png" href="{{ url_base }}/static/img/icona-x.png">
+  <link rel="stylesheet" href="{{ url_base }}/static/css/sito.css">
+</head>
+<body class="pagina-scura">
+  <header class="testata">
+    <div class="contenitore testata-riga">
+      <a class="marchio" href="{{ config.sito_principale }}"><img src="{{ url_base }}/static/img/logo-xei-bianco.png" alt="XEI" width="1544" height="780"> <span>Store</span></a>
+    </div>
+  </header>
+  <main class="contenitore manutenzione">
+    {% for lingua_messaggio, testo, ritorno in messaggi %}
+    <section lang="{{ lingua_messaggio }}">
+      <h1>{{ testo }}</h1>
+      <p><a class="pulsante" href="{{ config.sito_principale }}">{{ ritorno }}</a></p>
+    </section>
+    {% endfor %}
+  </main>
+  <footer class="piede">
+    <div class="contenitore piede-riga">
+      <span>© {{ config.azienda }}</span>
+      <a href="{{ config.sito_principale }}">xeisrl.com</a>
+      <a href="mailto:{{ config.email_informazioni }}">{{ config.email_informazioni }}</a>
+    </div>
+  </footer>
+</body>
+</html>

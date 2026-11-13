@@ -110,3 +110,5 @@ ricevuta_scarica: "Download the application"
 non_valida_titolo: Invalid request
 non_valida_testo: Some data are missing or not valid. Go back to the form, check the fields and send the request again.
 non_valida_torna: Back to the form
+manutenzione_titolo: "Come back and visit us on {giorno} {mese} {anno}"
+mesi: [January, February, March, April, May, June, July, August, September, October, November, December]
