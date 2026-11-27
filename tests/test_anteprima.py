@@ -57,3 +57,29 @@ def test_i_workflow_sono_yaml_valido():
     for workflow in (build.CARTELLA_SITO.parent / ".github" / "workflows").glob("*.yml"):
         contenuto = yaml.safe_load(workflow.read_text(encoding="utf-8"))
         assert contenuto["jobs"], workflow.name
+
+
+def test_l_anteprima_mostra_anche_i_programmi_spenti_con_l_etichetta(tmp_path, monkeypatch):
+    # Richiesta di Ivan (27/11/2026): nell'anteprima si vedono anche i programmi spenti sul sito pubblico.
+    originale = build.carica_voci
+    voci = [dict(voce) for voce in originale()]
+    for voce in voci:
+        voce.pop("attivo", None)
+    voci[0]["attivo"] = False
+    spento = voci[0]["id"]
+    monkeypatch.setattr(build, "carica_voci", lambda: [dict(voce) for voce in voci])
+
+    build.genera_sito(tmp_path / "anteprima", anteprima=True)
+    build.genera_sito(tmp_path / "pubblico")
+
+    for lingua in build.carica_config()["lingue"]:
+        pagina = (tmp_path / "anteprima" / lingua / "addons" / f"{spento}.html").read_text(encoding="utf-8")
+        assert 'class="etichetta-spento"' in pagina, lingua
+        download = (tmp_path / "anteprima" / lingua / "download.html").read_text(encoding="utf-8")
+        assert f'id="{spento}"' in download, lingua
+        assert not (tmp_path / "pubblico" / lingua / "addons" / f"{spento}.html").exists(), lingua
+    # i programmi accesi non hanno l'etichetta
+    acceso = voci[1]["id"]
+    assert 'etichetta-spento' not in (tmp_path / "anteprima" / "it" / "addons" / f"{acceso}.html").read_text(encoding="utf-8")
+    # dopo l'anteprima il generatore torna a nascondere i programmi spenti
+    assert spento not in [voce["id"] for voce in build.carica_addons()]

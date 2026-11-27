@@ -16,7 +16,7 @@
 {% for addon in addons %}
 <article class="scheda download" id="{{ addon.id }}">
   <div class="download-testo">
-    <h2>{{ addon.titolo }}{% if not addon.su_richiesta %} <span class="versione">{{ addon.versione }}</span>{% endif %}</h2>
+    <h2>{{ addon.titolo }}{% if not addon.su_richiesta %} <span class="versione">{{ addon.versione }}</span>{% endif %}{% if addon.spento_sul_sito %} <span class="etichetta-spento">Spento sul sito pubblico</span>{% endif %}</h2>
     <p>{{ addon.sommario }}</p>
     {% if addon.su_richiesta %}
     {# su richiesta: nessun pacchetto da scaricare, solo una richiesta di informazioni a info@ #}

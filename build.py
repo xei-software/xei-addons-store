@@ -251,6 +251,8 @@ def _prepara_addon(addon, lingua, config, url_base, anteprime):
         "app": addon.get("tipo") == "app",
         "pagina": f"{url_base}/{lingua}/addons/{addon['id']}.html",
         "su_richiesta": su_richiesta,
+        # solo nell'anteprima: il programma c'è ma sul sito pubblico è spento («attivo: false»)
+        "spento_sul_sito": addon.get("spento_sul_sito", False),
         "url_download": None if su_richiesta else (f"https://github.com/{config['repository']}/releases/download/"
                                                    f"{addon['tag_pubblico']}/{addon['file']}"),
         "dimensione_leggibile": None if su_richiesta else formatta_dimensione(addon["dimensione"]),
@@ -341,6 +343,27 @@ AVVISO_ANTEPRIMA = ('<div class="anteprima-avviso">Anteprima interna XEI: non è
                     '(<a href="https://store.xeisrl.com/">store.xeisrl.com</a>)</div>')
 
 
+def _accendi_per_anteprima(voce):
+    """Voce spenta sul sito pubblico, accesa nell'anteprima con l'etichetta «Spento sul sito pubblico»."""
+    if voce.get("attivo", True) is not False:
+        return voce
+    return {**{k: v for k, v in voce.items() if k != "attivo"}, "spento_sul_sito": True}
+
+
+def _genera_con_i_programmi_spenti(cartella_uscita, url_base, config):
+    """Genera il sito con anche i programmi spenti (richiesta di Ivan del 27/11/2026: nell'anteprima si vedono tutti).
+
+    carica_voci si sostituisce solo per questa generazione e poi torna com'era.
+    """
+    global carica_voci
+    originale = carica_voci
+    carica_voci = lambda: [_accendi_per_anteprima(voce) for voce in originale()]  # noqa: E731
+    try:
+        genera_sito(cartella_uscita, url_base=url_base, config=config)
+    finally:
+        carica_voci = originale
+
+
 def _segna_anteprima(cartella_uscita):
     """Ogni pagina dell'anteprima: fuori dai motori di ricerca e con la fascia «Anteprima interna»."""
     for pagina in Path(cartella_uscita).rglob("*.html"):
@@ -353,12 +376,12 @@ def _segna_anteprima(cartella_uscita):
 def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None, anteprima=False):
     """Genera tutto il sito in cartella_uscita, sostituendone il contenuto.
 
-    anteprima=True: il sito com'è senza manutenzione, per l'anteprima interna (Azure Static Web Apps, solo ruolo
+    anteprima=True: il sito com'è senza manutenzione e con anche i programmi spenti (etichettati), per l'anteprima interna (Azure Static Web Apps, solo ruolo
     «interno»), senza il dominio dello store.
     """
     if anteprima:
         config = {k: v for k, v in (config or carica_config()).items() if k != "manutenzione"}
-        genera_sito(cartella_uscita, url_base=url_base, config=config)
+        _genera_con_i_programmi_spenti(cartella_uscita, url_base, config)
         cartella_uscita = Path(cartella_uscita)
         (cartella_uscita / "CNAME").unlink()
         (cartella_uscita / "staticwebapp.config.json").write_text(

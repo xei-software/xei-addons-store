@@ -16,7 +16,7 @@
 <div class="griglia">
   {% for addon in addons %}
   <article class="scheda">
-    <h3>{{ addon.titolo }}</h3>
+    <h3>{{ addon.titolo }}{% if addon.spento_sul_sito %} <span class="etichetta-spento">Spento sul sito pubblico</span>{% endif %}</h3>
     <p>{{ addon.sommario }}</p>
     {% if not addon.su_richiesta %}<p class="dettaglio">{{ t.addon_versione }} {{ addon.versione }}</p>{% endif %}
     <a href="{{ url_base }}/{{ lingua }}/addons/{{ addon.id }}.html">{{ t.scheda_scopri }} →</a>

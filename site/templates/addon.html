@@ -3,7 +3,7 @@
 {% block titolo %}{{ addon.titolo }}{% endblock %}
 {% block contenuto %}
 {% if not addon.tradotto %}<p class="avviso">{{ t.avviso_traduzione }}</p>{% endif %}
-<h1>{{ addon.titolo }}</h1>
+<h1>{{ addon.titolo }}{% if addon.spento_sul_sito %} <span class="etichetta-spento">Spento sul sito pubblico</span>{% endif %}</h1>
 <p class="sommario">{{ addon.sommario }}</p>
 {% if not addon.su_richiesta %}
 <dl class="dati">
