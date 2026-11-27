@@ -49,3 +49,11 @@ def test_il_sito_di_produzione_non_ha_niente_dell_anteprima(tmp_path):
     assert not (tmp_path / "staticwebapp.config.json").exists()
     for pagina in tmp_path.rglob("*.html"):
         assert "anteprima-avviso" not in pagina.read_text(encoding="utf-8"), pagina
+
+
+def test_i_workflow_sono_yaml_valido():
+    # un workflow che GitHub non riesce a leggere fallisce senza eseguire nulla
+    import yaml
+    for workflow in (build.CARTELLA_SITO.parent / ".github" / "workflows").glob("*.yml"):
+        contenuto = yaml.safe_load(workflow.read_text(encoding="utf-8"))
+        assert contenuto["jobs"], workflow.name

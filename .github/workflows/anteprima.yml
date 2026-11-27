@@ -30,7 +30,7 @@ jobs:
       - run: python build.py --anteprima --out _anteprima
       - name: Segreto mancante
         if: env.TOKEN_ANTEPRIMA == ''
-        run: echo "::notice::Manca il segreto AZURE_ANTEPRIMA_TOKEN (docs/anteprima.md): anteprima generata ma non pubblicata."
+        run: 'echo "::notice::Manca il segreto AZURE_ANTEPRIMA_TOKEN (docs/anteprima.md), anteprima generata ma non pubblicata."'
       - name: Pubblica su Azure Static Web Apps
         if: env.TOKEN_ANTEPRIMA != ''
         uses: Azure/static-web-apps-deploy@v1
