@@ -12,6 +12,8 @@ sottoscrizione Azure di XEI). Si entra solo con il login **GitHub** e solo gli u
 - L'anteprima è il sito com'è, **anche durante la manutenzione** (si vede quello che andrà online alla riapertura), con
   una fascia gialla «Anteprima interna XEI» in alto, fuori dai motori di ricerca, senza il dominio dello store.
 - Dopo il controllo si unisce `anteprima` su `main`: il sito pubblico si aggiorna come sempre.
+- Le regole di accesso sono in `staticwebapp.config.json`, scritto da `build.py` (`REGOLE_ANTEPRIMA`): tutte le pagine
+  solo per il ruolo `interno`, login solo con GitHub.
 
 ## Ordine dei passi
 
@@ -27,8 +29,6 @@ L'anteprima tiene private **solo le pagine generate**. Il repository è pubblico
 log di Actions si leggono da fuori. Sul ramo `anteprima` valgono quindi le stesse regole «Mai nel repository» del
 `CLAUDE.md` (niente sorgenti, codici di licenza, chiavi, token, nomi di clienti, percorsi interni, dati personali) e lo
 stesso controllo a mano prima di ogni push. Un testo non ancora pubblicabile non va nemmeno sul ramo `anteprima`.
-- Le regole di accesso sono in `staticwebapp.config.json`, scritto da `build.py` (`REGOLE_ANTEPRIMA`): tutte le pagine
-  solo per il ruolo `interno`, login solo con GitHub.
 
 ## Da fare una volta (Ivan o Enrico, circa 15 minuti)
 
@@ -72,3 +72,15 @@ l'anteprima pesa circa 30 MB.
 - Il modulo della prova nell'anteprima manda le richieste al servizio vero, che accetta solo i moduli inviati da
   store.xeisrl.com: dall'anteprima risponde «non autorizzato». Le prove del modulo si fanno come sempre dal sito
   pubblico o con il comando di prova del servizio.
+
+## Se compare «403: Forbidden»
+
+Il login con GitHub è riuscito, ma per Azure l'utente non ha il ruolo `interno`.
+
+1. Aprire `https://<indirizzo dell'anteprima>/.auth/me`: in `userRoles` deve esserci `interno`, e `userDetails` deve
+   essere il nome utente GitHub invitato.
+2. Se `interno` manca:
+   - l'invito va **accettato** aprendo il suo link (aggiungerlo nel portale non basta);
+   - se il login è stato fatto prima di accettare, uscire con `https://<indirizzo>/.auth/logout` e rientrare;
+   - in Gestione ruoli il ruolo dev'essere esattamente `interno` (minuscolo, senza spazi);
+   - il browser dev'essere collegato allo stesso account GitHub dell'invito.
