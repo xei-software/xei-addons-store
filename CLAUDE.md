@@ -75,7 +75,7 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   testi `approvato` → ramo `anteprima` → controllo → `main`; i test non si allentano per vedere un'anteprima.
   Il repository resta **pubblico**: ramo `anteprima` e log di Actions si leggono da fuori, privata è solo l'anteprima
   generata. Sul ramo valgono le stesse regole «Mai nel repository» e lo stesso controllo a mano prima di ogni push.
-  La risorsa Azure va in un gruppo dedicato (es. `xei-store`), non in `xei-licenze` (servizio delle prove).
+  La risorsa Azure `xei-store-anteprima` sta in `xei-licenze` (decisione di Ivan del 27/11/2026).
 - I test devono passare prima di ogni push (`python -m pytest -q`).
 
 ## Pubblicare una nuova versione di un add-on
