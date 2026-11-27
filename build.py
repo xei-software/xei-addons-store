@@ -323,8 +323,48 @@ def _genera_manutenzione(cartella_uscita, url_base, config, ambiente):
             json.dumps(prodotti_prova(carica_addons()), ensure_ascii=False, indent=2) + "\n")
 
 
-def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None):
-    """Genera tutto il sito in cartella_uscita, sostituendone il contenuto."""
+# Anteprima interna su Azure Static Web Apps: ogni pagina solo per gli utenti GitHub invitati con il ruolo «interno».
+REGOLE_ANTEPRIMA = {
+    "routes": [
+        # si entra solo con GitHub: gli altri fornitori di login di Azure restano chiusi
+        {"route": "/.auth/login/aad", "statusCode": 404},
+        {"route": "/.auth/login/twitter", "statusCode": 404},
+        {"route": "/*", "allowedRoles": ["interno"]},
+    ],
+    "responseOverrides": {
+        "401": {"redirect": "/.auth/login/github?post_login_redirect_uri=.referrer", "statusCode": 302},
+    },
+    "globalHeaders": {"X-Robots-Tag": "noindex, nofollow", "Cache-Control": "no-store"},
+}
+
+AVVISO_ANTEPRIMA = ('<div class="anteprima-avviso">Anteprima interna XEI: non è il sito pubblico '
+                    '(<a href="https://store.xeisrl.com/">store.xeisrl.com</a>)</div>')
+
+
+def _segna_anteprima(cartella_uscita):
+    """Ogni pagina dell'anteprima: fuori dai motori di ricerca e con la fascia «Anteprima interna»."""
+    for pagina in Path(cartella_uscita).rglob("*.html"):
+        testo = pagina.read_text(encoding="utf-8")
+        testo = testo.replace("<head>\n", '<head>\n  <meta name="robots" content="noindex">\n', 1)
+        testo = testo.replace('<body class="pagina-scura">', '<body class="pagina-scura">\n  ' + AVVISO_ANTEPRIMA, 1)
+        pagina.write_text(testo, encoding="utf-8")
+
+
+def genera_sito(cartella_uscita, url_base=URL_BASE_PREDEFINITO, config=None, anteprima=False):
+    """Genera tutto il sito in cartella_uscita, sostituendone il contenuto.
+
+    anteprima=True: il sito com'è senza manutenzione, per l'anteprima interna (Azure Static Web Apps, solo ruolo
+    «interno»), senza il dominio dello store.
+    """
+    if anteprima:
+        config = {k: v for k, v in (config or carica_config()).items() if k != "manutenzione"}
+        genera_sito(cartella_uscita, url_base=url_base, config=config)
+        cartella_uscita = Path(cartella_uscita)
+        (cartella_uscita / "CNAME").unlink()
+        (cartella_uscita / "staticwebapp.config.json").write_text(
+            json.dumps(REGOLE_ANTEPRIMA, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        _segna_anteprima(cartella_uscita)
+        return
     cartella_uscita = Path(cartella_uscita)
     config = config or carica_config()
     ambiente = _ambiente_modelli()
@@ -419,8 +459,10 @@ def main():
     parser.add_argument("--out", default="_site", help="cartella di uscita (default: _site)")
     parser.add_argument("--url-base", default=URL_BASE_PREDEFINITO,
                         help='prefisso degli indirizzi (predefinito: nessuno, il sito sta alla radice del dominio)')
+    parser.add_argument("--anteprima", action="store_true",
+                        help="anteprima interna (Azure Static Web Apps, solo utenti con il ruolo «interno»)")
     argomenti = parser.parse_args()
-    genera_sito(Path(argomenti.out), url_base=argomenti.url_base)
+    genera_sito(Path(argomenti.out), url_base=argomenti.url_base, anteprima=argomenti.anteprima)
     print(f"Sito generato in {argomenti.out}")
 
 

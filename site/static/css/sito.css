@@ -213,3 +213,6 @@ body.pagina-scura {
 /* Manutenzione: messaggio al centro della pagina */
 .manutenzione { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; gap: 28px; padding-top: 48px; padding-bottom: 48px; }
 .manutenzione h1 { font-size: clamp(1.6rem, 4vw, 2.6rem); line-height: 1.25; margin: 0 0 16px; }
+/* Anteprima interna (build.py --anteprima): fascia in alto su ogni pagina */
+.anteprima-avviso { background: #f2b705; color: #1a1300; text-align: center; font-weight: 600; padding: 6px 16px; font-size: 0.9rem; }
+.anteprima-avviso a { color: #1a1300; }

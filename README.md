@@ -31,6 +31,10 @@ Il sito pubblica anche `/prodotti-prova.json`, l'elenco dei prodotti con la prov
 ricavato da `site/addons.yml`: il servizio delle prove (`xei-trial-service`) lo legge da qui. Per aggiungere un prodotto
 alle prove basta pubblicarne la voce in `addons.yml`; `prova: false` in una voce la toglie dall'elenco.
 
+Anteprima interna: `python build.py --anteprima` genera il sito per Azure Static Web Apps, solo per gli utenti con il
+ruolo `interno`; il ramo `anteprima` si pubblica da solo (`.github/workflows/anteprima.yml`). Istruzioni in
+[docs/anteprima.md](docs/anteprima.md).
+
 Manutenzione: con `manutenzione: {fino_al: aaaa-mm-gg}` in `site/config.yml` tutto lo store diventa una sola pagina
 «Torna a trovarci il …» (6 lingue, stile del sito, link a xeisrl.com); ogni altro indirizzo mostra lo stesso messaggio
 (404). Resta `/prodotti-prova.json` per il servizio delle prove. Togliendo le righe il sito torna com'era.

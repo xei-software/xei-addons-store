@@ -68,6 +68,10 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   tabelle non XEI (regola di Ivan, come in `xei-model-docs/CLAUDE.md`). I manuali si prendono solo da `xei-model-docs`,
   mai dai repository degli add-on. I termini vietati sono in `tests/termini_vietati.txt` (copia di
   `xei-model-docs/regole/termini-vietati.txt`, da riallineare quando cambia); le eccezioni le approva Ivan.
+- **Anteprima interna** (richiesta di Ivan del 27/11/2026, `docs/anteprima.md`): specchio privato del sito su Azure
+  Static Web Apps Free, solo per gli utenti GitHub invitati con il ruolo `interno`. Quando è attiva (segreto
+  `AZURE_ANTEPRIMA_TOKEN`), le modifiche al sito vanno prima sul ramo `anteprima` (pubblicazione automatica
+  nell'anteprima) e su `main` solo dopo il controllo.
 - I test devono passare prima di ogni push (`python -m pytest -q`).
 
 ## Pubblicare una nuova versione di un add-on
