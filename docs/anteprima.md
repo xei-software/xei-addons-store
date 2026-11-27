@@ -12,6 +12,21 @@ sottoscrizione Azure di XEI). Si entra solo con il login **GitHub** e solo gli u
 - L'anteprima è il sito com'è, **anche durante la manutenzione** (si vede quello che andrà online alla riapertura), con
   una fascia gialla «Anteprima interna XEI» in alto, fuori dai motori di ricerca, senza il dominio dello store.
 - Dopo il controllo si unisce `anteprima` su `main`: il sito pubblico si aggiorna come sempre.
+
+## Ordine dei passi
+
+1. Prima i **consensi dei due coordinatori** (date in `addons.yml`) e i **testi `approvato`** da xei-model-docs: le
+   stesse regole di `main`. I test del ramo `anteprima` sono gli stessi e non si allentano per vedere un'anteprima.
+2. Poi il push sul ramo **`anteprima`**: si pubblica da solo nell'anteprima.
+3. **Controllo** nell'anteprima.
+4. Solo dopo, l'unione su **`main`**: sito pubblico (e Release, se cambia `addons.yml`).
+
+## Il repository resta pubblico
+
+L'anteprima tiene private **solo le pagine generate**. Il repository è pubblico: il ramo `anteprima`, i suoi commit e i
+log di Actions si leggono da fuori. Sul ramo `anteprima` valgono quindi le stesse regole «Mai nel repository» del
+`CLAUDE.md` (niente sorgenti, codici di licenza, chiavi, token, nomi di clienti, percorsi interni, dati personali) e lo
+stesso controllo a mano prima di ogni push. Un testo non ancora pubblicabile non va nemmeno sul ramo `anteprima`.
 - Le regole di accesso sono in `staticwebapp.config.json`, scritto da `build.py` (`REGOLE_ANTEPRIMA`): tutte le pagine
   solo per il ruolo `interno`, login solo con GitHub.
 
@@ -21,7 +36,11 @@ Le sessioni Claude non creano risorse Azure né segreti: questi passi li fa chi 
 impostazioni del repository.
 
 1. **Creare la Static Web App.** Portale Azure → «Crea una risorsa» → **Static Web App** → Crea.
-   - Sottoscrizione: quella di XEI; gruppo di risorse: `xei-licenze` (o uno nuovo, es. `xei-store`).
+   - Sottoscrizione: quella di XEI; gruppo di risorse: **uno dedicato, es. `xei-store`**, non `xei-licenze`, dove c'è
+     il servizio delle prove che può firmare i codici. Per creare un gruppo serve il ruolo Proprietario o Collaboratore
+     sulla sottoscrizione. (Il 27/11/2026 l'anteprima è stata creata in `xei-licenze` perché mancava questo permesso:
+     da spostare in `xei-store` quando qualcuno con il permesso crea il gruppo, da Azure → risorsa → «Sposta» →
+     «Sposta in un altro gruppo di risorse»; il token e l'indirizzo restano gli stessi.)
    - Nome: `xei-store-anteprima`.
    - Tipo di piano: **Free**.
    - Origine della distribuzione: **Altro** (non «GitHub»: la pubblicazione la fa già il nostro workflow; con «GitHub»

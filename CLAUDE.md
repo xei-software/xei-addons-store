@@ -70,8 +70,12 @@ repository, impostazioni (es. GitHub Pages) e segreti li decide Ivan caso per ca
   `xei-model-docs/regole/termini-vietati.txt`, da riallineare quando cambia); le eccezioni le approva Ivan.
 - **Anteprima interna** (richiesta di Ivan del 27/11/2026, `docs/anteprima.md`): specchio privato del sito su Azure
   Static Web Apps Free, solo per gli utenti GitHub invitati con il ruolo `interno`. Quando è attiva (segreto
-  `AZURE_ANTEPRIMA_TOKEN`), le modifiche al sito vanno prima sul ramo `anteprima` (pubblicazione automatica
-  nell'anteprima) e su `main` solo dopo il controllo.
+  `AZURE_ANTEPRIMA_TOKEN`, attivo dal 27/11/2026), le modifiche al sito vanno prima sul ramo `anteprima`
+  (pubblicazione automatica nell'anteprima) e su `main` solo dopo il controllo. Ordine: consensi dei due coordinatori e
+  testi `approvato` → ramo `anteprima` → controllo → `main`; i test non si allentano per vedere un'anteprima.
+  Il repository resta **pubblico**: ramo `anteprima` e log di Actions si leggono da fuori, privata è solo l'anteprima
+  generata. Sul ramo valgono le stesse regole «Mai nel repository» e lo stesso controllo a mano prima di ogni push.
+  La risorsa Azure va in un gruppo dedicato (es. `xei-store`), non in `xei-licenze` (servizio delle prove).
 - I test devono passare prima di ogni push (`python -m pytest -q`).
 
 ## Pubblicare una nuova versione di un add-on
